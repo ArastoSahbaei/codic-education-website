@@ -1,9 +1,13 @@
 import { Routes } from './routes/Routes'
+import { Navigation } from './components/navigation/Navigation'
+import { GlobalStyle } from './shared/styles/GlobalStyle'
 
 export const App = () => {
 	return (
 		<Routes>
-			<h1>lol</h1>
+			<GlobalStyle />
+			<Navigation />
 		</Routes>
 	)
 }
+
