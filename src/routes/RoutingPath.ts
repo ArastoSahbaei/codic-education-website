@@ -1,7 +1,11 @@
 const initialView = '/'
-const employeeView = '/employees'
+const employeeView = '/medarbetare'
+const signInView = '/autentisera'
+const shopView = '/butik'
 
 export default {
 	initialView,
-	employeeView
+	employeeView,
+	signInView,
+	shopView
 }

@@ -1,24 +1,29 @@
 import styled from 'styled-components'
 import logotype from '../../../shared/images/codiclogotype.svg'
+import { useHistory } from 'react-router-dom'
+import RoutingPath from '../../../routes/RoutingPath'
 
 export const DesktopNavigation = () => {
+	const history = useHistory()
+
 	return (
 		<Wrapper>
-			<Image src={logotype} alt={''} />
+			<Image src={logotype} alt={''} onClick={() => history.push(RoutingPath.initialView)} />
 			<ParagraphWrapper>
 				<Paragraph>Vår Vision</Paragraph>
-				<Paragraph>Team Codic</Paragraph>
+				<Paragraph onClick={() => history.push(RoutingPath.employeeView)}>Team Codic</Paragraph>
 				<Paragraph>Kontakt</Paragraph>
-				<Paragraph>Butik</Paragraph>
+				<Paragraph onClick={() => history.push(RoutingPath.shopView)}>Butik</Paragraph>
 			</ParagraphWrapper>
-			{/* <Paragraph2>Logga in</Paragraph2> */}
+			<Button onClick={() => history.push(RoutingPath.signInView)}>Logga in</Button>
 		</Wrapper>
 	)
 }
 
 const Image = styled.img`
 	padding: 10px;
-	grid-column: 2/2;
+	grid-column: 3/3;
+	cursor: pointer;
 `
 
 const Wrapper = styled.nav`
@@ -34,10 +39,19 @@ const Paragraph = styled.p`
 	text-transform: uppercase;
 	color: white;
 	align-self: center;
+	`
+
+const Button = styled.p`
+	font-weight: 600;
+	color: white;
+	align-self: center;
+	text-transform: uppercase;
+	grid-column: 18/18;
+	cursor: pointer;
 `
 
 const ParagraphWrapper = styled.div`
-	grid-column: 4/8;
+	grid-column: 5/9;
 	display: flex;
 	justify-content: space-between
 	`
