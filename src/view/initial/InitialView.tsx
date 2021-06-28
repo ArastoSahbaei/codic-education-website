@@ -1,12 +1,16 @@
-import imageeee from '../../shared/images/teacher3.jpg'
+import initialImage from '../../shared/images/teacher3.jpg'
 import styled from 'styled-components'
+import { Collaborations } from './Collaborations'
+import { StudentReviews } from './StudentReviews'
 
 export const InitialView = () => {
 	return (
 		<Wrapper>
-			<Image src={imageeee} alt={''} />
+			<Image src={initialImage} alt={''} />
 			<Paragraph>Lorem ipsum dolor sit amet consectetur
 				<br /> adipisicing elit. Possimus, fugiat?</Paragraph>
+			<Collaborations />
+			{/* <StudentReviews /> */}
 		</Wrapper>
 	)
 }
