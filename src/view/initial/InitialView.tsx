@@ -5,7 +5,8 @@ export const InitialView = () => {
 	return (
 		<Wrapper>
 			<Image src={imageeee} alt={''} />
-			<Paragraph>Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus, fugiat?</Paragraph>
+			<Paragraph>Lorem ipsum dolor sit amet consectetur
+				<br /> adipisicing elit. Possimus, fugiat?</Paragraph>
 		</Wrapper>
 	)
 }
@@ -26,4 +27,7 @@ const Paragraph = styled.p`
 	width: 100%;
 	text-align: center;
 	margin-top: 57vh;
+	color: #f9f9f9;
+	font-size: 2.5rem;
+	font-weight: 700;
 `
