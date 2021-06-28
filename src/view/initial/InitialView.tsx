@@ -1,8 +1,29 @@
+import imageeee from '../../shared/images/teacher3.jpg'
+import styled from 'styled-components'
+
 export const InitialView = () => {
 	return (
-		<div>
-			<h1>Vi utbildar Sveriges framtid inom programmering</h1>
-			<h1>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quibusdam, dolorem?</h1>
-		</div>
+		<Wrapper>
+			<Image src={imageeee} alt={''} />
+			<Paragraph>Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus, fugiat?</Paragraph>
+		</Wrapper>
 	)
 }
+
+const Wrapper = styled.div`
+	display: grid;
+	grid-template-columns: repeat(20, 1fr);
+	`
+
+const Image = styled.img`
+	grid-column: 1/21;
+	width: 100%;
+	height: 90vh;
+	`
+
+const Paragraph = styled.p`
+	position: absolute;
+	width: 100%;
+	text-align: center;
+	margin-top: 57vh;
+`
