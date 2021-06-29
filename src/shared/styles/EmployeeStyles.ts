@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const Wrapper = styled.div`
   text-align: center;
-  width: 30em;
+  //width: 30em;
   background-color: aliceblue;
   margin: 1em;
   padding: 2em;

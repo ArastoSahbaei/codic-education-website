@@ -1,6 +1,6 @@
 import { FC } from 'react'
-import { EmployeeData, EmployeeDataProps } from '../../shared/interface/Employee'
-import { Wrapper, Image } from '../../shared/styles/EmployeeStyles'
+import { EmployeeDataProps } from '../../shared/interface/Employee'
+import { Image, Wrapper } from '../../shared/styles/EmployeeStyles'
 
 export const CardEmployee: FC<EmployeeDataProps> = (
 	{data}: EmployeeDataProps
