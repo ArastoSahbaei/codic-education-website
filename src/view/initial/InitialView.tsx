@@ -10,7 +10,7 @@ export const InitialView = () => {
 			<Paragraph>Lorem ipsum dolor sit amet consectetur
 				<br /> adipisicing elit. Possimus, fugiat?</Paragraph>
 			<Collaborations />
-			{/* <StudentReviews /> */}
+			<StudentReviews />
 		</Wrapper>
 	)
 }
