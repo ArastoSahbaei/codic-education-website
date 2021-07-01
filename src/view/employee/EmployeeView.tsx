@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { useWindowDimensions } from '../../hooks/useWindowDimensions'
-import { EmployeeData, ManagementData } from '../../shared/interface/Employee'
+import { EmployeeData, ManagementData } from '../../shared/interfaces/Employee'
 import { CardEmployee } from './CardEmployee'
 import { CardManagement } from './CardManagement'
 
@@ -14,18 +14,18 @@ const aboutManagement = 'Våra utbildningsleveranser hanteras av Robin som är y
 const aboutEmployees = 'Vårt lärarteam består av duktiga utvecklare med många års bransch- och utbildningserfarenhet. De arbetar tajt med vår leveransansvarig Robin och vårt pedagogiskt ansvariga Maria. Vill du få deras uppmärksamhet? Ropa att Amazon är bättre än Azure och se vad som händer.'
 
 export const EmployeeView = () => {
-	const {width} = useWindowDimensions()
-	
+	const { width } = useWindowDimensions()
+
 	const mobileDimensions = () => {
 		return width <= 1000
 	}
-	
+
 	const employees: Array<EmployeeData> = []
 	const managers: Array<ManagementData> = []
-	
+
 	for (let i = 0; i < 5; i++) {
 		const employee: EmployeeData = {
-			imageUrl: `https://robohash.org/${ 'Lärare ' + i }?size=200x200`,
+			imageUrl: `https://robohash.org/${'Lärare ' + i}?size=200x200`,
 			name: 'Lärare ' + i,
 			skills: ['c', 'c++', 'java'],
 			introduction: introduction,
@@ -34,10 +34,10 @@ export const EmployeeView = () => {
 		}
 		employees.push(employee)
 	}
-	
+
 	for (let i = 0; i < 5; i++) {
 		const manager: ManagementData = {
-			imageUrl: `https://robohash.org/${ 'Ledning ' + i }?size=200x200`,
+			imageUrl: `https://robohash.org/${'Ledning ' + i}?size=200x200`,
 			name: 'Ledning ' + i,
 			position: 'Management ' + i,
 			introduction: introduction,
@@ -47,40 +47,39 @@ export const EmployeeView = () => {
 		}
 		managers.push(manager)
 	}
-	
+
 	const showManagement = () => {
 		return (
-			<CardGridWrapper isMobileView={ mobileDimensions() }>
+			<CardGridWrapper isMobileView={mobileDimensions()}>
 				{
-					
 					managers.map((manager, i) => {
 						return (
 							<CardManagement
-								key={ i }
-								data={ manager }/>
+								key={i}
+								data={manager} />
 						)
 					})
 				}
 			</CardGridWrapper>
 		)
 	}
-	
+
 	const showEmployees = () => {
 		return (
-			<CardGridWrapper isMobileView={ mobileDimensions() }>
+			<CardGridWrapper isMobileView={mobileDimensions()}>
 				{
 					employees.map((employee, i) => {
 						return (
 							<CardEmployee
-								key={ i }
-								data={ employee }/>
+								key={i}
+								data={employee} />
 						)
 					})
 				}
 			</CardGridWrapper>
 		)
 	}
-	
+
 	return (
 		<Wrapper>
 			<ContentWrapper>
@@ -88,10 +87,10 @@ export const EmployeeView = () => {
 				<Paragraph>{aboutOurTeam}</Paragraph>
 				<SecondaryHeader>Ledning</SecondaryHeader>
 				<Paragraph>{aboutManagement}</Paragraph>
-				{ showManagement() }
+				{showManagement()}
 				<SecondaryHeader>Lärare</SecondaryHeader>
 				<Paragraph>{aboutEmployees}</Paragraph>
-				{ showEmployees() }
+				{showEmployees()}
 			</ContentWrapper>
 		</Wrapper>
 	)
@@ -113,7 +112,7 @@ interface values {
 
 const CardGridWrapper = styled.div<values>`
   display: grid;
-  grid-template-columns: ${ props => props.isMobileView ? '1fr' : 'repeat(3, 1fr)' };
+  grid-template-columns: ${props => props.isMobileView ? '1fr' : 'repeat(3, 1fr)'};
 `
 
 const Paragraph = styled.p`
