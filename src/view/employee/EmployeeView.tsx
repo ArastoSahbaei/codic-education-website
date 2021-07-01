@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { useWindowDimensions } from '../../hooks/useWindowDimensions'
+import { isMobileView } from '../../hooks/useWindowDimensions'
 import { EmployeeData, ManagementData } from '../../shared/interfaces/Employee'
 import { CardEmployee } from './CardEmployee'
 import { CardManagement } from './CardManagement'
@@ -14,11 +14,7 @@ const aboutManagement = 'Våra utbildningsleveranser hanteras av Robin som är y
 const aboutEmployees = 'Vårt lärarteam består av duktiga utvecklare med många års bransch- och utbildningserfarenhet. De arbetar tajt med vår leveransansvarig Robin och vårt pedagogiskt ansvariga Maria. Vill du få deras uppmärksamhet? Ropa att Amazon är bättre än Azure och se vad som händer.'
 
 export const EmployeeView = () => {
-	const { width } = useWindowDimensions()
-
-	const mobileDimensions = () => {
-		return width <= 1000
-	}
+	const isMobileDimensions = isMobileView()
 
 	const employees: Array<EmployeeData> = []
 	const managers: Array<ManagementData> = []
@@ -50,7 +46,7 @@ export const EmployeeView = () => {
 
 	const showManagement = () => {
 		return (
-			<CardGridWrapper isMobileView={mobileDimensions()}>
+			<CardGridWrapper isMobileView={isMobileDimensions}>
 				{
 					managers.map((manager, i) => {
 						return (
@@ -66,7 +62,7 @@ export const EmployeeView = () => {
 
 	const showEmployees = () => {
 		return (
-			<CardGridWrapper isMobileView={mobileDimensions()}>
+			<CardGridWrapper isMobileView={isMobileDimensions}>
 				{
 					employees.map((employee, i) => {
 						return (
