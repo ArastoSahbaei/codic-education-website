@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom'
 import RoutingPath from '../../../routes/RoutingPath'
 import { useContext } from 'react'
 import { UserContext } from '../../../shared/providers/UserProvider'
+import { Profile } from '../profile/Profile'
 
 export const DesktopNavigation = () => {
 	const history = useHistory()
@@ -11,7 +12,7 @@ export const DesktopNavigation = () => {
 
 	const displayAuthentication = () => {
 		return authenticatedUser.authenticated
-			? <Paragraph2>{authenticatedUser.username}</Paragraph2>
+			? <Profile />
 			: <Button onClick={() => history.push(RoutingPath.signInView)}>Logga in</Button>
 	}
 
@@ -59,7 +60,7 @@ const Button = styled.p`
 	cursor: pointer;
 `
 
-const Paragraph2 = styled.p`
+export const Paragraph2 = styled.p`
 	font-weight: 600;
 	color: white;
 	align-self: center;
