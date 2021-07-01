@@ -36,10 +36,11 @@ export const Collaborations = () => {
 		},
 	]
 
+	
 	useEffect(() => {
-		const interval = setInterval(() => { setCurrentlyDisplaying(value => (value < 4) ? value + 1 : 0) }, 5000)
+		const interval = setInterval(() => { setCurrentlyDisplaying(value => (value < 4) ? value + 1 : 0) }, 3000)
 		return () => clearInterval(interval)
-	}, [])
+	}, [currentlyDisplaying])
 
 	return (
 		<Wrapper>
