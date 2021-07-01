@@ -24,3 +24,8 @@ export interface EmployeeData {
 export interface EmployeeDataProps {
 	data: EmployeeData
 }
+
+export interface EmployeeArray {
+	manager: Array<ManagementData>
+	employee: Array<EmployeeData>
+}
