@@ -27,35 +27,10 @@ export const Routes = (props: { children: React.ReactChild[] }) => {
 
 		if (validateToken(JWT.exp)) {
 			// TODO: There has to be a better way to recieve the username? You cannot just do a getUserWithID like this?
-			const response = await CodicAPIService.getUserWithID(JWT.id)
-			setAuthenticatedUser({
-				id: JWT.id,
-				authenticated: true,
-				username: response.data.username,
-				shoppingCart: response.data?.shoppingCart[0],
-				cartId: response.data?.shoppingCart[0]?._id,
-				newsLetterSubscription: response.data?.newsLetterSubscription[0],
-				favouriteProducts: response.data?.favouriteProducts,
-				/* 				personalDetails: {
-									firstName: response.data.personalDetails.firstName,
-									lastName: response.data.personalDetails.lastName,
-									gender: response.data.personalDetails.gender,
-									country: response.data.personalDetails.country,
-									adress: response.data.personalDetails.adress,
-									secondaryAdress: response.data.personalDetails.secondaryAdress,
-									ZIPcode: response.data.personalDetails.ZIPcode,
-									county: response.data.personalDetails.county,
-									postOrt: response.data.personalDetails.postOrt,
-									phone: response.data.personalDetails.phone,
-									secondaryPhone: response.data.personalDetails.secondaryPhone
-								} */
-			})
+			const { data } = await CodicAPIService.getUserWithID(JWT.id)
+			setAuthenticatedUser({ ...data, authenticated: true })
 		} else {
-			setAuthenticatedUser({
-				authenticated: false,
-				id: undefined,
-				username: undefined
-			})
+			setAuthenticatedUser({/* TODO: add default value */ })
 			localStorage.removeItem(LocalStorage.authenticationToken)
 		}
 	}

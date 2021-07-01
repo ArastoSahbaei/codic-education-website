@@ -18,29 +18,7 @@ export const SignInView = () => {
 			const { data } = await CodicAPIService.login(loginCredentials)
 			localStorage.setItem(LocalStorage.authenticationToken, data.token)
 			console.log(data)
-			setAuthenticatedUser({
-				token: data.token,
-				id: data.id,
-				authenticated: true,
-				username: data.username,
-				shoppingCart: data.shoppingCart[0],
-				cartId: data.shoppingCart[0]._id,
-				newsLetterSubscription: data.newsLetterSubscription[0],
-				favouriteProducts: data.favouriteProducts,
-				/* 	personalDetails: {
-						firstName: data.personalDetails.firstName,
-						lastName: data.personalDetails.lastName,
-						gender: data.personalDetails.gender,
-						country: data.personalDetails.country,
-						adress: data.personalDetails.adress,
-						secondaryAdress: data.personalDetails.secondaryAdress,
-						ZIPcode: data.personalDetails.ZIPcode,
-						county: data.personalDetails.county,
-						postOrt: data.personalDetails.postOrt,
-						phone: data.personalDetails.phone,
-						secondaryPhone: data.personalDetails.secondaryPhone
-					} */
-			})
+			setAuthenticatedUser(data)
 			history.push(RoutingPath.initialView)
 		} catch (error) {
 			console.log(error)
