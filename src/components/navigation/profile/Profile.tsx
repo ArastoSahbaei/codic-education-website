@@ -1,11 +1,10 @@
 import styled from 'styled-components'
 import { useContext } from 'react'
-
 import { UserContext } from '../../../shared/providers/UserProvider'
 import { DropDownWrapper, ProfileDropdown } from './profiledropdown/ProfileDropdown'
 
 export const Profile = () => {
-	const [authenticatedUser, ] = useContext(UserContext)
+	const [authenticatedUser,] = useContext(UserContext)
 
 	return (
 		<ProfileWrapper>
