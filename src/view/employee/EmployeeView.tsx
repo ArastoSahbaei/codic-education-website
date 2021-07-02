@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { useWindowDimensions } from '../../hooks/useWindowDimensions'
-import { EmployeeData, ManagementData } from '../../shared/interfaces/Employee'
+import { EmployeeData, ManagementData } from '../../shared/interfaces/EmployeeInterface'
 import { CardEmployee } from './CardEmployee'
 import { CardManagement } from './CardManagement'
 

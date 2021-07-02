@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { EmployeeDataProps } from '../../shared/interfaces/Employee'
+import { EmployeeDataProps } from '../../shared/interfaces/EmployeeInterface'
 import { Image, Wrapper } from '../../shared/styles/EmployeeStyles'
 
 export const CardEmployee: FC<EmployeeDataProps> = ({ data }: EmployeeDataProps) => {
