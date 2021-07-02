@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom'
 import MapIcon from '../shared/images/map_icon.svg'
 import CopyRight from '../shared/images/copyright.svg'
 import ExternalPath from '../routes/ExternalPath'
+import { getCurrentYear } from '../functions/getCurrentYear'
 
 export const Footer = () => {
 	const history = useHistory()
@@ -50,7 +51,7 @@ export const Footer = () => {
 					<Span2> Drottninggatan 38, Göteborg, Västra Götalands län, 411 07, Sverige </Span2> <br /> <br /><br />
 				</Div>
 				<Image src={CopyRight} alt="" />
-				<Span2> Upphovsrätt 2021, © Codic Education AB. </Span2>
+				<Span2> Upphovsrätt {getCurrentYear()}, © Codic Education AB. </Span2>
 			</CompanyOL>
 		</Wrapper>
 	)
