@@ -1,5 +1,5 @@
 import React, { useState, createContext } from 'react'
-import { AuthenticatedUser } from '../interfaces/User'
+import { AuthenticatedUser } from '../interfaces/UserInterface'
 
 export const UserContext = createContext<any>(null)
 const defaultValues = {

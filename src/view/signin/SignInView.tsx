@@ -1,7 +1,7 @@
 import { useContext, useState } from 'react'
 import CodicAPIService from '../../shared/api/services/CodicAPIService'
 import { UserContext } from '../../shared/providers/UserProvider'
-import { LoginCredentials, RegisterNewUser } from '../../shared/interfaces/User'
+import { LoginCredentials, RegisterNewUser } from '../../shared/interfaces/UserInterface'
 import LocalStorage from '../../shared/cache/LocalStorage'
 import { useHistory } from 'react-router'
 import RoutingPath from '../../routes/RoutingPath'

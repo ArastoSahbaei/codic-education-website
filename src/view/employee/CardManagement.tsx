@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { ManagementDataProps } from '../../shared/interfaces/Employee'
+import { ManagementDataProps } from '../../shared/interfaces/EmployeeInterface'
 import { Image, Wrapper } from '../../shared/styles/EmployeeStyles'
 
 export const CardManagement: FC<ManagementDataProps> = ({ data }: ManagementDataProps) => {
