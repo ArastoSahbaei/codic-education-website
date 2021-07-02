@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom'
 import MapIcon from '../shared/images/map_icon.svg'
 import CopyRight from '../shared/images/copyright.svg'
 import ExternalPath from '../routes/ExternalPath'
+import { primaryColor, secondaryColor, primaryFont } from '../shared/styles/GlobalStyle'
 import { getCurrentYear } from '../functions/getCurrentYear'
 
 export const Footer = () => {
@@ -59,7 +60,7 @@ export const Footer = () => {
 
 const Wrapper = styled.div`
 	width: 100%;
-	background-color: #585d72;
+	background-color: ${secondaryColor};
 	color: white;
 	display: grid;
 	grid-template-columns: repeat(12, 1fr);
@@ -83,7 +84,8 @@ const ContactListWrapper = styled.ol`
 const Title = styled.li`
 	font-size: 1.3em;
 	border-bottom: 0.1em solid #ffffff;
-	font-family: sans-serif;
+	font-family: ${primaryFont};
+	color: ${primaryColor};
 `
 
 const Span = styled.span`
