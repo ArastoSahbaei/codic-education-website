@@ -10,7 +10,7 @@ export const MobileNavigation: React.FC = (): JSX.Element => {
 		<div>
 			<HamburgerButton drawerHandler={setOpenDrawer} />
 			<SideBar drawerIsOpen={openDrawer} drawerHandler={setOpenDrawer} />
-			{!openDrawer || <BackDrop drawerHandler={setOpenDrawer} />}
+			{openDrawer && <BackDrop drawerHandler={setOpenDrawer} />}
 		</div>
 	)
 }
