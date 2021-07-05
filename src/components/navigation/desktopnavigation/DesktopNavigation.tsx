@@ -5,25 +5,40 @@ import RoutingPath from '../../../routes/RoutingPath'
 import { useContext } from 'react'
 import { UserContext } from '../../../shared/providers/UserProvider'
 import { Profile } from '../profile/Profile'
+import { DESKTOP_NAV_HEIGHT } from '../../../shared/styles/constants'
 
 export const DesktopNavigation = () => {
 	const history = useHistory()
-	const [authenticatedUser,] = useContext(UserContext)
+	const [authenticatedUser] = useContext(UserContext)
 
 	const displayAuthentication = () => {
-		return authenticatedUser.authenticated
-			? <Profile />
-			: <Button onClick={() => history.push(RoutingPath.signInView)}>Logga in</Button>
+		return authenticatedUser.authenticated ? (
+			<Profile />
+		) : (
+			<Button onClick={() => history.push(RoutingPath.signInView)}>
+        Logga in
+			</Button>
+		)
 	}
 
 	return (
 		<Wrapper>
-			<Image src={logotype} alt={''} onClick={() => history.push(RoutingPath.initialView)} />
+			<Image
+				src={logotype}
+				alt={''}
+				onClick={() => history.push(RoutingPath.initialView)}
+			/>
 			<ParagraphWrapper>
 				<Paragraph>Vår Vision</Paragraph>
-				<Paragraph onClick={() => history.push(RoutingPath.employeeView)}>Team Codic</Paragraph>
-				<Paragraph onClick={() => history.push(RoutingPath.contactView)}>Kontakt</Paragraph>
-				<Paragraph onClick={() => history.push(RoutingPath.shopView)}>Butik</Paragraph>
+				<Paragraph onClick={() => history.push(RoutingPath.employeeView)}>
+          Team Codic
+				</Paragraph>
+				<Paragraph onClick={() => history.push(RoutingPath.contactView)}>
+          Kontakt
+				</Paragraph>
+				<Paragraph onClick={() => history.push(RoutingPath.shopView)}>
+          Butik
+				</Paragraph>
 			</ParagraphWrapper>
 			{displayAuthentication()}
 		</Wrapper>
@@ -31,46 +46,51 @@ export const DesktopNavigation = () => {
 }
 
 const Image = styled.img`
-	padding: 10px;
-	grid-column: 3/3;
-	cursor: pointer;
+  padding: 10px;
+  grid-column: 3/3;
+  cursor: pointer;
 `
 
 const Wrapper = styled.nav`
-	display: grid;
-	grid-template-columns: repeat(20, 1fr);
-	background-color: #263746;
-	padding: 0.3%;
-	`
+  display: grid;
+  grid-template-columns: repeat(20, 1fr);
+  background-color: #263746;
+  padding: 0.3%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 300;
+  height: ${DESKTOP_NAV_HEIGHT};
+`
 
 const Paragraph = styled.p`
-	font-weight: 600;
-	cursor: pointer;
-	text-transform: uppercase;
-	color: white;
-	align-self: center;
-	`
+  font-weight: 600;
+  cursor: pointer;
+  text-transform: uppercase;
+  color: white;
+  align-self: center;
+`
 
 const Button = styled.p`
-	font-weight: 600;
-	color: white;
-	align-self: center;
-	text-transform: uppercase;
-	grid-column: 18/18;
-	cursor: pointer;
+  font-weight: 600;
+  color: white;
+  align-self: center;
+  text-transform: uppercase;
+  grid-column: 18/18;
+  cursor: pointer;
 `
 
 export const Paragraph2 = styled.p`
-	font-weight: 600;
-	color: white;
-	align-self: center;
-	text-transform: uppercase;
-	grid-column: 18/18;
-	cursor: pointer;
+  font-weight: 600;
+  color: white;
+  align-self: center;
+  text-transform: uppercase;
+  grid-column: 18/18;
+  cursor: pointer;
 `
 
 const ParagraphWrapper = styled.div`
-	grid-column: 5/9;
-	display: flex;
-	justify-content: space-between
-	`
+  grid-column: 5/9;
+  display: flex;
+  justify-content: space-between;
+`
