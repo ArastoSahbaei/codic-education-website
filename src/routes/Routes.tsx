@@ -1,17 +1,22 @@
-import { useEffect, useContext } from 'react'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
-import CodicAPIService from '../shared/api/services/CodicAPIService'
-import LocalStorage from '../shared/cache/LocalStorage'
+import { useEffect, useContext } from 'react'
+import { nonAuthenticatedUser } from '../shared/data/nonAuthenticatedUser'
 import { UserContext } from '../shared/providers/UserProvider'
 import { EmployeeView } from '../view/employee/EmployeeView'
 import { InitialView } from '../view/initial/InitialView'
-import { ShopView } from '../view/shop/ShopView'
 import { SignInView } from '../view/signin/SignInView'
+import { ShopView } from '../view/shop/ShopView'
 import { Footer } from '../components/Footer'
 import RoutingPath from './RoutingPath'
+import CodicAPIService from '../shared/api/services/CodicAPIService'
+import LocalStorage from '../shared/cache/LocalStorage'
 
 export const Routes = (props: { children: React.ReactChild[] }) => {
-	const [, setAuthenticatedUser] = useContext(UserContext)
+	const [authenticatedUser, setAuthenticatedUser] = useContext(UserContext)
+
+	const blockRouteIfAuthenticated = (navigateToViewIfAuthenticated: React.FC) => {
+		return authenticatedUser.authenticated ? InitialView : navigateToViewIfAuthenticated
+	}
 
 	const validateToken = (tokenExp: number) => {
 		const currentTime = Math.floor(Date.now() / 1000)
@@ -27,10 +32,11 @@ export const Routes = (props: { children: React.ReactChild[] }) => {
 
 		if (validateToken(JWT.exp)) {
 			// TODO: There has to be a better way to recieve the username? You cannot just do a getUserWithID like this?
+			// TODO: Sign in with a new token instead of recieving the user with getUserWithID?
 			const { data } = await CodicAPIService.getUserWithID(JWT.id)
 			setAuthenticatedUser({ ...data, authenticated: true })
 		} else {
-			setAuthenticatedUser({/* TODO: add default value */ })
+			setAuthenticatedUser(nonAuthenticatedUser)
 			localStorage.removeItem(LocalStorage.authenticationToken)
 		}
 	}
@@ -44,8 +50,8 @@ export const Routes = (props: { children: React.ReactChild[] }) => {
 			{props.children}
 			<Switch>
 				<Route exact path={RoutingPath.employeeView} component={EmployeeView} />
-				<Route exact path={RoutingPath.signInView} component={SignInView} />
 				<Route exact path={RoutingPath.shopView} component={ShopView} />
+				<Route exact path={RoutingPath.signInView} component={blockRouteIfAuthenticated(SignInView)} />
 				<Route component={InitialView} />
 			</Switch>
 			<Footer />
