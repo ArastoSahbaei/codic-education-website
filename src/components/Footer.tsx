@@ -41,7 +41,7 @@ export const Footer = () => {
 			<ContactListWrapper>
 				<Title>Kontakt</Title>
 				{display('Kontaktform', RoutingPath.contactView)}
-				<Span>Direktlinje: +46 722 92 1983</Span>
+				<Span>Direktlinje: +46 768 99 0065</Span>
 				<MinorLi>Veckodagar: 10:00 - 23:00</MinorLi>
 				<MinorLi>Helgdagar: 12:00 - 16:00</MinorLi>
 				{display('Live Chat', '/TBA')}
