@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import data from '../../shared/data/employees.json'
-import { WindowsMaxWidth } from '../../shared/data/WindowsSizes'
+import { windowsMaxWidth } from '../../shared/data/WindowsSizes'
 import { DimensionsInterface } from '../../shared/interfaces/DimensionsInterface'
 import { EmployeeData } from '../../shared/interfaces/EmployeeInterface'
 import { EmployeeCard } from './EmployeeCard'
@@ -11,7 +11,7 @@ export const EmployeeView = () => {
 	
 	const showEmployees = (data: Array<EmployeeData>) => {
 		return (
-			<CardGridWrapper dimensions={ WindowsMaxWidth }>
+			<CardGridWrapper dimensions={ windowsMaxWidth }>
 				{
 					data.map((employee, i) => {
 						return (
