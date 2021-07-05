@@ -2,7 +2,7 @@ import { FC } from 'react'
 import styled from 'styled-components'
 import githubIcon from '../../shared/images/icons/github.svg'
 import linkedInIcon from '../../shared/images/icons/linkedin.svg'
-import { EmployeeDataProps } from '../../shared/interfaces/Employee'
+import { EmployeeDataProps } from '../../shared/interfaces/EmployeeInterface'
 
 export const EmployeeCard: FC<EmployeeDataProps> = ({data}: EmployeeDataProps) => {
 	const titleOrArrayOfSkills = () => {

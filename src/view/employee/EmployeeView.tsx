@@ -1,18 +1,11 @@
 import styled from 'styled-components'
-import { useWindowDimensions } from '../../hooks/useWindowDimensions'
 import data from '../../shared/data/employees.json'
-import { EmployeeData } from '../../shared/interfaces/Employee'
-import { EmployeeCard } from './EmployeeCard'
 import { WindowsMaxWidth } from '../../shared/data/WindowsSizes'
-import { Dimensions} from '../../shared/interfaces/Dimensions'
+import { DimensionsInterface } from '../../shared/interfaces/DimensionsInterface'
+import { EmployeeData } from '../../shared/interfaces/EmployeeInterface'
+import { EmployeeCard } from './EmployeeCard'
 
 export const EmployeeView = () => {
-	const {width} = useWindowDimensions()
-	
-	const mobileDimensions = () => {
-		return width <= 1000
-	}
-	
 	const managers: Array<EmployeeData> = data.managers
 	const employees: Array<EmployeeData> = data.employees
 	
@@ -60,18 +53,7 @@ const ContentWrapper = styled.div`
   justify-content: space-between
 `
 
-interface values {
-	isMobileView: boolean
-	dimensions: {
-		mobile: string
-		tablet: string
-		desktop: string
-		ultraWide: string
-		ultraHd: string
-	}
-}
-
-const CardGridWrapper = styled.div<Dimensions>`
+const CardGridWrapper = styled.div<DimensionsInterface>`
   display: grid;
   @media (max-width: ${ props => props.dimensions.mobile }) {
     grid-template-columns: repeat(1, 1fr);

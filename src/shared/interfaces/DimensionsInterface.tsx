@@ -1,4 +1,4 @@
-export interface Dimensions {
+export interface DimensionsInterface {
 	dimensions: {
 		mobile: string
 		tablet: string

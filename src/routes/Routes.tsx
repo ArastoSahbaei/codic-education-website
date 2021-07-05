@@ -1,17 +1,25 @@
-import { useEffect, useContext } from 'react'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
-import CodicAPIService from '../shared/api/services/CodicAPIService'
-import LocalStorage from '../shared/cache/LocalStorage'
+import { useEffect, useContext } from 'react'
+import { nonAuthenticatedUser } from '../shared/data/nonAuthenticatedUser'
 import { UserContext } from '../shared/providers/UserProvider'
 import { EmployeeView } from '../view/employee/EmployeeView'
 import { InitialView } from '../view/initial/InitialView'
-import { ShopView } from '../view/shop/ShopView'
+import { ContactView } from '../view/contact/ContactView'
 import { SignInView } from '../view/signin/SignInView'
+import { ShopView } from '../view/shop/ShopView'
 import { Footer } from '../components/Footer'
 import RoutingPath from './RoutingPath'
+import CodicAPIService from '../shared/api/services/CodicAPIService'
+import LocalStorage from '../shared/cache/LocalStorage'
+import AuthPath from './AuthPath'
+import { ProfileView } from '../view/auth/ProfileView'
 
 export const Routes = (props: { children: React.ReactChild[] }) => {
-	const [, setAuthenticatedUser] = useContext(UserContext)
+	const [authenticatedUser, setAuthenticatedUser] = useContext(UserContext)
+
+	const blockRouteIfAuthenticated = (navigateToViewIfAuthenticated: React.FC) => {
+		return authenticatedUser.authenticated ? InitialView : navigateToViewIfAuthenticated
+	}
 
 	const validateToken = (tokenExp: number) => {
 		const currentTime = Math.floor(Date.now() / 1000)
@@ -27,35 +35,11 @@ export const Routes = (props: { children: React.ReactChild[] }) => {
 
 		if (validateToken(JWT.exp)) {
 			// TODO: There has to be a better way to recieve the username? You cannot just do a getUserWithID like this?
-			const response = await CodicAPIService.getUserWithID(JWT.id)
-			setAuthenticatedUser({
-				id: JWT.id,
-				authenticated: true,
-				username: response.data.username,
-				shoppingCart: response.data?.shoppingCart[0],
-				cartId: response.data?.shoppingCart[0]?._id,
-				newsLetterSubscription: response.data?.newsLetterSubscription[0],
-				favouriteProducts: response.data?.favouriteProducts,
-				/* 				personalDetails: {
-									firstName: response.data.personalDetails.firstName,
-									lastName: response.data.personalDetails.lastName,
-									gender: response.data.personalDetails.gender,
-									country: response.data.personalDetails.country,
-									adress: response.data.personalDetails.adress,
-									secondaryAdress: response.data.personalDetails.secondaryAdress,
-									ZIPcode: response.data.personalDetails.ZIPcode,
-									county: response.data.personalDetails.county,
-									postOrt: response.data.personalDetails.postOrt,
-									phone: response.data.personalDetails.phone,
-									secondaryPhone: response.data.personalDetails.secondaryPhone
-								} */
-			})
+			// TODO: Sign in with a new token instead of recieving the user with getUserWithID?
+			const { data } = await CodicAPIService.getUserWithID(JWT.id)
+			setAuthenticatedUser({ ...data, authenticated: true })
 		} else {
-			setAuthenticatedUser({
-				authenticated: false,
-				id: undefined,
-				username: undefined
-			})
+			setAuthenticatedUser(nonAuthenticatedUser)
 			localStorage.removeItem(LocalStorage.authenticationToken)
 		}
 	}
@@ -68,9 +52,14 @@ export const Routes = (props: { children: React.ReactChild[] }) => {
 		<BrowserRouter>
 			{props.children}
 			<Switch>
+				{/* REGULAR PATHS */}
 				<Route exact path={RoutingPath.employeeView} component={EmployeeView} />
-				<Route exact path={RoutingPath.signInView} component={SignInView} />
 				<Route exact path={RoutingPath.shopView} component={ShopView} />
+				<Route exact path={RoutingPath.contactView} component={ContactView} />
+				<Route exact path={RoutingPath.signInView} component={blockRouteIfAuthenticated(SignInView)} />
+				{/* AUTHENTICATED PATHS */}
+				<Route exact path={AuthPath.profileView} component={ProfileView} />
+				{/* INITIAL PATH */}
 				<Route component={InitialView} />
 			</Switch>
 			<Footer />

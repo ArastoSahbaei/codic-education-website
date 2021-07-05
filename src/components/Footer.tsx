@@ -3,6 +3,9 @@ import { useHistory } from 'react-router-dom'
 import MapIcon from '../shared/images/map_icon.svg'
 import CopyRight from '../shared/images/copyright.svg'
 import ExternalPath from '../routes/ExternalPath'
+import { primaryColor, secondaryColor, primaryFont } from '../shared/styles/GlobalStyle'
+import { getCurrentYear } from '../functions/getCurrentYear'
+import RoutingPath from '../routes/RoutingPath'
 
 export const Footer = () => {
 	const history = useHistory()
@@ -37,8 +40,8 @@ export const Footer = () => {
 
 			<ContactListWrapper>
 				<Title>Kontakt</Title>
-				{display('Kontaktform', '/TBA')}
-				<Span>Direktlinje: +46 722 92 1983</Span>
+				{display('Kontaktform', RoutingPath.contactView)}
+				<Span>Direktlinje: +46 768 99 0065</Span>
 				<MinorLi>Veckodagar: 10:00 - 23:00</MinorLi>
 				<MinorLi>Helgdagar: 12:00 - 16:00</MinorLi>
 				{display('Live Chat', '/TBA')}
@@ -50,7 +53,7 @@ export const Footer = () => {
 					<Span2> Drottninggatan 38, Göteborg, Västra Götalands län, 411 07, Sverige </Span2> <br /> <br /><br />
 				</Div>
 				<Image src={CopyRight} alt="" />
-				<Span2> Upphovsrätt 2021, © Codic Education AB. </Span2>
+				<Span2> Upphovsrätt {getCurrentYear()}, © Codic Education AB. </Span2>
 			</CompanyOL>
 		</Wrapper>
 	)
@@ -58,7 +61,7 @@ export const Footer = () => {
 
 const Wrapper = styled.div`
 	width: 100%;
-	background-color: #585d72;
+	background-color: ${secondaryColor};
 	color: white;
 	display: grid;
 	grid-template-columns: repeat(12, 1fr);
@@ -82,7 +85,8 @@ const ContactListWrapper = styled.ol`
 const Title = styled.li`
 	font-size: 1.3em;
 	border-bottom: 0.1em solid #ffffff;
-	font-family: sans-serif;
+	font-family: ${primaryFont};
+	color: ${primaryColor};
 `
 
 const Span = styled.span`
