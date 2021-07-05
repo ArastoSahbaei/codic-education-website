@@ -1,9 +1,10 @@
 import styled from 'styled-components'
 import { useWindowDimensions } from '../../hooks/useWindowDimensions'
-import employeesInfo from '../../shared/data/employees.json'
-import { EmployeeData, ManagementData } from '../../shared/interfaces/Employee'
-import { CardEmployee } from './CardEmployee'
-import { CardManagement } from './CardManagement'
+import data from '../../shared/data/employees.json'
+import { EmployeeData } from '../../shared/interfaces/Employee'
+import { EmployeeCard } from './EmployeeCard'
+import { WindowsMaxWidth } from '../../shared/data/WindowsSizes'
+import { Dimensions} from '../../shared/interfaces/Dimensions'
 
 export const EmployeeView = () => {
 	const {width} = useWindowDimensions()
@@ -12,32 +13,16 @@ export const EmployeeView = () => {
 		return width <= 1000
 	}
 	
-	const managers: Array<ManagementData> = employeesInfo.managers
-	const employees: Array<EmployeeData> = employeesInfo.employees
+	const managers: Array<EmployeeData> = data.managers
+	const employees: Array<EmployeeData> = data.employees
 	
-	const showManagement = () => {
+	const showEmployees = (data: Array<EmployeeData>) => {
 		return (
-			<CardGridWrapper isMobileView={ mobileDimensions() }>
+			<CardGridWrapper dimensions={ WindowsMaxWidth }>
 				{
-					managers.map((manager, i) => {
+					data.map((employee, i) => {
 						return (
-							<CardManagement
-								key={ i }
-								data={ manager }/>
-						)
-					})
-				}
-			</CardGridWrapper>
-		)
-	}
-	
-	const showEmployees = () => {
-		return (
-			<CardGridWrapper isMobileView={ mobileDimensions() }>
-				{
-					employees.map((employee, i) => {
-						return (
-							<CardEmployee
+							<EmployeeCard
 								key={ i }
 								data={ employee }/>
 						)
@@ -51,15 +36,15 @@ export const EmployeeView = () => {
 		<Wrapper>
 			<ContentWrapper>
 				<MainHeader>Team Codic Education</MainHeader>
-				<Paragraph>{ employeesInfo.aboutOurTeam }</Paragraph>
+				<Paragraph>{ data.aboutOurTeam }</Paragraph>
 				
 				<SecondaryHeader>Ledning</SecondaryHeader>
-				<Paragraph>{ employeesInfo.aboutManagement }</Paragraph>
-				{ showManagement() }
+				<Paragraph>{ data.aboutManagement }</Paragraph>
+				{ showEmployees(managers) }
 				
 				<SecondaryHeader>Lärare</SecondaryHeader>
-				<Paragraph>{ employeesInfo.aboutEmployees }</Paragraph>
-				{ showEmployees() }
+				<Paragraph>{ data.aboutEmployees }</Paragraph>
+				{ showEmployees(employees) }
 			</ContentWrapper>
 		</Wrapper>
 	)
@@ -77,11 +62,32 @@ const ContentWrapper = styled.div`
 
 interface values {
 	isMobileView: boolean
+	dimensions: {
+		mobile: string
+		tablet: string
+		desktop: string
+		ultraWide: string
+		ultraHd: string
+	}
 }
 
-const CardGridWrapper = styled.div<values>`
+const CardGridWrapper = styled.div<Dimensions>`
   display: grid;
-  grid-template-columns: ${ props => props.isMobileView ? '1fr' : 'repeat(3, 1fr)' };
+  @media (max-width: ${ props => props.dimensions.mobile }) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  @media (min-width: ${ props => props.dimensions.tablet }) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (min-width: ${ props => props.dimensions.desktop }) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @media (min-width: ${ props => props.dimensions.ultraWide }) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  @media (min-width: ${ props => props.dimensions.ultraHd }) {
+    grid-template-columns: repeat(5, 1fr);
+  }
 `
 
 const Paragraph = styled.p`
@@ -97,3 +103,4 @@ const SecondaryHeader = styled.h2`
   width: 100%;
   text-align: center;
 `
+
