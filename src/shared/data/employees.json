@@ -1,0 +1,270 @@
+{
+  "aboutOurTeam": "Codic Education har knoppats av från Codic Consulting och besitter samma tekniska kompetens och rekryteringsexpertis som moderbolaget. I förberedande syfte går våra utbildare en intern utbildning om yrkeshögskolans struktur samt vägleds av en forskare inom pedagogik. Därmed ser vi till att undervisningen är relevant för era elever och tar ansvar för utbildningens röda tråd.",
+  "aboutManagement": "Våra utbildningsleveranser hanteras av Robin som är ytterst leveransansvarig, har hand om kundrelationer och det löpande säljarbetet, Maria som ansvarar för vår pedagogiska utveckling. Som stöd för denna grupp finns vår VD Henrik som hela tiden arbetar med att bredda och spetsa vår verksamhet.",
+  "aboutEmployees": "Vårt lärarteam består av duktiga utvecklare med många års bransch- och utbildningserfarenhet. De arbetar tajt med vår leveransansvarig Robin och vårt pedagogiskt ansvariga Maria. Vill du få deras uppmärksamhet? Ropa att Amazon är bättre än Azure och se vad som händer.",
+  "managers": [
+    {
+      "imageUrl": "https://codic-education.azurewebsites.net/img/Henrik%20Enstr%C3%B6m.f2d098ca.png",
+      "name": "Henrik Enström",
+      "title": ["Grundare & VD"],
+      "introduction": "CEO and founder of Future Skill, Software titel, Codic Consulting and Codic Education. Also produce and host the podcast Let’s tech-podden. Don’t hesitate to send me a message if you want to collaborate!",
+      "email": "henrik.enstrom@codic.se",
+      "phone": "+46-739-803-313",
+      "github": "",
+      "linkedIn": "https://www.linkedin.com/in/henrik-enstr%C3%B6m-5b4b57/"
+    },
+    {
+      "imageUrl": "https://codic-education.azurewebsites.net/img/Robin%20Kamo.6026135a.png",
+      "name": "Robin Kamo",
+      "title": ["Affärsutvecklare & linjechef"],
+      "introduction": "Affärsutvecklingschef och utbildare på Codic Education. Fokuserar på sälj och kvalitet men har jobbat mycket som utbildare under året. Älskar gaming, anime och crypto.",
+      "email": "robin.kamo@codic.se",
+      "phone": "+46-768-990-065",
+      "github": "",
+      "linkedIn": "https://www.linkedin.com/in/robin-kamo-b647ab151/"
+    },
+    {
+      "imageUrl": "https://codic-education.azurewebsites.net/img/Maria%20Bryl.42146f5f.png",
+      "name": "Maria Bryl",
+      "title": ["Utbildningsansvarig"],
+      "introduction": "Personalchef/Utbildningsansvarig på Codic Education",
+      "email": "maria.bryl@codic.se",
+      "phone": "+46-730-436-480",
+      "github": "",
+      "linkedIn": "https://www.linkedin.com/in/maria-bryl-453872104/"
+    }
+    ],
+  "employees": [
+    {
+      "imageUrl": "https://codic-education.azurewebsites.net/img/Patrik%20Nygren.848fe7db.png",
+      "name": "Patrik Nygren",
+      "title": [
+        "JavaScript",
+        "Java",
+        "Java EE",
+        "HTML",
+        "CSS",
+        "SQL",
+        "React.Js",
+        "Webbutveckling",
+        "Agile"
+      ],
+      "introduction": "Arbetat som systemutvecklare några år innan jag började här och fokuserade mest på Java stacken. Mina favoritspråk är Kotlin/Haskell. Jag gillar för övrigt att filosofera och är intresserad av psykologi, samt skriva och producera lite musik. ",
+      "email": "",
+      "phone": "",
+      "github": "https://github.com/patriques82",
+      "linkedIn": "https://www.linkedin.com/in/patrik-nygren-7788a626/"
+    },
+    {
+      "imageUrl": "https://codic-education.azurewebsites.net/img/Erik%20Niklason.59cd0361.png",
+      "name": "Erik Niklasson",
+      "title": [
+        "JavaScript",
+        "C#",
+        ".NET",
+        "HTML",
+        "CSS",
+        "SQL",
+        "OOP",
+        "Java",
+        "OOA/OOD"
+      ],
+      "introduction": "",
+      "email": "",
+      "phone": "",
+      "github": "",
+      "linkedIn": "https://www.linkedin.com/in/erik-niklasson-57584814a/"
+    },
+    {
+      "imageUrl": "https://codic-education.azurewebsites.net/img/Lars%20Str%C3%B6mberg.bfd67e75.png",
+      "name": "Lars Strömberg",
+      "title": [
+        "Python",
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "TypeScript",
+        "React",
+        "Databaser",
+        "Agile"
+      ],
+      "introduction": "Undervisar i Webbutveckling med MERN-Stacken. Intresserad av nästan allt som har med teknik att göra.",
+      "email": "",
+      "phone": "",
+      "github": "https://github.com/deskavaenkelt",
+      "linkedIn": "https://www.linkedin.com/in/lars-stromberg/"
+    },
+    {
+      "imageUrl": "https://codic-education.azurewebsites.net/img/Robin%20Kamo.6026135a.png",
+      "name": "Robin Kamo",
+      "title": [
+        ".NET",
+        "Swift",
+        "Obj-C",
+        "Java",
+        "C#",
+        "JavaScript",
+        "Databases",
+        "Agila Metodiker"
+      ],
+      "introduction": "Älskar gaming, anime och crypto.",
+      "email": "",
+      "phone": "",
+      "github": "https://github.com/kakashidota",
+      "linkedIn": "https://www.linkedin.com/in/robin-kamo-b647ab151/"
+    },
+    {
+      "imageUrl": "https://codic-education.azurewebsites.net/img/Marcus%20Medina.c6792ab4.png",
+      "name": "Marcus Medina",
+      "title": [
+        "JavaScript",
+        "C#",
+        ".NET",
+        "HTML",
+        "CSS",
+        "SQL",
+        "OOP",
+        "Java"
+      ],
+      "introduction": "Undervisar i C#, plågar studenterna med Star Wars  (allt innan JJ Abrams är bra) citat och tips skräckfilmer.",
+      "email": "",
+      "phone": "",
+      "github": "https://github.com/MarcusMedina",
+      "linkedIn": "https://www.linkedin.com/in/marcusmedina/"
+    },
+    {
+      "imageUrl": "https://codic-education.azurewebsites.net/img/Bj%C3%B6rn%20Str%C3%B6mberg.b8673c7e.png",
+      "name": "Björn Strömberg",
+      "title": [
+        "C++",
+        "JavaScript",
+        "C#",
+        ".NET",
+        "HTML",
+        "CSS",
+        "SQL",
+        "Scrum",
+        "Spelutveckling"
+      ],
+      "introduction": "Jag är nuvarande en fullstack YH lärare och älskar när mina elever tar sig vidare till nästa steg i deras utveckling. All möda ger lön.",
+      "email": "",
+      "phone": "",
+      "github": "",
+      "linkedIn": "https://www.linkedin.com/in/bj%C3%B6rn-str%C3%B6mberg-1403691bb/"
+    },
+    {
+      "imageUrl": "https://codic-education.azurewebsites.net/img/Eva%20Hegnar.103a2c3d.png",
+      "name": "Eva Hegnar",
+      "title": [
+        "Data Scientist",
+        "Python",
+        "Matlab",
+        "R",
+        "Mathematica",
+        "C",
+        "C++",
+        "SQL",
+        "AMPL"
+      ],
+      "introduction": "Utbildar på Data scientist programmet. Min bakgrund är inom matematik och statistisk och gillar allt som har med data att göra. ",
+      "email": "",
+      "phone": "",
+      "github": "",
+      "linkedIn": "https://www.linkedin.com/in/eva-hegnar-0aa8228b/"
+    },
+    {
+      "imageUrl": "https://codic-education.azurewebsites.net/img/Sebastian%20Karlsson.f75978f7.png",
+      "name": "Sebastian Karlsson",
+      "title": [
+        "Python",
+        "JavaScript",
+        "C",
+        "HTML",
+        "CSS",
+        "C++",
+        "PHP",
+        "SQL",
+        "Java",
+        "Vue.Js",
+        "Databaser",
+        "Webbutveckling",
+        "Scrum",
+        "Kanban",
+        "Agile"
+      ],
+      "introduction": "Programmer & fullstack-developer",
+      "email": "",
+      "phone": "",
+      "github": "https://github.com/sebbekarlsson",
+      "linkedIn": "https://www.linkedin.com/in/sebastian-karlsson-328068105/"
+    },
+    {
+      "imageUrl": "https://codic-education.azurewebsites.net/img/Bj%C3%B6rn%20Bergqvist.168ff92d.png",
+      "name": "Björn Bergqvist",
+      "title": [
+        "JavaScript",
+        "C#",
+        "HTML",
+        "CSS",
+        "UI/UX",
+        "OOA/OOD",
+        "React.Js"
+      ],
+      "introduction": "Bakgrund som interaktionsdesigner och kan därför mycket om UX/UI och annat som ligger i fronten av front-end. Mina ",
+      "email": "",
+      "phone": "",
+      "github": "https://bbjorn.github.io/",
+      "linkedIn": "https://www.linkedin.com/in/bjrn-bergquist/"
+    },
+    {
+      "imageUrl": "https://codic-education.azurewebsites.net/img/Arasto%20Sahbaei.29b72d7f.png",
+      "name": "Arasto Sahbaei",
+      "title": [
+        "JavaScript",
+        "Java",
+        "Java EE",
+        "HTML",
+        "CSS",
+        "SQL",
+        "React.Js",
+        "OOP"
+      ],
+      "introduction": "Fullstack developer",
+      "email": "",
+      "phone": "",
+      "github": "https://github.com/ArastoSahbaei",
+      "linkedIn": "https://www.linkedin.com/in/arasto-sahbaei-554b8514a/"
+    },
+    {
+      "imageUrl": "https://codic-education.azurewebsites.net/img/Elias%20Jadidi.46275396.png",
+      "name": "Elias Jadidi",
+      "title": [
+        "IT-Projektledare",
+        "Scrum",
+        "Kanban",
+        "Agile"
+      ],
+      "introduction": "",
+      "email": "",
+      "phone": "",
+      "github": "",
+      "linkedIn": "https://www.linkedin.com/in/elias-jadidi-605b301a3/"
+    },
+    {
+      "imageUrl": "https://www.pngitem.com/pimgs/m/99-998739_dale-engen-person-placeholder-hd-png-download.png",
+      "name": "Niklas Karlsson",
+      "title": [
+        "C",
+        "C++",
+        "Embedded C",
+        "PLC",
+        "IoT"
+      ],
+      "introduction": "Utbildad som automationstekniker, kopplat en del styrskåp, programmerat PLC:n som Siemens 1500 med och utan failsafe samt Siemens 1200, lite ABB och annat",
+      "email": "",
+      "phone": "",
+      "github": "",
+      "linkedIn": "https://www.linkedin.com/in/niklas-karlsson-041889166/"
+    }
+  ]
+}
