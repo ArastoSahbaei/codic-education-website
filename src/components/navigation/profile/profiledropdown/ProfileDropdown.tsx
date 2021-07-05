@@ -12,6 +12,7 @@ import data from '../../../../shared/images/icons/data.png'
 import help from '../../../../shared/images/icons/help.png'
 import feedback from '../../../../shared/images/icons/feedback.png'
 import exit from '../../../../shared/images/icons/logout.png'
+import AuthPath from '../../../../routes/AuthPath'
 
 
 export const ProfileDropdown = () => {
@@ -24,9 +25,9 @@ export const ProfileDropdown = () => {
 		history.push(RoutingPath.initialView)
 	}
 
-	const newDropdownItem = (icon: string, text: string) => {
+	const newDropdownItem = (icon: string, text: string, navigationPath?: string) => {
 		return (
-			<Div>
+			<Div onClick={() => navigationPath && history.push(navigationPath)}>
 				<Image src={icon} alt={''} />
 				<DropDownItem> {text} </DropDownItem> <br />
 			</Div>
@@ -35,7 +36,7 @@ export const ProfileDropdown = () => {
 
 	return (
 		<DropDownWrapper>
-			{newDropdownItem(profile, 'Din Profil')}
+			{newDropdownItem(profile, 'Din Profil', AuthPath.profileView)}
 			{newDropdownItem(heart, 'Sparade Produkter (4)')}
 			<Div onClick={() => logout()}>
 				<Image src={exit} alt={''} />

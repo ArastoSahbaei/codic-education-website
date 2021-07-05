@@ -11,6 +11,8 @@ import { Footer } from '../components/Footer'
 import RoutingPath from './RoutingPath'
 import CodicAPIService from '../shared/api/services/CodicAPIService'
 import LocalStorage from '../shared/cache/LocalStorage'
+import AuthPath from './AuthPath'
+import { ProfileView } from '../view/auth/ProfileView'
 
 export const Routes = (props: { children: React.ReactChild[] }) => {
 	const [authenticatedUser, setAuthenticatedUser] = useContext(UserContext)
@@ -50,10 +52,14 @@ export const Routes = (props: { children: React.ReactChild[] }) => {
 		<BrowserRouter>
 			{props.children}
 			<Switch>
+				{/* REGULAR PATHS */}
 				<Route exact path={RoutingPath.employeeView} component={EmployeeView} />
 				<Route exact path={RoutingPath.shopView} component={ShopView} />
 				<Route exact path={RoutingPath.contactView} component={ContactView} />
 				<Route exact path={RoutingPath.signInView} component={blockRouteIfAuthenticated(SignInView)} />
+				{/* AUTHENTICATED PATHS */}
+				<Route exact path={AuthPath.profileView} component={ProfileView} />
+				{/* INITIAL PATH */}
 				<Route component={InitialView} />
 			</Switch>
 			<Footer />
