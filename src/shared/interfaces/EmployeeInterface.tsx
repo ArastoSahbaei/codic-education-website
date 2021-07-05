@@ -1,7 +1,7 @@
 export interface EmployeeData {
 	imageUrl: string
 	name: string
-	titel: Array<string>
+	title: Array<string>
 	introduction: string
 	email: string
 	phone: string

@@ -6,7 +6,7 @@
     {
       "imageUrl": "https://codic-education.azurewebsites.net/img/Henrik%20Enstr%C3%B6m.f2d098ca.png",
       "name": "Henrik Enström",
-      "titel": ["Grundare & VD"],
+      "title": ["Grundare & VD"],
       "introduction": "CEO and founder of Future Skill, Software titel, Codic Consulting and Codic Education. Also produce and host the podcast Let’s tech-podden. Don’t hesitate to send me a message if you want to collaborate!",
       "email": "henrik.enstrom@codic.se",
       "phone": "+46-739-803-313",
@@ -16,7 +16,7 @@
     {
       "imageUrl": "https://codic-education.azurewebsites.net/img/Robin%20Kamo.6026135a.png",
       "name": "Robin Kamo",
-      "titel": ["Affärsutvecklare & linjechef"],
+      "title": ["Affärsutvecklare & linjechef"],
       "introduction": "Affärsutvecklingschef och utbildare på Codic Education. Fokuserar på sälj och kvalitet men har jobbat mycket som utbildare under året. Älskar gaming, anime och crypto.",
       "email": "robin.kamo@codic.se",
       "phone": "+46-768-990-065",
@@ -26,7 +26,7 @@
     {
       "imageUrl": "https://codic-education.azurewebsites.net/img/Maria%20Bryl.42146f5f.png",
       "name": "Maria Bryl",
-      "titel": ["Utbildningsansvarig"],
+      "title": ["Utbildningsansvarig"],
       "introduction": "Personalchef/Utbildningsansvarig på Codic Education",
       "email": "maria.bryl@codic.se",
       "phone": "+46-730-436-480",
@@ -38,7 +38,7 @@
     {
       "imageUrl": "https://codic-education.azurewebsites.net/img/Patrik%20Nygren.848fe7db.png",
       "name": "Patrik Nygren",
-      "titel": [
+      "title": [
         "JavaScript",
         "Java",
         "Java EE",
@@ -58,7 +58,7 @@
     {
       "imageUrl": "https://codic-education.azurewebsites.net/img/Erik%20Niklason.59cd0361.png",
       "name": "Erik Niklasson",
-      "titel": [
+      "title": [
         "JavaScript",
         "C#",
         ".NET",
@@ -78,7 +78,7 @@
     {
       "imageUrl": "https://codic-education.azurewebsites.net/img/Lars%20Str%C3%B6mberg.bfd67e75.png",
       "name": "Lars Strömberg",
-      "titel": [
+      "title": [
         "Python",
         "HTML",
         "CSS",
@@ -97,7 +97,7 @@
     {
       "imageUrl": "https://codic-education.azurewebsites.net/img/Robin%20Kamo.6026135a.png",
       "name": "Robin Kamo",
-      "titel": [
+      "title": [
         ".NET",
         "Swift",
         "Obj-C",
@@ -116,7 +116,7 @@
     {
       "imageUrl": "https://codic-education.azurewebsites.net/img/Marcus%20Medina.c6792ab4.png",
       "name": "Marcus Medina",
-      "titel": [
+      "title": [
         "JavaScript",
         "C#",
         ".NET",
@@ -135,7 +135,7 @@
     {
       "imageUrl": "https://codic-education.azurewebsites.net/img/Bj%C3%B6rn%20Str%C3%B6mberg.b8673c7e.png",
       "name": "Björn Strömberg",
-      "titel": [
+      "title": [
         "C++",
         "JavaScript",
         "C#",
@@ -155,7 +155,7 @@
     {
       "imageUrl": "https://codic-education.azurewebsites.net/img/Eva%20Hegnar.103a2c3d.png",
       "name": "Eva Hegnar",
-      "titel": [
+      "title": [
         "Data Scientist",
         "Python",
         "Matlab",
@@ -175,7 +175,7 @@
     {
       "imageUrl": "https://codic-education.azurewebsites.net/img/Sebastian%20Karlsson.f75978f7.png",
       "name": "Sebastian Karlsson",
-      "titel": [
+      "title": [
         "Python",
         "JavaScript",
         "C",
@@ -201,7 +201,7 @@
     {
       "imageUrl": "https://codic-education.azurewebsites.net/img/Bj%C3%B6rn%20Bergqvist.168ff92d.png",
       "name": "Björn Bergqvist",
-      "titel": [
+      "title": [
         "JavaScript",
         "C#",
         "HTML",
@@ -219,7 +219,7 @@
     {
       "imageUrl": "https://codic-education.azurewebsites.net/img/Arasto%20Sahbaei.29b72d7f.png",
       "name": "Arasto Sahbaei",
-      "titel": [
+      "title": [
         "JavaScript",
         "Java",
         "Java EE",
@@ -238,7 +238,7 @@
     {
       "imageUrl": "https://codic-education.azurewebsites.net/img/Elias%20Jadidi.46275396.png",
       "name": "Elias Jadidi",
-      "titel": [
+      "title": [
         "IT-Projektledare",
         "Scrum",
         "Kanban",
@@ -253,7 +253,7 @@
     {
       "imageUrl": "https://www.pngitem.com/pimgs/m/99-998739_dale-engen-person-placeholder-hd-png-download.png",
       "name": "Niklas Karlsson",
-      "titel": [
+      "title": [
         "C",
         "C++",
         "Embedded C",

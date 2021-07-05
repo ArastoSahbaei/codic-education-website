@@ -6,10 +6,10 @@ import { EmployeeDataProps } from '../../shared/interfaces/EmployeeInterface'
 
 export const EmployeeCard: FC<EmployeeDataProps> = ({data}: EmployeeDataProps) => {
 	const titleOrArrayOfSkills = () => {
-		if (data.titel.length === 1) {
-			return (<h3>{ data.titel }</h3>)
+		if (data.title.length === 1) {
+			return (<h3>{ data.title }</h3>)
 		} else {
-			return (<h4>{ data.titel.join(', ') }</h4>)
+			return (<h4>{ data.title.join(', ') }</h4>)
 		}
 	}
 	
