@@ -147,8 +147,8 @@ const ParagraphWrapper = styled.div`
 `
 
 const ProfileWrapper = styled.div`
-    grid-column: 17/19;
-    display: flex;
-	  justify-content: space-between
-	  justify-content: center;
+  grid-column: 17/19;
+  display: flex;
+  justify-content: space-between
+  justify-content: center;
 `
