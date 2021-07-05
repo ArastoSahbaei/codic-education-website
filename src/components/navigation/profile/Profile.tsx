@@ -4,7 +4,7 @@ import { UserContext } from '../../../shared/providers/UserProvider'
 import { DropDownWrapper, ProfileDropdown } from './profiledropdown/ProfileDropdown'
 
 export const Profile = () => {
-	const [authenticatedUser,] = useContext(UserContext)
+	const [authenticatedUser] = useContext(UserContext)
 
 	return (
 		<ProfileWrapper>
@@ -25,10 +25,9 @@ const Paragraph = styled.p`
 `
 
 const ProfileWrapper = styled.div`
-    grid-column: 18/18;
-    place-self:center;
+    place-self: center;
     &:hover ${DropDownWrapper} {
-        visibility:visible;
-        opacity:1;
+        visibility: visible;
+        opacity: 1;
     }
 `

@@ -14,7 +14,6 @@ import feedback from '../../../../shared/images/icons/feedback.png'
 import exit from '../../../../shared/images/icons/logout.png'
 import AuthPath from '../../../../routes/AuthPath'
 
-
 export const ProfileDropdown = () => {
 	const [, setAuthenticatedUser] = useContext(UserContext)
 	const history = useHistory()
