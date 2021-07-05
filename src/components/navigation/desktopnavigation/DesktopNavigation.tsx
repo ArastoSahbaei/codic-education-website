@@ -18,7 +18,7 @@ export const DesktopNavigation= () => {
 	const { navHeight } = useNavHeight()
 
 
-	const [isCartOpen, setIsCartOpen] = useState<boolean>(true)
+	const [isCartOpen, setIsCartOpen] = useState<boolean>(false)
 	const [authenticatedUser,] = useContext(UserContext)
 
 	const displayAuthentication = () => {
