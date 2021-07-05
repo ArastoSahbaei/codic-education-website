@@ -4,6 +4,7 @@ import { nonAuthenticatedUser } from '../shared/data/nonAuthenticatedUser'
 import { UserContext } from '../shared/providers/UserProvider'
 import { EmployeeView } from '../view/employee/EmployeeView'
 import { InitialView } from '../view/initial/InitialView'
+import { ContactView } from '../view/contact/ContactView'
 import { SignInView } from '../view/signin/SignInView'
 import { ShopView } from '../view/shop/ShopView'
 import { Footer } from '../components/Footer'
@@ -51,6 +52,7 @@ export const Routes = (props: { children: React.ReactChild[] }) => {
 			<Switch>
 				<Route exact path={RoutingPath.employeeView} component={EmployeeView} />
 				<Route exact path={RoutingPath.shopView} component={ShopView} />
+				<Route exact path={RoutingPath.contactView} component={ContactView} />
 				<Route exact path={RoutingPath.signInView} component={blockRouteIfAuthenticated(SignInView)} />
 				<Route component={InitialView} />
 			</Switch>

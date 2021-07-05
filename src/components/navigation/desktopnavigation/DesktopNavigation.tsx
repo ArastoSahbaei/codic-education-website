@@ -22,7 +22,7 @@ export const DesktopNavigation = () => {
 			<ParagraphWrapper>
 				<Paragraph>Vår Vision</Paragraph>
 				<Paragraph onClick={() => history.push(RoutingPath.employeeView)}>Team Codic</Paragraph>
-				<Paragraph>Kontakt</Paragraph>
+				<Paragraph onClick={() => history.push(RoutingPath.contactView)}>Kontakt</Paragraph>
 				<Paragraph onClick={() => history.push(RoutingPath.shopView)}>Butik</Paragraph>
 			</ParagraphWrapper>
 			{displayAuthentication()}

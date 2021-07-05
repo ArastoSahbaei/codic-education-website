@@ -5,6 +5,7 @@ import CopyRight from '../shared/images/copyright.svg'
 import ExternalPath from '../routes/ExternalPath'
 import { primaryColor, secondaryColor, primaryFont } from '../shared/styles/GlobalStyle'
 import { getCurrentYear } from '../functions/getCurrentYear'
+import RoutingPath from '../routes/RoutingPath'
 
 export const Footer = () => {
 	const history = useHistory()
@@ -39,7 +40,7 @@ export const Footer = () => {
 
 			<ContactListWrapper>
 				<Title>Kontakt</Title>
-				{display('Kontaktform', '/TBA')}
+				{display('Kontaktform', RoutingPath.contactView)}
 				<Span>Direktlinje: +46 722 92 1983</Span>
 				<MinorLi>Veckodagar: 10:00 - 23:00</MinorLi>
 				<MinorLi>Helgdagar: 12:00 - 16:00</MinorLi>
