@@ -13,9 +13,11 @@ import help from '../../../../shared/images/icons/help.png'
 import feedback from '../../../../shared/images/icons/feedback.png'
 import exit from '../../../../shared/images/icons/logout.png'
 import AuthPath from '../../../../routes/AuthPath'
+import { useNavHeight } from '../../../../hooks/useNavHeight'
 
 export const ProfileDropdown = () => {
 	const [, setAuthenticatedUser] = useContext(UserContext)
+	const { navHeight } = useNavHeight()
 	const history = useHistory()
 
 	const logout = () => {
@@ -34,7 +36,7 @@ export const ProfileDropdown = () => {
 	}
 
 	return (
-		<DropDownWrapper>
+		<DropDownWrapper navHeight={navHeight}>
 			{newDropdownItem(profile, 'Din Profil', AuthPath.profileView)}
 			{newDropdownItem(heart, 'Sparade Produkter (4)')}
 			<Div onClick={() => logout()}>
@@ -53,10 +55,10 @@ export const ProfileDropdown = () => {
 
 
 const Image = styled.img`
-width: 24px;
-height: 24px;
-filter: brightness(0) invert(0.7);
-align-self: center;
+	width: 24px;
+	height: 24px;
+	filter: brightness(0) invert(0.7);
+	align-self: center;
 `
 
 const Div = styled.div`
@@ -92,4 +94,5 @@ export const DropDownWrapper = styled.div`
     opacity: 0;
     transition: visibility 0s, opacity 0.2s linear;
 	z-index: 100;
+	top: calc(${(props: { navHeight: string }) => props.navHeight} + 0.2rem);
 `

@@ -39,7 +39,7 @@ export const DesktopNavigation = () => {
 			</ProfileWrapper>
 		) : (
 			<Button onClick={() => history.push(RoutingPath.signInView)}>
-        Logga in
+				Logga in
 			</Button>
 		)
 	}
@@ -58,13 +58,13 @@ export const DesktopNavigation = () => {
 				<ParagraphWrapper>
 					<Paragraph>Vår Vision</Paragraph>
 					<Paragraph onClick={() => history.push(RoutingPath.employeeView)}>
-            Team Codic
+						Team Codic
 					</Paragraph>
 					<Paragraph onClick={() => history.push(RoutingPath.contactView)}>
-            Kontakt
+						Kontakt
 					</Paragraph>
 					<Paragraph onClick={() => history.push(RoutingPath.shopView)}>
-            Butik
+						Butik
 					</Paragraph>
 				</ParagraphWrapper>
 			</GridCell>
@@ -100,7 +100,7 @@ const GridCell = styled.div`
 const Wrapper = styled.nav`
   display: grid;
   grid-template-columns: repeat(20, 1fr);
-  padding: 0.3%;
+  padding: 0.2rem;
   position: fixed;
   top: 0;
   left: 0;
