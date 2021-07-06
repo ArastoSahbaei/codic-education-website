@@ -5,6 +5,7 @@ import { CheckoutOptions } from './CheckoutOptions'
 import CodicAPIService from '../../shared/api/services/CodicAPIService'
 import exit from '../../shared/images/icons/cross.svg'
 import trash from '../../shared/images/icons/trash.png'
+import emptyCart from '../../shared/images/empty_cart.png'
 import styled from 'styled-components'
 import RoutingPath from '../../routes/RoutingPath'
 
@@ -15,7 +16,6 @@ export const Cart = (props: { isCartOpen: boolean, setIsCartOpen: (value: boolea
 
 	const removeProductFromCart = async (array: [], index: number) => {
 		const newArray = [...array.slice(0, index), ...array.slice(index + 1)]
-
 		await CodicAPIService.updateCart({
 			cartId: authenticatedUser?.shoppingCart?._id,
 			products: newArray
@@ -49,8 +49,8 @@ export const Cart = (props: { isCartOpen: boolean, setIsCartOpen: (value: boolea
 
 	const displayEmptyCart = () => {
 		return <div>
-			{/* <img src={emptyCart} alt='' className='emptyCartImg' /> */}
-			<p>Your cart is empty.. <br /> Why not fill it with new designs?</p>
+			<CartImage src={emptyCart} alt='' />
+			<p>Din varukorg är tom.. <br /> Besök vår butik?</p>
 			<button onClick={() => navigateToShop()}>Butik</button> <br />
 		</div>
 	}
@@ -99,6 +99,15 @@ const List = styled.li`
 
 const Image = styled.img`
 	width: 130px;
+`
+
+const CartImage = styled.img`
+	width: 100%;
+	opacity: 1;
+	animation-name: fadeInOpacity;
+	animation-iteration-count: 1;
+	animation-timing-function: ease-in;
+	animation-duration: 0.4s;
 `
 
 const Icon = styled.img`
