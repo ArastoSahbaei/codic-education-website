@@ -55,35 +55,35 @@ export const ProfileDropdown = () => {
 
 
 const Image = styled.img`
-	width: 24px;
-	height: 24px;
-	filter: brightness(0) invert(0.7);
-	align-self: center;
+		width: 24px;
+		height: 24px;
+		filter: brightness(0) invert(0.7);
+		align-self: center;
 `
 
 const Div = styled.div`
-	cursor: pointer;
-	display: flex;
-	&:hover ${Image} {
+		cursor: pointer;
+		display: flex;
+		&:hover ${Image} {
 		filter: brightness(0) invert(1);
-	}
+		}
 `
 
 const DropDownItem = styled.p`
     font-size: 1.1rem;
     color: white;
-	display: inline-block;
-	margin-left: 10px;
+		display: inline-block;
+		margin-left: 10px;
 
 `
 
 const HR = styled.hr`
-	display: block;
-	height: 1px;
-	border: 0;
-	border-top: 1px solid #ccc;
-	margin: 1em 0;
-	padding: 0;
+		display: block;
+		height: 1px;
+		border: 0;
+		border-top: 1px solid #ccc;
+		margin: 1em 0;
+		padding: 0;
 `
 
 export const DropDownWrapper = styled.div`
@@ -93,5 +93,10 @@ export const DropDownWrapper = styled.div`
     padding: 10px 35px;
     opacity: 0;
     transition: visibility 0s, opacity 0.2s linear;
-	z-index: 100;
+		z-index: 100;
+
+		&:hover {
+    visibility: visible;
+    opacity: 1;
+    }
 `

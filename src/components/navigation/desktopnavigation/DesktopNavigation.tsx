@@ -10,6 +10,7 @@ import styled from 'styled-components'
 import RoutingPath from '../../../routes/RoutingPath'
 import logotype from '../../../shared/images/codiclogotype.svg'
 import cartIcon from '../../../shared/images/icons/cart.png'
+import { DropDownWrapper } from '../profile/profiledropdown/ProfileDropdown'
 
 export const NavBG = () => {
 	const { fractions } = useContext(ScrollContext)
@@ -81,89 +82,94 @@ export const DesktopNavigation = () => {
 }
 
 const Icon = styled.img`
-  width: 32px;
-  height: 32px;
-  align-self: center;
-  cursor: pointer;
-  filter: brightness(0) invert(0.8);
-  &:hover {
+    width: 32px;
+    height: 32px;
+    align-self: center;
+    cursor: pointer;
+    filter: brightness(0) invert(0.8);
+    &:hover {
     filter: brightness(0) invert(1);
-  }
+    }
 `
 
 const Image = styled.img`
-  cursor: pointer;
-  max-height: 50%;
+    cursor: pointer;
+    max-height: 50%;
 `
 
 const Grid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(20, 1fr);
-  width: 100%;
-  height: 100%;
+    display: grid;
+    grid-template-columns: repeat(20, 1fr);
+    width: 100%;
+    height: 100%;
 `
 
 const GridCell = styled.div`
-  grid-column: ${(props: { col?: string }) => props.col};
-  display: grid;
-  align-items: center;
-  max-height: 100%;
-  position: relative;
-  height: 100%;
+    grid-column: ${(props: { col?: string }) => props.col};
+    display: grid;
+    align-items: center;
+    max-height: 100%;
+    position: relative;
+    height: 100%;
 `
 
 const Wrapper = styled.nav`
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 300;
-  width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 300;
+    width: 100%;
 `
 
 const WrapperBackground = styled.div`
-  position: absolute;
-  background-color: #263746;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
+    position: absolute;
+    background-color: #263746;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
 `
 
 const Paragraph = styled.p`
-  font-weight: 600;
-  cursor: pointer;
-  text-transform: uppercase;
-  color: white;
-  align-self: center;
+    font-weight: 600;
+    cursor: pointer;
+    text-transform: uppercase;
+    color: white;
+    align-self: center;
 `
 
 const Button = styled.p`
-  font-weight: 600;
-  color: white;
-  align-self: center;
-  text-transform: uppercase;
-  cursor: pointer;
+    font-weight: 600;
+    color: white;
+    align-self: center;
+    text-transform: uppercase;
+    cursor: pointer;
 `
 
 export const Paragraph2 = styled.p`
-  font-weight: 600;
-  color: white;
-  align-self: center;
-  text-transform: uppercase;
-  grid-column: 18/18;
-  cursor: pointer;
+    font-weight: 600;
+    color: white;
+    align-self: center;
+    text-transform: uppercase;
+    grid-column: 18/18;
+    cursor: pointer;
 `
 
 const ParagraphWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  display: flex;
+    display: flex;
+    justify-content: space-between;
+    display: flex;
 `
 
 const ProfileWrapper = styled.div`
-grid-column: 17/19;
-display: flex;
-justify-content: space-between
-justify-content: center;
+    grid-column: 17/19;
+    display: flex;
+    justify-content: space-between
+    justify-content: center;
+    height: 100%;
+    &:hover ${DropDownWrapper} {
+    visibility: visible;
+    opacity: 1;
+    }
 `
