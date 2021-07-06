@@ -11,7 +11,7 @@ import cartIcon from '../../../shared/images/icons/cart.png'
 
 export const DesktopNavigation = () => {
 	const history = useHistory()
-	const [isCartOpen, setIsCartOpen] = useState<boolean>(true)
+	const [isCartOpen, setIsCartOpen] = useState<boolean>(false)
 	const [authenticatedUser,] = useContext(UserContext)
 
 	const displayAuthentication = () => {

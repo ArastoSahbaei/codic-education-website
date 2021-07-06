@@ -2,6 +2,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import { useEffect, useContext } from 'react'
 import { nonAuthenticatedUser } from '../shared/data/nonAuthenticatedUser'
 import { UserContext } from '../shared/providers/UserProvider'
+import { CheckoutView } from '../view/checkout/CheckoutView'
 import { EmployeeView } from '../view/employee/EmployeeView'
 import { InitialView } from '../view/initial/InitialView'
 import { ContactView } from '../view/contact/ContactView'
@@ -58,6 +59,7 @@ export const Routes = (props: { children: React.ReactChild[] }) => {
 				<Route exact path={RoutingPath.employeeView} component={EmployeeView} />
 				<Route exact path={RoutingPath.shopView} component={ShopView} />
 				<Route exact path={RoutingPath.contactView} component={ContactView} />
+				<Route exact path={RoutingPath.checkoutView} component={CheckoutView} />
 				<Route exact path={RoutingPath.signInView} component={blockRouteIfAuthenticated(SignInView)} />
 				{/* AUTHENTICATED PATHS */}
 				<Route exact path={AuthPath.profileView} component={ProfileView} />

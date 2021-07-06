@@ -1,7 +1,16 @@
+import { useHistory } from 'react-router-dom'
 import styled from 'styled-components'
+import RoutingPath from '../../routes/RoutingPath'
 import freeReturns from '../../shared/images/icons/free-return.svg'
 
 export const CheckoutOptions = (props: { setIsCartOpen: (value: boolean) => void }) => {
+	const history = useHistory()
+
+	const navigateToCheckout = () => {
+		props.setIsCartOpen(false)
+		history.push(RoutingPath.checkoutView)
+	}
+
 	return (
 		<CartDiv>
 			<FreeReturnDiv>
@@ -11,7 +20,7 @@ export const CheckoutOptions = (props: { setIsCartOpen: (value: boolean) => void
 			<p>frakt: 0kr</p>
 			{/* <p>Total summa: {getTotalPrice()}</p> */}
 			<button onClick={() => props.setIsCartOpen(false)}>fortsätt handla</button>
-			<button>Gå vidare till kassan</button>
+			<button onClick={() => navigateToCheckout()}>Gå vidare till kassan</button>
 		</CartDiv>
 	)
 }
