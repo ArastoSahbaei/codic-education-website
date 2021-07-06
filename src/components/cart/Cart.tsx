@@ -40,7 +40,7 @@ export const Cart = (props: { isCartOpen: boolean, setIsCartOpen: (value: boolea
 
 	return (
 		<CartWrapper isOpen={isCartOpen}>
-			<span>{['1', '2', '3'].length} föremål i varukorgen</span>
+			<span>{authenticatedUser.shoppingCart.products.length} föremål i varukorgen</span>
 			<ExitImage src={exit} alt={''} onClick={() => setIsCartOpen(false)} />
 			{displayCartWithItems()}
 			<CheckoutOptions setIsCartOpen={setIsCartOpen} />
