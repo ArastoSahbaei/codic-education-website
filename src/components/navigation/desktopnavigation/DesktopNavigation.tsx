@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useMemo } from 'react'
 import { useHistory } from 'react-router-dom'
 import { Profile } from '../profile/Profile'
 import { ScrollContext } from '../../../shared/providers/ScrollProvider'
@@ -14,7 +14,9 @@ import cartIcon from '../../../shared/images/icons/cart.png'
 export const NavBG = () => {
 	const { fractions } = useContext(ScrollContext)
 
-	return <WrapperBackground opacity={Math.max(0.5, 1 - fractions)} />
+	const opacity = useMemo(() => Math.max(0.5, 1 - fractions), [fractions])
+
+	return <WrapperBackground style={{ opacity: opacity }} />
 }
 
 export const DesktopNavigation = () => {
@@ -110,7 +112,6 @@ const Wrapper = styled.nav`
 const WrapperBackground = styled.div`
   position: absolute;
   background-color: #263746;
-  opacity: ${(props: Partial<{ opacity?: number }>) => props.opacity};
   left: 0;
   top: 0;
   width: 100%;
