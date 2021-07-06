@@ -2,9 +2,9 @@ import { DisplayProducts } from './DisplayProducts'
 
 export const ShopView = () => {
 	return (
-		<div>
-			<h1>Detta är butiken yo</h1>
+		<>
+			<h1>Codic Shop</h1>
 			<DisplayProducts />
-		</div>
+		</>
 	)
 }

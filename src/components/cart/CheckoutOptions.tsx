@@ -1,10 +1,20 @@
+import { useContext } from 'react'
 import { useHistory } from 'react-router-dom'
 import styled from 'styled-components'
 import RoutingPath from '../../routes/RoutingPath'
 import freeReturns from '../../shared/images/icons/free-return.svg'
+import { Product } from '../../shared/interfaces/ProductsInterface'
+import { UserContext } from '../../shared/providers/UserProvider'
 
 export const CheckoutOptions = (props: { setIsCartOpen: (value: boolean) => void }) => {
+	const [authenticatedUser] = useContext(UserContext)
 	const history = useHistory()
+
+	const getTotalPrice = () => {
+		let totalPrice = 0
+		authenticatedUser.shoppingCart.products.map((item: Product) => totalPrice = totalPrice + item.price)
+		return totalPrice
+	}
 
 	const navigateToCheckout = () => {
 		props.setIsCartOpen(false)
@@ -18,7 +28,7 @@ export const CheckoutOptions = (props: { setIsCartOpen: (value: boolean) => void
 				<Paragraph>100 dagar ångerrätt med gratis retur</Paragraph>
 			</FreeReturnDiv>
 			<p>frakt: 0kr</p>
-			{/* <p>Total summa: {getTotalPrice()}</p> */}
+			<p>Total summa: {getTotalPrice()}</p>
 			<button onClick={() => props.setIsCartOpen(false)}>fortsätt handla</button>
 			<button onClick={() => navigateToCheckout()}>Gå vidare till kassan</button>
 		</CartDiv>
