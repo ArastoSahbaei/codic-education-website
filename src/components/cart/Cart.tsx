@@ -2,18 +2,32 @@ import { CheckoutOptions } from './CheckoutOptions'
 import exit from '../../shared/images/icons/cross.svg'
 import trash from '../../shared/images/icons/trash.png'
 import styled from 'styled-components'
+import { useContext } from 'react'
+import { UserContext } from '../../shared/providers/UserProvider'
+import CodicAPIService from '../../shared/api/services/CodicAPIService'
 
 export const Cart = (props: { isCartOpen: boolean, setIsCartOpen: (value: boolean) => void }) => {
 	const { isCartOpen, setIsCartOpen } = props
+	const [authenticatedUser, setAuthenticatedUser] = useContext(UserContext)
+
+	const removeProductFromCart = async (array: [], index: number) => {
+		const newArray = [...array.slice(0, index), ...array.slice(index + 1)]
+
+		await CodicAPIService.updateCart({
+			cartId: authenticatedUser?.shoppingCart?._id,
+			products: newArray
+		})
+		setAuthenticatedUser({ ...authenticatedUser, shoppingCart: { ...authenticatedUser.shoppingCart, products: newArray } })
+	}
 
 	const displayCartWithItems = () => {
 		return <DisplayCartWrapper>
-			{[{ title: '2', price: 111 }, { title: '2', price: 111 }, { title: '2', price: 111 }, { title: '2', price: 111 }].map((product, index) =>
+			{authenticatedUser?.shoppingCart?.products?.map((product: any, index: number) =>
 				<UList key={index}>
 					<Image /* onClick={() => navigateToProductDetail(product)} */
 						src={'https://picsum.photos/200/200'}
 						alt='' />
-					<Icon /* onClick={() => removeProductFromCart(authenticatedUser?.shoppingCart?.products, index)} */
+					<Icon onClick={() => removeProductFromCart(authenticatedUser?.shoppingCart?.products, index)}
 						src={trash}
 						alt={''} />
 					<List>titel: {product.title}</List>
