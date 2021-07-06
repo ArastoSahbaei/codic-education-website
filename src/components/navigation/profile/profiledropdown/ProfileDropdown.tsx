@@ -73,8 +73,11 @@ const DropDownItem = styled.p`
     font-size: 1.1rem;
     color: white;
 		display: inline-block;
-		margin-left: 10px;
-
+		padding-left: 1rem;
+		height: 3rem;
+		display: flex;
+		justify-content: center;
+		align-items: center;
 `
 
 const HR = styled.hr`
@@ -87,6 +90,7 @@ const HR = styled.hr`
 `
 
 export const DropDownWrapper = styled.div`
+		width: 20rem;
     visibility: hidden;
     position: absolute;
     background-color: #263746;
