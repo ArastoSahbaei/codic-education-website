@@ -38,6 +38,7 @@ const Span = styled.span`
 	width: 18px;
 	height: 18px;
 	border-radius: 9px;
+	margin-top: 10px;
 	background: #ff3c00;
 	color: #fff;
 	line-height: 18px;
