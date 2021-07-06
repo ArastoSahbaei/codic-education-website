@@ -4,10 +4,10 @@ import { UserContext } from '../../../shared/providers/UserProvider'
 import { Profile } from '../profile/Profile'
 import { Cart } from '../../cart/Cart'
 import { BackDrop } from '../../BackDrop'
+import { CartToggler } from './components/CartToggler'
 import styled from 'styled-components'
 import RoutingPath from '../../../routes/RoutingPath'
 import logotype from '../../../shared/images/codiclogotype.svg'
-import cartIcon from '../../../shared/images/icons/cart.png'
 
 export const DesktopNavigation = () => {
 	const history = useHistory()
@@ -19,7 +19,7 @@ export const DesktopNavigation = () => {
 			? (
 				<ProfileWrapper>
 					<Profile />
-					<Icon src={cartIcon} alt={''} onClick={() => setIsCartOpen(!isCartOpen)} />
+					<CartToggler setIsCartOpen={setIsCartOpen} />
 				</ProfileWrapper>
 			)
 			: <Button onClick={() => history.push(RoutingPath.signInView)}>Logga in</Button>
@@ -40,17 +40,6 @@ export const DesktopNavigation = () => {
 		</Wrapper>
 	)
 }
-
-const Icon = styled.img`
-	width: 32px;
-	height: 32px;
-	align-self: center;
-	cursor: pointer;
-	filter: brightness(0) invert(0.8);
-	&:hover {
-		filter: brightness(0) invert(1);
-	}
-`
 
 const Image = styled.img`
 	padding: 10px;
