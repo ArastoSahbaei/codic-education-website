@@ -1,7 +1,6 @@
 import { useContext } from 'react'
 import { UserContext } from '../../../../shared/providers/UserProvider'
 import cartIcon from '../../../../shared/images/icons/cart.png'
-import './CartToggler.css'
 import styled from 'styled-components'
 
 export const CartToggler = (props: { setIsCartOpen: (handler: boolean) => void }) => {
