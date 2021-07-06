@@ -36,7 +36,7 @@ export const ProfileDropdown = () => {
 	}
 
 	return (
-		<DropDownWrapper navHeight={navHeight}>
+		<DropDownWrapper style={{ top: `${navHeight}rem`}}>
 			{newDropdownItem(profile, 'Din Profil', AuthPath.profileView)}
 			{newDropdownItem(heart, 'Sparade Produkter (4)')}
 			<Div onClick={() => logout()}>
@@ -94,5 +94,4 @@ export const DropDownWrapper = styled.div`
     opacity: 0;
     transition: visibility 0s, opacity 0.2s linear;
 	z-index: 100;
-	top: ${(props: { navHeight: number }) => props.navHeight}rem;
 `

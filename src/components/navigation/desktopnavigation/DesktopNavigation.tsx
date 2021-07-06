@@ -43,9 +43,12 @@ export const DesktopNavigation = () => {
 			</Button>
 		)
 	}
-
+	const heightStyle = useMemo(
+		() => ({ height: `${navHeight}rem` }),
+		[navHeight]
+	)
 	return (
-		<Wrapper style={{ height: `${navHeight}rem` }}>
+		<Wrapper style={heightStyle}>
 			<NavBG />
 			<Grid>
 				<GridCell col="3/3">
@@ -107,7 +110,6 @@ const GridCell = styled.div`
   max-height: 100%;
   position: relative;
   height: 100%;
-  overflow: hidden;
 `
 
 const Wrapper = styled.nav`
@@ -116,7 +118,6 @@ const Wrapper = styled.nav`
   left: 0;
   z-index: 300;
   width: 100%;
-  overflow: hidden;
 `
 
 const WrapperBackground = styled.div`
