@@ -2,17 +2,20 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import { useEffect, useContext } from 'react'
 import { nonAuthenticatedUser } from '../shared/data/nonAuthenticatedUser'
 import { UserContext } from '../shared/providers/UserProvider'
+import { CheckoutView } from '../view/checkout/CheckoutView'
 import { EmployeeView } from '../view/employee/EmployeeView'
 import { InitialView } from '../view/initial/InitialView'
 import { ContactView } from '../view/contact/ContactView'
+import { ProfileView } from '../view/auth/ProfileView'
 import { SignInView } from '../view/signin/SignInView'
 import { ShopView } from '../view/shop/ShopView'
 import { Footer } from '../components/Footer'
+import { AdminView } from '../view/admin/AdminView'
 import RoutingPath from './RoutingPath'
 import CodicAPIService from '../shared/api/services/CodicAPIService'
 import LocalStorage from '../shared/cache/LocalStorage'
 import AuthPath from './AuthPath'
-import { ProfileView } from '../view/auth/ProfileView'
+import AdminPath from './AdminPath'
 
 export const Routes = (props: { children: React.ReactChild[] }) => {
 	const [authenticatedUser, setAuthenticatedUser] = useContext(UserContext)
@@ -56,9 +59,12 @@ export const Routes = (props: { children: React.ReactChild[] }) => {
 				<Route exact path={RoutingPath.employeeView} component={EmployeeView} />
 				<Route exact path={RoutingPath.shopView} component={ShopView} />
 				<Route exact path={RoutingPath.contactView} component={ContactView} />
+				<Route exact path={RoutingPath.checkoutView} component={CheckoutView} />
 				<Route exact path={RoutingPath.signInView} component={blockRouteIfAuthenticated(SignInView)} />
 				{/* AUTHENTICATED PATHS */}
 				<Route exact path={AuthPath.profileView} component={ProfileView} />
+				{/* ADMIN PATHS */}
+				<Route exact path={AdminPath.adminView} component={AdminView} />
 				{/* INITIAL PATH */}
 				<Route component={InitialView} />
 			</Switch>

@@ -1,19 +1,36 @@
+import { useContext } from 'react'
+import { useHistory } from 'react-router-dom'
+import { UserContext } from '../../shared/providers/UserProvider'
 import { CheckoutOptions } from './CheckoutOptions'
+import CodicAPIService from '../../shared/api/services/CodicAPIService'
 import exit from '../../shared/images/icons/cross.svg'
 import trash from '../../shared/images/icons/trash.png'
+import emptyCart from '../../shared/images/empty_cart.png'
 import styled from 'styled-components'
+import RoutingPath from '../../routes/RoutingPath'
 
 export const Cart = (props: { isCartOpen: boolean, setIsCartOpen: (value: boolean) => void }) => {
+	const history = useHistory()
 	const { isCartOpen, setIsCartOpen } = props
+	const [authenticatedUser, setAuthenticatedUser] = useContext(UserContext)
+
+	const removeProductFromCart = async (array: [], index: number) => {
+		const newArray = [...array.slice(0, index), ...array.slice(index + 1)]
+		await CodicAPIService.updateCart({
+			cartId: authenticatedUser?.shoppingCart?._id,
+			products: newArray
+		})
+		setAuthenticatedUser({ ...authenticatedUser, shoppingCart: { ...authenticatedUser.shoppingCart, products: newArray } })
+	}
 
 	const displayCartWithItems = () => {
 		return <DisplayCartWrapper>
-			{[{ title: '2', price: 111 }, { title: '2', price: 111 }, { title: '2', price: 111 }, { title: '2', price: 111 }].map((product, index) =>
+			{authenticatedUser?.shoppingCart?.products?.map((product: any, index: number) =>
 				<UList key={index}>
 					<Image /* onClick={() => navigateToProductDetail(product)} */
 						src={'https://picsum.photos/200/200'}
 						alt='' />
-					<Icon /* onClick={() => removeProductFromCart(authenticatedUser?.shoppingCart?.products, index)} */
+					<Icon onClick={() => removeProductFromCart(authenticatedUser.shoppingCart.products, index)}
 						src={trash}
 						alt={''} />
 					<List>titel: {product.title}</List>
@@ -21,15 +38,28 @@ export const Cart = (props: { isCartOpen: boolean, setIsCartOpen: (value: boolea
 					<hr />
 				</UList>
 			)}
+			<CheckoutOptions setIsCartOpen={setIsCartOpen} />
 		</DisplayCartWrapper >
+	}
+
+	const navigateToShop = () => {
+		history.push(RoutingPath.shopView)
+		setIsCartOpen(false)
+	}
+
+	const displayEmptyCart = () => {
+		return <Div>
+			<CartImage src={emptyCart} alt='' />
+			<p>Din varukorg är tom.. <br /> Besök vår butik?</p>
+			<button onClick={() => navigateToShop()}>Butik</button> <br />
+		</Div>
 	}
 
 	return (
 		<CartWrapper isOpen={isCartOpen}>
-			<span>{['1', '2', '3'].length} föremål i varukorgen</span>
+			<span>{authenticatedUser.shoppingCart.products.length} föremål i varukorgen</span>
 			<ExitImage src={exit} alt={''} onClick={() => setIsCartOpen(false)} />
-			{displayCartWithItems()}
-			<CheckoutOptions setIsCartOpen={setIsCartOpen} />
+			{authenticatedUser.shoppingCart.products.length !== 0 ? displayCartWithItems() : displayEmptyCart()}
 		</CartWrapper>
 	)
 }
@@ -69,6 +99,21 @@ const List = styled.li`
 
 const Image = styled.img`
 	width: 130px;
+`
+
+const Div = styled.div`
+	margin-top: 80%;
+	text-align: center;
+`
+
+const CartImage = styled.img`
+	width: 98%;
+	
+	opacity: 1;
+	animation-name: fadeInOpacity;
+	animation-iteration-count: 1;
+	animation-timing-function: ease-in;
+	animation-duration: 0.4s;
 `
 
 const Icon = styled.img`

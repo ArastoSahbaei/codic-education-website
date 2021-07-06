@@ -14,6 +14,7 @@ import feedback from '../../../../shared/images/icons/feedback.png'
 import exit from '../../../../shared/images/icons/logout.png'
 import AuthPath from '../../../../routes/AuthPath'
 import { useNavHeight } from '../../../../hooks/useNavHeight'
+import { nonAuthenticatedUser } from '../../../../shared/data/nonAuthenticatedUser'
 
 export const ProfileDropdown = () => {
 	const [, setAuthenticatedUser] = useContext(UserContext)
@@ -22,7 +23,7 @@ export const ProfileDropdown = () => {
 
 	const logout = () => {
 		localStorage.removeItem(LocalStorage.authenticationToken)
-		setAuthenticatedUser(false) //TODO: replace with default values from data folder
+		setAuthenticatedUser(nonAuthenticatedUser)
 		history.push(RoutingPath.initialView)
 	}
 

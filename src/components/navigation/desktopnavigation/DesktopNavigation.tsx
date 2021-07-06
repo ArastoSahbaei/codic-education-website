@@ -6,10 +6,10 @@ import { useNavHeight } from '../../../hooks/useNavHeight'
 import { UserContext } from '../../../shared/providers/UserProvider'
 import { Cart } from '../../cart/Cart'
 import { BackDrop } from '../../BackDrop'
+import { CartToggler } from './components/CartToggler'
 import styled from 'styled-components'
 import RoutingPath from '../../../routes/RoutingPath'
 import logotype from '../../../shared/images/codiclogotype.svg'
-import cartIcon from '../../../shared/images/icons/cart.png'
 import { DropDownWrapper } from '../profile/profiledropdown/ProfileDropdown'
 
 export const NavBG = () => {
@@ -29,20 +29,14 @@ export const DesktopNavigation = () => {
 	const [authenticatedUser] = useContext(UserContext)
 
 	const displayAuthentication = () => {
-		return authenticatedUser.authenticated ? (
-			<ProfileWrapper>
-				<Profile />
-				<Icon
-					src={cartIcon}
-					alt={''}
-					onClick={() => setIsCartOpen(!isCartOpen)}
-				/>
-			</ProfileWrapper>
-		) : (
-			<Button onClick={() => history.push(RoutingPath.signInView)}>
-        Logga in
-			</Button>
-		)
+		return authenticatedUser.authenticated
+			? (
+				<ProfileWrapper>
+					<Profile />
+					<CartToggler setIsCartOpen={setIsCartOpen} />
+				</ProfileWrapper>
+			)
+			: <Button onClick={() => history.push(RoutingPath.signInView)}>Logga in</Button>
 	}
 	const heightStyle = useMemo(
 		() => ({ height: `${navHeight}rem` }),
@@ -80,17 +74,6 @@ export const DesktopNavigation = () => {
 		</Wrapper>
 	)
 }
-
-const Icon = styled.img`
-    width: 32px;
-    height: 32px;
-    align-self: center;
-    cursor: pointer;
-    filter: brightness(0) invert(0.8);
-    &:hover {
-    filter: brightness(0) invert(1);
-    }
-`
 
 const Image = styled.img`
     cursor: pointer;
