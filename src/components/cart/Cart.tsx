@@ -35,15 +35,23 @@ export const Cart = (props: { isCartOpen: boolean, setIsCartOpen: (value: boolea
 					<hr />
 				</UList>
 			)}
+			<CheckoutOptions setIsCartOpen={setIsCartOpen} />
 		</DisplayCartWrapper >
+	}
+
+	const displayEmptyCart = () => {
+		return <div>
+			{/* <img src={emptyCart} alt='' className='emptyCartImg' /> */}
+			<p>Your cart is empty.. <br /> Why not fill it with new designs?</p>
+			<button/*  onClick={() => navigateToShop()} */>Butik</button> <br />
+		</div>
 	}
 
 	return (
 		<CartWrapper isOpen={isCartOpen}>
 			<span>{authenticatedUser.shoppingCart.products.length} föremål i varukorgen</span>
 			<ExitImage src={exit} alt={''} onClick={() => setIsCartOpen(false)} />
-			{displayCartWithItems()}
-			<CheckoutOptions setIsCartOpen={setIsCartOpen} />
+			{authenticatedUser.shoppingCart.products.length !== 0 ? displayCartWithItems() : displayEmptyCart()}
 		</CartWrapper>
 	)
 }
