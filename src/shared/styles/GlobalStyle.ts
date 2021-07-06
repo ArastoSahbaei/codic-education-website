@@ -8,6 +8,13 @@ export const primaryFont = 'Oleoscript'
 export const secondaryFont = 'AlegreyaSans'
 
 export const GlobalStyle = createGlobalStyle`
+
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+}
+
 @font-face {
     font-family: Oleoscript;
     src: url(${Oleoscript}) format('truetype');

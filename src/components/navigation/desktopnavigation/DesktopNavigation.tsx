@@ -39,38 +39,40 @@ export const DesktopNavigation = () => {
 			</ProfileWrapper>
 		) : (
 			<Button onClick={() => history.push(RoutingPath.signInView)}>
-				Logga in
+        Logga in
 			</Button>
 		)
 	}
 
 	return (
-		<Wrapper height={navHeight}>
+		<Wrapper style={{ height: `${navHeight}rem` }}>
 			<NavBG />
-			<GridCell col="3/3">
-				<Image
-					src={logotype}
-					alt={''}
-					onClick={() => history.push(RoutingPath.initialView)}
-				/>
-			</GridCell>
-			<GridCell col="5/9">
-				<ParagraphWrapper>
-					<Paragraph>Vår Vision</Paragraph>
-					<Paragraph onClick={() => history.push(RoutingPath.employeeView)}>
-						Team Codic
-					</Paragraph>
-					<Paragraph onClick={() => history.push(RoutingPath.contactView)}>
-						Kontakt
-					</Paragraph>
-					<Paragraph onClick={() => history.push(RoutingPath.shopView)}>
-						Butik
-					</Paragraph>
-				</ParagraphWrapper>
-			</GridCell>
-			<Cart isCartOpen={isCartOpen} setIsCartOpen={setIsCartOpen} />
-			{isCartOpen && <BackDrop drawerHandler={setIsCartOpen} />}
-			<GridCell col="18/18">{displayAuthentication()}</GridCell>
+			<Grid>
+				<GridCell col="3/3">
+					<Image
+						src={logotype}
+						alt={''}
+						onClick={() => history.push(RoutingPath.initialView)}
+					/>
+				</GridCell>
+				<GridCell col="5/9">
+					<ParagraphWrapper>
+						<Paragraph>Vår Vision</Paragraph>
+						<Paragraph onClick={() => history.push(RoutingPath.employeeView)}>
+              Team Codic
+						</Paragraph>
+						<Paragraph onClick={() => history.push(RoutingPath.contactView)}>
+              Kontakt
+						</Paragraph>
+						<Paragraph onClick={() => history.push(RoutingPath.shopView)}>
+              Butik
+						</Paragraph>
+					</ParagraphWrapper>
+				</GridCell>
+				<Cart isCartOpen={isCartOpen} setIsCartOpen={setIsCartOpen} />
+				{isCartOpen && <BackDrop drawerHandler={setIsCartOpen} />}
+				<GridCell col="18/18">{displayAuthentication()}</GridCell>
+			</Grid>
 		</Wrapper>
 	)
 }
@@ -91,22 +93,30 @@ const Image = styled.img`
   max-height: 50%;
 `
 
+const Grid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(20, 1fr);
+  width: 100%;
+  height: 100%;
+`
+
 const GridCell = styled.div`
   grid-column: ${(props: { col?: string }) => props.col};
   display: grid;
   align-items: center;
+  max-height: 100%;
+  position: relative;
+  height: 100%;
+  overflow: hidden;
 `
 
 const Wrapper = styled.nav`
-  display: grid;
-  grid-template-columns: repeat(20, 1fr);
-  padding: 0.2rem;
   position: fixed;
   top: 0;
   left: 0;
   z-index: 300;
   width: 100%;
-  height: ${(props: { height?: string }) => props.height};
+  overflow: hidden;
 `
 
 const WrapperBackground = styled.div`
@@ -151,8 +161,8 @@ const ParagraphWrapper = styled.div`
 `
 
 const ProfileWrapper = styled.div`
-  grid-column: 17/19;
-  display: flex;
-  justify-content: space-between
-  justify-content: center;
+grid-column: 17/19;
+display: flex;
+justify-content: space-between
+justify-content: center;
 `

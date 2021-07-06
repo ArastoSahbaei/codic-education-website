@@ -94,5 +94,5 @@ export const DropDownWrapper = styled.div`
     opacity: 0;
     transition: visibility 0s, opacity 0.2s linear;
 	z-index: 100;
-	top: calc(${(props: { navHeight: string }) => props.navHeight} + 0.2rem);
+	top: ${(props: { navHeight: number }) => props.navHeight}rem;
 `
