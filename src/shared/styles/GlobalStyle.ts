@@ -15,6 +15,14 @@ export const GlobalStyle = createGlobalStyle`
    box-sizing: border-box;
 }
 
+ol {
+   margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+
 @font-face {
     font-family: Oleoscript;
     src: url(${Oleoscript}) format('truetype');
@@ -42,7 +50,7 @@ p, span, h1, h2, h3, h4, h5, h6 {
 	0% {
 		opacity: 0;
 	}
-	
+
 	100% {
 		opacity: 1;
 	}
