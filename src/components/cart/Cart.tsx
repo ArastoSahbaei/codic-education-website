@@ -1,12 +1,15 @@
+import { useContext } from 'react'
+import { useHistory } from 'react-router-dom'
+import { UserContext } from '../../shared/providers/UserProvider'
 import { CheckoutOptions } from './CheckoutOptions'
+import CodicAPIService from '../../shared/api/services/CodicAPIService'
 import exit from '../../shared/images/icons/cross.svg'
 import trash from '../../shared/images/icons/trash.png'
 import styled from 'styled-components'
-import { useContext } from 'react'
-import { UserContext } from '../../shared/providers/UserProvider'
-import CodicAPIService from '../../shared/api/services/CodicAPIService'
+import RoutingPath from '../../routes/RoutingPath'
 
 export const Cart = (props: { isCartOpen: boolean, setIsCartOpen: (value: boolean) => void }) => {
+	const history = useHistory()
 	const { isCartOpen, setIsCartOpen } = props
 	const [authenticatedUser, setAuthenticatedUser] = useContext(UserContext)
 
@@ -39,11 +42,16 @@ export const Cart = (props: { isCartOpen: boolean, setIsCartOpen: (value: boolea
 		</DisplayCartWrapper >
 	}
 
+	const navigateToShop = () => {
+		history.push(RoutingPath.shopView)
+		setIsCartOpen(false)
+	}
+
 	const displayEmptyCart = () => {
 		return <div>
 			{/* <img src={emptyCart} alt='' className='emptyCartImg' /> */}
 			<p>Your cart is empty.. <br /> Why not fill it with new designs?</p>
-			<button/*  onClick={() => navigateToShop()} */>Butik</button> <br />
+			<button onClick={() => navigateToShop()}>Butik</button> <br />
 		</div>
 	}
 
