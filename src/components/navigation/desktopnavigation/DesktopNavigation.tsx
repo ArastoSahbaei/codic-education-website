@@ -1,4 +1,4 @@
-import { useContext, useState, useMemo } from 'react'
+import React, { useContext, useState, useMemo, FC } from 'react'
 import { useHistory } from 'react-router-dom'
 import { Profile } from '../profile/Profile'
 import { ScrollContext } from '../../../shared/providers/ScrollProvider'
@@ -11,9 +11,14 @@ import RoutingPath from '../../../routes/RoutingPath'
 import logotype from '../../../shared/images/codiclogotype.svg'
 import cartIcon from '../../../shared/images/icons/cart.png'
 
+export const NavBG = () => {
+	const { fractions } = useContext(ScrollContext)
+
+	return <WrapperBackground opacity={Math.max(0.5, 1 - fractions)} />
+}
+
 export const DesktopNavigation = () => {
 	const history = useHistory()
-	const { fractions } = useContext(ScrollContext)
 
 	const { navHeight } = useNavHeight()
 
@@ -37,11 +42,12 @@ export const DesktopNavigation = () => {
 		)
 	}
 
-	const opacity = useMemo(() => Math.max(0.5, 1 - fractions), [fractions])
+
+	const BG = React.memo(NavBG)
 
 	return (
 		<Wrapper height={navHeight}>
-			<WrapperBackground opacity={opacity} />
+			<BG />
 			<GridCell col="3/3">
 				<Image
 					src={logotype}

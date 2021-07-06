@@ -2,13 +2,11 @@ import initialImage from '../../shared/images/teacher3.jpg'
 import styled from 'styled-components'
 import { Collaborations } from './Collaborations'
 import { StudentReviews } from './StudentReviews'
-import { useNavHeight } from '../../hooks/useNavHeight'
 
 export const InitialView = () => {
-	const { navHeight } = useNavHeight()
 
 	return (
-		<Wrapper marginTop={navHeight}>
+		<Wrapper>
 			<Image src={initialImage} alt={''} />
 			<Paragraph>Lorem ipsum dolor sit amet consectetur
 				<br /> adipisicing elit. Possimus, fugiat?</Paragraph>
@@ -21,7 +19,6 @@ export const InitialView = () => {
 const Wrapper = styled.div`
 	display: grid;
 	grid-template-columns: repeat(20, 1fr);
-	margin-top: ${(props: {marginTop?: string}) => props.marginTop}
 	`
 
 const Image = styled.img`

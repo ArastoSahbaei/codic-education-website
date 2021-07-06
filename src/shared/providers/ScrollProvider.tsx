@@ -1,4 +1,4 @@
-import React, { useState, createContext, useLayoutEffect, useCallback } from 'react'
+import React, { useState, createContext, useEffect, useCallback } from 'react'
 import { useWindowDimensions } from '../../hooks/useWindowDimensions'
 
 export const ScrollContext = createContext<{
@@ -16,7 +16,6 @@ export const ScrollProvider = (props: { children?: React.ReactChild }) => {
 
 	let throttleTimeout: number | null = null
 
-
 	const callback = useCallback(() => {
 		setScrollY(window.scrollY)
 		const fractions = window.scrollY / height
@@ -24,7 +23,7 @@ export const ScrollProvider = (props: { children?: React.ReactChild }) => {
 		setPercentage(fractions * 100)
 	}, [setScrollY, setFractions, setPercentage, window.scrollY])
 
-	useLayoutEffect(() => {
+	useEffect(() => {
 		const handleScroll = () => {
 			if (throttleTimeout === null) {
 				throttleTimeout = setTimeout(() => {
