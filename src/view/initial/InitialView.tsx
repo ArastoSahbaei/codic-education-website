@@ -4,6 +4,7 @@ import { Collaborations } from './Collaborations'
 import { StudentReviews } from './StudentReviews'
 
 export const InitialView = () => {
+
 	return (
 		<Wrapper>
 			<Image src={initialImage} alt={''} />

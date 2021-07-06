@@ -22,6 +22,7 @@ const Paragraph = styled.p`
     grid-column: 18/18;
     cursor: pointer;
     padding: 0px 35px;
+    height: 100%;
 `
 
 const ProfileWrapper = styled.div`

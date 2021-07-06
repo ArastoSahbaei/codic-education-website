@@ -13,10 +13,12 @@ import help from '../../../../shared/images/icons/help.png'
 import feedback from '../../../../shared/images/icons/feedback.png'
 import exit from '../../../../shared/images/icons/logout.png'
 import AuthPath from '../../../../routes/AuthPath'
+import { useNavHeight } from '../../../../hooks/useNavHeight'
 import { nonAuthenticatedUser } from '../../../../shared/data/nonAuthenticatedUser'
 
 export const ProfileDropdown = () => {
 	const [, setAuthenticatedUser] = useContext(UserContext)
+	const { navHeight } = useNavHeight()
 	const history = useHistory()
 
 	const logout = () => {
@@ -35,7 +37,7 @@ export const ProfileDropdown = () => {
 	}
 
 	return (
-		<DropDownWrapper>
+		<DropDownWrapper style={{ top: `${navHeight}rem`}}>
 			{newDropdownItem(profile, 'Din Profil', AuthPath.profileView)}
 			{newDropdownItem(heart, 'Sparade Produkter (4)')}
 			<Div onClick={() => logout()}>
@@ -54,43 +56,52 @@ export const ProfileDropdown = () => {
 
 
 const Image = styled.img`
-width: 24px;
-height: 24px;
-filter: brightness(0) invert(0.7);
-align-self: center;
+		width: 24px;
+		height: 24px;
+		filter: brightness(0) invert(0.7);
+		align-self: center;
 `
 
 const Div = styled.div`
-	cursor: pointer;
-	display: flex;
-	&:hover ${Image} {
+		cursor: pointer;
+		display: flex;
+		&:hover ${Image} {
 		filter: brightness(0) invert(1);
-	}
+		}
 `
 
 const DropDownItem = styled.p`
     font-size: 1.1rem;
     color: white;
-	display: inline-block;
-	margin-left: 10px;
-
+		display: inline-block;
+		padding-left: 1rem;
+		height: 3rem;
+		display: flex;
+		justify-content: center;
+		align-items: center;
 `
 
 const HR = styled.hr`
-	display: block;
-	height: 1px;
-	border: 0;
-	border-top: 1px solid #ccc;
-	margin: 1em 0;
-	padding: 0;
+		display: block;
+		height: 1px;
+		border: 0;
+		border-top: 1px solid #ccc;
+		margin: 1em 0;
+		padding: 0;
 `
 
 export const DropDownWrapper = styled.div`
+		width: 20rem;
     visibility: hidden;
     position: absolute;
     background-color: #263746;
     padding: 10px 35px;
     opacity: 0;
     transition: visibility 0s, opacity 0.2s linear;
-	z-index: 100;
+		z-index: 100;
+
+		&:hover {
+    visibility: visible;
+    opacity: 1;
+    }
 `
