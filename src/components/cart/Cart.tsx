@@ -48,11 +48,11 @@ export const Cart = (props: { isCartOpen: boolean, setIsCartOpen: (value: boolea
 	}
 
 	const displayEmptyCart = () => {
-		return <div>
+		return <Div>
 			<CartImage src={emptyCart} alt='' />
 			<p>Din varukorg är tom.. <br /> Besök vår butik?</p>
 			<button onClick={() => navigateToShop()}>Butik</button> <br />
-		</div>
+		</Div>
 	}
 
 	return (
@@ -101,8 +101,14 @@ const Image = styled.img`
 	width: 130px;
 `
 
+const Div = styled.div`
+	margin-top: 80%;
+	text-align: center;
+`
+
 const CartImage = styled.img`
-	width: 100%;
+	width: 98%;
+	
 	opacity: 1;
 	animation-name: fadeInOpacity;
 	animation-iteration-count: 1;
