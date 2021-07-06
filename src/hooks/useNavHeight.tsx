@@ -17,7 +17,7 @@ export const useNavHeight = () => {
 	).reverse()
 
 	useEffect(() => {
-		setHeight(animation[scrollY] % animation.length)
+		setHeight(animation[Math.min(animation.length - 1, scrollY)])
 	}, [scrollY, setHeight])
 
 	return { navHeight: height }
