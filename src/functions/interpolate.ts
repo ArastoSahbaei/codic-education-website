@@ -6,9 +6,7 @@ export const interpolate = (start: number, end: number, precision: number) => {
 	const n =
     Math.max(start / precision, end / precision) -
     Math.min(start / precision, end / precision)
-	const x = Array.from(Array(n).keys())
+	return Array.from(Array(n).keys())
 		.map((v) => start + v * precision)
 		.concat(end)
-	console.log(x)
-	return x
 }
