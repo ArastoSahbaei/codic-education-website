@@ -1,4 +1,4 @@
-import React, { useContext, useState, useMemo, FC } from 'react'
+import React, { useContext, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { Profile } from '../profile/Profile'
 import { ScrollContext } from '../../../shared/providers/ScrollProvider'
@@ -42,12 +42,9 @@ export const DesktopNavigation = () => {
 		)
 	}
 
-
-	const BG = React.memo(NavBG)
-
 	return (
 		<Wrapper height={navHeight}>
-			<BG />
+			<NavBG />
 			<GridCell col="3/3">
 				<Image
 					src={logotype}

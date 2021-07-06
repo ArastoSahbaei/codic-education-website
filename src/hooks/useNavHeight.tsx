@@ -1,4 +1,4 @@
-import { useContext, useMemo, useState, useEffect } from 'react'
+import { useContext, useState, useEffect } from 'react'
 import { ScrollContext } from '../shared/providers/ScrollProvider'
 import { DESKTOP_NAV_HEIGHT, DESKTOP_NAV_HEIGHT_SMALL } from '../shared/styles/constants'
 
