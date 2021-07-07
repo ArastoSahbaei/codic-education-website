@@ -7,10 +7,10 @@ export const Profile = () => {
 	const [authenticatedUser] = useContext(UserContext)
 
 	return (
-		<ProfileWrapper>
+		<ProfileContainer>
 			<Paragraph>{authenticatedUser.username}</Paragraph>
 			<ProfileDropdown />
-		</ProfileWrapper>
+		</ProfileContainer>
 	)
 }
 
@@ -25,7 +25,7 @@ const Paragraph = styled.p`
     height: 100%;
 `
 
-const ProfileWrapper = styled.div`
+const ProfileContainer = styled.div`
     place-self: center;
     &:hover ${DropDownWrapper} {
         visibility: visible;
