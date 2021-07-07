@@ -20,7 +20,7 @@ export const CheckoutView = () => {
 const Wrapper = styled.div`
   width: 86vw;
   margin: auto;
-	padding-bottom: 1rem;
+  padding-bottom: 1rem;
 `
 
 const Section = styled.section`
@@ -30,8 +30,8 @@ const Section = styled.section`
 const Headline = styled.h2`
   width: 100%;
   text-align: center;
-	height: 6rem;
+  height: 6rem;
   display: flex;
-	justify-content: center;
-	align-items: center;
+  justify-content: center;
+  align-items: center;
 `
