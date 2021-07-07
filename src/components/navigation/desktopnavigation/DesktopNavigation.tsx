@@ -53,7 +53,7 @@ export const DesktopNavigation = () => {
 						onClick={() => history.push(RoutingPath.initialView)}
 					/>
 				</GridCell>
-				<GridCell col="5/9">
+				<GridCell col="5/17">
 					<ParagraphWrapper>
 						<Paragraph>Vår Vision</Paragraph>
 						<Paragraph onClick={() => history.push(RoutingPath.employeeView)}>
@@ -120,6 +120,7 @@ const Paragraph = styled.p`
     text-transform: uppercase;
     color: white;
     align-self: center;
+    margin: 0 24px;
 `
 
 const Button = styled.p`
@@ -140,8 +141,6 @@ export const Paragraph2 = styled.p`
 `
 
 const ParagraphWrapper = styled.div`
-    display: flex;
-    justify-content: space-between;
     display: flex;
 `
 
