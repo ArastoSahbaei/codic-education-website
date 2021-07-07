@@ -3,7 +3,6 @@ import { useContext } from 'react'
 import { UserContext } from '../../../../shared/providers/UserProvider'
 import RoutingPath from '../../../../routes/RoutingPath'
 import styled from 'styled-components'
-import LocalStorage from '../../../../shared/cache/LocalStorage'
 import profile from '../../../../shared/images/icons/user.png'
 import heart from '../../../../shared/images/icons/heart.png'
 import language from '../../../../shared/images/icons/language.png'
@@ -14,16 +13,14 @@ import feedback from '../../../../shared/images/icons/feedback.png'
 import exit from '../../../../shared/images/icons/logout.png'
 import AuthPath from '../../../../routes/AuthPath'
 import { useNavHeight } from '../../../../hooks/useNavHeight'
-import { nonAuthenticatedUser } from '../../../../shared/data/nonAuthenticatedUser'
 
 export const ProfileDropdown = () => {
-	const [, setAuthenticatedUser] = useContext(UserContext)
+	const authenticatedUser = useContext(UserContext)
 	const { navHeight } = useNavHeight()
 	const history = useHistory()
 
 	const logout = () => {
-		localStorage.removeItem(LocalStorage.authenticationToken)
-		setAuthenticatedUser(nonAuthenticatedUser)
+		authenticatedUser.logout()
 		history.push(RoutingPath.initialView)
 	}
 
@@ -37,7 +34,7 @@ export const ProfileDropdown = () => {
 	}
 
 	return (
-		<DropDownWrapper style={{ top: `${navHeight}rem`}}>
+		<DropDownWrapper style={{ top: `${navHeight}rem` }}>
 			{newDropdownItem(profile, 'Din Profil', AuthPath.profileView)}
 			{newDropdownItem(heart, 'Sparade Produkter (4)')}
 			<Div onClick={() => logout()}>

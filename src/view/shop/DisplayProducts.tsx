@@ -2,29 +2,17 @@ import { useContext } from 'react'
 import { UserContext } from '../../shared/providers/UserProvider'
 import styled from 'styled-components'
 /* import { ToggleCartContext } from '../../../../shared/provider/ToggleCartProvider' */
-import { useHistory } from 'react-router-dom'
 import { useFetch } from '../../hooks/useFetch'
 import CodicAPIService from '../../shared/api/services/CodicAPIService'
 
 export const DisplayProducts = () => {
-	const history = useHistory()
 	/* const [, setIsShoppingBagOpen] = useContext(ToggleCartContext) */
 
-	const [authenticatedUser, setAuthenticatedUser] = useContext(UserContext)
-	const { data, loading, error } = useFetch(CodicAPIService.getAllProducts)
+	const authenticatedUser = useContext(UserContext)
+	const { data, loading, } = useFetch(CodicAPIService.getAllProducts)
 
 	const addToCart = async (productId: string) => {
-		try {
-			const updatedCart = [...authenticatedUser?.shoppingCart?.products, productId]
-			const { data } = await CodicAPIService.updateCart({
-				cartId: authenticatedUser.shoppingCart._id,
-				products: updatedCart
-			})
-			/* 	setIsShoppingBagOpen(true) */
-			setAuthenticatedUser({ ...authenticatedUser, shoppingCart: { ...authenticatedUser.shoppingCart, products: data.products } })
-		} catch (error) {
-			console.log(error)
-		}
+		authenticatedUser.addToCart(productId)
 	}
 
 	const displayData = () => {

@@ -2,7 +2,6 @@ import { useContext } from 'react'
 import { useHistory } from 'react-router-dom'
 import { UserContext } from '../../shared/providers/UserProvider'
 import { CheckoutOptions } from './CheckoutOptions'
-import CodicAPIService from '../../shared/api/services/CodicAPIService'
 import exit from '../../shared/images/icons/cross.svg'
 import trash from '../../shared/images/icons/trash.png'
 import emptyCart from '../../shared/images/empty_cart.png'
@@ -12,15 +11,10 @@ import RoutingPath from '../../routes/RoutingPath'
 export const Cart = (props: { isCartOpen: boolean, setIsCartOpen: (value: boolean) => void }) => {
 	const history = useHistory()
 	const { isCartOpen, setIsCartOpen } = props
-	const [authenticatedUser, setAuthenticatedUser] = useContext(UserContext)
+	const authenticatedUser = useContext(UserContext)
 
 	const removeProductFromCart = async (array: [], index: number) => {
-		const newArray = [...array.slice(0, index), ...array.slice(index + 1)]
-		await CodicAPIService.updateCart({
-			cartId: authenticatedUser?.shoppingCart?._id,
-			products: newArray
-		})
-		setAuthenticatedUser({ ...authenticatedUser, shoppingCart: { ...authenticatedUser.shoppingCart, products: newArray } })
+		authenticatedUser.removeProductFromCart(array, index)
 	}
 
 	const displayCartWithItems = () => {
@@ -30,7 +24,7 @@ export const Cart = (props: { isCartOpen: boolean, setIsCartOpen: (value: boolea
 					<Image /* onClick={() => navigateToProductDetail(product)} */
 						src={'https://picsum.photos/200/200'}
 						alt='' />
-					<Icon onClick={() => removeProductFromCart(authenticatedUser.shoppingCart.products, index)}
+					<Icon onClick={() => removeProductFromCart(authenticatedUser.shoppingCart.products as [], index)}
 						src={trash}
 						alt={''} />
 					<List>titel: {product.title}</List>
@@ -57,9 +51,9 @@ export const Cart = (props: { isCartOpen: boolean, setIsCartOpen: (value: boolea
 
 	return (
 		<CartWrapper isOpen={isCartOpen}>
-			<span>{authenticatedUser.shoppingCart.products.length} föremål i varukorgen</span>
+			<span>{authenticatedUser?.shoppingCart?.products?.length} föremål i varukorgen</span>
 			<ExitImage src={exit} alt={''} onClick={() => setIsCartOpen(false)} />
-			{authenticatedUser.shoppingCart.products.length !== 0 ? displayCartWithItems() : displayEmptyCart()}
+			{authenticatedUser?.shoppingCart?.products?.length !== 0 ? displayCartWithItems() : displayEmptyCart()}
 		</CartWrapper>
 	)
 }

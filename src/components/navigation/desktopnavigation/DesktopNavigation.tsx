@@ -1,8 +1,8 @@
 import React, { useContext, useState, useMemo } from 'react'
 import { useHistory } from 'react-router-dom'
 import { Profile } from '../profile/Profile'
-import { ScrollContext } from '../../../shared/providers/ScrollProvider'
-import { useNavHeight } from '../../../hooks/useNavHeight'
+import { ScrollContext } from './../../../shared/providers/ScrollProvider'
+import { useNavHeight } from './../../../hooks/useNavHeight'
 import { UserContext } from '../../../shared/providers/UserProvider'
 import { Cart } from '../../cart/Cart'
 import { BackDrop } from '../../BackDrop'
@@ -26,7 +26,7 @@ export const DesktopNavigation = () => {
 	const { navHeight } = useNavHeight()
 
 	const [isCartOpen, setIsCartOpen] = useState<boolean>(false)
-	const [authenticatedUser] = useContext(UserContext)
+	const authenticatedUser = useContext(UserContext)
 
 	const displayAuthentication = () => {
 		return authenticatedUser.authenticated

@@ -7,12 +7,12 @@ import { Product } from '../../shared/interfaces/ProductsInterface'
 import { UserContext } from '../../shared/providers/UserProvider'
 
 export const CheckoutOptions = (props: { setIsCartOpen: (value: boolean) => void }) => {
-	const [authenticatedUser] = useContext(UserContext)
+	const authenticatedUser = useContext(UserContext)
 	const history = useHistory()
 
 	const getTotalPrice = () => {
 		let totalPrice = 0
-		authenticatedUser.shoppingCart.products.map((item: Product) => totalPrice = totalPrice + item.price)
+		authenticatedUser?.shoppingCart?.products?.map((item: any) => {totalPrice = totalPrice + item.price})
 		return totalPrice
 	}
 
