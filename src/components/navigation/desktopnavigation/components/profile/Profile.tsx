@@ -1,10 +1,10 @@
-import styled from 'styled-components'
 import { useContext } from 'react'
-import { UserContext } from '../../../shared/providers/UserProvider'
+import { UserContext } from '../../../../../shared/providers/UserProvider'
 import { DropDownWrapper, ProfileDropdown } from './profiledropdown/ProfileDropdown'
+import styled from 'styled-components'
 
 export const Profile = () => {
-	const [authenticatedUser,] = useContext(UserContext)
+	const [authenticatedUser] = useContext(UserContext)
 
 	return (
 		<ProfileWrapper>
@@ -22,13 +22,13 @@ const Paragraph = styled.p`
     grid-column: 18/18;
     cursor: pointer;
     padding: 0px 35px;
+    height: 100%;
 `
 
 const ProfileWrapper = styled.div`
-    grid-column: 18/18;
-    place-self:center;
+    place-self: center;
     &:hover ${DropDownWrapper} {
-        visibility:visible;
-        opacity:1;
+        visibility: visible;
+        opacity: 1;
     }
 `
