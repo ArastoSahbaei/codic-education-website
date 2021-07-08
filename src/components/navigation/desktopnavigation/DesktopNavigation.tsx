@@ -1,32 +1,28 @@
-import React, { useContext, useState, useMemo } from 'react'
+import { useContext, useState, useMemo } from 'react'
 import { useHistory } from 'react-router-dom'
-import { Profile } from '../profile/Profile'
+import { Profile } from './components/profile/Profile'
+import { DropDownWrapper } from './components/profile/profiledropdown/ProfileDropdown'
 import { ScrollContext } from '../../../shared/providers/ScrollProvider'
 import { useNavHeight } from '../../../hooks/useNavHeight'
 import { UserContext } from '../../../shared/providers/UserProvider'
-import { Cart } from '../../cart/Cart'
-import { BackDrop } from '../../BackDrop'
 import { CartToggler } from './components/CartToggler'
+import { BackDrop } from '../../BackDrop'
+import { Cart } from '../../cart/Cart'
 import styled from 'styled-components'
 import RoutingPath from '../../../routes/RoutingPath'
 import logotype from '../../../shared/images/codiclogotype.svg'
-import { DropDownWrapper } from '../profile/profiledropdown/ProfileDropdown'
 
 export const NavBG = () => {
 	const { fractions } = useContext(ScrollContext)
-
 	const opacity = useMemo(() => Math.max(0.5, 1 - fractions), [fractions])
-
 	return <WrapperBackground style={{ opacity: opacity }} />
 }
 
 export const DesktopNavigation = () => {
 	const history = useHistory()
-
-	const { navHeight } = useNavHeight()
-
 	const [isCartOpen, setIsCartOpen] = useState<boolean>(false)
 	const [authenticatedUser] = useContext(UserContext)
+	const { navHeight } = useNavHeight()
 
 	const displayAuthentication = () => {
 		return authenticatedUser.authenticated
@@ -57,13 +53,13 @@ export const DesktopNavigation = () => {
 					<ParagraphWrapper>
 						<Paragraph>Vår Vision</Paragraph>
 						<Paragraph onClick={() => history.push(RoutingPath.employeeView)}>
-              Team Codic
+							Team Codic
 						</Paragraph>
 						<Paragraph onClick={() => history.push(RoutingPath.contactView)}>
-              Kontakt
+							Kontakt
 						</Paragraph>
 						<Paragraph onClick={() => history.push(RoutingPath.shopView)}>
-              Butik
+							Butik
 						</Paragraph>
 					</ParagraphWrapper>
 				</GridCell>

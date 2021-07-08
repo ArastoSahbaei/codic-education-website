@@ -1,20 +1,20 @@
 import { useHistory } from 'react-router'
 import { useContext } from 'react'
-import { UserContext } from '../../../../shared/providers/UserProvider'
-import RoutingPath from '../../../../routes/RoutingPath'
+import { UserContext } from '../../../../../../shared/providers/UserProvider'
+import { useNavHeight } from '../../../../../../hooks/useNavHeight'
+import { nonAuthenticatedUser } from '../../../../../../shared/data/nonAuthenticatedUser'
+import RoutingPath from '../../../../../../routes/RoutingPath'
 import styled from 'styled-components'
-import LocalStorage from '../../../../shared/cache/LocalStorage'
-import profile from '../../../../shared/images/icons/user.png'
-import heart from '../../../../shared/images/icons/heart.png'
-import language from '../../../../shared/images/icons/language.png'
-import location from '../../../../shared/images/icons/location.png'
-import data from '../../../../shared/images/icons/data.png'
-import help from '../../../../shared/images/icons/help.png'
-import feedback from '../../../../shared/images/icons/feedback.png'
-import exit from '../../../../shared/images/icons/logout.png'
-import AuthPath from '../../../../routes/AuthPath'
-import { useNavHeight } from '../../../../hooks/useNavHeight'
-import { nonAuthenticatedUser } from '../../../../shared/data/nonAuthenticatedUser'
+import LocalStorage from '../../../../../../shared/cache/LocalStorage'
+import profile from '../../../../../../shared/images/icons/user.png'
+import heart from '../../../../../../shared/images/icons/heart.png'
+import language from '../../../../../../shared/images/icons/language.png'
+import location from '../../../../../../shared/images/icons/location.png'
+import data from '../../../../../../shared/images/icons/data.png'
+import help from '../../../../../../shared/images/icons/help.png'
+import feedback from '../../../../../../shared/images/icons/feedback.png'
+import exit from '../../../../../../shared/images/icons/logout.png'
+import AuthPath from '../../../../../../routes/AuthPath'
 
 export const ProfileDropdown = () => {
 	const [, setAuthenticatedUser] = useContext(UserContext)
@@ -37,7 +37,7 @@ export const ProfileDropdown = () => {
 	}
 
 	return (
-		<DropDownWrapper style={{ top: `${navHeight}rem`}}>
+		<DropDownWrapper style={{ top: `${navHeight}rem` }}>
 			{newDropdownItem(profile, 'Din Profil', AuthPath.profileView)}
 			{newDropdownItem(heart, 'Sparade Produkter (4)')}
 			<Div onClick={() => logout()}>
