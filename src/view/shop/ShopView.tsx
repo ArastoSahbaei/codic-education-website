@@ -1,4 +1,4 @@
-import { DisplayProducts } from './DisplayProducts'
+import { DisplayProducts } from './components/DisplayProducts'
 
 export const ShopView = () => {
 	return (

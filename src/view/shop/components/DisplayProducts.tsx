@@ -1,9 +1,9 @@
 import { useContext } from 'react'
 import { useHistory } from 'react-router-dom'
-import { useFetch } from '../../hooks/useFetch'
-import { UserContext } from '../../shared/providers/UserProvider'
+import { useFetch } from '../../../hooks/useFetch'
+import { UserContext } from '../../../shared/providers/UserProvider'
 import { toast } from 'react-toastify'
-import CodicAPIService from '../../shared/api/services/CodicAPIService'
+import CodicAPIService from '../../../shared/api/services/CodicAPIService'
 import styled from 'styled-components'
 
 
@@ -32,10 +32,10 @@ export const DisplayProducts = () => {
 				<ProductWrapper key={item?._id}>
 					<ImageParent>
 						<Image src={'https://picsum.photos/200/200'} alt=''/*  onClick={() => history.push(RoutingPath.productDetailsView(item._id), item)} */ />
-					</ImageParent>
-					<Paragraph>Herbaman Co.</Paragraph>
-					<Paragraph>{item.title}</Paragraph>
-					<Paragraph>{item.price} kr</Paragraph>
+					</ImageParent> <br />
+					<Paragraph>Herbaman Co.</Paragraph> <br />
+					<Paragraph>{item.title}</Paragraph> <br />
+					<Paragraph>{item.price} kr</Paragraph> <br />
 					<Button onClick={() => addToCart(item._id)}>Addera till varukorg</Button>
 				</ProductWrapper>
 			)
