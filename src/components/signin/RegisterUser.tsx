@@ -18,7 +18,7 @@ export interface RegisterNewUserData {
 }
 
 export const RegisterUser: FC<RegisterNewUserData> = ({data}: RegisterNewUserData) => {
-	const [receiveNewsLetters] = useState<string>('Ja tack! Jag vill registrera mig på Codics nyhetsbrev.')
+	const [receiveNewsLetters] = useState<string>('Ja tack! Registrera mig till Codics nyhetsbrev.')
 	const [registerButton] = useState<string>('Registrera')
 	const [checked, setChecked] = useState<boolean>(true)
 	
@@ -75,9 +75,9 @@ export const RegisterUser: FC<RegisterNewUserData> = ({data}: RegisterNewUserDat
 					} }/>
 			</Form>
 			<WrapperNewsLetter>
-				<span onClick={ handleCheckboxChange }>
+				<Span onClick={ handleCheckboxChange }>
 					<Checkbox checked={ checked }/>
-				</span>
+				</Span>
 				<Paragraph>{ receiveNewsLetters } </Paragraph>
 			</WrapperNewsLetter>
 			<Button onClick={ sendDataToParent }>{ registerButton }</Button>
@@ -85,9 +85,14 @@ export const RegisterUser: FC<RegisterNewUserData> = ({data}: RegisterNewUserDat
 	)
 }
 
+const Span = styled.span`
+  justify-self: end;
+  margin-right: 10px;
+`
+
 const WrapperNewsLetter = styled.div`
   display: grid;
-  grid-template-columns: 1fr 5fr;
+  grid-template-columns: 1fr 4fr;
 `
 
 const Paragraph = styled.p`

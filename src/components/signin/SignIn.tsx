@@ -43,7 +43,7 @@ export const SignIn: FC<SignInProps> = ({data}: SignInProps) => {
 }
 
 const Paragraph = styled.p`
-  margin: 0 0 0 1.8em;
+  margin: 0 0 0 2.6em;
   text-align: left;
 `
 

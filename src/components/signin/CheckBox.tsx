@@ -23,7 +23,7 @@ export const Checkbox = ({className, checked}: CheckboxProps) => {
 const CheckboxContainer = styled.div`
   display: inline-block;
   vertical-align: middle;
-  margin-top: 0.5em;
+  margin-top: 0.4em;
 `
 
 const Icon = styled.svg`
@@ -51,8 +51,8 @@ interface value {
 
 const StyledCheckbox = styled.div<value>`
   display: inline-block;
-  width: 16px;
-  height: 16px;
+  width: 1.5em;
+  height: 1.5em;
   background: white;
   border-radius: 4px;
   transition: all 150ms;
