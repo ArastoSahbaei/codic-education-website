@@ -1,7 +1,7 @@
 import initialImage from '../../shared/images/teacher3.jpg'
 import styled from 'styled-components'
-import { Collaborations } from './Collaborations'
-import { StudentReviews } from './StudentReviews'
+import { Collaborations } from './components/Collaborations'
+import { StudentReviews } from './components/StudentReviews'
 
 export const InitialView = () => {
 
