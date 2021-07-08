@@ -1,4 +1,4 @@
-import initialImage from '../../shared/images/teacher3.jpg'
+import backgroundImage from '../../shared/images/teacher3.jpg'
 import styled from 'styled-components'
 import { Collaborations } from './Collaborations'
 import { StudentReviews } from './StudentReviews'
@@ -6,7 +6,7 @@ import { StudentReviews } from './StudentReviews'
 export const InitialView = () => {
 	return (
 		<Wrapper>
-			<Image src={initialImage} alt={''} />
+			<Image src={backgroundImage} alt={'background of a teacher'} />
 			<Paragraph>Lorem ipsum dolor sit amet consectetur
 				<br /> adipisicing elit. Possimus, fugiat?</Paragraph>
 			<Collaborations />

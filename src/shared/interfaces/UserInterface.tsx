@@ -15,5 +15,5 @@ export interface RegisterNewUser {
 	username: string,
 	password: string,
 	email: string
-	recieveNewsLetters: boolean | false
+	receiveNewsLetters: boolean | false
 }
