@@ -1,17 +1,21 @@
 import { useContext } from 'react'
 import styled from 'styled-components'
-import { ProductList } from '../../components/checkout/product-list'
+import { ProductList } from './components/product-list'
 import { UserContext } from '../../shared/providers/UserProvider'
+import { useCart } from 'hooks/useCart'
 
 export const CheckoutView = () => {
 	const [authenticatedUser] = useContext(UserContext)
 	const products = authenticatedUser?.shoppingCart?.products
+	const { removeFromCart } = useCart()
+
+	const onRemove = async (productId: string) => await removeFromCart(productId)
 
 	return (
 		<Wrapper>
 			<Section>
 				<Headline>Steg 1 - Din kundvagn</Headline>
-				<ProductList products={products} />
+				<ProductList products={products} onRemove={onRemove} />
 			</Section>
 		</Wrapper>
 	)

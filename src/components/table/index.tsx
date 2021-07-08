@@ -1,22 +1,29 @@
-import { FC } from 'react'
+import { translate } from 'functions/translate'
+import { FC, useMemo } from 'react'
 import styled from 'styled-components'
 import { ITable, ITableColumn, ITableRow } from './types'
 
-const getKeys = (table: ITable) =>
-	table.rows && table.rows.length
-		? table.rows[0].columns.map((row) => row.name)
+const getKeys = (rows: ITableRow[]) =>
+	rows && rows.length
+		? rows[0].columns.filter((col) => !col.hidden).map((col) => col.name)
 		: []
 
 const keysToColumns = (keys: string[]): ITableColumn[] =>
 	keys.map((key) => ({ name: key, value: key }))
 
 export const TableColumn: FC<ITableColumn> = (props: ITableColumn) => {
-	const { value, onClick, th } = props
+	const { value, onClick, th, hidden } = props
 
 	const ColumnComponent = th ? ColumnHeadWrapper : ColumnWrapper
-	return (
+
+	const renderedValue = useMemo(() => (th ? translate(value) : value), [th])
+	return hidden ? (
+		<></>
+	) : (
 		<ColumnComponent>
-			<ColumnInner onClick={onClick}>{value}</ColumnInner>
+			<ColumnInner onClick={onClick && props.row && (() => onClick(props.row))}>
+				{renderedValue}
+			</ColumnInner>
 		</ColumnComponent>
 	)
 }
@@ -24,9 +31,13 @@ export const TableColumn: FC<ITableColumn> = (props: ITableColumn) => {
 export const TableRow: FC<ITableRow> = (props: ITableRow) => {
 	const { columns, th } = props
 
+	const columnsWithRef = columns.map((col) =>
+		Object.assign(col, { row: props })
+	)
+
 	return (
 		<RowWrapper>
-			{columns.map((col, i) => (
+			{columnsWithRef.map((col, i) => (
 				<TableColumn th={th} key={i} {...col} />
 			))}
 		</RowWrapper>
@@ -34,11 +45,24 @@ export const TableRow: FC<ITableRow> = (props: ITableRow) => {
 }
 
 export const Table: FC<ITable> = (props: ITable) => {
-	const { rows, lastColumn } = props
-	const keys = keysToColumns(getKeys(props))
+	const { rows, lastColumn, filter } = props
+
+	const filteredRows: ITableRow[] = filter
+		? rows.map((row) =>
+			Object.assign(row, {
+				columns: row.columns.map((col: ITableColumn) =>
+					!filter(col) ? Object.assign(col, { hidden: true }) : col
+				),
+			})
+		)
+		: rows
+
+	const keys = keysToColumns(getKeys(filteredRows))
 
 	if (lastColumn) {
-		rows.forEach((row) => (row.columns[row.columns.length - 1] = lastColumn))
+		filteredRows.forEach(
+			(row) => (row.columns[row.columns.length - 1] = lastColumn)
+		)
 	}
 	return (
 		<TableWrapper>
@@ -48,7 +72,7 @@ export const Table: FC<ITable> = (props: ITable) => {
 				</thead>
 			)}
 			<tbody>
-				{rows.map((row, i) => (
+				{filteredRows.map((row, i) => (
 					<TableRow key={i} {...row} />
 				))}
 			</tbody>
@@ -57,26 +81,26 @@ export const Table: FC<ITable> = (props: ITable) => {
 }
 
 const TableWrapper = styled.table`
-    text-align: left;
-    width: 100%;
-    border-collapse: collapse;
+  text-align: left;
+  width: 100%;
+  border-collapse: collapse;
 `
 
 const ColumnWrapper = styled.td`
-    padding: 1rem;
-    color: #f59300;
+  padding: 1rem;
+  color: #f59300;
 `
 
 const ColumnHeadWrapper = styled.th`
-    padding: 1rem;
+  padding: 1rem;
 `
 
 const ColumnInner = styled.span`
-    font-weight: 200;
+  font-weight: 200;
 `
 
 const RowWrapper = styled.tr`
-    border-bottom-style: solid;
-    border-bottom-width: 2px;
-    border-bottom-color: #263746;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #263746;
 `
