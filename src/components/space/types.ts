@@ -1,3 +1,3 @@
 export interface ISpace {
-    space:number
+	space: number
 }
