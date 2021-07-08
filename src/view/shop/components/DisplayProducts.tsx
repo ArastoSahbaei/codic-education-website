@@ -1,15 +1,14 @@
 import { useContext } from 'react'
-import { UserContext } from '../../shared/providers/UserProvider'
-import styled from 'styled-components'
-/* import { ToggleCartContext } from '../../../../shared/provider/ToggleCartProvider' */
 import { useHistory } from 'react-router-dom'
-import { useFetch } from '../../hooks/useFetch'
-import CodicAPIService from '../../shared/api/services/CodicAPIService'
+import { useFetch } from '../../../hooks/useFetch'
+import { UserContext } from '../../../shared/providers/UserProvider'
+import { toast } from 'react-toastify'
+import CodicAPIService from '../../../shared/api/services/CodicAPIService'
+import styled from 'styled-components'
+
 
 export const DisplayProducts = () => {
 	const history = useHistory()
-	/* const [, setIsShoppingBagOpen] = useContext(ToggleCartContext) */
-
 	const [authenticatedUser, setAuthenticatedUser] = useContext(UserContext)
 	const { data, loading, error } = useFetch(CodicAPIService.getAllProducts)
 
@@ -20,8 +19,8 @@ export const DisplayProducts = () => {
 				cartId: authenticatedUser.shoppingCart._id,
 				products: updatedCart
 			})
-			/* 	setIsShoppingBagOpen(true) */
 			setAuthenticatedUser({ ...authenticatedUser, shoppingCart: { ...authenticatedUser.shoppingCart, products: data.products } })
+			toast.success(' ✔️ Adderat produkt till varukorg')
 		} catch (error) {
 			console.log(error)
 		}
@@ -33,10 +32,10 @@ export const DisplayProducts = () => {
 				<ProductWrapper key={item?._id}>
 					<ImageParent>
 						<Image src={'https://picsum.photos/200/200'} alt=''/*  onClick={() => history.push(RoutingPath.productDetailsView(item._id), item)} */ />
-					</ImageParent>
-					<Paragraph>Herbaman Co.</Paragraph>
-					<Paragraph>{item.title}</Paragraph>
-					<Paragraph>{item.price} kr</Paragraph>
+					</ImageParent> <br />
+					<Paragraph>Herbaman Co.</Paragraph> <br />
+					<Paragraph>{item.title}</Paragraph> <br />
+					<Paragraph>{item.price} kr</Paragraph> <br />
 					<Button onClick={() => addToCart(item._id)}>Addera till varukorg</Button>
 				</ProductWrapper>
 			)

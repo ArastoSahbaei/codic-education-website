@@ -2,9 +2,9 @@ import React, { useState, createContext, useEffect, useCallback } from 'react'
 import { useWindowDimensions } from '../../hooks/useWindowDimensions'
 
 export const ScrollContext = createContext<{
-  scrollY: number;
-  percentage: number;
-  fractions: number;
+	scrollY: number;
+	percentage: number;
+	fractions: number;
 }>({ scrollY: 0, percentage: 0, fractions: 0 })
 
 export const ScrollProvider = (props: { children?: React.ReactChild }) => {

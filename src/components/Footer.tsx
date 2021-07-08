@@ -1,11 +1,11 @@
-import styled from 'styled-components'
 import { useHistory } from 'react-router-dom'
+import { getCurrentYear } from '../functions/getCurrentYear'
+import { primaryColor, secondaryColor, primaryFont } from '../shared/styles/GlobalStyle'
+import styled from 'styled-components'
 import MapIcon from '../shared/images/map_icon.svg'
 import CopyRight from '../shared/images/copyright.svg'
-import ExternalPath from '../routes/ExternalPath'
-import { primaryColor, secondaryColor, primaryFont } from '../shared/styles/GlobalStyle'
-import { getCurrentYear } from '../functions/getCurrentYear'
 import RoutingPath from '../routes/RoutingPath'
+import ExternalPath from '../routes/ExternalPath'
 
 export const Footer = () => {
 	const history = useHistory()

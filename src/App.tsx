@@ -5,6 +5,7 @@ import { UserProvider } from './shared/providers/UserProvider'
 import { ScrollProvider } from './shared/providers/ScrollProvider'
 import { Space } from './components/space'
 import { useNavHeight } from './hooks/useNavHeight'
+import { ToastifyConfigurations } from './shared/configurations/ToastifyConfigurations'
 
 export const App = () => {
 	const { navHeight } = useNavHeight()
@@ -16,6 +17,7 @@ export const App = () => {
 					<GlobalStyle />
 					<Navigation />
 					<Space space={navHeight} />
+					<ToastifyConfigurations />
 				</Routes>
 			</ScrollProvider>
 		</UserProvider>

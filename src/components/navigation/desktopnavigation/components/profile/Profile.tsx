@@ -1,7 +1,7 @@
-import styled from 'styled-components'
 import { useContext } from 'react'
-import { UserContext } from '../../../shared/providers/UserProvider'
+import { UserContext } from '../../../../../shared/providers/UserProvider'
 import { DropDownWrapper, ProfileDropdown } from './profiledropdown/ProfileDropdown'
+import styled from 'styled-components'
 
 export const Profile = () => {
 	const [authenticatedUser] = useContext(UserContext)

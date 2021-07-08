@@ -8,8 +8,8 @@ export const CartToggler = (props: { setIsCartOpen: (handler: boolean) => void }
 	const [authenticatedUser] = useContext(UserContext)
 
 	const displayAmountOfItemsInCart = () => {
-		return authenticatedUser.shoppingCart.products.length != 0 &&
-			<Span>{authenticatedUser.shoppingCart.products.length}</Span>
+		return authenticatedUser.shoppingCart.products.length != 0
+			&& <Span>{authenticatedUser.shoppingCart.products.length}</Span>
 	}
 
 	return (
