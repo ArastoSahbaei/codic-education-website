@@ -42,6 +42,7 @@ export const SignIn = (props: { changeRecoverPasswordView: () => void }) => {
 				<Input
 					type='password'
 					placeholder={'Lösenord'}
+					autoComplete='on'
 					onChange={(event) => { handleChange(event, 'password') }} />
 				<Paragraph onClick={() => { props.changeRecoverPasswordView() }}>Glömt lösenordet?</Paragraph>
 				<Button onClick={(event) => { signIn(event) }}>Logga In</Button>
