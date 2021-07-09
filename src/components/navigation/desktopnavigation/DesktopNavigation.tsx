@@ -65,7 +65,7 @@ export const DesktopNavigation = () => {
 				</GridCell>
 				<Cart isCartOpen={isCartOpen} setIsCartOpen={setIsCartOpen} />
 				{isCartOpen && <BackDrop drawerHandler={setIsCartOpen} />}
-				<GridCell col="18/18">{displayAuthentication()}</GridCell>
+				<GridCell col="17/19">{displayAuthentication()}</GridCell>
 			</Grid>
 		</Wrapper>
 	)
