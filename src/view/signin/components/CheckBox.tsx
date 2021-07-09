@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { primaryColor, secondaryColor } from '../../shared/styles/GlobalStyle'
+import { primaryColor, secondaryColor } from '../../../shared/styles/GlobalStyle'
 
 interface CheckboxProps {
 	className?: string

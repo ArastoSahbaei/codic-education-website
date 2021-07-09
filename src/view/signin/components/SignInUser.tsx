@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
-import { SignInProps } from '../../shared/interfaces/SingInInterface'
-import { Wrapper } from '../../shared/styles/SiginStyles'
+import { SignInProps } from '../../../shared/interfaces/SingInInterface'
+import { Wrapper } from '../../../shared/styles/SiginStyles'
 import { RecoverPassword } from './RecoverPassword'
 import { SignIn } from './SignIn'
 

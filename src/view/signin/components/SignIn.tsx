@@ -1,23 +1,16 @@
 import React, { FC, useState } from 'react'
 import styled from 'styled-components'
-import { SignInProps } from '../../shared/interfaces/SingInInterface'
-import { primaryColor } from '../../shared/styles/GlobalStyle'
-import { Button, Form, Header1, Input, RowWrapper } from '../../shared/styles/SiginStyles'
+import { SignInProps } from '../../../shared/interfaces/SingInInterface'
+import { primaryColor } from '../../../shared/styles/GlobalStyle'
+import { Button, Form, Header1, Input, RowWrapper } from '../../../shared/styles/SiginStyles'
 
 export const SignIn: FC<SignInProps> = ({data}: SignInProps) => {
 	const [loginUsername, setLoginUsername] = useState<string>('')
 	const [loginPassword, setLoginPassword] = useState<string>('')
-	const minLength = 5
 	const [loginButton] = useState<string>('Logga In')
 	
-	const sendDataToParent = () => {
-		if (loginUsername.length <= minLength) {
-			alert('För kort ' + data.usernameText)
-		} else if (loginPassword.length <= minLength) {
-			alert('För kort ' + data.passwordText)
-		} else {
-			data.logInUser(loginUsername, loginPassword)
-		}
+	const sendDataToParent = (event: React.MouseEvent<HTMLElement>) => {
+		data.logInUser(loginUsername, loginPassword, event)
 	}
 	return (
 		<RowWrapper>
@@ -35,16 +28,20 @@ export const SignIn: FC<SignInProps> = ({data}: SignInProps) => {
 					onChange={ (event) => {
 						setLoginPassword(event.target.value)
 					} }/>
-				<Paragraph>Glömt lösenordet? <Span onClick={ () => data.changeRecoverPasswordView() }>Klicka här!</Span></Paragraph>
-				<Button onClick={ sendDataToParent }>{ loginButton }</Button>
+				<Paragraph>Glömt lösenordet? <Span onClick={ () => {
+					data.changeRecoverPasswordView()
+				} }>Klicka här!</Span></Paragraph>
+				<Button onClick={ (event) => {
+					sendDataToParent(event)
+				} }>{ loginButton }</Button>
 			</Form>
 		</RowWrapper>
 	)
 }
 
 const Paragraph = styled.p`
-  margin: 0 0 0 2.6em;
-  text-align: left;
+  //margin: 0 0 0 2.6em;
+  //text-align: center;
 `
 
 const Span = styled.span`

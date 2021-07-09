@@ -1,5 +1,8 @@
-type SignInUserFunction = (username: string, password: string) => void
+import React from 'react'
+
+type SignInUserFunction = (username: string, password: string, event: React.MouseEvent<HTMLElement>) => void
 type SignInPropsFunction = () => void
+type RecoverPasswordFunction = (email: string, event: React.MouseEvent<HTMLElement>) => void
 
 export interface SignInProps {
 	data: {
@@ -10,6 +13,6 @@ export interface SignInProps {
 		logInUser: SignInUserFunction
 		showRecoverPasswordView: boolean
 		changeRecoverPasswordView: SignInPropsFunction
-		sendRecoverPasswordEmail: SignInPropsFunction
+		sendRecoverPasswordEmail: RecoverPasswordFunction
 	}
 }

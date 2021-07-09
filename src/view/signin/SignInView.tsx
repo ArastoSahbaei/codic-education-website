@@ -1,8 +1,8 @@
-import { useContext, useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { useHistory } from 'react-router'
 import styled from 'styled-components'
-import { RegisterNewUserData, RegisterUser } from '../../components/signin/RegisterUser'
-import { SignInUser } from '../../components/signin/SignInUser'
+import { RegisterNewUserData, RegisterUser } from './components/RegisterUser'
+import { SignInUser } from './components/SignInUser'
 import RoutingPath from '../../routes/RoutingPath'
 import CodicAPIService from '../../shared/api/services/CodicAPIService'
 import LocalStorage from '../../shared/cache/LocalStorage'
@@ -33,7 +33,8 @@ export const SignInView = () => {
 	const [passwordConfirmText] = useState<string>('Bekräfta lösenord')
 	const [passwordMismatched] = useState<string>('Lösenorden matchar ej!')
 	
-	const signIn = async () => {
+	const signIn = async (event: React.MouseEvent<HTMLElement>) => {
+		event.preventDefault()
 		try {
 			const {data} = await CodicAPIService.login(loginCredentials)
 			localStorage.setItem(LocalStorage.authenticationToken, data.token)
@@ -79,14 +80,14 @@ export const SignInView = () => {
 		}
 	}
 	
-	const logInUser = (username: string, password: string) => {
+	const logInUser = (username: string, password: string, event: React.MouseEvent<HTMLElement>) => {
 		console.log(username, password)
 		setLoginCredentials({
 			...loginCredentials,
 			username: username,
 			password: password
 		})
-		signIn()
+		signIn(event)
 	}
 	
 	const [showRecoverPasswordView, setShowRecoverPasswordView] = useState<boolean>(false)

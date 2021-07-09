@@ -1,22 +1,17 @@
 import React, { FC, useState } from 'react'
 import styled from 'styled-components'
-import leftArrow from '../../shared/images/icons/left-arrow.svg'
-import { SignInProps } from '../../shared/interfaces/SingInInterface'
-import { Button, Form, Header1, Input, RowWrapper } from '../../shared/styles/SiginStyles'
+import leftArrow from '../../../shared/images/icons/left-arrow.svg'
+import { SignInProps } from '../../../shared/interfaces/SingInInterface'
+import { Button, Form, Header1, Input, RowWrapper } from '../../../shared/styles/SiginStyles'
 
 export const RecoverPassword: FC<SignInProps> = ({data}: SignInProps) => {
 	const [recoverPasswordText] = useState<string>('Återställ lösenord')
 	const [email, setEmail] = useState<string>('')
-	const minLength = 5
 	const [resetPasswordButton] = useState<string>('Återställ nu')
 	
 	
-	const sendDataToParent = () => {
-		if (email.length <= minLength) {
-			alert('För kort email')
-		} else {
-			data.sendRecoverPasswordEmail()
-		}
+	const sendDataToParent = (event: React.MouseEvent<HTMLElement>) => {
+		data.sendRecoverPasswordEmail(email, event)
 	}
 	
 	return (
@@ -34,7 +29,9 @@ export const RecoverPassword: FC<SignInProps> = ({data}: SignInProps) => {
 					onChange={ (event) => {
 						setEmail(event.target.value)
 					} }/>
-				<Button onClick={ sendDataToParent }>{ resetPasswordButton }</Button>
+				<Button onClick={ (event) => {
+					sendDataToParent(event)
+				} }>{ resetPasswordButton }</Button>
 			</Form>
 		</RowWrapper>
 	)

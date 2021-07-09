@@ -1,6 +1,6 @@
 import React, { FC, useState } from 'react'
 import styled from 'styled-components'
-import { Button, Form, Header1, Input, Wrapper } from '../../shared/styles/SiginStyles'
+import { Button, Form, Header1, Input, Wrapper } from '../../../shared/styles/SiginStyles'
 import { Checkbox } from './CheckBox'
 
 type RegisterNewUserFunction = (username: string, email: string, password: string, newsLetter: boolean) => void
