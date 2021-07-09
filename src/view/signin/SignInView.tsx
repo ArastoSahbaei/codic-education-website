@@ -7,13 +7,13 @@ import RoutingPath from '../../routes/RoutingPath'
 
 export const SignInView = () => {
 	const history = useHistory()
-	const authenticatedUser = useContext(UserContext)
+	const {login} = useContext(UserContext)
 	const [registerUser, setRegisterUser] = useState<RegisterNewUser>({ username: '', password: '', email: '', recieveNewsLetters: true })
 	const [loginCredentials, setLoginCredentials] = useState<LoginCredentials>({ username: '', password: '' })
 
 	const signIn = async (event: React.MouseEvent<HTMLElement>) => {
 		event.preventDefault()
-		authenticatedUser.login(loginCredentials)
+		login(loginCredentials)
 		history.push(RoutingPath.initialView)
 	}
 

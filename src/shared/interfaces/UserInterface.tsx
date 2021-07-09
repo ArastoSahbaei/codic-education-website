@@ -11,12 +11,7 @@ export interface AuthenticatedUser {
 	shoppingCart: {
 		products: [] | Array<string>,
 		_id: string | undefined
-	},
-	login(loginCredentials: LoginCredentials): void,
-	logout(): void,
-	addToCart(productId: string): void,
-	removeProductFromCart(array: [], index: number): void,
-	parseJWT(): void
+	}
 }
 
 export interface RegisterNewUser {

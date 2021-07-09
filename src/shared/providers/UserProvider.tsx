@@ -4,34 +4,42 @@ import { nonAuthenticatedUser } from '../../shared/data/nonAuthenticatedUser'
 import LocalStorage from '../cache/LocalStorage'
 import CodicAPIService from '../api/services/CodicAPIService'
 
-export const UserContext = createContext<AuthenticatedUser>(nonAuthenticatedUser)
+type UserContextType = {
+	user: AuthenticatedUser
+	login: (loginCredentials: LoginCredentials) => void
+	logout: () => void
+	parseJWT: () => void
+	addToCart: (productId: string) => void
+	removeProductFromCart: (array: [], index: number) => void
+}
+
+export const UserContext = createContext<UserContextType>(
+	{} as UserContextType
+)
 
 export const UserProvider = (props: { children?: React.ReactChild }) => {
-	const [authenticatedUser, setAuthenticatedUser] = useState<AuthenticatedUser>(nonAuthenticatedUser)
+	const [user, setUser] = useState<AuthenticatedUser>(nonAuthenticatedUser)
 	const { children } = props
 
-	authenticatedUser.login = async (loginCredentials: LoginCredentials) => {
+	const login = async (loginCredentials: LoginCredentials) => {
 		try {
 			const { data } = await CodicAPIService.login(loginCredentials)
 			localStorage.setItem(LocalStorage.authenticationToken, data.token)
 			console.log(data)
-			setAuthenticatedUser(data)
+			setUser(data)
 		} catch (error) {
 			console.log(error)
 		}
 	}
-
-	authenticatedUser.logout = async () => {
+	const logout = async () => {
 		localStorage.removeItem(LocalStorage.authenticationToken)
-		setAuthenticatedUser(nonAuthenticatedUser)
+		setUser(nonAuthenticatedUser)
 	}
-
 	const validateToken = (tokenExp: number) => {
 		const currentTime = Math.floor(Date.now() / 1000)
 		return (tokenExp >= currentTime)
 	}
-
-	authenticatedUser.parseJWT = async () => {
+	const parseJWT = async () => {
 		const token = localStorage.getItem(LocalStorage.authenticationToken)
 		if (!token) { return }
 		const base64Url = token.split('.')[1]
@@ -42,38 +50,36 @@ export const UserProvider = (props: { children?: React.ReactChild }) => {
 			// TODO: There has to be a better way to recieve the username? You cannot just do a getUserWithID like this?
 			// TODO: Sign in with a new token instead of recieving the user with getUserWithID?
 			const { data } = await CodicAPIService.getUserWithID(JWT.id)
-			setAuthenticatedUser({ ...data, authenticated: true })
+			setUser({ ...data, authenticated: true })
 		} else {
-			setAuthenticatedUser(nonAuthenticatedUser)
+			setUser(nonAuthenticatedUser)
 			localStorage.removeItem(LocalStorage.authenticationToken)
 		}
 	}
-
-	authenticatedUser.addToCart = async (productId: string) => {
+	const addToCart = async (productId: string) => {
 		try {
-			const updatedCart = [...authenticatedUser?.shoppingCart?.products, productId]
+			const updatedCart = [...user?.shoppingCart?.products, productId]
 			const { data } = await CodicAPIService.updateCart({
-				cartId: authenticatedUser.shoppingCart._id,
+				cartId: user.shoppingCart._id,
 				products: updatedCart
 			})
 			/* 	setIsShoppingBagOpen(true) */
-			setAuthenticatedUser({ ...authenticatedUser, shoppingCart: { ...authenticatedUser.shoppingCart, products: data.products } })
+			setUser({ ...user, shoppingCart: { ...user.shoppingCart, products: data.products } })
 		} catch (error) {
 			console.log(error)
 		}
 	}
-	
-	authenticatedUser.removeProductFromCart = async (array: [], index: number) => {
+	const removeProductFromCart = async (array: [], index: number) => {
 		const newArray = [...array.slice(0, index), ...array.slice(index + 1)]
 		await CodicAPIService.updateCart({
-			cartId: authenticatedUser?.shoppingCart?._id,
+			cartId: user?.shoppingCart?._id,
 			products: newArray
 		})
-		setAuthenticatedUser({ ...authenticatedUser, shoppingCart: { ...authenticatedUser.shoppingCart, products: newArray } })
+		setUser({ ...user, shoppingCart: { ...user.shoppingCart, products: newArray } })
 	}
 
 	return (
-		<UserContext.Provider value={authenticatedUser}>
+		<UserContext.Provider value={{ user, login, logout, parseJWT, addToCart, removeProductFromCart }}>
 			{children}
 		</UserContext.Provider>
 	)

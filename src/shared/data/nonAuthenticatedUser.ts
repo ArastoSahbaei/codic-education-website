@@ -13,20 +13,5 @@ export const nonAuthenticatedUser = {
 	newsLetterSubscription: {
 		recieveNewsLetters: false,
 	},
-	favouriteProducts: [],
-	login: () => {
-		return null
-	},
-	logout: () => {
-		return null
-	},
-	removeProductFromCart: () => {
-		return null
-	},
-	addToCart: () => {
-		return null
-	},
-	parseJWT: () => {
-		return null
-	}
+	favouriteProducts: []
 }

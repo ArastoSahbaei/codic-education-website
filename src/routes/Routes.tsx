@@ -15,14 +15,10 @@ import AuthPath from './AuthPath'
 import AdminPath from './AdminPath'
 
 export const Routes = (props: { children: React.ReactChild[] }) => {
-	const authenticatedUser = useContext(UserContext)
+	const {user, parseJWT} = useContext(UserContext)
 
 	const blockRouteIfAuthenticated = (navigateToViewIfAuthenticated: React.FC) => {
-		return authenticatedUser.authenticated ? InitialView : navigateToViewIfAuthenticated
-	}
-
-	const parseJWT = async () => {
-		authenticatedUser.parseJWT()
+		return user.authenticated ? InitialView : navigateToViewIfAuthenticated
 	}
 
 	useEffect(() => {

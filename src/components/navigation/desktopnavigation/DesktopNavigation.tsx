@@ -21,11 +21,11 @@ export const NavBG = () => {
 export const DesktopNavigation = () => {
 	const history = useHistory()
 	const [isCartOpen, setIsCartOpen] = useState<boolean>(false)
-	const authenticatedUser = useContext(UserContext)
+	const {user} = useContext(UserContext)
 	const { navHeight } = useNavHeight()
 
 	const displayAuthentication = () => {
-		return authenticatedUser.authenticated
+		return user.authenticated
 			? (
 				<ProfileWrapper>
 					<Profile />

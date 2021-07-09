@@ -6,12 +6,12 @@ import freeReturns from '../../shared/images/icons/free-return.svg'
 import { UserContext } from '../../shared/providers/UserProvider'
 
 export const CheckoutOptions = (props: { setIsCartOpen: (value: boolean) => void }) => {
-	const authenticatedUser = useContext(UserContext)
+	const {user} = useContext(UserContext)
 	const history = useHistory()
 
 	const getTotalPrice = () => {
 		let totalPrice = 0
-		authenticatedUser.shoppingCart.products.map((item: any) => totalPrice = totalPrice + item.price)
+		user.shoppingCart.products.map((item: any) => totalPrice = totalPrice + item.price)
 		return totalPrice
 	}
 

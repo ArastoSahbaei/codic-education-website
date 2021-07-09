@@ -11,20 +11,16 @@ import RoutingPath from '../../routes/RoutingPath'
 export const Cart = (props: { isCartOpen: boolean, setIsCartOpen: (value: boolean) => void }) => {
 	const history = useHistory()
 	const { isCartOpen, setIsCartOpen } = props
-	const authenticatedUser = useContext(UserContext)
-
-	const removeProductFromCart = async (array: [], index: number) => {
-		authenticatedUser.removeProductFromCart(array, index)
-	}
+	const {user, removeProductFromCart} = useContext(UserContext)
 
 	const displayCartWithItems = () => {
 		return <DisplayCartWrapper>
-			{authenticatedUser?.shoppingCart?.products?.map((product: any, index: number) =>
+			{user?.shoppingCart?.products?.map((product: any, index: number) =>
 				<UList key={index}>
 					<Image /* onClick={() => navigateToProductDetail(product)} */
 						src={'https://picsum.photos/200/200'}
 						alt='' />
-					<Icon onClick={() => removeProductFromCart(authenticatedUser.shoppingCart.products as [], index)}
+					<Icon onClick={() => removeProductFromCart(user.shoppingCart.products as [], index)}
 						src={trash}
 						alt={''} />
 					<List>titel: {product.title}</List>
@@ -51,9 +47,9 @@ export const Cart = (props: { isCartOpen: boolean, setIsCartOpen: (value: boolea
 
 	return (
 		<CartWrapper isOpen={isCartOpen}>
-			<span>{authenticatedUser.shoppingCart.products.length} föremål i varukorgen</span>
+			<span>{user.shoppingCart.products.length} föremål i varukorgen</span>
 			<ExitImage src={exit} alt={''} onClick={() => setIsCartOpen(false)} />
-			{authenticatedUser.shoppingCart.products.length !== 0 ? displayCartWithItems() : displayEmptyCart()}
+			{user.shoppingCart.products.length !== 0 ? displayCartWithItems() : displayEmptyCart()}
 		</CartWrapper>
 	)
 }

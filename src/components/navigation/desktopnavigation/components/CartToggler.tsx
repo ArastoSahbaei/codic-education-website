@@ -5,11 +5,11 @@ import styled from 'styled-components'
 
 export const CartToggler = (props: { setIsCartOpen: (handler: boolean) => void }) => {
 	const { setIsCartOpen } = props
-	const authenticatedUser = useContext(UserContext)
+	const {user} = useContext(UserContext)
 
 	const displayAmountOfItemsInCart = () => {
-		return authenticatedUser.shoppingCart.products.length != 0
-			&& <Span>{authenticatedUser.shoppingCart.products.length}</Span>
+		return user.shoppingCart.products.length != 0
+			&& <Span>{user.shoppingCart.products.length}</Span>
 	}
 
 	return (
