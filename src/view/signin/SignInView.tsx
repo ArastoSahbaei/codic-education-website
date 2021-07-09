@@ -1,59 +1,17 @@
 import { useState } from 'react'
 import { DimensionsInterface } from '../../shared/interfaces/DimensionsInterface'
-import { RegisterNewUserData, RegisterNewUserFunction } from '../../shared/interfaces/SingInInterface'
 import { primaryBackgroundColor, primaryColor, secondaryColor } from '../../shared/styles/GlobalStyle'
-import { RegisterNewUser } from '../../shared/interfaces/UserInterface'
 import { RegisterUser } from './components/RegisterUser'
 import { windowsMaxWidth } from '../../shared/data/WindowsSizes'
 import { RecoverPassword } from './components/RecoverPassword'
 import { SignIn } from './components/SignIn'
-import CodicAPIService from '../../shared/api/services/CodicAPIService'
 import initialImage from '../../shared/images/teacher2.jpg'
 import styled from 'styled-components'
 
 export const SignInView = () => {
-	const [registerUser, setRegisterUser] = useState<RegisterNewUser>({ username: '', password: '', email: '', receiveNewsLetters: true })
 	const [showRecoverPasswordView, setShowRecoverPasswordView] = useState<boolean>(false)
 	const [loginView, setLoginView] = useState<boolean>(true)
-
-	const register = async (event: React.MouseEvent<HTMLElement>) => {
-		event.preventDefault()
-		try {
-			await CodicAPIService.registerNewUser(registerUser)
-			//TODO: If registration is successfull -> login the user and tell em to verify their email
-			alert('Sucessfully created your account!')
-		} catch (error) {
-			console.log(error)
-			alert(error)
-		}
-	}
-
-	const registerNewUser: RegisterNewUserFunction = (username, email, password, newsLetter, event) => {
-		console.log(username, email, password, newsLetter)
-		setRegisterUser({
-			username: username,
-			password: password,
-			email: email,
-			receiveNewsLetters: newsLetter
-		})
-		register(event)
-	}
-
-	const registerData: RegisterNewUserData = {
-		data: {
-			registerHeaderText: 'Registrera dig',
-			usernameText: 'Användarnamn',
-			passwordText: 'Lösenord',
-			passwordConfirmText: 'Bekräfta lösenord',
-			emailText: 'Email',
-			passwordMismatchedText: 'Lösenorden matchar ej!',
-			registerNewUser: registerNewUser,
-		}
-	}
-
-	const changeRecoverPasswordView = () => {
-		setShowRecoverPasswordView(!showRecoverPasswordView)
-	}
+	const changeRecoverPasswordView = () => { setShowRecoverPasswordView(!showRecoverPasswordView) }
 
 	return (
 		<Wrapper>
@@ -76,14 +34,14 @@ export const SignInView = () => {
 					</TitleWrapperItem>
 				</TitleWrapper>
 				{loginView
-					? <Wrapper>
+					? <Div>
 						{
 							showRecoverPasswordView
 								? <RecoverPassword changeRecoverPasswordView={changeRecoverPasswordView} />
 								: <SignIn changeRecoverPasswordView={changeRecoverPasswordView} />
 						}
-					</Wrapper>
-					: <RegisterUser data={registerData.data} />}
+					</Div>
+					: <RegisterUser />}
 			</MainWrapper>
 		</Wrapper>
 	)
@@ -97,6 +55,10 @@ interface ImageValues {
 const Wrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(20, 1fr);
+`
+
+const Div = styled.div`
+	padding: 2em;
 `
 
 const Image = styled.img<ImageValues>`
