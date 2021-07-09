@@ -11,7 +11,7 @@ export const RecoverPassword: FC<SignInProps> = ({data}: SignInProps) => {
 	
 	
 	const sendDataToParent = (event: React.MouseEvent<HTMLElement>) => {
-		data.sendRecoverPasswordEmail(email, event)
+		data.sendRecoverPasswordEmail({email, event})
 	}
 	
 	return (

@@ -10,7 +10,7 @@ export const SignIn: FC<SignInProps> = ({data}: SignInProps) => {
 	const [loginButton] = useState<string>('Logga In')
 	
 	const sendDataToParent = (event: React.MouseEvent<HTMLElement>) => {
-		data.logInUser(loginUsername, loginPassword, event)
+		data.logInUser({loginUsername, loginPassword, event})
 	}
 	return (
 		<RowWrapper>
