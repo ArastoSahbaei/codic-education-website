@@ -13,6 +13,18 @@ export const SignInView = () => {
 	const [loginView, setLoginView] = useState<boolean>(true)
 	const changeRecoverPasswordView = () => { setShowRecoverPasswordView(!showRecoverPasswordView) }
 
+	const determineView = () => {
+		return (
+			<Padding>
+				{
+					showRecoverPasswordView
+						? <RecoverPassword changeRecoverPasswordView={changeRecoverPasswordView} />
+						: <SignIn changeRecoverPasswordView={changeRecoverPasswordView} />
+				}
+			</Padding>
+		)
+	}
+
 	return (
 		<Wrapper>
 			<Image src={initialImage} windowsMaxWidth={windowsMaxWidth} loginView={loginView} />
@@ -34,13 +46,7 @@ export const SignInView = () => {
 					</TitleWrapperItem>
 				</TitleWrapper>
 				{loginView
-					? <Div>
-						{
-							showRecoverPasswordView
-								? <RecoverPassword changeRecoverPasswordView={changeRecoverPasswordView} />
-								: <SignIn changeRecoverPasswordView={changeRecoverPasswordView} />
-						}
-					</Div>
+					? determineView()
 					: <RegisterUser />}
 			</MainWrapper>
 		</Wrapper>
@@ -57,7 +63,7 @@ const Wrapper = styled.div`
   grid-template-columns: repeat(20, 1fr);
 `
 
-const Div = styled.div`
+const Padding = styled.div`
 	padding: 2em;
 `
 
