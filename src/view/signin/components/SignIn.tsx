@@ -7,7 +7,6 @@ import { Button, Form, Header1, Input, RowWrapper } from '../../../shared/styles
 export const SignIn: FC<SignInProps> = ({ data }: SignInProps) => {
 	const [loginUsername, setLoginUsername] = useState<string>('')
 	const [loginPassword, setLoginPassword] = useState<string>('')
-	const [loginButton] = useState<string>('Logga In')
 
 	const sendDataToParent = (event: React.MouseEvent<HTMLElement>) => {
 		data.logInUser(loginUsername, loginPassword, event)
@@ -28,23 +27,14 @@ export const SignIn: FC<SignInProps> = ({ data }: SignInProps) => {
 					onChange={(event) => {
 						setLoginPassword(event.target.value)
 					}} />
-				<Paragraph>Glömt lösenordet? <Span onClick={() => {
-					data.changeRecoverPasswordView()
-				}}>Klicka här!</Span></Paragraph>
-				<Button onClick={(event) => {
-					sendDataToParent(event)
-				}}>{loginButton}</Button>
+				<Paragraph onClick={() => { data.changeRecoverPasswordView() }}>Glömt lösenordet?</Paragraph>
+				<Button onClick={(event) => { sendDataToParent(event) }}>Logga In</Button>
 			</Form>
 		</RowWrapper>
 	)
 }
 
 const Paragraph = styled.p`
-  //margin: 0 0 0 2.6em;
-  //text-align: center;
-`
-
-const Span = styled.span`
   font-family: AlegreyaSansRegular, sans-serif;
   color: ${primaryColor};
   margin-left: 10px;
