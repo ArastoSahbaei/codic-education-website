@@ -1,21 +1,8 @@
 import React, { FC, useState } from 'react'
 import styled from 'styled-components'
+import { RegisterNewUserData } from '../../../shared/interfaces/SingInInterface'
 import { Button, Form, Header1, Input, Wrapper } from '../../../shared/styles/SiginStyles'
 import { Checkbox } from './CheckBox'
-
-type RegisterNewUserFunction = (username: string, email: string, password: string, newsLetter: boolean) => void
-
-export interface RegisterNewUserData {
-	data: {
-		registerHeaderText: string
-		usernameText: string
-		passwordText: string
-		passwordConfirmText: string
-		emailText: string
-		passwordMismatchedText: string
-		registerNewUser: RegisterNewUserFunction
-	}
-}
 
 export const RegisterUser: FC<RegisterNewUserData> = ({data}: RegisterNewUserData) => {
 	const [receiveNewsLetters] = useState<string>('Ja tack! Registrera mig till Codics nyhetsbrev.')
