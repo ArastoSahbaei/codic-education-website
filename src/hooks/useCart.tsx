@@ -1,16 +1,17 @@
 import { useContext } from 'react'
 import { toast } from 'react-toastify'
 import CodicAPIService from 'shared/api/services/CodicAPIService'
+import { Product } from 'shared/interfaces/ProductsInterface'
 import { UserContext } from 'shared/providers/UserProvider'
 
 export const useCart = () => {
 	const [authenticatedUser, setAuthenticatedUser] = useContext(UserContext)
 
-	const addToCart = async (productId: string) => {
+	const addToCart = async (product: Product) => {
 		try {
 			const updatedCart = [
-				...authenticatedUser?.shoppingCart?.products,
-				productId,
+				...authenticatedUser.shoppingCart.products,
+				product._id,
 			]
 			const { data } = await CodicAPIService.updateCart({
 				cartId: authenticatedUser.shoppingCart._id,
@@ -23,7 +24,8 @@ export const useCart = () => {
 					products: data.products,
 				},
 			})
-			toast.success(' ✔️ Adderat produkt till varukorg')
+			toast.success(` ✔️${product.title} adderades till varukorgen`)
+			console.log(product)
 		} catch (error) {
 			console.log(error)
 		}

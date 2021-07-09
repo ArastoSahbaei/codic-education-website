@@ -41,6 +41,18 @@ const resetPassword = (newPasswordAndToken: any) => {
 	return http.put('/resetpassword', newPasswordAndToken)
 }
 
+const updateCart = (data: any) => {
+	return http.put('/shoppingcart/add', data)
+}
+
+const updateFavouriteProducts = (data: any) => {
+	return http.put('/favouriteproducts', data)
+}
+
+const getProductByID = (id: string) => {
+	return http.get(`/product/${id}`)
+}
+
 // Admin privilege required to use the functions below
 
 const createProduct = (productData: any) => {
@@ -67,13 +79,6 @@ const getAllProductBrands = () => {
 	return http.get('/productbrand')
 }
 
-const updateCart = (data: any) => {
-	return http.put('/shoppingcart/add', data)
-}
-
-const updateFavouriteProducts = (data: any) => {
-	return http.put('/favouriteproducts', data)
-}
 
 export default {
 	authenticatedRouteExample,
@@ -87,6 +92,7 @@ export default {
 	forgotPassword,
 	resetPassword,
 	createProductCategory,
+	getProductByID,
 	createProduct,
 	getAllProductCategories,
 	getAllProducts,
