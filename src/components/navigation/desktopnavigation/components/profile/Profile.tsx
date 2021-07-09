@@ -7,10 +7,10 @@ export const Profile = () => {
 	const [authenticatedUser] = useContext(UserContext)
 
 	return (
-		<ProfileWrapper>
+		<ProfileContainer>
 			<Paragraph>{authenticatedUser.username}</Paragraph>
 			<ProfileDropdown />
-		</ProfileWrapper>
+		</ProfileContainer>
 	)
 }
 
@@ -21,14 +21,14 @@ const Paragraph = styled.p`
     text-transform: uppercase;
     grid-column: 18/18;
     cursor: pointer;
-    padding: 0px 35px;
     height: 100%;
-`
-
-const ProfileWrapper = styled.div`
-    place-self: center;
-    &:hover ${DropDownWrapper} {
+    &:hover + ${DropDownWrapper} {
         visibility: visible;
         opacity: 1;
     }
+`
+
+const ProfileContainer = styled.div`
+    place-self: center;
+    margin: 0 35px;
 `

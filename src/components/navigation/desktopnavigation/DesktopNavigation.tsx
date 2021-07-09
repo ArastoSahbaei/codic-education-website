@@ -147,8 +147,4 @@ const ProfileWrapper = styled.div`
     justify-content: space-between
     justify-content: center;
     height: 100%;
-    &:hover ${DropDownWrapper} {
-    visibility: visible;
-    opacity: 1;
-    }
 `

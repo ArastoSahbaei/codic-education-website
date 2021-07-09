@@ -96,9 +96,11 @@ export const DropDownWrapper = styled.div`
     position: absolute;
     background-color: #263746;
     padding: 10px 35px;
+	padding-top: 45px;
+	margin-top: -35px;
     opacity: 0;
     transition: visibility 0s, opacity 0.2s linear;
-		z-index: 100;
+		z-index: 10;
 
 		&:hover {
     visibility: visible;
