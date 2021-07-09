@@ -1,5 +1,4 @@
-import React, { FC, useContext, useState } from 'react'
-import { SignInProps } from '../../../shared/interfaces/SingInInterface'
+import React, { useContext, useState } from 'react'
 import { LoginCredentials } from '../../../shared/interfaces/UserInterface'
 import { UserContext } from '../../../shared/providers/UserProvider'
 import { primaryColor } from '../../../shared/styles/GlobalStyle'
@@ -10,14 +9,10 @@ import RoutingPath from '../../../routes/RoutingPath'
 import CodicAPIService from '../../../shared/api/services/CodicAPIService'
 import LocalStorage from '../../../shared/cache/LocalStorage'
 
-export const SignIn: FC<SignInProps> = () => {
+export const SignIn = (props: { changeRecoverPasswordView: () => void }) => {
 	const history = useHistory()
 	const [, setAuthenticatedUser] = useContext(UserContext)
 	const [loginCredentials, setLoginCredentials] = useState<LoginCredentials>({ username: '', password: '' })
-
-	/* 	const sendDataToParent = (event: React.MouseEvent<HTMLElement>) => {
-			data.logInUser(loginUsername, loginPassword, event)
-		} */
 
 	const handleChange = (event: React.ChangeEvent<HTMLInputElement>, target: keyof LoginCredentials) => {
 		setLoginCredentials({ ...loginCredentials, [target]: event.target.value })
@@ -38,7 +33,7 @@ export const SignIn: FC<SignInProps> = () => {
 
 	return (
 		<RowWrapper>
-			<Header1>{'Logga in'}</Header1>
+			<Header1>Logga in</Header1>
 			<Form>
 				<Input
 					type='text'
@@ -48,9 +43,17 @@ export const SignIn: FC<SignInProps> = () => {
 					type='password'
 					placeholder={'Lösenord'}
 					onChange={(event) => { handleChange(event, 'password') }} />
-				{/* 	<Paragraph onClick={() => { data.changeRecoverPasswordView() }}>Glömt lösenordet?</Paragraph> */}
+				<Paragraph onClick={() => { props.changeRecoverPasswordView() }}>Glömt lösenordet?</Paragraph>
 				<Button onClick={(event) => { signIn(event) }}>Logga In</Button>
 			</Form>
 		</RowWrapper>
 	)
 }
+
+const Paragraph = styled.p`
+  font-family: AlegreyaSansRegular, sans-serif;
+  color: ${primaryColor};
+  margin-left: 10px;
+  font-style: italic;
+  cursor: pointer;
+`

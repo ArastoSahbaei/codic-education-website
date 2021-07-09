@@ -1,36 +1,30 @@
-import React, { FC, useState } from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import leftArrow from '../../../shared/images/icons/left-arrow.svg'
-import { SignInProps } from '../../../shared/interfaces/SingInInterface'
 import { Button, Form, Header1, Input, RowWrapper } from '../../../shared/styles/SiginStyles'
 
-export const RecoverPassword: FC<SignInProps> = ({data}: SignInProps) => {
+export const RecoverPassword = (props: { changeRecoverPasswordView: () => void }) => {
 	const [recoverPasswordText] = useState<string>('Återställ lösenord')
 	const [email, setEmail] = useState<string>('')
 	const [resetPasswordButton] = useState<string>('Återställ nu')
-	
-	const sendDataToParent = (event: React.MouseEvent<HTMLElement>) => {
-		data.sendRecoverPasswordEmail(email, event)
+
+	const sendRecoverPasswordEmail = (email: string, event: React.MouseEvent<HTMLElement>) => {
+		event.preventDefault()
+		alert(`Password reset email was sent to "${email}" if account exists`)
 	}
-	
+
 	return (
 		<RowWrapper>
 			<Wrapper>
-				<Image src={ leftArrow } alt="back arrow" onClick={ () => {
-					data.changeRecoverPasswordView()
-				} }/>
-				<Header1>{ recoverPasswordText }</Header1>
+				<Image src={leftArrow} alt="back arrow" onClick={() => { props.changeRecoverPasswordView }} />
+				<Header1>{recoverPasswordText}</Header1>
 			</Wrapper>
 			<Form>
 				<Input
-					type="text"
-					placeholder={ data.emailText }
-					onChange={ (event) => {
-						setEmail(event.target.value)
-					} }/>
-				<Button onClick={ (event) => {
-					sendDataToParent(event)
-				} }>{ resetPasswordButton }</Button>
+					type='text'
+					placeholder='Email'
+					onChange={(event) => { setEmail(event.target.value) }} />
+				<Button onClick={(event) => { sendRecoverPasswordEmail('arasto@gmail.com', event) }}>{resetPasswordButton}</Button>
 			</Form>
 		</RowWrapper>
 	)

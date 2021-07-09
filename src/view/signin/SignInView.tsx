@@ -1,39 +1,20 @@
-import { useContext, useState } from 'react'
-import { useHistory } from 'react-router'
-import { UserContext } from '../../shared/providers/UserProvider'
+import { useState } from 'react'
 import { DimensionsInterface } from '../../shared/interfaces/DimensionsInterface'
-import { RegisterNewUserData, RegisterNewUserFunction, SignInProps } from '../../shared/interfaces/SingInInterface'
+import { RegisterNewUserData, RegisterNewUserFunction } from '../../shared/interfaces/SingInInterface'
 import { primaryBackgroundColor, primaryColor, secondaryColor } from '../../shared/styles/GlobalStyle'
-import { LoginCredentials, RegisterNewUser } from '../../shared/interfaces/UserInterface'
+import { RegisterNewUser } from '../../shared/interfaces/UserInterface'
 import { RegisterUser } from './components/RegisterUser'
-import { SignInUser } from './components/SignInUser'
 import { windowsMaxWidth } from '../../shared/data/WindowsSizes'
+import { RecoverPassword } from './components/RecoverPassword'
+import { SignIn } from './components/SignIn'
 import CodicAPIService from '../../shared/api/services/CodicAPIService'
-import LocalStorage from '../../shared/cache/LocalStorage'
 import initialImage from '../../shared/images/teacher2.jpg'
-import RoutingPath from '../../routes/RoutingPath'
 import styled from 'styled-components'
 
 export const SignInView = () => {
-	const history = useHistory()
-	const [setAuthenticatedUser] = useContext(UserContext)
 	const [registerUser, setRegisterUser] = useState<RegisterNewUser>({ username: '', password: '', email: '', receiveNewsLetters: true })
-	const [loginCredentials, setLoginCredentials] = useState<LoginCredentials>({ username: '', password: '' })
 	const [showRecoverPasswordView, setShowRecoverPasswordView] = useState<boolean>(false)
 	const [loginView, setLoginView] = useState<boolean>(true)
-
-	const signIn = async (event: React.MouseEvent<HTMLElement>) => {
-		event.preventDefault()
-		try {
-			const { data } = await CodicAPIService.login(loginCredentials)
-			localStorage.setItem(LocalStorage.authenticationToken, data.token)
-			console.log(data)
-			setAuthenticatedUser(data)
-			history.push(RoutingPath.initialView)
-		} catch (error) {
-			console.log(error)
-		}
-	}
 
 	const register = async (event: React.MouseEvent<HTMLElement>) => {
 		event.preventDefault()
@@ -70,37 +51,8 @@ export const SignInView = () => {
 		}
 	}
 
-	const logInUser = (username: string, password: string, event: React.MouseEvent<HTMLElement>) => {
-		console.log(username, password)
-		setLoginCredentials({
-			...loginCredentials,
-			username: username,
-			password: password
-		})
-		signIn(event)
-	}
-
-
 	const changeRecoverPasswordView = () => {
 		setShowRecoverPasswordView(!showRecoverPasswordView)
-	}
-
-	const sendRecoverPasswordEmail = (email: string, event: React.MouseEvent<HTMLElement>) => {
-		event.preventDefault()
-		alert(`Password reset email was sent to "${email}" if account exists`)
-	}
-
-	const signInUserData: SignInProps = {
-		data: {
-			loginHeaderText: 'Logga in',
-			usernameText: 'Användarnamn',
-			passwordText: 'Lösenord',
-			emailText: 'Email',
-			logInUser: logInUser,
-			showRecoverPasswordView: showRecoverPasswordView,
-			changeRecoverPasswordView: changeRecoverPasswordView,
-			sendRecoverPasswordEmail: sendRecoverPasswordEmail
-		}
 	}
 
 	return (
@@ -124,7 +76,13 @@ export const SignInView = () => {
 					</TitleWrapperItem>
 				</TitleWrapper>
 				{loginView
-					? <SignInUser data={signInUserData.data} />
+					? <Wrapper>
+						{
+							showRecoverPasswordView
+								? <RecoverPassword changeRecoverPasswordView={changeRecoverPasswordView} />
+								: <SignIn changeRecoverPasswordView={changeRecoverPasswordView} />
+						}
+					</Wrapper>
 					: <RegisterUser data={registerData.data} />}
 			</MainWrapper>
 		</Wrapper>

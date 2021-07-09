@@ -1,21 +1,4 @@
-import {MouseEvent} from 'react'
-
-type SignInUserFunction = (username: string, password: string, event: MouseEvent<HTMLElement>) => void
-type SignInPropsFunction = () => void
-type RecoverPasswordFunction = (email: string, event: MouseEvent<HTMLElement>) => void
-
-export interface SignInProps {
-	data: {
-		loginHeaderText: string
-		usernameText: string
-		passwordText: string
-		emailText: string
-		logInUser: SignInUserFunction
-		showRecoverPasswordView: boolean
-		changeRecoverPasswordView: SignInPropsFunction
-		sendRecoverPasswordEmail: RecoverPasswordFunction
-	}
-}
+import { MouseEvent } from 'react'
 
 export type RegisterNewUserFunction = (
 	username: string,
