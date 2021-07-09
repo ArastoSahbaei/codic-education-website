@@ -9,7 +9,7 @@ import LocalStorage from '../../shared/cache/LocalStorage'
 import { windowsMaxWidth } from '../../shared/data/WindowsSizes'
 import initialImage from '../../shared/images/teacher2.jpg'
 import { DimensionsInterface } from '../../shared/interfaces/DimensionsInterface'
-import { RegisterNewUserData, SignInProps } from '../../shared/interfaces/SingInInterface'
+import { RegisterNewUserData, RegisterNewUserFunction, SignInProps } from '../../shared/interfaces/SingInInterface'
 import { LoginCredentials, RegisterNewUser } from '../../shared/interfaces/UserInterface'
 import { UserContext } from '../../shared/providers/UserProvider'
 import { primaryBackgroundColor, primaryColor, secondaryColor } from '../../shared/styles/GlobalStyle'
@@ -46,7 +46,8 @@ export const SignInView = () => {
 		}
 	}
 	
-	const register = async () => {
+	const register = async (event: React.MouseEvent<HTMLElement>) => {
+		event.preventDefault()
 		try {
 			await CodicAPIService.registerNewUser(registerUser)
 			//TODO: If registration is successfull -> login the user and tell em to verify their email
@@ -57,7 +58,7 @@ export const SignInView = () => {
 		}
 	}
 	
-	const registerNewUser = (username: string, email: string, password: string, newsLetter: boolean) => {
+	const registerNewUser:RegisterNewUserFunction = (username, email, password, newsLetter, event) => {
 		console.log(username, email, password, newsLetter)
 		setRegisterUser({
 			username: username,
@@ -65,7 +66,7 @@ export const SignInView = () => {
 			email: email,
 			receiveNewsLetters: newsLetter
 		})
-		register()
+		register(event)
 	}
 	
 	const registerData: RegisterNewUserData = {

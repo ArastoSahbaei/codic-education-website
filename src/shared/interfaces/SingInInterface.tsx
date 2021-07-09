@@ -17,7 +17,13 @@ export interface SignInProps {
 	}
 }
 
-type RegisterNewUserFunction = (username: string, email: string, password: string, newsLetter: boolean) => void
+export type RegisterNewUserFunction = (
+	username: string,
+	email: string,
+	password: string,
+	newsLetter: boolean,
+	event: React.MouseEvent<HTMLElement>
+) => void
 
 export interface RegisterNewUserData {
 	data: {

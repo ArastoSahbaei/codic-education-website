@@ -13,19 +13,14 @@ export const RegisterUser: FC<RegisterNewUserData> = ({data}: RegisterNewUserDat
 	const [newPassword, setNewPassword] = useState<string>('')
 	const [confirmPassword, setConfirmPassword] = useState<string>('')
 	const [newEmail, setNewEmail] = useState<string>('')
-	const minLength = 5
 	
 	const handleCheckboxChange = () => {
 		setChecked(!checked)
 	}
 	
-	const sendDataToParent = () => {
-		if (newUsername.length <= minLength) {
-			alert('För kort ' + data.usernameText)
-		} else if (newPassword.length <= minLength) {
-			alert('För kort ' + data.passwordText)
-		} else if (newPassword === confirmPassword) {
-			data.registerNewUser(newUsername, newEmail, newPassword, checked)
+	const sendDataToParent = (event: React.MouseEvent<HTMLElement>) => {
+		if (newPassword === confirmPassword) {
+			data.registerNewUser(newUsername, newEmail, newPassword, checked, event)
 		} else {
 			alert(data.passwordMismatchedText)
 		}
@@ -67,7 +62,9 @@ export const RegisterUser: FC<RegisterNewUserData> = ({data}: RegisterNewUserDat
 				</Span>
 				<Paragraph>{ receiveNewsLetters } </Paragraph>
 			</WrapperNewsLetter>
-			<Button onClick={ sendDataToParent }>{ registerButton }</Button>
+			<Button onClick={ (event) => {
+				sendDataToParent(event)
+			} }>{ registerButton }</Button>
 		</Wrapper>
 	)
 }
