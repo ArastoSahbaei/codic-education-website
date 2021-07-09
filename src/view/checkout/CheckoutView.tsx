@@ -1,8 +1,10 @@
-import { useContext } from 'react'
+import { useCallback, useContext, MouseEvent } from 'react'
 import styled from 'styled-components'
 import { ProductList } from './components/product-list'
 import { UserContext } from '../../shared/providers/UserProvider'
 import { useCart } from 'hooks/useCart'
+import { Button } from 'components/button'
+import { Product } from 'shared/interfaces/ProductsInterface'
 
 export const CheckoutView = () => {
 	const [authenticatedUser] = useContext(UserContext)
@@ -11,11 +13,22 @@ export const CheckoutView = () => {
 
 	const onRemove = async (productId: string) => await removeFromCart(productId)
 
+	const onClickButton = useCallback(
+		async (event: MouseEvent) => {
+			const productIds = products
+				.map((product: Product) => product._id)
+				.join(',')
+			window.location.href = `http://localhost:3001/payment/create-order/${productIds}/${authenticatedUser._id}`
+		},
+		[products]
+	)
+
 	return (
 		<Wrapper>
 			<Section>
 				<Headline>Steg 1 - Din kundvagn</Headline>
 				<ProductList products={products} onRemove={onRemove} />
+				<Button text="Finish order" onClick={onClickButton} />
 			</Section>
 		</Wrapper>
 	)
