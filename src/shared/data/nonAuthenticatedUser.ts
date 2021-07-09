@@ -5,10 +5,28 @@ export const nonAuthenticatedUser = {
 	authenticated: false,
 	cartId: undefined,
 	shoppingCart:
-		{ products: [] }
+	{
+		products: [],
+		_id: undefined
+	}
 	,
 	newsLetterSubscription: {
 		recieveNewsLetters: false,
 	},
-	favouriteProducts: []
+	favouriteProducts: [],
+	login: () => {
+		return null
+	},
+	logout: () => {
+		return null
+	},
+	removeProductFromCart: () => {
+		return null
+	},
+	addToCart: () => {
+		return null
+	},
+	parseJWT: () => {
+		return null
+	}
 }

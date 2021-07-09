@@ -2,10 +2,8 @@ import { useHistory } from 'react-router'
 import { useContext } from 'react'
 import { UserContext } from '../../../../../../shared/providers/UserProvider'
 import { useNavHeight } from '../../../../../../hooks/useNavHeight'
-import { nonAuthenticatedUser } from '../../../../../../shared/data/nonAuthenticatedUser'
 import RoutingPath from '../../../../../../routes/RoutingPath'
 import styled from 'styled-components'
-import LocalStorage from '../../../../../../shared/cache/LocalStorage'
 import profile from '../../../../../../shared/images/icons/user.png'
 import heart from '../../../../../../shared/images/icons/heart.png'
 import language from '../../../../../../shared/images/icons/language.png'
@@ -17,13 +15,12 @@ import exit from '../../../../../../shared/images/icons/logout.png'
 import AuthPath from '../../../../../../routes/AuthPath'
 
 export const ProfileDropdown = () => {
-	const [, setAuthenticatedUser] = useContext(UserContext)
+	const authenticatedUser = useContext(UserContext)
 	const { navHeight } = useNavHeight()
 	const history = useHistory()
 
 	const logout = () => {
-		localStorage.removeItem(LocalStorage.authenticationToken)
-		setAuthenticatedUser(nonAuthenticatedUser)
+		authenticatedUser.logout()
 		history.push(RoutingPath.initialView)
 	}
 

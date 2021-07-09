@@ -4,7 +4,7 @@ import { DropDownWrapper, ProfileDropdown } from './profiledropdown/ProfileDropd
 import styled from 'styled-components'
 
 export const Profile = () => {
-	const [authenticatedUser] = useContext(UserContext)
+	const authenticatedUser = useContext(UserContext)
 
 	return (
 		<ProfileWrapper>

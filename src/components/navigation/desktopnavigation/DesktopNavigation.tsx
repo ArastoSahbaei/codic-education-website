@@ -21,7 +21,7 @@ export const NavBG = () => {
 export const DesktopNavigation = () => {
 	const history = useHistory()
 	const [isCartOpen, setIsCartOpen] = useState<boolean>(false)
-	const [authenticatedUser] = useContext(UserContext)
+	const authenticatedUser = useContext(UserContext)
 	const { navHeight } = useNavHeight()
 
 	const displayAuthentication = () => {

@@ -2,27 +2,19 @@ import { useContext, useState } from 'react'
 import CodicAPIService from '../../shared/api/services/CodicAPIService'
 import { UserContext } from '../../shared/providers/UserProvider'
 import { LoginCredentials, RegisterNewUser } from '../../shared/interfaces/UserInterface'
-import LocalStorage from '../../shared/cache/LocalStorage'
 import { useHistory } from 'react-router'
 import RoutingPath from '../../routes/RoutingPath'
 
 export const SignInView = () => {
 	const history = useHistory()
-	const [, setAuthenticatedUser] = useContext(UserContext)
+	const authenticatedUser = useContext(UserContext)
 	const [registerUser, setRegisterUser] = useState<RegisterNewUser>({ username: '', password: '', email: '', recieveNewsLetters: true })
 	const [loginCredentials, setLoginCredentials] = useState<LoginCredentials>({ username: '', password: '' })
 
 	const signIn = async (event: React.MouseEvent<HTMLElement>) => {
 		event.preventDefault()
-		try {
-			const { data } = await CodicAPIService.login(loginCredentials)
-			localStorage.setItem(LocalStorage.authenticationToken, data.token)
-			console.log(data)
-			setAuthenticatedUser(data)
-			history.push(RoutingPath.initialView)
-		} catch (error) {
-			console.log(error)
-		}
+		authenticatedUser.login(loginCredentials)
+		history.push(RoutingPath.initialView)
 	}
 
 	const register = async (event: React.MouseEvent<HTMLElement>) => {
