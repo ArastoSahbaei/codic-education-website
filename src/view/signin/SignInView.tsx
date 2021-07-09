@@ -96,8 +96,9 @@ export const SignInView = () => {
 		setShowRecoverPasswordView(!showRecoverPasswordView)
 	}
 	
-	const sendRecoverPasswordEmail = () => {
-		alert('Password reset email sent if account exists')
+	const sendRecoverPasswordEmail = (email: string, event: React.MouseEvent<HTMLElement>) => {
+		event.preventDefault()
+		alert(`Password reset email was sent to "${email}" if account exists`)
 	}
 	
 	const signInUserData: SignInProps = {
