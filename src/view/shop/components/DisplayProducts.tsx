@@ -24,6 +24,7 @@ export const DisplayProducts = () => {
 			})
 			setAuthenticatedUser({ ...authenticatedUser, shoppingCart: { ...authenticatedUser.shoppingCart, products: data.products } })
 			toast.success(` ✔️${product.title} adderades till varukorgen`)
+			console.log(product)
 		} catch (error) {
 			console.log(error)
 		}
