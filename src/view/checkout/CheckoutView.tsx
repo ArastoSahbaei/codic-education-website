@@ -84,6 +84,7 @@ export const CheckoutView = () => {
 
 	const onClickButton = useCallback(async () => {
 		setIsLoading(true)
+		// TODO: safe this url in some configuration or something.
 		window.location.href = `http://localhost:3001/payment/create-order/${btoa(
 			JSON.stringify(data)
 		)}`
