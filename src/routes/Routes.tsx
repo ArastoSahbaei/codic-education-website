@@ -16,6 +16,7 @@ import CodicAPIService from '../shared/api/services/CodicAPIService'
 import LocalStorage from '../shared/cache/LocalStorage'
 import AuthPath from './AuthPath'
 import AdminPath from './AdminPath'
+import { ProductDetailView } from '../view/productdetail/ProductDetailView'
 
 export const Routes = (props: { children: React.ReactChild[] }) => {
 	const [authenticatedUser, setAuthenticatedUser] = useContext(UserContext)
@@ -60,6 +61,7 @@ export const Routes = (props: { children: React.ReactChild[] }) => {
 				<Route exact path={RoutingPath.shopView} component={ShopView} />
 				<Route exact path={RoutingPath.contactView} component={ContactView} />
 				<Route exact path={RoutingPath.checkoutView} component={CheckoutView} />
+				<Route exact path={RoutingPath.productDetailsView()} component={ProductDetailView} />
 				<Route exact path={RoutingPath.signInView} component={blockRouteIfAuthenticated(SignInView)} />
 				{/* AUTHENTICATED PATHS */}
 				<Route exact path={AuthPath.profileView} component={ProfileView} />

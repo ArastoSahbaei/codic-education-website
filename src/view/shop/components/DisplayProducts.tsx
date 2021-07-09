@@ -5,6 +5,9 @@ import { UserContext } from '../../../shared/providers/UserProvider'
 import { toast } from 'react-toastify'
 import CodicAPIService from '../../../shared/api/services/CodicAPIService'
 import styled from 'styled-components'
+import RoutingPath from '../../../routes/RoutingPath'
+import { Product } from '../../../shared/interfaces/ProductsInterface'
+import { Spinner } from '../../../components/Spinner'
 
 
 export const DisplayProducts = () => {
@@ -12,15 +15,15 @@ export const DisplayProducts = () => {
 	const [authenticatedUser, setAuthenticatedUser] = useContext(UserContext)
 	const { data, loading, error } = useFetch(CodicAPIService.getAllProducts)
 
-	const addToCart = async (productId: string) => {
+	const addToCart = async (product: Product) => {
 		try {
-			const updatedCart = [...authenticatedUser?.shoppingCart?.products, productId]
+			const updatedCart = [...authenticatedUser?.shoppingCart?.products, product._id]
 			const { data } = await CodicAPIService.updateCart({
 				cartId: authenticatedUser.shoppingCart._id,
 				products: updatedCart
 			})
 			setAuthenticatedUser({ ...authenticatedUser, shoppingCart: { ...authenticatedUser.shoppingCart, products: data.products } })
-			toast.success(' ✔️ Adderat produkt till varukorg')
+			toast.success(` ✔️${product.title} adderades till varukorgen`)
 		} catch (error) {
 			console.log(error)
 		}
@@ -28,15 +31,15 @@ export const DisplayProducts = () => {
 
 	const displayData = () => {
 		if (!loading) {
-			return data?.map((item: any) =>
-				<ProductWrapper key={item?._id}>
+			return data?.map((item: Product) =>
+				<ProductWrapper key={item._id}>
 					<ImageParent>
-						<Image src={'https://picsum.photos/200/200'} alt=''/*  onClick={() => history.push(RoutingPath.productDetailsView(item._id), item)} */ />
+						<Image src={'https://picsum.photos/200/200'} alt='' onClick={() => history.push(RoutingPath.productDetailsView(item._id), item)} />
 					</ImageParent> <br />
 					<Paragraph>Herbaman Co.</Paragraph> <br />
 					<Paragraph>{item.title}</Paragraph> <br />
 					<Paragraph>{item.price} kr</Paragraph> <br />
-					<Button onClick={() => addToCart(item._id)}>Addera till varukorg</Button>
+					<Button onClick={() => addToCart(item)}>Addera till varukorg</Button>
 				</ProductWrapper>
 			)
 		}
@@ -44,7 +47,7 @@ export const DisplayProducts = () => {
 
 	return (
 		loading
-			? <h1>LOADING..</h1>
+			? <Spinner />
 			: <Wrapper>
 				{displayData()}
 			</Wrapper>
