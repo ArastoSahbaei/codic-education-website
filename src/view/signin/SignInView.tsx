@@ -1,8 +1,6 @@
 import React, { useContext, useState } from 'react'
 import { useHistory } from 'react-router'
 import styled from 'styled-components'
-import { RegisterUser } from './components/RegisterUser'
-import { SignInUser } from './components/SignInUser'
 import RoutingPath from '../../routes/RoutingPath'
 import CodicAPIService from '../../shared/api/services/CodicAPIService'
 import LocalStorage from '../../shared/cache/LocalStorage'
@@ -13,6 +11,8 @@ import { RegisterNewUserData, RegisterNewUserFunction, SignInProps } from '../..
 import { LoginCredentials, RegisterNewUser } from '../../shared/interfaces/UserInterface'
 import { UserContext } from '../../shared/providers/UserProvider'
 import { primaryBackgroundColor, primaryColor, secondaryColor } from '../../shared/styles/GlobalStyle'
+import { RegisterUser } from './components/RegisterUser'
+import { SignInUser } from './components/SignInUser'
 
 export const SignInView = () => {
 	const history = useHistory()

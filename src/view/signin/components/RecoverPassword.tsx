@@ -9,7 +9,6 @@ export const RecoverPassword: FC<SignInProps> = ({data}: SignInProps) => {
 	const [email, setEmail] = useState<string>('')
 	const [resetPasswordButton] = useState<string>('Återställ nu')
 	
-	
 	const sendDataToParent = (event: React.MouseEvent<HTMLElement>) => {
 		data.sendRecoverPasswordEmail(email, event)
 	}
