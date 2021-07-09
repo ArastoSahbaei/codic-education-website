@@ -2,12 +2,12 @@ import { useContext } from 'react'
 import { useHistory } from 'react-router-dom'
 import { useFetch } from '../../../hooks/useFetch'
 import { UserContext } from '../../../shared/providers/UserProvider'
-import { toast } from 'react-toastify'
-import CodicAPIService from '../../../shared/api/services/CodicAPIService'
-import styled from 'styled-components'
-import RoutingPath from '../../../routes/RoutingPath'
 import { Product } from '../../../shared/interfaces/ProductsInterface'
 import { Spinner } from '../../../components/Spinner'
+import { toast } from 'react-toastify'
+import styled from 'styled-components'
+import RoutingPath from '../../../routes/RoutingPath'
+import CodicAPIService from '../../../shared/api/services/CodicAPIService'
 
 
 export const DisplayProducts = () => {
@@ -17,7 +17,7 @@ export const DisplayProducts = () => {
 
 	const addToCart = async (product: Product) => {
 		try {
-			const updatedCart = [...authenticatedUser?.shoppingCart?.products, product._id]
+			const updatedCart = [...authenticatedUser.shoppingCart.products, product._id]
 			const { data } = await CodicAPIService.updateCart({
 				cartId: authenticatedUser.shoppingCart._id,
 				products: updatedCart
