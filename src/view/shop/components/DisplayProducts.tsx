@@ -13,7 +13,7 @@ import CodicAPIService from '../../../shared/api/services/CodicAPIService'
 export const DisplayProducts = () => {
 	const history = useHistory()
 	const [authenticatedUser, setAuthenticatedUser] = useContext(UserContext)
-	const { data, loading, error } = useFetch(CodicAPIService.getAllProducts)
+	const { data, loading, error } = useFetch(CodicAPIService.getAllProducts())
 
 	const addToCart = async (product: Product) => {
 		try {
