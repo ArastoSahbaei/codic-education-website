@@ -70,7 +70,7 @@ const Wrapper = styled.div`
 const InformationListWrapper = styled.ol`
 	grid-column: 1/3;
 	list-style: none;
-	@media(max-width: 1000px) {
+	@media(max-width: 1100px) {
 		grid-column: 1/12;
 		grid-row: 1/1;
 	}
@@ -79,7 +79,7 @@ const InformationListWrapper = styled.ol`
 const CompanyListWrapper = styled.ol`
 	grid-column: 3/5;
 	list-style: none;
-	@media(max-width: 1000px) {
+	@media(max-width: 1100px) {
 		grid-column: 1/12;
 		grid-row: 2/2;
 	}
@@ -88,7 +88,7 @@ const CompanyListWrapper = styled.ol`
 const ContactListWrapper = styled.ol`
 	grid-column: 5/7;
 	list-style: none;
-	@media(max-width: 1000px) {
+	@media(max-width: 1100px) {
 		grid-column: 1/12;
 		grid-row: 3/3;
 	}
@@ -98,7 +98,7 @@ const CompanyOL = styled.ol`
 	grid-column: 9/13;
 	justify-self: center;
 	align-self: center;
-	@media(max-width: 1000px) {
+	@media(max-width: 1100px) {
 		grid-column: 1/12;
 		grid-row: 4/4;
 	}
