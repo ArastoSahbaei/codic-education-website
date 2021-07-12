@@ -101,7 +101,7 @@ const ContactListWrapper = styled.ol`
 `
 
 const CompanyOL = styled.ol`
-	grid-column: 10/13;
+	grid-column: 9/13;
 	justify-self: center;
 	align-self: center;
 	@media(max-width: 1100px) {
