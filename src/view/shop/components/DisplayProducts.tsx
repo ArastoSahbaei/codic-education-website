@@ -1,34 +1,17 @@
-import { useContext } from 'react'
-import { useHistory } from 'react-router-dom'
 import { useFetch } from '../../../hooks/useFetch'
-import { UserContext } from '../../../shared/providers/UserProvider'
+import { useCart } from 'hooks/useCart'
 import { Product } from '../../../shared/interfaces/ProductsInterface'
 import { Spinner } from '../../../components/Spinner'
-import { toast } from 'react-toastify'
 import styled from 'styled-components'
 import RoutingPath from '../../../routes/RoutingPath'
 import CodicAPIService from '../../../shared/api/services/CodicAPIService'
+import { useHistory } from 'react-router-dom'
 
 
 export const DisplayProducts = () => {
+	const { addToCart }  = useCart()
 	const history = useHistory()
-	const [authenticatedUser, setAuthenticatedUser] = useContext(UserContext)
-	const { data, loading, error } = useFetch(CodicAPIService.getAllProducts())
-
-	const addToCart = async (product: Product) => {
-		try {
-			const updatedCart = [...authenticatedUser.shoppingCart.products, product._id]
-			const { data } = await CodicAPIService.updateCart({
-				cartId: authenticatedUser.shoppingCart._id,
-				products: updatedCart
-			})
-			setAuthenticatedUser({ ...authenticatedUser, shoppingCart: { ...authenticatedUser.shoppingCart, products: data.products } })
-			toast.success(` ✔️${product.title} adderades till varukorgen`)
-			console.log(product)
-		} catch (error) {
-			console.log(error)
-		}
-	}
+	const { data, loading } = useFetch(CodicAPIService.getAllProducts())
 
 	const displayData = () => {
 		if (!loading) {

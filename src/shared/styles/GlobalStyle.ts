@@ -4,6 +4,7 @@ import AlegreyaSans from '../fonts/AlegreyaSans.ttf'
 import AlegreyaSansRegular from '../fonts/AlegreyaSansRegular.ttf'
 
 export const primaryColor = '#f59300'
+export const secondaryColorDark = '#263746'
 export const secondaryColor = '#585d72'
 export const primaryFont = 'Oleoscript'
 export const secondaryFont = 'AlegreyaSans'

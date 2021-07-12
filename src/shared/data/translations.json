@@ -1,0 +1,10 @@
+{
+    "productCategoryName": "Produkt Kategori",
+    "productBrandName": "Märke",
+    "createdAt": "Skapad",
+    "updatedAt": "Uppdaterad",
+    "price": "Pris",
+    "title": "Titel",
+    "quantity": "Antal",
+    "Remove": "Ta bort"
+}

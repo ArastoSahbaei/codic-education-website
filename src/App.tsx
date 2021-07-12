@@ -3,7 +3,7 @@ import { Navigation } from './components/navigation/Navigation'
 import { GlobalStyle } from './shared/styles/GlobalStyle'
 import { UserProvider } from './shared/providers/UserProvider'
 import { ScrollProvider } from './shared/providers/ScrollProvider'
-import { Space } from './components/space'
+import { Space } from './components/space/space'
 import { useNavHeight } from './hooks/useNavHeight'
 import { ToastifyConfigurations } from './shared/configurations/ToastifyConfigurations'
 
