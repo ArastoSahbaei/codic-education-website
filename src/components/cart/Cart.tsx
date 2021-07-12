@@ -2,7 +2,7 @@ import { useContext } from 'react'
 import { useHistory } from 'react-router-dom'
 import { UserContext } from '../../shared/providers/UserProvider'
 import { CheckoutOptions } from './CheckoutOptions'
-import CodicAPIService from '../../shared/api/services/CodicAPIService'
+import { useCart } from 'hooks/useCart'
 import exit from '../../shared/images/icons/cross.svg'
 import trash from '../../shared/images/icons/trash.png'
 import emptyCart from '../../shared/images/empty_cart.png'
@@ -11,26 +11,23 @@ import RoutingPath from '../../routes/RoutingPath'
 
 export const Cart = (props: { isCartOpen: boolean, setIsCartOpen: (value: boolean) => void }) => {
 	const history = useHistory()
+	const { removeFromCart2 } = useCart()
 	const { isCartOpen, setIsCartOpen } = props
-	const [authenticatedUser, setAuthenticatedUser] = useContext(UserContext)
+	const [authenticatedUser] = useContext(UserContext)
 
-	const removeProductFromCart = async (array: [], index: number) => {
-		const newArray = [...array.slice(0, index), ...array.slice(index + 1)]
-		await CodicAPIService.updateCart({
-			cartId: authenticatedUser?.shoppingCart?._id,
-			products: newArray
-		})
-		setAuthenticatedUser({ ...authenticatedUser, shoppingCart: { ...authenticatedUser.shoppingCart, products: newArray } })
+	const navigateToProductDetail = (details: any) => {
+		history.push(RoutingPath.productDetailsView(details._id), details)
+		setIsCartOpen(false)
 	}
 
 	const displayCartWithItems = () => {
 		return <DisplayCartWrapper>
-			{authenticatedUser?.shoppingCart?.products?.map((product: any, index: number) =>
+			{authenticatedUser.shoppingCart.products.map((product: any, index: number) =>
 				<UList key={index}>
-					<Image /* onClick={() => navigateToProductDetail(product)} */
+					<Image onClick={() => navigateToProductDetail(product)}
 						src={'https://picsum.photos/200/200'}
 						alt='' />
-					<Icon onClick={() => removeProductFromCart(authenticatedUser.shoppingCart.products, index)}
+					<Icon onClick={() => removeFromCart2(authenticatedUser.shoppingCart.products, index)}
 						src={trash}
 						alt={''} />
 					<List>titel: {product.title}</List>
@@ -99,6 +96,7 @@ const List = styled.li`
 
 const Image = styled.img`
 	width: 130px;
+	cursor: pointer;
 `
 
 const Div = styled.div`

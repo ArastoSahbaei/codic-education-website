@@ -53,5 +53,20 @@ export const useCart = () => {
 		}
 	}
 
-	return { addToCart, removeFromCart }
+	const removeFromCart2 = async (array: [], index: number) => {
+		const newArray = [...array.slice(0, index), ...array.slice(index + 1)]
+		console.log(array)
+		try {
+			await CodicAPIService.updateCart({
+				cartId: authenticatedUser.shoppingCart._id,
+				products: newArray
+			})
+		} catch (error) {
+			console.log(error)
+		}
+		setAuthenticatedUser({ ...authenticatedUser, shoppingCart: { ...authenticatedUser.shoppingCart, products: newArray } })
+		toast.info('Produkt har tagits bort ifrån varukorgen')
+	}
+
+	return { addToCart, removeFromCart, removeFromCart2 }
 }
