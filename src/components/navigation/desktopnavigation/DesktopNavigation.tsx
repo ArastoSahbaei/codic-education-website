@@ -1,5 +1,5 @@
 import { useContext, useState, useMemo } from 'react'
-import { useHistory } from 'react-router-dom'
+import { useHistory, NavLink, useLocation } from 'react-router-dom'
 import { Profile } from './components/profile/Profile'
 import { DropDownWrapper } from './components/profile/profiledropdown/ProfileDropdown'
 import { ScrollContext } from '../../../shared/providers/ScrollProvider'
@@ -11,6 +11,8 @@ import { Cart } from '../../cart/Cart'
 import styled from 'styled-components'
 import RoutingPath from '../../../routes/RoutingPath'
 import logotype from '../../../shared/images/codiclogotype.svg'
+import logotypeWhite from '../../../shared/images/codiclogotype_white.svg'
+import { primaryColor, secondaryFont } from '../../../shared/styles/GlobalStyle'
 
 export const NavBG = () => {
 	const { fractions } = useContext(ScrollContext)
@@ -23,6 +25,7 @@ export const DesktopNavigation = () => {
 	const [isCartOpen, setIsCartOpen] = useState<boolean>(false)
 	const [authenticatedUser] = useContext(UserContext)
 	const { navHeight } = useNavHeight()
+    const location = useLocation()
 
 	const displayAuthentication = () => {
 		return authenticatedUser.authenticated
@@ -44,21 +47,21 @@ export const DesktopNavigation = () => {
 			<Grid>
 				<GridCell col="3/3">
 					<Image
-						src={logotype}
+						src={location.pathname === RoutingPath.initialView ? logotype : logotypeWhite}
 						alt={''}
 						onClick={() => history.push(RoutingPath.initialView)}
 					/>
 				</GridCell>
 				<GridCell col="5/9">
 					<ParagraphWrapper>
-						<Paragraph>Vår Vision</Paragraph>
-						<Paragraph onClick={() => history.push(RoutingPath.employeeView)}>
+						<Paragraph to="vision">Vår Vision</Paragraph>
+						<Paragraph to={RoutingPath.employeeView}>
 							Team Codic
 						</Paragraph>
-						<Paragraph onClick={() => history.push(RoutingPath.contactView)}>
+						<Paragraph to={RoutingPath.contactView}>
 							Kontakt
 						</Paragraph>
-						<Paragraph onClick={() => history.push(RoutingPath.shopView)}>
+						<Paragraph to={RoutingPath.shopView}>
 							Butik
 						</Paragraph>
 					</ParagraphWrapper>
@@ -109,14 +112,20 @@ const WrapperBackground = styled.div`
     height: 100%;
     z-index: -1;
 `
-
-const Paragraph = styled.p`
-    font-weight: 600;
+const Paragraph = styled(NavLink).attrs(({ activeClassName = 'is-active' }: any) => ({
+    activeClassName,
+  }))`
+  font-weight: 600;
     cursor: pointer;
     text-transform: uppercase;
+    font-family: ${secondaryFont};
+    text-decoration: none;
     color: white;
     align-self: center;
-`
+    &.is-active {
+      color: ${primaryColor};
+    }
+  `
 
 const Button = styled.p`
     font-weight: 600;
