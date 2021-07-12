@@ -29,6 +29,7 @@ const Icon = styled.img`
 	align-self: center;
 	cursor: pointer;
 	filter: brightness(0) invert(0.8);
+	z-index: 11;
 	&:hover {
 		filter: brightness(0) invert(1);
 	}
