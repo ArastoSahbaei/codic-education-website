@@ -48,7 +48,7 @@ export const Footer = () => {
 			</ContactListWrapper>
 
 			<CompanyOL>
-				<Div onClick={() => window.open(ExternalPath.googleMapsLocation)}>
+				<Div hasCursor={true} onClick={() => window.open(ExternalPath.googleMapsLocation)}>
 					<Image src={MapIcon} alt="" />
 					<Span2> Drottninggatan 38, Göteborg, Västra Götalands län, 411 07, Sverige </Span2> <br /> <br /><br />
 				</Div>
@@ -59,6 +59,10 @@ export const Footer = () => {
 			</CompanyOL>
 		</Wrapper>
 	)
+}
+
+interface values {
+	hasCursor?: boolean | false
 }
 
 const Wrapper = styled.div`
@@ -146,9 +150,9 @@ const List = styled.li`
 	}
 `
 
-const Div = styled.div`
+const Div = styled.div<values>`
 	display: flex;
-	cursor: pointer;
+	cursor: ${props => props.hasCursor ? 'pointer;' : ''};
 `
 
 const MinorLi = styled.li`
