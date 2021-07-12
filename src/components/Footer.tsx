@@ -52,8 +52,10 @@ export const Footer = () => {
 					<Image src={MapIcon} alt="" />
 					<Span2> Drottninggatan 38, Göteborg, Västra Götalands län, 411 07, Sverige </Span2> <br /> <br /><br />
 				</Div>
-				<Image src={CopyRight} alt="" />
-				<Span2> Upphovsrätt {getCurrentYear()}, © Codic Education AB. </Span2>
+				<Div>
+					<Image src={CopyRight} alt="" />
+					<Span2> Upphovsrätt {getCurrentYear()}, © Codic Education AB. </Span2>
+				</Div>
 			</CompanyOL>
 		</Wrapper>
 	)
@@ -145,6 +147,7 @@ const List = styled.li`
 `
 
 const Div = styled.div`
+	display: flex;
 	cursor: pointer;
 `
 
@@ -156,9 +159,9 @@ const MinorLi = styled.li`
 
 const Image = styled.img`
 	width: 40px;
+	margin: 10px;
 `
 
 const Span2 = styled.span`
-	line-height: 100%;
-	margin-top: 6%;
+	align-self: center;
 `
