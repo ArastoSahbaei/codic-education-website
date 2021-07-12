@@ -91,7 +91,8 @@ const HR = styled.hr`
 `
 
 export const DropDownWrapper = styled.div`
-		width: 20rem;
+	margin-left: -100px;
+	width: 20rem;
     visibility: hidden;
     position: absolute;
     background-color: #263746;
