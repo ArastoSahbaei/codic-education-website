@@ -70,20 +70,44 @@ const Wrapper = styled.div`
 const InformationListWrapper = styled.ol`
 	grid-column: 1/3;
 	list-style: none;
+	@media(max-width: 1000px) {
+		grid-column: 1/12;
+		grid-row: 1/1;
+	}
 	`
 
 const CompanyListWrapper = styled.ol`
 	grid-column: 3/5;
 	list-style: none;
+	@media(max-width: 1000px) {
+		grid-column: 1/12;
+		grid-row: 2/2;
+	}
 `
 
 const ContactListWrapper = styled.ol`
 	grid-column: 5/7;
 	list-style: none;
+	@media(max-width: 1000px) {
+		grid-column: 1/12;
+		grid-row: 3/3;
+	}
+`
+
+const CompanyOL = styled.ol`
+	display: inline;
+	grid-column: 9/13;
+	justify-self: center;
+	align-self: center;
+	list-style: none;
+	@media(max-width: 1000px) {
+		grid-column: 1/12;
+		grid-row: 4/4;
+	}
 `
 
 const Title = styled.li`
-	font-size: 1.3em;
+font-size: 1.3em;
 	border-bottom: 0.1em solid #ffffff;
 	font-family: ${primaryFont};
 	color: ${primaryColor};
@@ -131,13 +155,6 @@ const MinorLi = styled.li`
 	font-size: 0.8em;
 `
 
-const CompanyOL = styled.ol`
-	display: inline;
-	grid-column: 9/13;
-	justify-self: center;
-	align-self: center;
-	list-style: none;
-`
 
 const Image = styled.img`
 	width: 6%;
