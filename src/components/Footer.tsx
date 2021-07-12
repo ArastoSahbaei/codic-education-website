@@ -157,7 +157,7 @@ const MinorLi = styled.li`
 
 
 const Image = styled.img`
-	width: 6%;
+	width: 40px;
 `
 
 const Span2 = styled.span`
