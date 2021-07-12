@@ -48,15 +48,21 @@ export const Footer = () => {
 			</ContactListWrapper>
 
 			<CompanyOL>
-				<Div onClick={() => window.open(ExternalPath.googleMapsLocation)}>
+				<Div hasCursor={true} onClick={() => window.open(ExternalPath.googleMapsLocation)}>
 					<Image src={MapIcon} alt="" />
 					<Span2> Drottninggatan 38, Göteborg, Västra Götalands län, 411 07, Sverige </Span2> <br /> <br /><br />
 				</Div>
-				<Image src={CopyRight} alt="" />
-				<Span2> Upphovsrätt {getCurrentYear()}, © Codic Education AB. </Span2>
+				<Div>
+					<Image src={CopyRight} alt="" />
+					<Span2> Upphovsrätt {getCurrentYear()}, © Codic Education AB. </Span2>
+				</Div>
 			</CompanyOL>
 		</Wrapper>
 	)
+}
+
+interface values {
+	hasCursor?: boolean | false
 }
 
 const Wrapper = styled.div`
@@ -70,20 +76,42 @@ const Wrapper = styled.div`
 const InformationListWrapper = styled.ol`
 	grid-column: 1/3;
 	list-style: none;
+	@media(max-width: 1100px) {
+		grid-column: 1/12;
+		grid-row: 1/1;
+	}
 	`
 
 const CompanyListWrapper = styled.ol`
-	grid-column: 3/5;
+	grid-column: 4/6;
 	list-style: none;
+	@media(max-width: 1100px) {
+		grid-column: 1/12;
+		grid-row: 2/2;
+	}
 `
 
 const ContactListWrapper = styled.ol`
-	grid-column: 5/7;
+	grid-column: 7/9;
 	list-style: none;
+	@media(max-width: 1100px) {
+		grid-column: 1/12;
+		grid-row: 3/3;
+	}
+`
+
+const CompanyOL = styled.ol`
+	grid-column: 9/13;
+	justify-self: center;
+	align-self: center;
+	@media(max-width: 1100px) {
+		grid-column: 1/12;
+		grid-row: 4/4;
+	}
 `
 
 const Title = styled.li`
-	font-size: 1.3em;
+font-size: 1.3em;
 	border-bottom: 0.1em solid #ffffff;
 	font-family: ${primaryFont};
 	color: ${primaryColor};
@@ -122,8 +150,9 @@ const List = styled.li`
 	}
 `
 
-const Div = styled.div`
-	cursor: pointer;
+const Div = styled.div<values>`
+	display: flex;
+	cursor: ${props => props.hasCursor ? 'pointer;' : ''};
 `
 
 const MinorLi = styled.li`
@@ -131,19 +160,12 @@ const MinorLi = styled.li`
 	font-size: 0.8em;
 `
 
-const CompanyOL = styled.ol`
-	display: inline;
-	grid-column: 9/13;
-	justify-self: center;
-	align-self: center;
-	list-style: none;
-`
 
 const Image = styled.img`
-	width: 6%;
+	width: 40px;
+	margin: 10px;
 `
 
 const Span2 = styled.span`
-	line-height: 100%;
-	margin-top: 6%;
+	align-self: center;
 `
