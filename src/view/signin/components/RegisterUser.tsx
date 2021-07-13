@@ -1,11 +1,12 @@
 import { useState } from 'react'
+import { useAuthentication } from 'hooks/useAuthentication'
 import { RegisterNewUser } from '../../../shared/interfaces/UserInterface'
 import { Button, Form, Header1, Input, Wrapper } from '../../../shared/styles/SiginStyles'
 import { primaryColor, secondaryColor } from '../../../shared/styles/GlobalStyle'
-import CodicAPIService from '../../../shared/api/services/CodicAPIService'
 import styled from 'styled-components'
 
 export const RegisterUser = () => {
+	const { register } = useAuthentication()
 	const [registerUser, setRegisterUser] = useState<RegisterNewUser>({ username: '', password: '', email: '', receiveNewsLetters: true })
 	const handleCheckboxChange = () => setRegisterUser({ ...registerUser, receiveNewsLetters: !registerUser.receiveNewsLetters })
 
@@ -13,16 +14,9 @@ export const RegisterUser = () => {
 		setRegisterUser({ ...registerUser, [target]: event.target.value })
 	}
 
-	const register = async (event: React.MouseEvent<HTMLElement>) => {
+	const onSubmit = (event: React.MouseEvent<HTMLElement>) => {
 		event.preventDefault()
-		try {
-			await CodicAPIService.registerNewUser(registerUser)
-			//TODO: If registration is successfull -> login the user and tell em to verify their email
-			alert('Sucessfully created your account!')
-		} catch (error) {
-			console.log(error)
-			alert(error)
-		}
+		register(registerUser)
 	}
 
 	return (
@@ -51,7 +45,7 @@ export const RegisterUser = () => {
 				</StyledCheckbox>
 				<Paragraph>Ja tack! Registrera mig till Codics nyhetsbrev.</Paragraph>
 			</WrapperNewsLetter>
-			<Button onClick={(event) => { register(event) }}>Registrera</Button>
+			<Button onClick={(event) => { onSubmit(event) }}>Registrera</Button>
 		</Wrapper>
 	)
 }
