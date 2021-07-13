@@ -12,6 +12,7 @@ import { SignInView } from '../view/signin/SignInView'
 import { AdminView } from '../view/admin/AdminView'
 import { ShopView } from '../view/shop/ShopView'
 import { Footer } from '../components/Footer'
+import { validateToken } from 'functions/validateToken'
 import RoutingPath from './RoutingPath'
 import CodicAPIService from '../shared/api/services/CodicAPIService'
 import LocalStorage from '../shared/cache/LocalStorage'
@@ -27,11 +28,6 @@ export const Routes = (props: { children: React.ReactChild[] }) => {
 
 	const authenticationRequired = (navigateToViewifAuthenticated: React.FC) => {
 		return authenticatedUser.authenticated ? navigateToViewifAuthenticated : SignInView
-	}
-
-	const validateToken = (tokenExp: number) => {
-		const currentTime = Math.floor(Date.now() / 1000)
-		return (tokenExp >= currentTime)
 	}
 
 	const parseJWT = async () => {
