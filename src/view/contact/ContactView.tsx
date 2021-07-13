@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { primaryFont } from '../../shared/styles/GlobalStyle'
+import { ContactForm } from './components/ContactForm'
 import map from './map.png'
 
 export const ContactView = () => {
@@ -13,12 +14,8 @@ export const ContactView = () => {
 				<ColumnWrapper>
 					<Padding>
 						<p>Vi svarar gärna på frågor angående IT-konsulter, utbildare eller andra eventuella samarbeten
-							i
-							Göteborg.
-							Kontakta oss här nedan eller hör av dig direkt till någon av våra medarbetare. Vi återkommer
-							så fort
-							vi
-							kan.</p>
+							i Göteborg. Kontakta oss här nedan eller hör av dig direkt till någon av våra medarbetare.
+							Vi återkommer så fort vi kan.</p>
 						<h3>Codic Consulting: +46-765-519-733</h3>
 						<h3>Codic Education: +46-768-990-065</h3>
 						<h3>hello@codic.se</h3>
@@ -27,21 +24,7 @@ export const ContactView = () => {
 						<img src={ map } alt="Karta över Göteborg"/>
 					</Padding>
 					<Padding>
-						<form>
-							<label><p>Förnamn</p>
-								<input type="text" placeholder={ 'Användarnamn' } autoComplete="on"/>
-							</label>
-							<label><p>Efternamn</p>
-								<input type="text" placeholder={ 'Användarnamn' } autoComplete="on"/>
-							</label>
-							<label><p>E-Post</p>
-								<input type="text" placeholder={ 'Användarnamn' } autoComplete="on"/>
-							</label>
-							<label><p>Meddelande</p>
-								<input type="text" placeholder={ 'Användarnamn' } autoComplete="on"/>
-							</label>
-							<button>Skicka</button>
-						</form>
+						<ContactForm/>
 					</Padding>
 				</ColumnWrapper>
 			</ContentWrapper>
@@ -83,5 +66,5 @@ const ColumnWrapper = styled.div`
 `
 
 const Padding = styled.div`
-	padding: 1em;
+  padding: 1em;
 `
