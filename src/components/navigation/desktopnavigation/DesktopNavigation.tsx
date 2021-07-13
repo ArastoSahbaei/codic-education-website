@@ -25,7 +25,7 @@ export const DesktopNavigation = () => {
 	const [isCartOpen, setIsCartOpen] = useState<boolean>(false)
 	const [authenticatedUser] = useContext(UserContext)
 	const { navHeight } = useNavHeight()
-    const location = useLocation()
+	const location = useLocation()
 
 	const displayAuthentication = () => {
 		return authenticatedUser.authenticated
@@ -113,8 +113,8 @@ const WrapperBackground = styled.div`
     z-index: -1;
 `
 const Paragraph = styled(NavLink).attrs(({ activeClassName = 'is-active' }: any) => ({
-    activeClassName,
-  }))`
+	activeClassName,
+}))`
   font-weight: 600;
     cursor: pointer;
     text-transform: uppercase;

@@ -1,4 +1,4 @@
-import { LabeledInput } from 'components/labeled-input/labeledInput'
+import { LabeledInput } from 'hooks/form/components/labeled-input/labeledInput'
 import { IInputField, TInputValue } from 'shared/interfaces/form'
 
 export const useFormRender = () => {
