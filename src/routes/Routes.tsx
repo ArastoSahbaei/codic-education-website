@@ -63,9 +63,9 @@ export const Routes = (props: { children: React.ReactChild[] }) => {
 			{props.children}
 			<Switch>
 				{/* REGULAR PATHS */}
-				<Route exact path={RoutingPath.employeeView} component={EmployeeView} />
 				<Route exact path={RoutingPath.shopView} component={ShopView} />
 				<Route exact path={RoutingPath.contactView} component={ContactView} />
+				<Route exact path={RoutingPath.employeeView} component={EmployeeView} />
 				<Route exact path={RoutingPath.checkoutView} component={CheckoutView} />
 				<Route exact path={RoutingPath.productDetailsView()} component={ProductDetailView} />
 				<Route exact path={RoutingPath.retrieveLostPasswordView} component={RetrieveLostPasswordView} />
