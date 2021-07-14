@@ -2,7 +2,9 @@ import { Form, Formik, useField } from 'formik'
 import React from 'react'
 import styled from 'styled-components'
 import * as Yup from 'yup'
-import { Button, secondaryColor } from '../../../shared/styles/GlobalStyle'
+import { Button } from '../../../components/button/button'
+import { PrimaryButton } from '../../../components/button/PrimaryButton'
+import { secondaryColor } from '../../../shared/styles/GlobalStyle'
 
 const required = 'Krävs'
 const minLengthName = 2
@@ -44,7 +46,8 @@ export const ContactForm = () => {
 				<br/>
 				
 				<div style={ {textAlign: 'center'} }>
-					<Button type='submit'>Skicka</Button>
+					<PrimaryButton type='submit' text='Skicka'/>
+					<Button text='Skicka'/>
 				</div>
 			</Form>
 		
@@ -57,7 +60,7 @@ const TextInput = ({...props}: any) => {
 	return (
 		<>
 			<label htmlFor={ props.name }> </label>
-			<Input id={ props.name } type={ props.type }{ ...field } { ...props } />
+			<Input id={ props.name } type={ props.type }{ ...field } { ...props } autoComplete='on'/>
 			
 			{ meta.touched && meta.error ? (
 				<StyledErrorMessage>{ meta.error }</StyledErrorMessage>

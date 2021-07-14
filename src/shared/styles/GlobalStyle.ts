@@ -1,4 +1,4 @@
-import styled, { createGlobalStyle } from 'styled-components'
+import { createGlobalStyle } from 'styled-components'
 import AlegreyaSans from '../fonts/AlegreyaSans.ttf'
 import AlegreyaSansRegular from '../fonts/AlegreyaSansRegular.ttf'
 import Oleoscript from '../fonts/OleoScript.ttf'
@@ -20,8 +20,8 @@ export const GlobalStyle = createGlobalStyle`
   ol {
     margin-block-start: 1em;
     margin-block-end: 1em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
     padding-inline-start: 40px;
   }
 
@@ -76,15 +76,4 @@ export const GlobalStyle = createGlobalStyle`
       opacity: 1;
     }
   }
-`
-
-export const Button = styled.button`
-  margin-top: 1em;
-  padding: 0.5em 2em;
-  border: none;
-  border-radius: 0.25em;
-  background-color: ${ primaryColor };
-  font-size: 1.25em;
-  color: white;
-  cursor: pointer;
 `
