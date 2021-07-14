@@ -1,4 +1,4 @@
-import { ErrorMessage, Field, Form, Formik } from 'formik'
+import { Form, Formik, useField } from 'formik'
 import React from 'react'
 import styled from 'styled-components'
 import * as Yup from 'yup'
@@ -9,6 +9,19 @@ const minLengthMessage = 15
 
 const minLength = (length: number) => {
 	return `Måste vara minst ${ length } tecken långt`
+}
+
+const TextInput = ({label, ...props}: any) => {
+	const [field, meta] = useField(props)
+	return (
+		<>
+			<Label htmlFor={ props.id || props.name }><p>{ label }</p></Label>
+			<input className='text-input' { ...field } { ...props } />
+			{ meta.touched && meta.error ? (
+				<StyledErrorMessage>{ meta.error }</StyledErrorMessage>
+			) : null }
+		</>
+	)
 }
 
 export const ContactForm = () => {
@@ -34,21 +47,10 @@ export const ContactForm = () => {
 				alert(JSON.stringify(values, null, 2))
 			} }>
 			<Form>
-				<label htmlFor='firstName'><p>Förnamn</p></label>
-				<Field name='firstName' type='text'/>
-				<ErrorMessage name='firstName'/>
-				
-				<label><p>Efternamn</p></label>
-				<Field name='lastName' type='text'/>
-				<ErrorMessage name='lastName'/>
-				
-				<label><p>E-Post</p></label>
-				<Field name='email' type='email'/>
-				<ErrorMessage name='email'/>
-				
-				<label><p>Meddelande</p></label>
-				<Field name='message' type='text'/>
-				<ErrorMessage name='message'/>
+				<TextInput label='Förnamn' name='firstName' type='text'/>
+				<TextInput label='Efternamn' name='lastName' type='text'/>
+				<TextInput label='E-Post' name='email' type='email'/>
+				<TextInput label='Meddelande' name='message' type='text'/>
 				
 				<br/>
 				
@@ -66,9 +68,9 @@ const StyledErrorMessage = styled.div`
   font-size: 0.8em;
   color: red;
   margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+`
 
-  &:before {
-    content: "❌ ";
-    font-size: 0.7em;
-  }
+const Label = styled.label`
+  font-weight: bold;
 `
