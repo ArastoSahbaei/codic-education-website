@@ -105,6 +105,6 @@ const StyledTextArea = styled.textarea`
 const StyledErrorMessage = styled.div`
   font-size: 0.8em;
   color: red;
-  margin-top: 0.25rem;
-  margin-bottom: 0.25rem;
+  margin-top: -1.75em;
+  margin-bottom: 0.5em;
 `
