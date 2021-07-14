@@ -1,38 +1,45 @@
 import React from 'react'
 import styled from 'styled-components'
+import contact_us from '../../shared/images/contact_us.jpg'
 import { primaryFont } from '../../shared/styles/GlobalStyle'
 import { ContactForm } from './components/ContactForm'
 import { ContactInfo } from './components/ContactInfo'
 
 export const ContactView = () => {
 	return (
-		<Wrapper>
-			<HeaderWrapper>
-				<Header1>Kontakta oss</Header1>
-			</HeaderWrapper>
-			<ContentWrapper>
-				<ColumnWrapper>
-					<Padding>
-						<ContactInfo/>
-					</Padding>
-					<Padding>
-						<ContactForm/>
-					</Padding>
-				</ColumnWrapper>
-			</ContentWrapper>
-		</Wrapper>
+		<>
+			<BackgroundImage src={ contact_us } alt="Backgrundsbild på en laptop"/>
+			<GridWrapper>
+				<HeaderWrapper>
+					<Header1>Kontakta oss</Header1>
+				</HeaderWrapper>
+				<ContentWrapper>
+					<ColumnWrapper>
+						<Padding>
+							<ContactInfo/>
+						</Padding>
+						<Padding>
+							<ContactForm/>
+						</Padding>
+					</ColumnWrapper>
+				</ContentWrapper>
+			</GridWrapper>
+		</>
 	)
 }
 
-const Wrapper = styled.div`
+const GridWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(20, 1fr);
 `
 
 const BackgroundImage = styled.img`
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  max-height: 30%;
   z-index: -1;
-  grid-column: 1/21;
-  width: 100%;
 `
 
 const HeaderWrapper = styled.div`
@@ -49,7 +56,8 @@ const Header1 = styled.h1`
 
 const ContentWrapper = styled.div`
   grid-column: 5/17;
-  justify-content: space-between
+  justify-content: space-between;
+  background-color: white;
 `
 
 const ColumnWrapper = styled.div`
