@@ -23,13 +23,13 @@ const validate = (values: Values) => {
 	}
 	if (!values.firstName) {
 		errors.firstName = required
-	} else if (values.firstName.length < 3) {
+	} else if (values.firstName.length < 2) {
 		errors.firstName = minLength(2)
 	}
 	
 	if (!values.lastName) {
 		errors.lastName = required
-	} else if (values.lastName.length < 3) {
+	} else if (values.lastName.length < 2) {
 		errors.lastName = minLength(2)
 	}
 	
@@ -72,9 +72,10 @@ export const ContactForm = () => {
 				type='text'
 				autoComplete='on'
 				onChange={ formik.handleChange }
+				onBlur={formik.handleBlur}
 				value={ formik.values.firstName }
 			/>
-			{ formik.errors.firstName ? <div>{ formik.errors.firstName }</div> : null }
+			{ formik.touched.firstName && formik.errors.firstName ? <div>{ formik.errors.firstName }</div> : null }
 			
 			<label><p>Efternamn</p></label>
 			<Input
@@ -83,9 +84,10 @@ export const ContactForm = () => {
 				type='text'
 				autoComplete='on'
 				onChange={ formik.handleChange }
+				onBlur={formik.handleBlur}
 				value={ formik.values.lastName }
 			/>
-			{ formik.errors.lastName ? <div>{ formik.errors.lastName }</div> : null }
+			{ formik.touched.lastName && formik.errors.lastName ? <div>{ formik.errors.lastName }</div> : null }
 			
 			<label><p>E-Post</p></label>
 			<Input
@@ -94,9 +96,10 @@ export const ContactForm = () => {
 				type='email'
 				autoComplete='on'
 				onChange={ formik.handleChange }
+				onBlur={formik.handleBlur}
 				value={ formik.values.email }
 			/>
-			{ formik.errors.email ? <div>{ formik.errors.email }</div> : null }
+			{ formik.touched.email && formik.errors.email ? <div>{ formik.errors.email }</div> : null }
 			
 			<label><p>Meddelande</p></label>
 			<Input
@@ -105,9 +108,10 @@ export const ContactForm = () => {
 				type='text'
 				autoComplete='on'
 				onChange={ formik.handleChange }
+				onBlur={formik.handleBlur}
 				value={ formik.values.message }
 			/>
-			{ formik.errors.message ? <div>{ formik.errors.message }</div> : null }
+			{ formik.touched.message && formik.errors.message ? <div>{ formik.errors.message }</div> : null }
 			<br/>
 			
 			<button type='submit'>Skicka</button>
