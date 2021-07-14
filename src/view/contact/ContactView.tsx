@@ -31,10 +31,6 @@ export const ContactView = () => {
 
 const GridWrapper = styled.div<DimensionsInterface>`
   display: grid;
-  @media (max-width: ${ props => props.dimensions.mobile }) {
-    //grid-template-rows: 1fr;
-    grid-template-columns: 1fr;
-  }
   @media (min-width: ${ props => props.dimensions.tablet }) {
     grid-template-columns: repeat(20, 1fr);
 `
