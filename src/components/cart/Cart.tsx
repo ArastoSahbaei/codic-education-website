@@ -8,6 +8,7 @@ import trash from '../../shared/images/icons/trash.png'
 import emptyCart from '../../shared/images/empty_cart.png'
 import styled from 'styled-components'
 import RoutingPath from '../../routes/RoutingPath'
+import { Product } from 'shared/interfaces/ProductsInterface'
 
 export const Cart = (props: { isCartOpen: boolean, setIsCartOpen: (value: boolean) => void }) => {
 	const history = useHistory()
@@ -15,14 +16,14 @@ export const Cart = (props: { isCartOpen: boolean, setIsCartOpen: (value: boolea
 	const { isCartOpen, setIsCartOpen } = props
 	const [authenticatedUser] = useContext(UserContext)
 
-	const navigateToProductDetail = (details: any) => {
+	const navigateToProductDetail = (details: Product) => {
 		history.push(RoutingPath.productDetailsView(details._id), details)
 		setIsCartOpen(false)
 	}
 
 	const displayCartWithItems = () => {
 		return <DisplayCartWrapper>
-			{authenticatedUser.shoppingCart.products.map((product: any, index: number) =>
+			{authenticatedUser.shoppingCart.products.map((product: Product, index: number) =>
 				<UList key={index}>
 					<Image onClick={() => navigateToProductDetail(product)}
 						src={'https://picsum.photos/200/200'}
