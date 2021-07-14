@@ -1,51 +1,14 @@
 import { useFormik } from 'formik'
 import React from 'react'
 import styled from 'styled-components'
+import * as Yup from 'yup'
 
 const required = 'Krävs'
+const minLengthName = 2
+const minLengthMessage = 15
+
 const minLength = (length: number) => {
 	return `Måste vara minst ${ length } tecken långt`
-}
-
-interface Values {
-	firstName: string
-	lastName: string
-	email: string
-	message: string
-}
-
-const validate = (values: Values) => {
-	const errors: Values = {
-		firstName: '',
-		lastName: '',
-		email: '',
-		message: ''
-	}
-	if (!values.firstName) {
-		errors.firstName = required
-	} else if (values.firstName.length < 2) {
-		errors.firstName = minLength(2)
-	}
-	
-	if (!values.lastName) {
-		errors.lastName = required
-	} else if (values.lastName.length < 2) {
-		errors.lastName = minLength(2)
-	}
-	
-	if (!values.email) {
-		errors.email = required
-	} else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-		errors.email = 'Ogiltig email adress'
-	}
-	
-	if (!values.message) {
-		errors.message = required
-	} else if (values.message.length < 15) {
-		errors.message = minLength(15)
-	}
-	
-	return errors
 }
 
 export const ContactForm = () => {
@@ -57,7 +20,20 @@ export const ContactForm = () => {
 			email: '',
 			message: '',
 		},
-		validate,
+		validationSchema: Yup.object({
+			firstName: Yup.string()
+				.min(minLengthName, minLength(minLengthName))
+				.required(required),
+			lastName: Yup.string()
+				.min(minLengthName, minLength(minLengthName))
+				.required(required),
+			email: Yup.string()
+				.email('Ogiltig email adress')
+				.required(required),
+			message: Yup.string()
+				.min(minLengthMessage, minLength(minLengthMessage))
+				.required(required),
+		}),
 		onSubmit: values => {
 			alert(JSON.stringify(values, null, 2))
 		}
