@@ -44,48 +44,36 @@ export const ContactForm = () => {
 			<label htmlFor='firstName'><p>Förnamn</p></label>
 			<Input
 				id='firstName'
-				name='firstName'
 				type='text'
 				autoComplete='on'
-				onChange={ formik.handleChange }
-				onBlur={formik.handleBlur}
-				value={ formik.values.firstName }
+				{...formik.getFieldProps('firstName')}
 			/>
 			{ formik.touched.firstName && formik.errors.firstName ? <div>{ formik.errors.firstName }</div> : null }
 			
 			<label><p>Efternamn</p></label>
 			<Input
 				id='lastName'
-				name='lastName'
 				type='text'
 				autoComplete='on'
-				onChange={ formik.handleChange }
-				onBlur={formik.handleBlur}
-				value={ formik.values.lastName }
+				{...formik.getFieldProps('lastName')}
 			/>
 			{ formik.touched.lastName && formik.errors.lastName ? <div>{ formik.errors.lastName }</div> : null }
 			
 			<label><p>E-Post</p></label>
 			<Input
 				id='email'
-				name='email'
 				type='email'
 				autoComplete='on'
-				onChange={ formik.handleChange }
-				onBlur={formik.handleBlur}
-				value={ formik.values.email }
+				{...formik.getFieldProps('email')}
 			/>
 			{ formik.touched.email && formik.errors.email ? <div>{ formik.errors.email }</div> : null }
 			
 			<label><p>Meddelande</p></label>
 			<Input
 				id='message'
-				name='message'
 				type='text'
 				autoComplete='on'
-				onChange={ formik.handleChange }
-				onBlur={formik.handleBlur}
-				value={ formik.values.message }
+				{...formik.getFieldProps('message')}
 			/>
 			{ formik.touched.message && formik.errors.message ? <div>{ formik.errors.message }</div> : null }
 			<br/>
