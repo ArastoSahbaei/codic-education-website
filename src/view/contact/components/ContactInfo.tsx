@@ -19,14 +19,14 @@ export const ContactInfo = () => {
 			<Div>
 				<Header1>Här finns vi</Header1>
 				<Paragraph>Drottninggatan 38, Göteborg</Paragraph>
-				<img src={ map } alt="Karta över Göteborg"/>
+				<img src={ map } alt='Karta över Göteborg'/>
 			</Div>
 		</>
 	)
 }
 
 const Div = styled.div`
-margin-bottom: 2em;
+  margin-bottom: 2em;
 `
 
 const Header1 = styled.h1`
@@ -36,6 +36,6 @@ const Header1 = styled.h1`
 `
 
 const Paragraph = styled.p`
-	margin-top: 0.5em;
-	margin-bottom: 0.5em;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
 `

@@ -8,7 +8,7 @@ import { ContactInfo } from './components/ContactInfo'
 export const ContactView = () => {
 	return (
 		<>
-			<BackgroundImage src={ contact_us } alt="Backgrundsbild på en laptop"/>
+			<BackgroundImage src={ contact_us } alt='Backgrundsbild på en laptop'/>
 			<GridWrapper>
 				<HeaderWrapper>
 					<Header1>Kontakta oss</Header1>
