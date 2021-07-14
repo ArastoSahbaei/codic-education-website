@@ -8,7 +8,7 @@ import { ContactInfo } from './components/ContactInfo'
 
 export const ContactView = () => {
 	return (
-		<>
+		<BackgroundColor>
 			<BackgroundImage src={ contact_us } alt='Backgrundsbild på en laptop'/>
 			<GridWrapper dimensions={ windowsMaxWidth }>
 				<HeaderWrapper dimensions={ windowsMaxWidth }>
@@ -25,9 +25,14 @@ export const ContactView = () => {
 					</ColumnWrapper>
 				</ContentWrapper>
 			</GridWrapper>
-		</>
+		</BackgroundColor>
 	)
 }
+
+const BackgroundColor = styled.div`
+  z-index: -2;
+  background-color: #F2F2F2;
+`
 
 const GridWrapper = styled.div<DimensionsInterface>`
   display: grid;
@@ -41,12 +46,13 @@ const BackgroundImage = styled.img`
   left: 0;
   min-width: 100%;
   max-height: 30%;
-  z-index: -1;
+  z-index: 0;
 `
 
 const HeaderWrapper = styled.div<DimensionsInterface>`
   grid-column: 3/19;
   font-size: 1.5em;
+  z-index: 1;
 
   @media (max-width: ${ props => props.dimensions.mobile }) {
     margin-top: -2em;
@@ -75,11 +81,15 @@ const Header1 = styled.h1`
   font-family: ${ primaryFont };
   margin-top: 0;
   margin-bottom: 0.5em;
+  color: white;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
 `
 
 const ContentWrapper = styled.div<DimensionsInterface>`
   justify-content: space-between;
   background-color: white;
+  z-index: 1;
   @media (max-width: ${ props => props.dimensions.mobile }) {
     grid-column: 3/19;
   }
