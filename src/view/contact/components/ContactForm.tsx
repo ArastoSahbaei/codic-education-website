@@ -32,6 +32,7 @@ export const ContactForm = () => {
 					.required(required),
 			}) }
 			onSubmit={ values => {
+				// TODO: Write send message function here
 				alert(JSON.stringify(values, null, 2))
 			} }>
 			<Form>
@@ -65,7 +66,7 @@ const TextInput = ({...props}: any) => {
 	)
 }
 
-const TextArea = ({label, ...props}: any) => {
+const TextArea = ({...props}: any) => {
 	const [field, meta] = useField(props)
 	return (
 		<>
