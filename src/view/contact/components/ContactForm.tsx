@@ -2,6 +2,7 @@ import { Form, Formik, useField } from 'formik'
 import React from 'react'
 import styled from 'styled-components'
 import * as Yup from 'yup'
+import { Button, secondaryColor } from '../../../shared/styles/GlobalStyle'
 
 const required = 'Krävs'
 const minLengthName = 2
@@ -9,19 +10,6 @@ const minLengthMessage = 15
 
 const minLength = (length: number) => {
 	return `Måste vara minst ${ length } tecken långt`
-}
-
-const TextInput = ({label, ...props}: any) => {
-	const [field, meta] = useField(props)
-	return (
-		<>
-			<Label htmlFor={ props.id || props.name }><p>{ label }</p></Label>
-			<input className='text-input' { ...field } { ...props } />
-			{ meta.touched && meta.error ? (
-				<StyledErrorMessage>{ meta.error }</StyledErrorMessage>
-			) : null }
-		</>
-	)
 }
 
 export const ContactForm = () => {
@@ -47,30 +35,74 @@ export const ContactForm = () => {
 				alert(JSON.stringify(values, null, 2))
 			} }>
 			<Form>
-				<TextInput label='Förnamn' name='firstName' type='text'/>
-				<TextInput label='Efternamn' name='lastName' type='text'/>
-				<TextInput label='E-Post' name='email' type='email'/>
-				<TextInput label='Meddelande' name='message' type='text'/>
+				<TextInput name='firstName' type='text' placeholder='Förnamn'/>
+				<TextInput name='lastName' type='text' placeholder='Efternamn'/>
+				<TextInput name='email' type='email' placeholder='E-Post'/>
+				<TextArea name='message' type='textarea' placeholder='Meddelande'/>
 				
 				<br/>
 				
-				<button type='submit'>Skicka</button>
+				<div style={ {textAlign: 'center'} }>
+					<Button type='submit'>Skicka</Button>
+				</div>
 			</Form>
 		
 		</Formik>
 	)
 }
 
-const Input = styled.input`
+const TextInput = ({...props}: any) => {
+	const [field, meta] = useField(props)
+	return (
+		<>
+			<label htmlFor={ props.name }> </label>
+			<Input id={ props.name } type={ props.type }{ ...field } { ...props } />
+			
+			{ meta.touched && meta.error ? (
+				<StyledErrorMessage>{ meta.error }</StyledErrorMessage>
+			) : null }
+		</>
+	)
+}
 
+const TextArea = ({label, ...props}: any) => {
+	const [field, meta] = useField(props)
+	return (
+		<>
+			<label htmlFor={ props.name }> </label>
+			<StyledTextArea
+				id={ props.name } { ...field } { ...props }
+				rows={ 8 }
+				placeholder='Tveka inte att höra av dig till oss vid funderingar!'/>
+			
+			{ meta.touched && meta.error ? (
+				<StyledErrorMessage>{ meta.error }</StyledErrorMessage>
+			) : null }
+		</>
+	)
+}
+
+const Input = styled.input`
+  margin-bottom: 1.5em;
+  padding: 0.15em;
+  font-size: 1.0em;
+  border: 4px solid ${ secondaryColor };
+  border-radius: 0.5em;
+  width: 100%
+`
+
+const StyledTextArea = styled.textarea`
+  font-family: AlegreyaSansRegular, sans-serif;
+  margin-bottom: 1.5em;
+  padding: 0.15em;
+  font-size: 1.0em;
+  border: 4px solid ${ secondaryColor };
+  border-radius: 0.5em;
+  width: 100%
 `
 const StyledErrorMessage = styled.div`
   font-size: 0.8em;
   color: red;
   margin-top: 0.25rem;
   margin-bottom: 0.25rem;
-`
-
-const Label = styled.label`
-  font-weight: bold;
 `

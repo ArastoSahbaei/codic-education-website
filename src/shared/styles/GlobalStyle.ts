@@ -1,7 +1,7 @@
-import { createGlobalStyle } from 'styled-components'
-import Oleoscript from '../fonts/OleoScript.ttf'
+import styled, { createGlobalStyle } from 'styled-components'
 import AlegreyaSans from '../fonts/AlegreyaSans.ttf'
 import AlegreyaSansRegular from '../fonts/AlegreyaSansRegular.ttf'
+import Oleoscript from '../fonts/OleoScript.ttf'
 
 export const primaryColor = '#f59300'
 export const secondaryColorDark = '#263746'
@@ -76,4 +76,15 @@ export const GlobalStyle = createGlobalStyle`
       opacity: 1;
     }
   }
+`
+
+export const Button = styled.button`
+  margin-top: 1em;
+  padding: 0.5em 2em;
+  border: none;
+  border-radius: 0.25em;
+  background-color: ${ primaryColor };
+  font-size: 1.25em;
+  color: white;
+  cursor: pointer;
 `
