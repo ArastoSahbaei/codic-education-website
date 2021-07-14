@@ -26,7 +26,8 @@ const StyledTextArea = styled.textarea`
   font-size: 1.0em;
   border: 4px solid ${ secondaryColor };
   border-radius: 0.5em;
-  width: 100%
+  width: 100%;
+  resize: vertical;
 `
 
 const StyledErrorMessage = styled.div`
