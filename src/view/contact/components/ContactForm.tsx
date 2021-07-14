@@ -19,14 +19,14 @@ export const ContactForm = () => {
 		<Formik
 			initialValues={ {firstName: '', lastName: '', email: '', message: ''} }
 			validationSchema={ Yup.object({
-				firstName: Yup.string()
-					.min(minLengthName, minLength(minLengthName))
-					.required(required),
-				lastName: Yup.string()
+				name: Yup.string()
 					.min(minLengthName, minLength(minLengthName))
 					.required(required),
 				email: Yup.string()
 					.email('Ogiltig email adress')
+					.required(required),
+				subject: Yup.string()
+					.min(minLengthName, minLength(minLengthName))
 					.required(required),
 				message: Yup.string()
 					.min(minLengthMessage, minLength(minLengthMessage))
@@ -37,10 +37,10 @@ export const ContactForm = () => {
 				alert(JSON.stringify(values, null, 2))
 			} }>
 			<Form>
-				<TextInput name='firstName' type='text' placeholder='Förnamn'/>
-				<TextInput name='lastName' type='text' placeholder='Efternamn'/>
+				<TextInput name="name" type='text' placeholder='Namn'/>
 				<TextInput name='email' type='email' placeholder='E-Post'/>
-				<TextArea name='message' type='textarea' placeholder='Meddelande'/>
+				<TextInput name='subject' type='text' placeholder='Ämne'/>
+				<TextArea name='message' type='textarea' placeholder='Tveka inte att höra av dig till oss vid funderingar!'/>
 				
 				<div style={ {textAlign: 'center'} }>
 					<PrimaryButton type='submit' text='Skicka'/>
