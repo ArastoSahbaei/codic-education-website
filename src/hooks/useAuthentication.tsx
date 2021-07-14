@@ -3,7 +3,8 @@ import { useHistory } from 'react-router-dom'
 import { UserContext } from 'shared/providers/UserProvider'
 import { validateToken } from 'functions/validateToken'
 import { nonAuthenticatedUser } from 'shared/data/nonAuthenticatedUser'
-import { LoginCredentials, RegisterNewUser } from 'shared/interfaces/UserInterface'
+import { LoginCredentials, RegisterNewUser, RetrieveLostAccount } from 'shared/interfaces/UserInterface'
+import { toast } from 'react-toastify'
 import RoutingPath from 'routes/RoutingPath'
 import CodicAPIService from 'shared/api/services/CodicAPIService'
 import LocalStorage from 'shared/cache/LocalStorage'
@@ -57,8 +58,15 @@ export const useAuthentication = () => {
 		}
 	}
 
-	const recoverLostPassword = () => {
-		//TODO: TBA
+	const recoverLostPassword = async (email: RetrieveLostAccount) => {
+		try {
+			await CodicAPIService.retrieveLostAccount(email)
+			//TODO: check if account does exist in our system
+			toast.info(`Instruktioner om hur du återfår ditt konto har skickats till ${email.email}`)
+		} catch (error) {
+			console.log(error.message)
+			toast.info('Användare hittades inte i våra system')
+		}
 	}
 
 	return { login, register, validateUser, recoverLostPassword }

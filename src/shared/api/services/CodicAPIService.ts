@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { LoginCredentials, RegisterNewUser } from 'shared/interfaces/UserInterface'
+import { LoginCredentials, RegisterNewUser, RetrieveLostAccount } from 'shared/interfaces/UserInterface'
 import http from '../CodicAPI'
 
 const authenticatedRouteExample = () => {
@@ -34,8 +34,8 @@ const deleteUserWithID = () => {
 	return http.delete('/user/:userId')
 }
 
-const forgotPassword = (email: any) => {
-	return http.post('/forgotpassword', email)
+const retrieveLostAccount = (email: RetrieveLostAccount) => {
+	return http.post('/retrieveaccount', email)
 }
 
 const resetPassword = (newPasswordAndToken: any) => {
@@ -90,7 +90,7 @@ export default {
 	getUserWithQuery,
 	updateValuesOfExistingUser,
 	deleteUserWithID,
-	forgotPassword,
+	retrieveLostAccount,
 	resetPassword,
 	createProductCategory,
 	getProductByID,
