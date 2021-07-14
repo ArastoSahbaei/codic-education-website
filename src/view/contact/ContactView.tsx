@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
+import { windowsMaxWidth } from '../../shared/data/WindowsSizes'
 import contact_us from '../../shared/images/contact_us.jpg'
+import { DimensionsInterface } from '../../shared/interfaces/DimensionsInterface'
 import { primaryFont } from '../../shared/styles/GlobalStyle'
 import { ContactForm } from './components/ContactForm'
 import { ContactInfo } from './components/ContactInfo'
@@ -9,12 +11,12 @@ export const ContactView = () => {
 	return (
 		<>
 			<BackgroundImage src={ contact_us } alt='Backgrundsbild på en laptop'/>
-			<GridWrapper>
-				<HeaderWrapper>
+			<GridWrapper dimensions={ windowsMaxWidth }>
+				<HeaderWrapper dimensions={ windowsMaxWidth }>
 					<Header1>Kontakta oss</Header1>
 				</HeaderWrapper>
-				<ContentWrapper>
-					<ColumnWrapper>
+				<ContentWrapper dimensions={ windowsMaxWidth }>
+					<ColumnWrapper dimensions={ windowsMaxWidth }>
 						<Padding>
 							<ContactInfo/>
 						</Padding>
@@ -28,9 +30,14 @@ export const ContactView = () => {
 	)
 }
 
-const GridWrapper = styled.div`
+const GridWrapper = styled.div<DimensionsInterface>`
   display: grid;
-  grid-template-columns: repeat(20, 1fr);
+  @media (max-width: ${ props => props.dimensions.mobile }) {
+    //grid-template-rows: 1fr;
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: ${ props => props.dimensions.tablet }) {
+    grid-template-columns: repeat(20, 1fr);
 `
 
 const BackgroundImage = styled.img`
@@ -42,10 +49,31 @@ const BackgroundImage = styled.img`
   z-index: -1;
 `
 
-const HeaderWrapper = styled.div`
+const HeaderWrapper = styled.div<DimensionsInterface>`
   grid-column: 3/19;
-  margin-top: 2em;
   font-size: 1.5em;
+
+  @media (max-width: ${ props => props.dimensions.mobile }) {
+    margin-top: -2em;
+  }
+  @media (min-width: ${ props => props.dimensions.tablet }) {
+    margin-top: 2em;
+  }
+  @media (min-width: ${ props => props.dimensions.laptop }) {
+    //grid-column: 4/18;
+  }
+  @media (min-width: ${ props => props.dimensions.desktop }) {
+    //grid-column: 4/18;
+  }
+  @media (min-width: ${ props => props.dimensions.qHd }) {
+    grid-column: 4/18;
+  }
+  @media (min-width: ${ props => props.dimensions.ultraWide }) {
+    grid-column: 5/17;
+  }
+  @media (min-width: ${ props => props.dimensions.ultraHd }) {
+    grid-column: 6/16;
+  }
 `
 
 const Header1 = styled.h1`
@@ -54,15 +82,52 @@ const Header1 = styled.h1`
   margin-bottom: 0.5em;
 `
 
-const ContentWrapper = styled.div`
-  grid-column: 5/17;
+const ContentWrapper = styled.div<DimensionsInterface>`
   justify-content: space-between;
   background-color: white;
+  @media (max-width: ${ props => props.dimensions.mobile }) {
+    grid-column: 3/19;
+  }
+  @media (min-width: ${ props => props.dimensions.tablet }) {
+    grid-column: 3/19;
+  }
+  @media (min-width: ${ props => props.dimensions.laptop }) {
+    //grid-column: 4/18;
+  }
+  @media (min-width: ${ props => props.dimensions.desktop }) {
+    grid-column: 4/18;
+  }
+  @media (min-width: ${ props => props.dimensions.qHd }) {
+    grid-column: 5/17;
+  }
+  @media (min-width: ${ props => props.dimensions.ultraWide }) {
+    grid-column: 6/16;
+  }
+  @media (min-width: ${ props => props.dimensions.ultraHd }) {
+    grid-column: 7/15;
+  }
 `
 
-const ColumnWrapper = styled.div`
-  display: grid;
-  grid-template-columns: 2fr 1fr;
+const ColumnWrapper = styled.div<DimensionsInterface>`
+  @media (max-width: ${ props => props.dimensions.mobile }) {
+    width: 100%;
+  }
+  @media (min-width: ${ props => props.dimensions.tablet }) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  @media (min-width: ${ props => props.dimensions.laptop }) {
+  }
+  @media (min-width: ${ props => props.dimensions.desktop }) {
+    grid-template-columns: 3fr 2fr;
+  }
+  @media (min-width: ${ props => props.dimensions.qHd }) {
+    grid-template-columns: 2fr 1fr;
+  }
+  @media (min-width: ${ props => props.dimensions.ultraWide }) {
+  }
+  @media (min-width: ${ props => props.dimensions.ultraHd }) {
+  }
 `
 
 const Padding = styled.div`
