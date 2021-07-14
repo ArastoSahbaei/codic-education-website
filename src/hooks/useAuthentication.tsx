@@ -58,14 +58,14 @@ export const useAuthentication = () => {
 		}
 	}
 
-	const recoverLostPassword = async (email: RetrieveLostAccount) => {
+	const recoverLostPassword = async (data: RetrieveLostAccount) => {
 		try {
-			await CodicAPIService.retrieveLostAccount(email)
+			await CodicAPIService.retrieveLostAccount(data)
 			//TODO: check if account does exist in our system
-			toast.info(`Instruktioner om hur du återfår ditt konto har skickats till ${email.email}`)
+			toast.info(`Instruktioner om hur du återfår ditt konto har skickats till ${data.email}`)
 		} catch (error) {
 			console.log(error.message)
-			toast.info('Användare hittades inte i våra system')
+			toast.info(`${data.email} hittades inte i våra system`)
 		}
 	}
 
