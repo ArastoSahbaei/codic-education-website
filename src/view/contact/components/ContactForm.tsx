@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import * as Yup from 'yup'
 import { PrimaryButton } from '../../../components/button/PrimaryButton'
 import { secondaryColor } from '../../../shared/styles/GlobalStyle'
+import { TextArea } from './TextArea'
 
 const required = 'Krävs'
 const minLengthName = 2
@@ -67,22 +68,7 @@ const TextInput = ({...props}: any) => {
 	)
 }
 
-const TextArea = ({...props}: any) => {
-	const [field, meta] = useField(props)
-	return (
-		<>
-			<label htmlFor={ props.name }> </label>
-			<StyledTextArea
-				id={ props.name } { ...field } { ...props }
-				rows={ 8 }
-				placeholder='Tveka inte att höra av dig till oss vid funderingar!'/>
-			
-			{ meta.touched && meta.error ? (
-				<StyledErrorMessage>{ meta.error }</StyledErrorMessage>
-			) : null }
-		</>
-	)
-}
+
 
 const Input = styled.input`
   margin-bottom: 1.5em;
@@ -93,15 +79,6 @@ const Input = styled.input`
   width: 100%
 `
 
-const StyledTextArea = styled.textarea`
-  font-family: AlegreyaSansRegular, sans-serif;
-  margin-bottom: 1.5em;
-  padding: 0.15em;
-  font-size: 1.0em;
-  border: 4px solid ${ secondaryColor };
-  border-radius: 0.5em;
-  width: 100%
-`
 const StyledErrorMessage = styled.div`
   font-size: 0.8em;
   color: red;
