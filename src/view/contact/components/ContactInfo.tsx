@@ -1,4 +1,3 @@
-import React from 'react'
 import styled from 'styled-components'
 import { primaryFont } from '../../../shared/styles/GlobalStyle'
 import map from '../map.png'
