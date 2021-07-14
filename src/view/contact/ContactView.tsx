@@ -1,4 +1,3 @@
-import React from 'react'
 import styled from 'styled-components'
 import { windowsMaxWidth } from '../../shared/data/WindowsSizes'
 import contact_us from '../../shared/images/contact_us.jpg'
