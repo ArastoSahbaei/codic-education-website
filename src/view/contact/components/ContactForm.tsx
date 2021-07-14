@@ -38,7 +38,7 @@ export const ContactForm = () => {
 			} }>
 			<Form>
 				<TextInput name="name" type='text' placeholder='Namn'/>
-				<TextInput name='email' type='email' placeholder='E-Post'/>
+				<TextInput name='email' type='email' placeholder='E-Mail'/>
 				<TextInput name='subject' type='text' placeholder='Ämne'/>
 				<TextArea name='message' type='textarea' placeholder='Tveka inte att höra av dig till oss vid funderingar!'/>
 				
