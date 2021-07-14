@@ -2,6 +2,52 @@ import { useFormik } from 'formik'
 import React from 'react'
 import styled from 'styled-components'
 
+const required = 'Krävs'
+const minLength = (length: number) => {
+	return `Måste vara minst ${ length } tecken långt`
+}
+
+interface Values {
+	firstName: string
+	lastName: string
+	email: string
+	message: string
+}
+
+const validate = (values: Values) => {
+	const errors: Values = {
+		firstName: '',
+		lastName: '',
+		email: '',
+		message: ''
+	}
+	if (!values.firstName) {
+		errors.firstName = required
+	} else if (values.firstName.length < 3) {
+		errors.firstName = minLength(2)
+	}
+	
+	if (!values.lastName) {
+		errors.lastName = required
+	} else if (values.lastName.length < 3) {
+		errors.lastName = minLength(2)
+	}
+	
+	if (!values.email) {
+		errors.email = required
+	} else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+		errors.email = 'Ogiltig email adress'
+	}
+	
+	if (!values.message) {
+		errors.message = required
+	} else if (values.message.length < 15) {
+		errors.message = minLength(15)
+	}
+	
+	return errors
+}
+
 export const ContactForm = () => {
 	
 	const formik = useFormik({
@@ -11,6 +57,7 @@ export const ContactForm = () => {
 			email: '',
 			message: '',
 		},
+		validate,
 		onSubmit: values => {
 			alert(JSON.stringify(values, null, 2))
 		}
@@ -27,6 +74,8 @@ export const ContactForm = () => {
 				onChange={ formik.handleChange }
 				value={ formik.values.firstName }
 			/>
+			{ formik.errors.firstName ? <div>{ formik.errors.firstName }</div> : null }
+			
 			<label><p>Efternamn</p></label>
 			<Input
 				id='lastName'
@@ -36,6 +85,7 @@ export const ContactForm = () => {
 				onChange={ formik.handleChange }
 				value={ formik.values.lastName }
 			/>
+			{ formik.errors.lastName ? <div>{ formik.errors.lastName }</div> : null }
 			
 			<label><p>E-Post</p></label>
 			<Input
@@ -46,6 +96,7 @@ export const ContactForm = () => {
 				onChange={ formik.handleChange }
 				value={ formik.values.email }
 			/>
+			{ formik.errors.email ? <div>{ formik.errors.email }</div> : null }
 			
 			<label><p>Meddelande</p></label>
 			<Input
@@ -56,6 +107,7 @@ export const ContactForm = () => {
 				onChange={ formik.handleChange }
 				value={ formik.values.message }
 			/>
+			{ formik.errors.message ? <div>{ formik.errors.message }</div> : null }
 			<br/>
 			
 			<button type='submit'>Skicka</button>
