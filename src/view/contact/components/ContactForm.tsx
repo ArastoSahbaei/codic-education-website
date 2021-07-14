@@ -2,7 +2,6 @@ import { Form, Formik, useField } from 'formik'
 import React from 'react'
 import styled from 'styled-components'
 import * as Yup from 'yup'
-import { Button } from '../../../components/button/button'
 import { PrimaryButton } from '../../../components/button/PrimaryButton'
 import { secondaryColor } from '../../../shared/styles/GlobalStyle'
 
@@ -47,7 +46,6 @@ export const ContactForm = () => {
 				
 				<div style={ {textAlign: 'center'} }>
 					<PrimaryButton type='submit' text='Skicka'/>
-					<Button text='Skicka'/>
 				</div>
 			</Form>
 		
