@@ -61,6 +61,6 @@ export const useAuthentication = () => {
 		//TODO: TBA
 	}
 
-	return { login, register, validateUser }
+	return { login, register, validateUser, recoverLostPassword }
 
 }
