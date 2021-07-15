@@ -6,7 +6,7 @@ export const TextInput = ({ ...props }: any) => {
 	const [field, meta] = useField(props)
 	return (
 		<>
-			<label htmlFor={props.name}> </label>
+			<label htmlFor={props.name} />
 			<Input id={props.name} type={props.type}{...field} {...props} autoComplete='on' />
 
 			{meta.touched && meta.error ? (
