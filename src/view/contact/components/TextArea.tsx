@@ -7,10 +7,7 @@ export const TextArea = ({ ...props }: any) => {
 	return (
 		<>
 			<label htmlFor={props.name} />
-			<StyledTextArea
-				id={props.name} {...field} {...props}
-				rows={8} />
-
+			<StyledTextArea id={props.name} {...field} {...props} rows={8} />
 			{meta.touched && meta.error ? (
 				<StyledErrorMessage>{meta.error}</StyledErrorMessage>
 			) : null}
