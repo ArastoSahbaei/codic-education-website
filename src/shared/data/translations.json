@@ -6,5 +6,6 @@
     "price": "Pris",
     "title": "Titel",
     "quantity": "Antal",
-    "Remove": "Ta bort"
+    "Remove": "Ta bort",
+    "Complete Order": "Slutför Beställning"
 }

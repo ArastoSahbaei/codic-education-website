@@ -52,7 +52,7 @@ const initialState: IForm = {
 	},
 	method: {
 		value: '',
-		defaultValue: '',
+		defaultValue: 'Postnord',
 		options: ['Postnord', 'DHL'],
 		label: 'Shipping type',
 		inputType: 'select',

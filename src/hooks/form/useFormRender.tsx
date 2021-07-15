@@ -9,6 +9,7 @@ export const useFormRender = () => {
 		return fields.map((field) => (
 			<LabeledInput
 				key={field.name}
+				value={field.value || field.defaultValue}
 				name={field.name}
 				label={field.label}
 				inputType={field.inputType}
