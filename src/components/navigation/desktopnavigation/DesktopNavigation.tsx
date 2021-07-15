@@ -1,7 +1,7 @@
 import { useContext, useState, useMemo } from 'react'
 import { useHistory, NavLink, useLocation } from 'react-router-dom'
+import { primaryColor, secondaryFont } from '../../../shared/styles/GlobalStyle'
 import { Profile } from './components/profile/Profile'
-import { DropDownWrapper } from './components/profile/profiledropdown/ProfileDropdown'
 import { ScrollContext } from '../../../shared/providers/ScrollProvider'
 import { useNavHeight } from '../../../hooks/useNavHeight'
 import { UserContext } from '../../../shared/providers/UserProvider'
@@ -12,7 +12,6 @@ import styled from 'styled-components'
 import RoutingPath from '../../../routes/RoutingPath'
 import logotype from '../../../shared/images/codiclogotype.svg'
 import logotypeWhite from '../../../shared/images/codiclogotype_white.svg'
-import { primaryColor, secondaryFont } from '../../../shared/styles/GlobalStyle'
 
 export const NavBG = () => {
 	const { fractions } = useContext(ScrollContext)
@@ -112,7 +111,7 @@ const WrapperBackground = styled.div`
     height: 100%;
     z-index: -1;
 `
-const Paragraph = styled(NavLink).attrs(({ activeClassName = 'is-active' }: any) => ({
+const Paragraph = styled(NavLink).attrs(({ activeClassName = 'is-active' }) => ({
 	activeClassName,
 }))`
   font-weight: 600;

@@ -1,30 +1,32 @@
 import { useState } from 'react'
+import { useAuthentication } from 'hooks/useAuthentication'
+import { RetrieveLostAccount } from 'shared/interfaces/UserInterface'
 import { Button, Form, Header1, Input, RowWrapper } from '../../../shared/styles/SiginStyles'
 import styled from 'styled-components'
 import leftArrow from '../../../shared/images/icons/left-arrow.svg'
 
 export const RecoverPassword = (props: { changeRecoverPasswordView: () => void }) => {
-	const [recoverPasswordText] = useState<string>('Återställ lösenord')
+	const { recoverLostPassword } = useAuthentication()
 	const [email, setEmail] = useState<string>('')
-	const [resetPasswordButton] = useState<string>('Återställ nu')
 
 	const sendRecoverPasswordEmail = (event: React.MouseEvent<HTMLElement>) => {
 		event.preventDefault()
-		alert(`Password reset email was sent to "${email}" if account exists`)
+		const emailRetriver: RetrieveLostAccount = { email: email }
+		recoverLostPassword(emailRetriver)
 	}
 
 	return (
 		<RowWrapper>
 			<Wrapper>
 				<Image src={leftArrow} alt="back arrow" onClick={() => { props.changeRecoverPasswordView() }} />
-				<Header1>{recoverPasswordText}</Header1>
+				<Header1>Återställ lösenord</Header1>
 			</Wrapper>
 			<Form>
 				<Input
 					type='text'
 					placeholder='Email'
 					onChange={(event) => { setEmail(event.target.value) }} />
-				<Button onClick={(event) => { sendRecoverPasswordEmail(event) }}>{resetPasswordButton}</Button>
+				<Button onClick={(event) => { sendRecoverPasswordEmail(event) }}>Återställ nu</Button>
 			</Form>
 		</RowWrapper>
 	)

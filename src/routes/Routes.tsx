@@ -2,6 +2,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import { useEffect, useContext } from 'react'
 import { nonAuthenticatedUser } from '../shared/data/nonAuthenticatedUser'
 import { UserContext } from '../shared/providers/UserProvider'
+import { RetrieveLostPasswordView } from 'view/retrieve-lost-password/RetrieveLostPasswordView'
 import { ProductDetailView } from '../view/productdetail/ProductDetailView'
 import { CheckoutView } from '../view/checkout/CheckoutView'
 import { EmployeeView } from '../view/employee/EmployeeView'
@@ -62,11 +63,12 @@ export const Routes = (props: { children: React.ReactChild[] }) => {
 			{props.children}
 			<Switch>
 				{/* REGULAR PATHS */}
-				<Route exact path={RoutingPath.employeeView} component={EmployeeView} />
 				<Route exact path={RoutingPath.shopView} component={ShopView} />
 				<Route exact path={RoutingPath.contactView} component={ContactView} />
+				<Route exact path={RoutingPath.employeeView} component={EmployeeView} />
 				<Route exact path={RoutingPath.checkoutView} component={CheckoutView} />
 				<Route exact path={RoutingPath.productDetailsView()} component={ProductDetailView} />
+				<Route exact path={RoutingPath.retrieveLostPasswordView} component={RetrieveLostPasswordView} />
 				<Route exact path={RoutingPath.signInView} component={blockRouteIfAuthenticated(SignInView)} />
 				{/* AUTHENTICATED PATHS */}
 				<Route exact path={AuthPath.profileView} component={authenticationRequired(ProfileView)} />

@@ -17,3 +17,7 @@ export interface RegisterNewUser {
 	email: string
 	receiveNewsLetters: boolean | true
 }
+
+export interface RetrieveLostAccount {
+	email: string
+}
