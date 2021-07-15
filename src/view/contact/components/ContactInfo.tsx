@@ -3,7 +3,7 @@ import { primaryFont } from '../../../shared/styles/GlobalStyle'
 import map from '../map.png'
 
 export const ContactInfo = () => {
-	
+
 	return (
 		<>
 			<MarginBottom>
@@ -18,7 +18,7 @@ export const ContactInfo = () => {
 			<MarginBottom>
 				<Header1>Här finns vi</Header1>
 				<Paragraph>Drottninggatan 38, Göteborg</Paragraph>
-				<Image src={ map } alt='Karta över Göteborg'/>
+				<Image src={map} alt='Karta över Göteborg' />
 			</MarginBottom>
 		</>
 	)
@@ -29,7 +29,7 @@ const MarginBottom = styled.div`
 `
 
 const Header1 = styled.h1`
-  font-family: ${ primaryFont };
+  font-family: ${primaryFont};
   margin-top: 0;
   margin-bottom: 0;
 `
