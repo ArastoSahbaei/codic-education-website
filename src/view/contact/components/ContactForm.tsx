@@ -1,4 +1,5 @@
 import { Form, Formik } from 'formik'
+import CodicAPIService from 'shared/api/services/CodicAPIService'
 import Validations from 'shared/validations/Validations'
 import { PrimaryButton } from '../../../components/button/PrimaryButton'
 import { TextArea } from './TextArea'
@@ -6,14 +7,15 @@ import { TextInput } from './TextInput'
 
 export const ContactForm = () => {
 
+	const handleSubmit = async (values: any) => {
+		await CodicAPIService.sendContactEmail(values)
+	}
+
 	return (
 		<Formik
-			initialValues={{ firstName: '', lastName: '', email: '', message: '' }}
+			initialValues={{}}
 			validationSchema={Validations.contactFormValidation}
-			onSubmit={values => {
-				// TODO: Write send message function here
-				alert(JSON.stringify(values, null, 2))
-			}}>
+			onSubmit={values => { handleSubmit(values) }}>
 			<Form>
 				<TextInput name="name" type='text' placeholder='Namn' />
 				<TextInput name='email' type='email' placeholder='E-Mail' />
