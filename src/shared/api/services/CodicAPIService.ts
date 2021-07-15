@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { ContactForm } from 'shared/interfaces/ContactFormInterface'
 import { LoginCredentials, RegisterNewUser, RetrieveLostAccount } from 'shared/interfaces/UserInterface'
 import http from '../CodicAPI'
 
@@ -54,6 +55,10 @@ const getProductByID = (id: string) => {
 	return http.get(`/product/${id}`)
 }
 
+const sendContactEmail = (data: ContactForm) => {
+	return http.post('/contact', data)
+}
+
 // Admin privilege required to use the functions below
 
 const createProduct = (productData: any) => {
@@ -80,25 +85,25 @@ const getAllProductBrands = () => {
 	return http.get('/productbrand')
 }
 
-
 export default {
-	authenticatedRouteExample,
-	registerNewUser,
-	login,
-	getAllUsers,
-	getUserWithID,
-	getUserWithQuery,
-	updateValuesOfExistingUser,
-	deleteUserWithID,
-	retrieveLostAccount,
-	resetPassword,
 	createProductCategory,
-	getProductByID,
+	createProductBrand,
 	createProduct,
 	getAllProductCategories,
-	getAllProducts,
-	createProductBrand,
 	getAllProductBrands,
+	getUserWithQuery,
+	getProductByID,
+	getAllProducts,
+	getUserWithID,
+	getAllUsers,
+	updateValuesOfExistingUser,
+	updateFavouriteProducts,
 	updateCart,
-	updateFavouriteProducts
+	deleteUserWithID,
+	authenticatedRouteExample,
+	retrieveLostAccount,
+	sendContactEmail,
+	registerNewUser,
+	resetPassword,
+	login,
 }
