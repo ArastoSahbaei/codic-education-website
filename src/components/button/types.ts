@@ -6,4 +6,5 @@ export interface IButton {
     text?: string;
     isLoading?: boolean;
     disabled?: boolean;
+    type?: string;
 }

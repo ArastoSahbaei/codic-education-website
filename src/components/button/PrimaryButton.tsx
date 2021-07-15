@@ -1,11 +1,11 @@
-import { Spinner } from 'components/Spinner'
 import { FC } from 'react'
 import styled from 'styled-components'
 import { translate } from '../../functions/translate'
-import { secondaryColor, secondaryColorDark } from '../../shared/styles/GlobalStyle'
+import { primaryColor, secondaryColor } from '../../shared/styles/GlobalStyle'
+import { Spinner } from '../Spinner'
 import { IButton } from './types'
 
-export const Button: FC<IButton> = (props: IButton) => {
+export const PrimaryButton: FC<IButton> = (props: IButton) => {
 	const {text, isLoading, disabled} = props
 	return (
 		<ButtonWrapper onClick={ props.onClick } disabled={ disabled }>
@@ -27,7 +27,7 @@ const SpinnerWrapper = styled.div`
 function isDisabled(props: Partial<IButton>) {
 	const backgroundColorGray = 'background-color: gray;'
 	const backgroundColorWithHover = `
-		background-color: ${ secondaryColorDark };
+		background-color: ${ primaryColor };
         cursor: pointer;
 
 		&:hover {
@@ -39,16 +39,13 @@ function isDisabled(props: Partial<IButton>) {
 }
 
 const ButtonWrapper = styled.button`
-  min-width: 4rem;
-  height: 2rem;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  ${ isDisabled };
-  color: white;
+  margin-top: 1em;
+  padding: 0.5em 2em;
   border: none;
-  outline: none;
-  transition: background-color 0.2s;
+  border-radius: 0.25em;
+  font-size: 1.25em;
+  color: white;
+  cursor: pointer;
+
+  ${ isDisabled }
 `

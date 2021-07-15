@@ -1,7 +1,7 @@
 import { createGlobalStyle } from 'styled-components'
-import Oleoscript from '../fonts/OleoScript.ttf'
 import AlegreyaSans from '../fonts/AlegreyaSans.ttf'
 import AlegreyaSansRegular from '../fonts/AlegreyaSansRegular.ttf'
+import Oleoscript from '../fonts/OleoScript.ttf'
 
 export const primaryColor = '#f59300'
 export const secondaryColorDark = '#263746'
