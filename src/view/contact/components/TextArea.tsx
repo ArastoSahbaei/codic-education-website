@@ -6,7 +6,7 @@ export const TextArea = ({ ...props }: any) => {
 	const [field, meta] = useField(props)
 	return (
 		<>
-			<label htmlFor={props.name}> </label>
+			<label htmlFor={props.name} />
 			<StyledTextArea
 				id={props.name} {...field} {...props}
 				rows={8} />
