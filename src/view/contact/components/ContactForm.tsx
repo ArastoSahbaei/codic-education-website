@@ -1,11 +1,10 @@
 import { Form, Formik } from 'formik'
 import { ContactForm as IContactForm } from 'shared/interfaces/ContactFormInterface'
-import { PrimaryButton } from '../../../components/button/PrimaryButton'
-import { Input } from '../../../components/html/Input'
 import { TextArea } from '../../../components/html/TextArea'
+import { Button } from 'components/html/Button'
+import { Input } from '../../../components/html/Input'
 import Validations from 'shared/validations/Validations'
 import CodicAPIService from 'shared/api/services/CodicAPIService'
-import { Button } from 'components/html/Button'
 
 export const ContactForm = () => {
 	const handleSubmit = async (values: IContactForm) => {
@@ -23,7 +22,6 @@ export const ContactForm = () => {
 				<Input name='subject' type='text' placeholder='Ämne' />
 				<TextArea name='message' type='textarea' placeholder='Tveka inte att höra av dig till oss vid funderingar!' />
 				<Button text='Skicka' />
-				{/* <PrimaryButton type='submit' text='Skicka' /> */}
 			</Form>
 		</Formik>
 	)
