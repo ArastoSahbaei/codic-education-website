@@ -44,14 +44,14 @@ export const DesktopNavigation = () => {
 		<Wrapper style={heightStyle}>
 			<NavBG />
 			<Grid>
-				<GridCell col="3/3">
+				<GridCell column="3/3">
 					<Image
 						src={location.pathname === RoutingPath.initialView ? logotype : logotypeWhite}
 						alt={''}
 						onClick={() => history.push(RoutingPath.initialView)}
 					/>
 				</GridCell>
-				<GridCell col="5/9">
+				<GridCell column="5/9">
 					<ParagraphWrapper>
 						<Paragraph to="vision">Vår Vision</Paragraph>
 						<Paragraph to={RoutingPath.employeeView}>
@@ -67,7 +67,7 @@ export const DesktopNavigation = () => {
 				</GridCell>
 				<Cart isCartOpen={isCartOpen} setIsCartOpen={setIsCartOpen} />
 				{isCartOpen && <BackDrop drawerHandler={setIsCartOpen} />}
-				<GridCell col="18/18">{displayAuthentication()}</GridCell>
+				<GridCell column="18/18">{displayAuthentication()}</GridCell>
 			</Grid>
 		</Wrapper>
 	)
@@ -86,7 +86,7 @@ const Grid = styled.div`
 `
 
 const GridCell = styled.div`
-    grid-column: ${(props: { col?: string }) => props.col};
+    grid-column: ${(props: { column?: string }) => props.column};
     display: grid;
     align-items: center;
     max-height: 100%;
