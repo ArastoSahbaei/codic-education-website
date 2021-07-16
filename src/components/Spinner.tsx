@@ -30,6 +30,8 @@ export const Spinner = (props: ISpinner) => {
 }
 
 const Wrapper = styled.div`
+	display: inline-block;
+	margin-top: 3px;
 	position: relative;
 	--spinner-clr: hsl(36, 100%, 48%, 100%);
 	--spinner-scale: 1;

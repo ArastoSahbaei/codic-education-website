@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { Spinner } from 'components/Spinner'
 import { MouseEvent } from 'react'
-import { secondaryColorDark } from '../../shared/styles/GlobalStyle'
+import { primaryColor, secondaryColor, secondaryColorDark } from '../../shared/styles/GlobalStyle'
 import styled from 'styled-components'
 
 export interface IButton {
@@ -14,41 +14,29 @@ export interface IButton {
 export const Button: FC<IButton> = (props: IButton) => {
 	const { text, onClick, isLoading, disabled } = props
 	return (
-		<ButtonWrapper onClick={onClick} disabled={disabled} text={text}>
-			<Span>{text}</Span>
-			{isLoading &&
-				<SpinnerWrapper>
-					<Spinner height='26' width='26' />
-				</SpinnerWrapper>
-			}
+		<ButtonWrapper onClick={onClick} disabled={disabled} text={text} isLoading={isLoading}>
+			<Span>{isLoading || text}</Span>
+			{isLoading && <Spinner height='26' width='26' />}
 		</ButtonWrapper>
 	)
 }
 
 
 function isDisabled(props: Partial<IButton>) {
-	const backgroundColorGray = 'background-color: Fgray;'
-	const backgroundColorWithHover = `
-		background-color: ${secondaryColorDark};
-        cursor: pointer;
-`
+	const backgroundColorGray = 'background-color: red;'
+	const backgroundColorWithHover = `background-color: ${primaryColor};`
 	return props.disabled ? backgroundColorGray : backgroundColorWithHover
 }
 
-
-const SpinnerWrapper = styled.div`
-  max-height: 50%;
-  margin-left: 0.5rem;
-`
-
 const Span = styled.span``
 
-const ButtonWrapper = styled.button`
+const ButtonWrapper = styled.button<IButton>`
+	display: inline-block;
 	width: calc(${props => props.text?.length}em + 1em);
 	height: 2rem;
 	color: white;
 	border: none;
-	${isDisabled};
+	background-color: ${props => props.isLoading ? secondaryColor : primaryColor};
 	outline: none;
 	transition: background-color 0.2s;
 	text-transform: uppercase;
@@ -67,12 +55,12 @@ const ButtonWrapper = styled.button`
 	}
 	
 	&:hover ${Span} {
-		padding-right: 20px;
+		padding-right: ${props => props.isLoading ? '0px;' : '20px;'}
 	}
 
 
 	${Span}:after {
-		content: '»';
+		content: '${props => props.isLoading ? '' : '»'}';
 		position: absolute;
 		opacity: 0;
 		top: 0;
