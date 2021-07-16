@@ -7,7 +7,6 @@ import styled from 'styled-components'
 export interface IButton {
 	text: string
 	onClick?: (event: MouseEvent) => void
-	textLength?: number
 	isLoading?: boolean
 	disabled?: boolean
 }
@@ -15,7 +14,7 @@ export interface IButton {
 export const Button: FC<IButton> = (props: IButton) => {
 	const { text, onClick, isLoading, disabled } = props
 	return (
-		<ButtonWrapper onClick={onClick} disabled={disabled} textLength={text.length}>
+		<ButtonWrapper onClick={onClick} disabled={disabled} text={text}>
 			<Span>{text}</Span>
 			{isLoading &&
 				<SpinnerWrapper>
@@ -45,7 +44,7 @@ const SpinnerWrapper = styled.div`
 const Span = styled.span``
 
 const ButtonWrapper = styled.button`
-	width: calc(${props => props.textLength}em + 1em);
+	width: calc(${props => props.text?.length}em + 1em);
 	height: 2rem;
 	color: white;
 	border: none;
