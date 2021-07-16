@@ -2,7 +2,7 @@ import { FC } from 'react'
 import { ITableColumn, ITableRow } from 'components/table/types'
 import { IProductList } from './types'
 import { Table } from 'components/table'
-import { Button } from 'components/button/button'
+import { Button } from 'components/html/Button'
 import {
 	getValueFromTableRow,
 	objectToTableRow,

@@ -23,9 +23,11 @@ export const Button: FC<IButton> = (props: IButton) => {
 
 
 function isDisabled(props: Partial<IButton>) {
-	const backgroundColorGray = 'background-color: red;'
-	const backgroundColorWithHover = `background-color: ${primaryColor};`
-	return props.disabled ? backgroundColorGray : backgroundColorWithHover
+	return props.disabled && `
+	background-color: #b2b2b2 !important;
+	color: black !important;
+	cursor: not-allowed !important;
+	`
 }
 
 const Span = styled.span``
@@ -36,6 +38,7 @@ const ButtonWrapper = styled.button<IButton>`
 	height: 2rem;
 	color: white;
 	border: none;
+	${isDisabled}
 	background-color: ${props => props.isLoading ? secondaryColor : primaryColor};
 	outline: none;
 	transition: background-color 0.2s;
@@ -48,7 +51,6 @@ const ButtonWrapper = styled.button<IButton>`
 	position: relative;
 
 	${Span} {
-		cursor: pointer;
 		display: inline-block;
 		position: relative;
 		transition: 0.3s;
