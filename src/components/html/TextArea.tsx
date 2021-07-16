@@ -1,5 +1,5 @@
 import { useField } from 'formik'
-import { secondaryColor } from '../../../shared/styles/GlobalStyle'
+import { secondaryColor } from '../../shared/styles/GlobalStyle'
 import styled from 'styled-components'
 
 export const TextArea = ({ ...props }: any) => {

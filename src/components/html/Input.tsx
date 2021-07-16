@@ -1,14 +1,13 @@
 import { useField } from 'formik'
-import { secondaryColor } from '../../../shared/styles/GlobalStyle'
+import { secondaryColor } from '../../shared/styles/GlobalStyle'
 import styled from 'styled-components'
 
-export const TextInput = ({ ...props }: any) => {
+export const Input = ({ ...props }: any) => {
 	const [field, meta] = useField(props)
 	return (
 		<>
 			<label htmlFor={props.name} />
-			<Input id={props.name} type={props.type}{...field} {...props} autoComplete='on' />
-
+			<InputField id={props.name} type={props.type}{...field} {...props} autoComplete='on' />
 			{meta.touched && meta.error ? (
 				<StyledErrorMessage>{meta.error}</StyledErrorMessage>
 			) : null}
@@ -16,7 +15,7 @@ export const TextInput = ({ ...props }: any) => {
 	)
 }
 
-const Input = styled.input`
+const InputField = styled.input`
   margin-bottom: 1.5em;
   padding: 0.15em;
   font-size: 1.0em;
