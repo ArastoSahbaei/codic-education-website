@@ -124,16 +124,17 @@ const List = styled.li`
 	color: white;
 	margin-top: 0.3em;
 
-	&:hover ${Span} {
-		padding-right: 20px;
-	}
-
 	${Span} {
 		cursor: pointer;
 		display: inline-block;
 		position: relative;
 		transition: 0.5s;
 	}
+	
+	&:hover ${Span} {
+		padding-right: 20px;
+	}
+
 
 	${Span}:after {
 		content: '»';

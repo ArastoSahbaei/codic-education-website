@@ -1,16 +1,13 @@
 import { useField } from 'formik'
-import { secondaryColor } from '../../../shared/styles/GlobalStyle'
+import { secondaryColor } from '../../shared/styles/GlobalStyle'
 import styled from 'styled-components'
 
 export const TextArea = ({ ...props }: any) => {
 	const [field, meta] = useField(props)
 	return (
 		<>
-			<label htmlFor={props.name}> </label>
-			<StyledTextArea
-				id={props.name} {...field} {...props}
-				rows={8} />
-
+			<label htmlFor={props.name} />
+			<StyledTextArea id={props.name} {...field} {...props} rows={8} />
 			{meta.touched && meta.error ? (
 				<StyledErrorMessage>{meta.error}</StyledErrorMessage>
 			) : null}

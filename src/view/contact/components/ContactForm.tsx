@@ -1,25 +1,27 @@
 import { Form, Formik } from 'formik'
+import { ContactForm as IContactForm } from 'shared/interfaces/ContactFormInterface'
+import { TextArea } from '../../../components/html/TextArea'
+import { Button } from 'components/html/Button'
+import { Input } from '../../../components/html/Input'
 import Validations from 'shared/validations/Validations'
-import { PrimaryButton } from '../../../components/button/PrimaryButton'
-import { TextArea } from './TextArea'
-import { TextInput } from './TextInput'
+import CodicAPIService from 'shared/api/services/CodicAPIService'
 
 export const ContactForm = () => {
+	const handleSubmit = async (values: IContactForm) => {
+		await CodicAPIService.sendContactEmail(values)
+	}
 
 	return (
 		<Formik
-			initialValues={{ firstName: '', lastName: '', email: '', message: '' }}
+			initialValues={{ name: '', email: '', subject: '', message: '' }}
 			validationSchema={Validations.contactFormValidation}
-			onSubmit={values => {
-				// TODO: Write send message function here
-				alert(JSON.stringify(values, null, 2))
-			}}>
+			onSubmit={(values, actions) => { handleSubmit(values) && actions.resetForm() }}>
 			<Form>
-				<TextInput name="name" type='text' placeholder='Namn' />
-				<TextInput name='email' type='email' placeholder='E-Mail' />
-				<TextInput name='subject' type='text' placeholder='Ämne' />
+				<Input name='name' type='text' placeholder='Namn' />
+				<Input name='email' type='email' placeholder='E-Mail' />
+				<Input name='subject' type='text' placeholder='Ämne' />
 				<TextArea name='message' type='textarea' placeholder='Tveka inte att höra av dig till oss vid funderingar!' />
-				<PrimaryButton type='submit' text='Skicka' />
+				<Button text='Skicka' />
 			</Form>
 		</Formik>
 	)
