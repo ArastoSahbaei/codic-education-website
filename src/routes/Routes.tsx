@@ -12,6 +12,7 @@ import { ProfileView } from '../view/auth/ProfileView'
 import { SignInView } from '../view/signin/SignInView'
 import { AdminView } from '../view/admin/AdminView'
 import { ShopView } from '../view/shop/ShopView'
+import { OrderView } from '../view/order/OrderView'
 import { Footer } from '../components/Footer'
 import { validateToken } from 'functions/validateToken'
 import RoutingPath from './RoutingPath'
@@ -64,6 +65,7 @@ export const Routes = (props: { children: React.ReactChild[] }) => {
 			<Switch>
 				{/* REGULAR PATHS */}
 				<Route exact path={RoutingPath.shopView} component={ShopView} />
+				<Route exact path={RoutingPath.orderFinishedView} component={OrderView} />
 				<Route exact path={RoutingPath.contactView} component={ContactView} />
 				<Route exact path={RoutingPath.employeeView} component={EmployeeView} />
 				<Route exact path={RoutingPath.checkoutView} component={CheckoutView} />

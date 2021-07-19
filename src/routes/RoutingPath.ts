@@ -2,6 +2,7 @@ const initialView = '/'
 const employeeView = '/medarbetare'
 const signInView = '/autentisera'
 const shopView = '/butik'
+const orderFinishedView = '/order-finished'
 const contactView = '/kontakt'
 const checkoutView = '/checkout'
 const retrieveLostPasswordView = '/reset/:token'
@@ -12,6 +13,7 @@ export default {
 	employeeView,
 	signInView,
 	shopView,
+	orderFinishedView,
 	contactView,
 	checkoutView,
 	retrieveLostPasswordView,

@@ -1,20 +1,20 @@
+import { Spinner } from 'components/Spinner'
 import { FC } from 'react'
 import styled from 'styled-components'
 import { translate } from '../../functions/translate'
+import { secondaryColor, secondaryColorDark } from '../../shared/styles/GlobalStyle'
 import { IButton } from './types'
-import { Spinner } from 'components/Spinner'
-import { secondaryColorDark } from 'shared/styles/GlobalStyle'
 
 export const Button: FC<IButton> = (props: IButton) => {
-	const { text, isLoading, disabled } = props
+	const {text, isLoading, disabled} = props
 	return (
-		<ButtonWrapper onClick={props.onClick} disabled={disabled}>
-			{translate(text)}
-			{isLoading && (
+		<ButtonWrapper onClick={ props.onClick } disabled={ disabled }>
+			{ translate(text) }
+			{ isLoading && (
 				<SpinnerWrapper>
-					<Spinner height="16" width="16" />
+					<Spinner height='16' width='16'/>
 				</SpinnerWrapper>
-			)}
+			) }
 		</ButtonWrapper>
 	)
 }
@@ -24,6 +24,20 @@ const SpinnerWrapper = styled.div`
   margin-left: 0.5rem;
 `
 
+function isDisabled(props: Partial<IButton>) {
+	const backgroundColorGray = 'background-color: gray;'
+	const backgroundColorWithHover = `
+		background-color: ${ secondaryColorDark };
+        cursor: pointer;
+
+		&:hover {
+    		background-color: ${ secondaryColor };
+    		transition: background-color 0.2s;
+		}
+`
+	return props.disabled ? backgroundColorGray : backgroundColorWithHover
+}
+
 const ButtonWrapper = styled.button`
   min-width: 4rem;
   height: 2rem;
@@ -32,20 +46,7 @@ const ButtonWrapper = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  ${(props: Partial<IButton>) =>
-		props.disabled
-			? `
-  background-color: gray;
-  `
-			: `
-      background-color: ${secondaryColorDark};
-      cursor: pointer;
-
-&:hover {
-    background-color: #585d72;
-    transition: background-color 0.2s;
-}
-`};
+  ${ isDisabled };
   color: white;
   border: none;
   outline: none;

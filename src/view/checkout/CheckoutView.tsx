@@ -3,11 +3,11 @@ import styled from 'styled-components'
 import { ProductList } from './components/product-list/productList'
 import { UserContext } from '../../shared/providers/UserProvider'
 import { useCart } from 'hooks/useCart'
-import { Button } from 'components/button/button'
 import { Product } from 'shared/interfaces/ProductsInterface'
 import { IForm, IInputFieldError, TInputValue } from 'shared/interfaces/form'
 import { useFormRender } from 'hooks/form/useFormRender'
 import { fieldNotEmpty, getErrorsFromForm } from 'functions/formValidation'
+import { Button } from 'components/html/Button'
 
 const initialState: IForm = {
 	firstname: {
@@ -104,10 +104,7 @@ export const CheckoutView = () => {
 		[formState]
 	)
 
-	const errors: IInputFieldError[] = useMemo(
-		() => getErrorsFromForm(formState),
-		[formState]
-	)
+	const errors: IInputFieldError[] = useMemo(() => getErrorsFromForm(formState), [formState])
 	const hasErrors: boolean = useMemo(() => errors.length > 0, [errors])
 
 	return (
