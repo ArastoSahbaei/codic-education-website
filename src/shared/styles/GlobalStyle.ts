@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components'
+import { fadeInOpacity } from './animations/fadeInOpacity'
 import AlegreyaSans from '../fonts/AlegreyaSans.ttf'
 import AlegreyaSansRegular from '../fonts/AlegreyaSansRegular.ttf'
 import Oleoscript from '../fonts/OleoScript.ttf'
@@ -27,53 +28,26 @@ export const GlobalStyle = createGlobalStyle`
 
   @font-face {
     font-family: Oleoscript;
-    src: url(${ Oleoscript }) format('truetype');
+    src: url(${Oleoscript}) format('truetype');
   }
 
   @font-face {
     font-family: AlegreyaSans;
-    src: url(${ AlegreyaSans }) format('truetype');
+    src: url(${AlegreyaSans}) format('truetype');
   }
 
   @font-face {
     font-family: AlegreyaSansRegular;
-    src: url(${ AlegreyaSansRegular }) format('truetype');
+    src: url(${AlegreyaSansRegular}) format('truetype');
   }
 
   body {
     margin: 0;
     padding: 0;
-    animation-name: fadeInOpacity;
-    animation-iteration-count: 1;
-    animation-timing-function: ease-in;
-    animation-duration: 0.4s;
+	animation: ${fadeInOpacity} 500ms ease-in;
   }
 
-  span, h1, h2, h3, h4, h5, h6 {
+  p, span, h1, h2, h3, h4, h5, h6 {
     font-family: AlegreyaSans, serif;
-  }
-
-  p {
-    font-family: AlegreyaSansRegular, sans-serif;
-  }
-
-  @keyframes fadeInOpacity {
-    0% {
-      opacity: 0;
-    }
-
-    100% {
-      opacity: 1;
-    }
-  }
-
-  @keyframes fadeInOpacity {
-    0% {
-      opacity: 0;
-    }
-
-    100% {
-      opacity: 1;
-    }
   }
 `

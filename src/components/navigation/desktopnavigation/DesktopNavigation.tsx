@@ -12,6 +12,7 @@ import styled from 'styled-components'
 import RoutingPath from '../../../routes/RoutingPath'
 import logotype from '../../../shared/images/codiclogotype.svg'
 import logotypeWhite from '../../../shared/images/codiclogotype_white.svg'
+import { fadeInRight } from 'shared/styles/animations/fadeInRight'
 
 export const NavBG = () => {
 	const { fractions } = useContext(ScrollContext)
@@ -44,14 +45,14 @@ export const DesktopNavigation = () => {
 		<Wrapper style={heightStyle}>
 			<NavBG />
 			<Grid>
-				<GridCell col="3/3">
+				<GridCell column1="3/3" column2="3/3" column3="3/3">
 					<Image
 						src={location.pathname === RoutingPath.initialView ? logotype : logotypeWhite}
 						alt={''}
 						onClick={() => history.push(RoutingPath.initialView)}
 					/>
 				</GridCell>
-				<GridCell col="5/9">
+				<GridCell column1="5/9" column2="5/10" column3="5/12">
 					<ParagraphWrapper>
 						<Paragraph to="vision">Vår Vision</Paragraph>
 						<Paragraph to={RoutingPath.employeeView}>
@@ -67,15 +68,24 @@ export const DesktopNavigation = () => {
 				</GridCell>
 				<Cart isCartOpen={isCartOpen} setIsCartOpen={setIsCartOpen} />
 				{isCartOpen && <BackDrop drawerHandler={setIsCartOpen} />}
-				<GridCell col="18/18">{displayAuthentication()}</GridCell>
+				<GridCell column1="18/18" column2="18/18" column3="17/19">
+					{displayAuthentication()}
+				</GridCell>
 			</Grid>
 		</Wrapper>
 	)
 }
 
+interface x {
+	column1?: string | '',
+	column2?: string | ''
+	column3?: string | ''
+}
+
 const Image = styled.img`
     cursor: pointer;
     max-height: 50%;
+    animation: ${fadeInRight} 1000ms ease-in-out;
 `
 
 const Grid = styled.div`
@@ -85,13 +95,22 @@ const Grid = styled.div`
     height: 100%;
 `
 
-const GridCell = styled.div`
-    grid-column: ${(props: { col?: string }) => props.col};
+const GridCell = styled.div<x>`
+    grid-column: ${(props) => props.column1};
     display: grid;
     align-items: center;
     max-height: 100%;
     position: relative;
     height: 100%;
+	@media(max-width: 1750px) {
+		grid-column: ${(props) => props.column2};
+	}
+	@media(max-width: 1750px) {
+		grid-column: ${(props) => props.column2};
+	}
+	@media(max-width: 1400px) {
+		grid-column: ${(props) => props.column3};
+	}
 `
 
 const Wrapper = styled.nav`
