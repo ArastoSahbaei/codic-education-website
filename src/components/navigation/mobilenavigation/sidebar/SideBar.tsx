@@ -3,12 +3,12 @@ import styled from 'styled-components'
 export const SideBar = (props: { drawerIsOpen: boolean, drawerHandler: (handler: boolean) => void }): JSX.Element => {
 	return (
 		<Drawer isOpen={props.drawerIsOpen}>
-			<h1 onClick={() => props.drawerHandler(false)}>Exit</h1>
-			<Paragraph>TO BE ANNOUNCED</Paragraph> <br />
-			<Paragraph>TO BE ANNOUNCED</Paragraph> <br />
-			<Paragraph>TO BE ANNOUNCED</Paragraph> <br />
-			<Paragraph>TO BE ANNOUNCED</Paragraph> <br />
-			<Paragraph>TO BE ANNOUNCED</Paragraph> <br />
+			<h1 onClick={() => props.drawerHandler(false)}>close + logo</h1>
+			<hr />
+			<Paragraph>Hem</Paragraph> <br />
+			<Paragraph>Vår Vision</Paragraph> <br />
+			<Paragraph>Kontakt</Paragraph> <br />
+			<Paragraph>Butik</Paragraph> <br />
 		</Drawer>
 	)
 }
