@@ -1,28 +1,20 @@
-import { HamburgerButton } from '../hamburgerbutton/HamburgerButton'
-import { useHistory } from 'react-router-dom'
 import styled from 'styled-components'
-import logotype from 'shared/images/codiclogotype.svg'
-import icon from 'shared/images/icons/language.png'
 import codic from 'shared/images/icons/codic.png'
 import visionary from 'shared/images/icons/visionary.png'
 import contact from 'shared/images/icons/contact.png'
 import shop from 'shared/images/icons/shop.png'
-import RoutingPath from 'routes/RoutingPath'
+import { Header } from './components/Header'
 
 export const SideBar = (props: { drawerIsOpen: boolean, drawerHandler: (handler: boolean) => void }): JSX.Element => {
-	const history = useHistory()
 
 	return (
 		<Drawer isOpen={props.drawerIsOpen}>
-			<Div>
-				<HamburgerButton drawerHandler={() => props.drawerHandler(false)} />
-				<img src={logotype} alt={''} onClick={() => history.push(RoutingPath.initialView)} />
-			</Div>
+			<Header drawerHandler={props.drawerHandler} />
 			<hr />
-			<Paragraph> <Icon src={codic} alt={''} />Hem</Paragraph>
-			<Paragraph> <Icon src={visionary} alt={''} />Vår Vision</Paragraph>
-			<Paragraph> <Icon src={contact} alt={''} />Kontakt</Paragraph>
-			<Paragraph> <Icon src={shop} alt={''} />Butik</Paragraph>
+			<Paragraph> <Icon src={codic} alt={''} /> Hem </Paragraph>
+			<Paragraph> <Icon src={visionary} alt={''} /> Vår Vision </Paragraph>
+			<Paragraph> <Icon src={contact} alt={''} /> Kontakt </Paragraph>
+			<Paragraph> <Icon src={shop} alt={''} /> Butik </Paragraph>
 			<hr />
 		</Drawer>
 	)
@@ -39,13 +31,6 @@ const Icon = styled.img`
 
 `
 
-const Div = styled.div`
-	padding: 5%;
-	width: 85%;
-	display: flex;
-	justify-content: space-between;
-`
-
 const Paragraph = styled.p`
 	display: flex;
 	flex-wrap: wrap;
@@ -57,8 +42,9 @@ const Paragraph = styled.p`
 	cursor: pointer;
 	transition: 0.3s;
 	&:hover {
-		margin-left: 20px;
 		transition: 0.3s;
+		background-color: orange;
+		gap: 10px 50px;
 	}
 	&:hover ${Icon}{
 		filter: brightness(0);
