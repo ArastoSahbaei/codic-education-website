@@ -3,6 +3,10 @@ import { useHistory } from 'react-router-dom'
 import styled from 'styled-components'
 import logotype from 'shared/images/codiclogotype.svg'
 import icon from 'shared/images/icons/language.png'
+import codic from 'shared/images/icons/codic.png'
+import visionary from 'shared/images/icons/visionary.png'
+import contact from 'shared/images/icons/contact.png'
+import shop from 'shared/images/icons/shop.png'
 import RoutingPath from 'routes/RoutingPath'
 
 export const SideBar = (props: { drawerIsOpen: boolean, drawerHandler: (handler: boolean) => void }): JSX.Element => {
@@ -15,12 +19,11 @@ export const SideBar = (props: { drawerIsOpen: boolean, drawerHandler: (handler:
 				<img src={logotype} alt={''} onClick={() => history.push(RoutingPath.initialView)} />
 			</Div>
 			<hr />
-			<Paragraph> <Icon src={icon} alt={''} />Hem</Paragraph>
-			<Paragraph> <Icon src={icon} alt={''} />Vår Vision</Paragraph>
-			<Paragraph> <Icon src={icon} alt={''} />Kontakt</Paragraph>
-			<Paragraph> <Icon src={icon} alt={''} />Butik</Paragraph>
+			<Paragraph> <Icon src={codic} alt={''} />Hem</Paragraph>
+			<Paragraph> <Icon src={visionary} alt={''} />Vår Vision</Paragraph>
+			<Paragraph> <Icon src={contact} alt={''} />Kontakt</Paragraph>
+			<Paragraph> <Icon src={shop} alt={''} />Butik</Paragraph>
 			<hr />
-			<Paragraph>Ditt Konto</Paragraph>
 		</Drawer>
 	)
 }
