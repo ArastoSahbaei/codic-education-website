@@ -1,7 +1,8 @@
-import styled from 'styled-components'
 import { HamburgerButton } from '../hamburgerbutton/HamburgerButton'
-import logotype from 'shared/images/codiclogotype.svg'
 import { useHistory } from 'react-router-dom'
+import styled from 'styled-components'
+import logotype from 'shared/images/codiclogotype.svg'
+import icon from 'shared/images/icons/language.png'
 import RoutingPath from 'routes/RoutingPath'
 
 export const SideBar = (props: { drawerIsOpen: boolean, drawerHandler: (handler: boolean) => void }): JSX.Element => {
@@ -14,10 +15,12 @@ export const SideBar = (props: { drawerIsOpen: boolean, drawerHandler: (handler:
 				<img src={logotype} alt={''} onClick={() => history.push(RoutingPath.initialView)} />
 			</Div>
 			<hr />
-			<Paragraph>Hem</Paragraph> <br />
-			<Paragraph>Vår Vision</Paragraph> <br />
-			<Paragraph>Kontakt</Paragraph> <br />
-			<Paragraph>Butik</Paragraph> <br />
+			<Paragraph> <Icon src={icon} alt={''} />Hem</Paragraph>
+			<Paragraph> <Icon src={icon} alt={''} />Vår Vision</Paragraph>
+			<Paragraph> <Icon src={icon} alt={''} />Kontakt</Paragraph>
+			<Paragraph> <Icon src={icon} alt={''} />Butik</Paragraph>
+			<hr />
+			<Paragraph>ANVÄNDARNAMN</Paragraph>
 		</Drawer>
 	)
 }
@@ -25,6 +28,13 @@ export const SideBar = (props: { drawerIsOpen: boolean, drawerHandler: (handler:
 interface values {
 	isOpen: boolean;
 }
+
+const Icon = styled.img`
+		width: 24px;
+		height: 24px;
+		filter: brightness(0) invert(0.7);
+		
+`
 
 const Div = styled.div`
 	padding: 5%;
@@ -34,14 +44,18 @@ const Div = styled.div`
 `
 
 const Paragraph = styled.p`
-font-weight: 600;
-font-size: 1.4rem;
-cursor: pointer;
-transition: 0.3s;
-&:hover {
-	margin-left: 20px;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px 30px;
+	padding: 5%;
+	font-weight: 600;
+	font-size: 1rem;
+	cursor: pointer;
 	transition: 0.3s;
-}
+	&:hover {
+		margin-left: 20px;
+		transition: 0.3s;
+	}
 `
 
 const Drawer = styled.nav<values>`
