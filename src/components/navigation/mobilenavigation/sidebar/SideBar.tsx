@@ -1,9 +1,18 @@
 import styled from 'styled-components'
+import { HamburgerButton } from '../hamburgerbutton/HamburgerButton'
+import logotype from 'shared/images/codiclogotype.svg'
+import { useHistory } from 'react-router-dom'
+import RoutingPath from 'routes/RoutingPath'
 
 export const SideBar = (props: { drawerIsOpen: boolean, drawerHandler: (handler: boolean) => void }): JSX.Element => {
+	const history = useHistory()
+
 	return (
 		<Drawer isOpen={props.drawerIsOpen}>
-			<h1 onClick={() => props.drawerHandler(false)}>close + logo</h1>
+			<Div>
+				<HamburgerButton drawerHandler={() => props.drawerHandler(false)} />
+				<img src={logotype} alt={''} onClick={() => history.push(RoutingPath.initialView)} />
+			</Div>
 			<hr />
 			<Paragraph>Hem</Paragraph> <br />
 			<Paragraph>Vår Vision</Paragraph> <br />
@@ -16,6 +25,13 @@ export const SideBar = (props: { drawerIsOpen: boolean, drawerHandler: (handler:
 interface values {
 	isOpen: boolean;
 }
+
+const Div = styled.div`
+	padding: 5%;
+	width: 85%;
+	display: flex;
+	justify-content: space-between;
+`
 
 const Paragraph = styled.p`
 font-weight: 600;
@@ -36,7 +52,7 @@ const Drawer = styled.nav<values>`
 	top: 0;
 	left: 0;
 	width: 70%;
-	max-width: 400px;
+	max-width: 270px;
 	z-index: 200;
 	transform: translateX(-100%);
 	transition: transform 0.3s ease-in-out;
