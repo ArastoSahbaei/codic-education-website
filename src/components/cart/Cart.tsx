@@ -9,6 +9,7 @@ import emptyCart from '../../shared/images/empty_cart.png'
 import styled from 'styled-components'
 import RoutingPath from '../../routes/RoutingPath'
 import { Product } from 'shared/interfaces/ProductsInterface'
+import { Button } from 'components/html/Button'
 
 export const Cart = (props: { isCartOpen: boolean, setIsCartOpen: (value: boolean) => void }) => {
 	const history = useHistory()
@@ -48,8 +49,8 @@ export const Cart = (props: { isCartOpen: boolean, setIsCartOpen: (value: boolea
 	const displayEmptyCart = () => {
 		return <Div>
 			<CartImage src={emptyCart} alt='' />
-			<p>Din varukorg är tom.. <br /> Besök vår butik?</p>
-			<button onClick={() => navigateToShop()}>Butik</button> <br />
+			<p>Din varukorg är tom.. <br /> </p>
+			<Button text={'Besök vår butik?'} onClick={() => navigateToShop()} />
 		</Div>
 	}
 
