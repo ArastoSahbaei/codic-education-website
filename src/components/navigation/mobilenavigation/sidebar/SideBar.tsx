@@ -20,7 +20,7 @@ export const SideBar = (props: { drawerIsOpen: boolean, drawerHandler: (handler:
 			<Paragraph> <Icon src={icon} alt={''} />Kontakt</Paragraph>
 			<Paragraph> <Icon src={icon} alt={''} />Butik</Paragraph>
 			<hr />
-			<Paragraph>ANVÄNDARNAMN</Paragraph>
+			<Paragraph>Ditt Konto</Paragraph>
 		</Drawer>
 	)
 }
@@ -33,7 +33,6 @@ const Icon = styled.img`
 		width: 24px;
 		height: 24px;
 		filter: brightness(0) invert(0.7);
-		
 `
 
 const Div = styled.div`
@@ -46,6 +45,7 @@ const Div = styled.div`
 const Paragraph = styled.p`
 	display: flex;
 	flex-wrap: wrap;
+	align-items: center;
 	gap: 10px 30px;
 	padding: 5%;
 	font-weight: 600;
