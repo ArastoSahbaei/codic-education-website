@@ -16,7 +16,7 @@ const initialState: IForm = {
 		label: 'First name',
 		inputType: 'text',
 		name: 'firstname',
-		validator: fieldNotEmpty
+		validator: fieldNotEmpty,
 	},
 	lastname: {
 		value: '',
@@ -24,7 +24,7 @@ const initialState: IForm = {
 		label: 'Last name',
 		inputType: 'text',
 		name: 'lastname',
-		validator: fieldNotEmpty
+		validator: fieldNotEmpty,
 	},
 	shippingCity: {
 		value: '',
@@ -32,7 +32,7 @@ const initialState: IForm = {
 		label: 'City',
 		inputType: 'text',
 		name: 'shippingCity',
-		validator: fieldNotEmpty
+		validator: fieldNotEmpty,
 	},
 	shippingStreet: {
 		value: '',
@@ -40,7 +40,7 @@ const initialState: IForm = {
 		label: 'Street',
 		inputType: 'text',
 		name: 'shippingStreet',
-		validator: fieldNotEmpty
+		validator: fieldNotEmpty,
 	},
 	shippingPostalCode: {
 		value: '',
@@ -48,16 +48,16 @@ const initialState: IForm = {
 		label: 'Postal Code',
 		inputType: 'text',
 		name: 'shippingPostalCode',
-		validator: fieldNotEmpty
+		validator: fieldNotEmpty,
 	},
 	method: {
 		value: '',
-		defaultValue: '',
+		defaultValue: 'Postnord',
 		options: ['Postnord', 'DHL'],
 		label: 'Shipping type',
 		inputType: 'select',
 		name: 'method',
-		validator: fieldNotEmpty
+		validator: fieldNotEmpty,
 	},
 }
 
@@ -83,11 +83,11 @@ export const CheckoutView = () => {
 	)
 
 	const onClickButton = useCallback(async () => {
+		const dataToSend = encodeURIComponent(btoa(JSON.stringify(data)))
+
 		setIsLoading(true)
 		// TODO: save this url in some configuration or something.
-		window.location.href = `http://localhost:3001/payment/create-order/${btoa(
-			JSON.stringify(data)
-		)}`
+		window.location.href = `http://localhost:3001/payment/create-order/${dataToSend}`
 	}, [data, setIsLoading])
 
 	const onFieldChange = useCallback(
@@ -133,8 +133,8 @@ export const CheckoutView = () => {
 }
 
 const ErrorText = styled.i`
-    margin-top: 1rem;
-    display: block;
+  margin-top: 1rem;
+  display: block;
 `
 
 const Form = styled.div`

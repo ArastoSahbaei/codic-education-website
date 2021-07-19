@@ -73,6 +73,10 @@ const getAllProducts = () => {
 	return http.get('/product')
 }
 
+const getOrderById = (id: string) => {
+	return http.get(`/order/${id}`)
+}
+
 const getAllProductCategories = () => {
 	return http.get('/productcategory')
 }
@@ -94,6 +98,7 @@ export default {
 	getUserWithQuery,
 	getProductByID,
 	getAllProducts,
+	getOrderById,
 	getUserWithID,
 	getAllUsers,
 	updateValuesOfExistingUser,
