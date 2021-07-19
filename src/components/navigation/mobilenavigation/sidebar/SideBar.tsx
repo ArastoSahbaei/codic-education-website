@@ -1,9 +1,11 @@
+import { Header } from './components/Header'
+import { Link } from './components/Link'
 import styled from 'styled-components'
 import codic from 'shared/images/icons/codic.png'
 import visionary from 'shared/images/icons/visionary.png'
 import contact from 'shared/images/icons/contact.png'
 import shop from 'shared/images/icons/shop.png'
-import { Header } from './components/Header'
+import RoutingPath from 'routes/RoutingPath'
 
 export const SideBar = (props: { drawerIsOpen: boolean, drawerHandler: (handler: boolean) => void }): JSX.Element => {
 
@@ -11,10 +13,10 @@ export const SideBar = (props: { drawerIsOpen: boolean, drawerHandler: (handler:
 		<Drawer isOpen={props.drawerIsOpen}>
 			<Header drawerHandler={props.drawerHandler} />
 			<hr />
-			<Paragraph> <Icon src={codic} alt={''} /> Hem </Paragraph>
-			<Paragraph> <Icon src={visionary} alt={''} /> Vår Vision </Paragraph>
-			<Paragraph> <Icon src={contact} alt={''} /> Kontakt </Paragraph>
-			<Paragraph> <Icon src={shop} alt={''} /> Butik </Paragraph>
+			<Link drawerHandler={props.drawerHandler} icon={codic} text={'Hem'} path={RoutingPath.initialView} />
+			<Link drawerHandler={props.drawerHandler} icon={visionary} text={'Vår Vision'} />
+			<Link drawerHandler={props.drawerHandler} icon={contact} text={'Kontakt'} path={RoutingPath.contactView} />
+			<Link drawerHandler={props.drawerHandler} icon={shop} text={'Butik'} path={RoutingPath.shopView} />
 			<hr />
 		</Drawer>
 	)
@@ -23,33 +25,6 @@ export const SideBar = (props: { drawerIsOpen: boolean, drawerHandler: (handler:
 interface values {
 	isOpen: boolean;
 }
-
-const Icon = styled.img`
-		width: 24px;
-		height: 24px;
-		filter: brightness(0) invert(0.7);
-
-`
-
-const Paragraph = styled.p`
-	display: flex;
-	flex-wrap: wrap;
-	align-items: center;
-	gap: 10px 30px;
-	padding: 5%;
-	font-weight: 600;
-	font-size: 1rem;
-	cursor: pointer;
-	transition: 0.3s;
-	&:hover {
-		transition: 0.3s;
-		background-color: orange;
-		gap: 10px 50px;
-	}
-	&:hover ${Icon}{
-		filter: brightness(0);
-	}
-`
 
 const Drawer = styled.nav<values>`
 	height: 100%;
