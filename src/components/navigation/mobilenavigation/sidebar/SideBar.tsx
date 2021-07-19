@@ -33,6 +33,7 @@ const Icon = styled.img`
 		width: 24px;
 		height: 24px;
 		filter: brightness(0) invert(0.7);
+
 `
 
 const Div = styled.div`
@@ -55,6 +56,9 @@ const Paragraph = styled.p`
 	&:hover {
 		margin-left: 20px;
 		transition: 0.3s;
+	}
+	&:hover ${Icon}{
+		filter: brightness(0);
 	}
 `
 
