@@ -29,6 +29,7 @@ const Image = styled.img`
 
 const Paragraph = styled.p`
 	position: absolute;
+	text-shadow: rgb(0 0 0 / 40%) 0px 4px 5px;
 	width: 100%;
 	text-align: center;
 	margin-top: 57vh;
@@ -39,4 +40,5 @@ const Paragraph = styled.p`
 
 const ColoredParagraph = styled.span`
 	color: ${primaryColor};
+	text-shadow: rgb(0 0 0 / 40%) 0px 4px 5px;
 `
