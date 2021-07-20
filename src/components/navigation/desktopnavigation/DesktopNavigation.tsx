@@ -1,18 +1,19 @@
 import { useContext, useState, useMemo } from 'react'
 import { useHistory, NavLink, useLocation } from 'react-router-dom'
 import { primaryColor, secondaryFont } from '../../../shared/styles/GlobalStyle'
-import { Profile } from './components/profile/Profile'
 import { ScrollContext } from '../../../shared/providers/ScrollProvider'
 import { useNavHeight } from '../../../hooks/useNavHeight'
 import { UserContext } from '../../../shared/providers/UserProvider'
 import { CartToggler } from './components/CartToggler'
+import { fadeInRight } from 'shared/styles/animations/fadeInRight'
 import { BackDrop } from '../../BackDrop'
+import { Profile } from './components/profile/Profile'
+import { Button } from 'components/html/Button'
 import { Cart } from '../../cart/Cart'
 import styled from 'styled-components'
 import RoutingPath from '../../../routes/RoutingPath'
 import logotype from '../../../shared/images/codiclogotype.svg'
 import logotypeWhite from '../../../shared/images/codiclogotype_white.svg'
-import { fadeInRight } from 'shared/styles/animations/fadeInRight'
 
 export const NavBG = () => {
 	const { fractions } = useContext(ScrollContext)
@@ -35,7 +36,7 @@ export const DesktopNavigation = () => {
 					<CartToggler setIsCartOpen={setIsCartOpen} />
 				</ProfileWrapper>
 			)
-			: <Button onClick={() => history.push(RoutingPath.signInView)}>Logga in</Button>
+			: <Button text={'Logga in'} onClick={() => history.push(RoutingPath.signInView)} />
 	}
 	const heightStyle = useMemo(
 		() => ({ height: `${navHeight}rem` }),
@@ -144,14 +145,6 @@ const Paragraph = styled(NavLink).attrs(({ activeClassName = 'is-active' }) => (
       color: ${primaryColor};
     }
   `
-
-const Button = styled.p`
-    font-weight: 600;
-    color: white;
-    align-self: center;
-    text-transform: uppercase;
-    cursor: pointer;
-`
 
 export const Paragraph2 = styled.p`
     font-weight: 600;
