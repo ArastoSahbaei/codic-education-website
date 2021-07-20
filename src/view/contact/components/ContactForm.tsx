@@ -26,7 +26,7 @@ export const ContactForm = () => {
 				<Input name='name' type='text' placeholder='Namn' />
 				<Input name='email' type='email' placeholder='E-Mail' />
 				<Input name='subject' type='text' placeholder='Ämne' />
-				<TextArea name='message' type='textarea' placeholder='Tveka inte att höra av dig till oss vid funderingar!' />
+				<TextArea name='message' type='textarea' placeholder='Meddelande' />
 				<Button text='Skicka' />
 			</Form>
 		</Formik>
