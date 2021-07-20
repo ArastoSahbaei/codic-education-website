@@ -5,10 +5,16 @@ import { Button } from 'components/html/Button'
 import { Input } from '../../../components/html/Input'
 import Validations from 'shared/validations/Validations'
 import CodicAPIService from 'shared/api/services/CodicAPIService'
+import { toast } from 'react-toastify'
 
 export const ContactForm = () => {
 	const handleSubmit = async (values: IContactForm) => {
-		await CodicAPIService.sendContactEmail(values)
+		try {
+			await CodicAPIService.sendContactEmail(values)
+			toast.success('✔️ Tack för ditt meddelande. Vi kommer att återkoppla till dig inom snar tid.')
+		} catch (error) {
+			console.log(error)
+		}
 	}
 
 	return (

@@ -6,7 +6,7 @@ export const Input = ({ ...props }: any) => {
 	const [field, meta] = useField(props)
 	return (
 		<>
-			<label htmlFor={props.name} />
+			<Label htmlFor={props.name} />
 			<InputField id={props.name} type={props.type}{...field} {...props} autoComplete='on' />
 			{meta.touched && meta.error ? (
 				<StyledErrorMessage>{meta.error}</StyledErrorMessage>
@@ -14,6 +14,15 @@ export const Input = ({ ...props }: any) => {
 		</>
 	)
 }
+
+const Label = styled.label`
+position: absolute;
+top: 0;
+display: block;
+transition: 0.2s;
+font-size: 1rem;
+color: $gray;
+`
 
 const InputField = styled.input`
   margin-bottom: 1.5em;
