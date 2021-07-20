@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { Spinner } from 'components/Spinner'
 import { MouseEvent } from 'react'
-import { primaryColor, secondaryColor, secondaryColorDark } from '../../shared/styles/GlobalStyle'
+import { primaryColor, secondaryColor } from '../../shared/styles/GlobalStyle'
 import styled from 'styled-components'
 
 export interface IButton {
@@ -38,17 +38,15 @@ const ButtonWrapper = styled.button<IButton>`
 	height: 2rem;
 	color: white;
 	border: none;
-	${isDisabled}
+	${isDisabled}	
 	background-color: ${props => props.isLoading ? secondaryColor : primaryColor};
 	outline: none;
 	transition: background-color 0.2s;
 	text-transform: uppercase;
 	letter-spacing: 1px;
-	border-radius: 10px;
+	border-radius: 30px;
 	font-weight: bold;
 	cursor: pointer;
-	display: inline-block;
-	position: relative;
 
 	${Span} {
 		display: inline-block;

@@ -1,15 +1,15 @@
-import backgroundImage from '../../shared/images/teacher3.jpg'
-import styled from 'styled-components'
 import { Collaborations } from './components/Collaborations'
 import { StudentReviews } from './components/StudentReviews'
+import { primaryColor } from 'shared/styles/GlobalStyle'
+import backgroundImage from '../../shared/images/teacher3.jpg'
+import styled from 'styled-components'
 
 export const InitialView = () => {
 
 	return (
 		<Wrapper>
 			<Image src={backgroundImage} alt={'background of a teacher'} />
-			<Paragraph>Lorem ipsum dolor sit amet consectetur
-				<br /> adipisicing elit. Possimus, fugiat?</Paragraph>
+			<Paragraph>Vi <ColoredParagraph>utvecklar</ColoredParagraph> Sverige inom <ColoredParagraph>datavetenskap</ColoredParagraph>.</Paragraph>
 			<Collaborations />
 			<StudentReviews />
 		</Wrapper>
@@ -35,4 +35,8 @@ const Paragraph = styled.p`
 	color: #f9f9f9;
 	font-size: 2.5rem;
 	font-weight: 700;
+`
+
+const ColoredParagraph = styled.span`
+	color: ${primaryColor};
 `
