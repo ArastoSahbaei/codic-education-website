@@ -11,7 +11,7 @@ export const InitialView = () => {
 		<Wrapper>
 			<Image src={backgroundImage} alt={'background of a teacher'} />
 			<Paragraph>
-				Vi <ColoredParagraph>utvecklar</ColoredParagraph> Sverige inom <ColoredParagraph>datavetenskap</ColoredParagraph>. <br />
+				Vi <ColoredParagraph>utbildar</ColoredParagraph> Sverige inom <ColoredParagraph>datavetenskap</ColoredParagraph>. <br />
 				<Button text={'Om oss'} style={initialViewButtonStyle} /> <br />
 				<Button text={'Boka möte'} style={initialViewButtonStyle} /> <br />
 				<Button text={'Lediga tjänster'} style={initialViewButtonStyle} /> <br />
