@@ -9,12 +9,13 @@ export interface IButton {
 	onClick?: (event: MouseEvent) => void
 	isLoading?: boolean
 	disabled?: boolean
+	style?: any
 }
 
 export const Button: FC<IButton> = (props: IButton) => {
 	const { text, onClick, isLoading, disabled } = props
 	return (
-		<ButtonWrapper onClick={onClick} disabled={disabled} text={text} isLoading={isLoading}>
+		<ButtonWrapper onClick={onClick} disabled={disabled} text={text} isLoading={isLoading} style={props.style}>
 			<Span>{isLoading || text}</Span>
 			{isLoading && <Spinner height='26' width='26' />}
 		</ButtonWrapper>
@@ -33,6 +34,7 @@ function isDisabled(props: Partial<IButton>) {
 const Span = styled.span``
 
 const ButtonWrapper = styled.button<IButton>`
+	${props => props.style}
 	display: inline-block;
 	width: calc(${props => props.text?.length}em + 1em);
 	height: 2rem;

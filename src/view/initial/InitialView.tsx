@@ -1,20 +1,20 @@
 import { Collaborations } from './components/Collaborations'
+import { initialViewButtonStyle } from 'shared/styles/Styles'
 import { StudentReviews } from './components/StudentReviews'
 import { primaryColor } from 'shared/styles/GlobalStyle'
+import { Button } from 'components/html/Button'
 import backgroundImage from '../../shared/images/teacher3.jpg'
 import styled from 'styled-components'
-import { Button } from 'components/html/Button'
 
 export const InitialView = () => {
-
 	return (
 		<Wrapper>
 			<Image src={backgroundImage} alt={'background of a teacher'} />
 			<Paragraph>
 				Vi <ColoredParagraph>utvecklar</ColoredParagraph> Sverige inom <ColoredParagraph>datavetenskap</ColoredParagraph>. <br />
-				<Button text={'Om oss'} /> <br />
-				<Button text={'Boka möte'} /> <br />
-				<Button text={'Lediga tjänster'} /> <br />
+				<Button text={'Om oss'} style={initialViewButtonStyle} /> <br />
+				<Button text={'Boka möte'} style={initialViewButtonStyle} /> <br />
+				<Button text={'Lediga tjänster'} style={initialViewButtonStyle} /> <br />
 			</Paragraph>
 			<Collaborations />
 			<StudentReviews />
