@@ -1,17 +1,27 @@
+import { useContext } from 'react'
+import { useHistory } from 'react-router-dom'
+import { UserContext } from 'shared/providers/UserProvider'
 import { useFetch } from '../../../hooks/useFetch'
 import { useCart } from 'hooks/useCart'
 import { Product } from '../../../shared/interfaces/ProductsInterface'
 import { Spinner } from '../../../components/Spinner'
+import { toast } from 'react-toastify'
 import styled from 'styled-components'
 import RoutingPath from '../../../routes/RoutingPath'
 import CodicAPIService from '../../../shared/api/services/CodicAPIService'
-import { useHistory } from 'react-router-dom'
 
 
 export const DisplayProducts = () => {
-	const { addToCart }  = useCart()
+	const { addToCart } = useCart()
 	const history = useHistory()
 	const { data, loading } = useFetch(CodicAPIService.getAllProducts())
+	const [authenticatedUser] = useContext(UserContext)
+
+	const handleAddToCart = (item: Product) => {
+		authenticatedUser.authenticated
+			? addToCart(item)
+			: toast.info('Autentisering krävs') && history.push(RoutingPath.signInView)
+	}
 
 	const displayData = () => {
 		if (!loading) {
@@ -23,7 +33,7 @@ export const DisplayProducts = () => {
 					<Paragraph>Herbaman Co.</Paragraph> <br />
 					<Paragraph>{item.title}</Paragraph> <br />
 					<Paragraph>{item.price} kr</Paragraph> <br />
-					<Button onClick={() => addToCart(item)}>Addera till varukorg</Button>
+					<Button onClick={() => handleAddToCart(item)}>Addera till varukorg</Button>
 				</ProductWrapper>
 			)
 		}
