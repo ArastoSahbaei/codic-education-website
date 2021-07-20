@@ -1,8 +1,8 @@
 import { useContext } from 'react'
+import { UserContext } from 'shared/providers/UserProvider'
+import { Product } from 'shared/interfaces/ProductsInterface'
 import { toast } from 'react-toastify'
 import CodicAPIService from 'shared/api/services/CodicAPIService'
-import { Product } from 'shared/interfaces/ProductsInterface'
-import { UserContext } from 'shared/providers/UserProvider'
 
 export const useCart = () => {
 	const [authenticatedUser, setAuthenticatedUser] = useContext(UserContext)
@@ -25,7 +25,6 @@ export const useCart = () => {
 				},
 			})
 			toast.success(` ✔️${product.title} adderades till varukorgen`)
-			console.log(product)
 		} catch (error) {
 			console.log(error)
 		}
