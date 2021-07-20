@@ -38,10 +38,11 @@ const Paragraph = styled.p`
 	text-shadow: rgb(0 0 0 / 40%) 0px 4px 5px;
 	width: 100%;
 	text-align: center;
-	margin-top: 57vh;
+	margin-top: 50vh;
 	color: #f9f9f9;
 	font-size: 2.5rem;
 	font-weight: 700;
+
 `
 
 const ColoredParagraph = styled.span`
