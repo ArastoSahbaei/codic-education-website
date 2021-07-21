@@ -39,7 +39,11 @@ export const ProfileView = () => {
 					<Button text='Spara' />
 				</Form>
 
+
+
 			</Formik>
+			<hr />
+			<h1> byte av lösenord: </h1>
 
 			<h1>1. data and update info</h1>
 			<h1>2. change password</h1>
