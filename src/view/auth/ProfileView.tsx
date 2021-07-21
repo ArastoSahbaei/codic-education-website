@@ -4,6 +4,7 @@ import { UserContext } from 'shared/providers/UserProvider'
 import { useContext } from 'react'
 import { Button } from 'components/html/Button'
 import { Input } from 'components/html/Input'
+import { toast } from 'react-toastify'
 import CodicAPIService from 'shared/api/services/CodicAPIService'
 
 export const ProfileView = () => {
@@ -12,6 +13,7 @@ export const ProfileView = () => {
 	const handleSubmit = async (values: UserPersonalDetails) => {
 		try {
 			await CodicAPIService.updateUser(authenticatedUser._id, values)
+			toast.success('Information uppdaterad')
 		} catch (error) {
 			console.log(error)
 		}
