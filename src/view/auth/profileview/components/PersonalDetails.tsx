@@ -26,16 +26,16 @@ export const PersonalDetails = () => {
 			onSubmit={(values) => { handleSubmit(values) }}>
 			<Form>
 				<p>Dina personliga uppgifter</p> <br />
-				<Input name='personalDetails.firstName' label='Namn' type='text' placeholder='Firstname' />
-				<Input name='personalDetails.lastName' label='Efternamn' type='text' placeholder='lastName' />
-				<Input name='personalDetails.country' label='Land' type='text' placeholder='country' />
-				<Input name='personalDetails.adress' label='Address' type='text' placeholder='adress' />
-				<Input name='personalDetails.secondaryAdress' label='Sekundär Address' type='text' placeholder='secondaryAdress' />
-				<Input name='personalDetails.zipCode' type='text' label='Postnummer' placeholder='zipCode' />
-				<Input name='personalDetails.county' type='text' label='Län/Kommun' placeholder='county' />
-				<Input name='personalDetails.postOffice' type='text' label='Postort' placeholder='postOffice' />
-				<Input name='personalDetails.phone' type='text' label='Telefon' placeholder='phone' />
-				<Input name='personalDetails.secondaryPhone' label='Sekundär Telefon' type='text' placeholder='secondaryPhone' />
+				<Input name='personalDetails.firstName' label='Namn' type='text' />
+				<Input name='personalDetails.lastName' label='Efternamn' type='text' />
+				<Input name='personalDetails.country' label='Land' type='text' />
+				<Input name='personalDetails.adress' label='Address' type='text' />
+				<Input name='personalDetails.secondaryAdress' label='Sekundär Address' type='text' />
+				<Input name='personalDetails.zipCode' type='text' label='Postnummer' />
+				<Input name='personalDetails.county' type='text' label='Län/Kommun' />
+				<Input name='personalDetails.postOffice' type='text' label='Postort' />
+				<Input name='personalDetails.phone' type='text' label='Telefon' />
+				<Input name='personalDetails.secondaryPhone' label='Sekundär Telefon' type='text' />
 				<br />
 				<Button text='Spara' />
 			</Form>

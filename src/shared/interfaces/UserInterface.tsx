@@ -37,3 +37,13 @@ export interface UserDetails {
 	phone: string,
 	secondaryPhone: string
 }
+
+export interface UpdatePassword {
+	userId: string,
+	newPassword: string
+}
+
+export interface IChangePassword {
+	password: string,
+	newPassword: string
+}

@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { ContactForm } from 'shared/interfaces/ContactFormInterface'
-import { LoginCredentials, RegisterNewUser, RetrieveLostAccount } from 'shared/interfaces/UserInterface'
+import { LoginCredentials, RegisterNewUser, RetrieveLostAccount, UpdatePassword } from 'shared/interfaces/UserInterface'
 import http from '../CodicAPI'
 
 const authenticatedRouteExample = () => {
@@ -41,6 +41,10 @@ const retrieveLostAccount = (email: RetrieveLostAccount) => {
 
 const resetPassword = (newPasswordAndToken: any) => {
 	return http.put('/resetpassword', newPasswordAndToken)
+}
+
+const updatePassword = (data: UpdatePassword) => {
+	return http.put('/updatepassword', data)
 }
 
 const updateCart = (data: any) => {
@@ -104,6 +108,7 @@ export default {
 	updateUser,
 	updateFavouriteProducts,
 	updateCart,
+	updatePassword,
 	deleteUserWithID,
 	authenticatedRouteExample,
 	retrieveLostAccount,
