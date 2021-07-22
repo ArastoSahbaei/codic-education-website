@@ -21,3 +21,19 @@ export interface RegisterNewUser {
 export interface RetrieveLostAccount {
 	email: string
 }
+
+export interface UserPersonalDetails {
+	personalDetails: UserDetails
+}
+export interface UserDetails {
+	firstName: string,
+	lastName: string,
+	country: string,
+	adress: string,
+	secondaryAdress: string,
+	zipCode: string, //POSTNUMMER
+	county: string, //LÄN-KOMMUN
+	postOffice: string, //POSTORT
+	phone: string,
+	secondaryPhone: string
+}

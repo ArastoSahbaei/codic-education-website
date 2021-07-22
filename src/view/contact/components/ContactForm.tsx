@@ -22,10 +22,11 @@ export const ContactForm = () => {
 			initialValues={{ name: '', email: '', subject: '', message: '' }}
 			validationSchema={Validations.contactFormValidation}
 			onSubmit={(values, actions) => { handleSubmit(values) && actions.resetForm() }}>
-			<Form>
-				<Input name='name' type='text' placeholder='Namn' />
-				<Input name='email' type='email' placeholder='E-Mail' />
-				<Input name='subject' type='text' placeholder='Ämne' />
+			<Form autoComplete="off">
+				<Input name='name' label='Namn' type='text' required />
+				<Input name='email' label='Email' type='email' required />
+				<Input name='subject' label='Ärende' type='text' required />
+				<br />
 				<TextArea name='message' type='textarea' placeholder='Meddelande' />
 				<Button text='Skicka' />
 			</Form>

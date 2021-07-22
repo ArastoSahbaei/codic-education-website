@@ -27,8 +27,8 @@ const getUserWithQuery = (usernameQuery: string) => {
 	return http.get(`/searchuser?username=${usernameQuery}`)
 }
 
-const updateValuesOfExistingUser = () => {
-	return http.get('/user/:userId')
+const updateUser = (userId: string, data: any) => {
+	return http.put(`/user/${userId}`, data)
 }
 
 const deleteUserWithID = () => {
@@ -101,7 +101,7 @@ export default {
 	getOrderById,
 	getUserWithID,
 	getAllUsers,
-	updateValuesOfExistingUser,
+	updateUser,
 	updateFavouriteProducts,
 	updateCart,
 	deleteUserWithID,
