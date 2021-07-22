@@ -26,16 +26,17 @@ export const ProfileView = () => {
 				/* validationSchema={{}} */
 				onSubmit={(values) => { handleSubmit(values) }}>
 				<Form>
-					<Input name='personalDetails.firstName' type='text' placeholder='Firstname' />
-					<Input name='personalDetails.lastName' type='text' placeholder='lastName' />
-					<Input name='personalDetails.country' type='text' placeholder='country' />
-					<Input name='personalDetails.adress' type='text' placeholder='adress' />
-					<Input name='personalDetails.secondaryAdress' type='text' placeholder='secondaryAdress' />
-					<Input name='personalDetails.zipCode' type='text' placeholder='zipCode' />
-					<Input name='personalDetails.county' type='text' placeholder='county' />
-					<Input name='personalDetails.postOffice' type='text' placeholder='postOffice' />
-					<Input name='personalDetails.phone' type='text' placeholder='phone' />
-					<Input name='personalDetails.secondaryPhone' type='text' placeholder='secondaryPhone' />
+					<p>Dina personliga uppgifter</p> <br />
+					<Input name='personalDetails.firstName' label='Namn' type='text' placeholder='Firstname' />
+					<Input name='personalDetails.lastName' label='Efternamn' type='text' placeholder='lastName' />
+					<Input name='personalDetails.country' label='Land' type='text' placeholder='country' />
+					<Input name='personalDetails.adress' label='Address' type='text' placeholder='adress' />
+					<Input name='personalDetails.secondaryAdress' label='Sekundär Address' type='text' placeholder='secondaryAdress' />
+					<Input name='personalDetails.zipCode' type='text' label='Postnummer' placeholder='zipCode' />
+					<Input name='personalDetails.county' type='text' label='Län/Kommun' placeholder='county' />
+					<Input name='personalDetails.postOffice' type='text' label='Postort' placeholder='postOffice' />
+					<Input name='personalDetails.phone' type='text' label='Telefon' placeholder='phone' />
+					<Input name='personalDetails.secondaryPhone' label='Sekundär Telefon' type='text' placeholder='secondaryPhone' />
 					<Button text='Spara' />
 				</Form>
 
