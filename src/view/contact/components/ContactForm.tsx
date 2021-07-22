@@ -26,6 +26,7 @@ export const ContactForm = () => {
 				<Input name='name' label='Namn' type='text' required />
 				<Input name='email' label='Email' type='email' required />
 				<Input name='subject' label='Ärende' type='text' required />
+				<br />
 				<TextArea name='message' type='textarea' placeholder='Meddelande' />
 				<Button text='Skicka' />
 			</Form>

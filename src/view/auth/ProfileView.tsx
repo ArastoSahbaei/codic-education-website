@@ -21,6 +21,12 @@ export const ProfileView = () => {
 
 	return (
 		<div>
+			<p>Övriga uppgifter</p> <br />
+			medlem sedan: tid
+			email: x
+			användarnamn: arasto
+			Prenumerar på nyhetsbrev: true
+			<hr />
 			<Formik
 				initialValues={{ personalDetails: authenticatedUser.personalDetails }}
 				/* validationSchema={{}} */
@@ -37,19 +43,16 @@ export const ProfileView = () => {
 					<Input name='personalDetails.postOffice' type='text' label='Postort' placeholder='postOffice' />
 					<Input name='personalDetails.phone' type='text' label='Telefon' placeholder='phone' />
 					<Input name='personalDetails.secondaryPhone' label='Sekundär Telefon' type='text' placeholder='secondaryPhone' />
+					<br />
 					<Button text='Spara' />
 				</Form>
-
-
-
 			</Formik>
-			<hr />
-			<h1> byte av lösenord: </h1>
-
-			<h1>1. data and update info</h1>
-			<h1>2. change password</h1>
-			<h1>3. inactivate account</h1>
+			<p>Byte av lösenord</p> <br />
+			<p>ange befintligt lösenord</p>
+			<p>ange nytt lösenord</p>
+			<p>ange nytt lösenord</p>
 			<button onClick={() => console.log(authenticatedUser.personalDetails)}>info</button>
+			{/* TODO: Köphistorik */}
 		</div>
 	)
 }
