@@ -1,3 +1,5 @@
+import { Product } from './ProductsInterface'
+
 export interface IOrder {
     _id: string;
     paypalOrderId: string
@@ -5,7 +7,7 @@ export interface IOrder {
     paypalAuthorizeId: string
     paypalToken: string
     price:string
-    products:string
+    products:Product[]
     user:string
     shippedAt:string
     status:string
