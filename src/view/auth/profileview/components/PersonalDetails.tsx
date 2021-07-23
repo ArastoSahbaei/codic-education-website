@@ -25,7 +25,7 @@ export const PersonalDetails = () => {
 			/* validationSchema={{}} */
 			onSubmit={(values) => { handleSubmit(values) }}>
 			<Form>
-				<p>Dina personliga uppgifter</p> <br />
+				<p>Personuppgifter</p> <br />
 				<Input name='personalDetails.firstName' label='Namn' type='text' />
 				<Input name='personalDetails.lastName' label='Efternamn' type='text' />
 				<Input name='personalDetails.country' label='Land' type='text' />

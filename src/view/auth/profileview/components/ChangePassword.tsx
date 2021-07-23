@@ -24,6 +24,7 @@ export const ChangePassword = () => {
 			initialValues={{ password: '', newPassword: '' }}
 			onSubmit={(values) => handleSubmit(values)}>
 			<Form>
+				<p>Byte av lösenord</p>
 				DIN NUVARANDE E-POSTADRESS ÄR ARASTO.SAHBAEI@GMAIL.COM <br />
 				<Input name='password' label='Nuvarande lösenord' type='password' />
 				<Input name='newPassword' label='Nytt lösenord' type='password' />

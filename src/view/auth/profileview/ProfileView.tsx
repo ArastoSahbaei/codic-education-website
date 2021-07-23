@@ -11,9 +11,7 @@ export const ProfileView = () => {
 	return (
 		<div>
 			<UserInformation />
-			<h1>Personlig information</h1>
 			<PersonalDetails />
-			<h1>Byte av lösenord</h1>
 			<ChangePassword />
 			<button onClick={() => console.log(authenticatedUser.personalDetails)}>info</button>
 			{/* TODO: Köphistorik */}
