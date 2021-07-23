@@ -13,7 +13,9 @@ export const UserInformation = () => {
 			<p>Email: {authenticatedUser.email}</p> <br />
 			<p>Användarnamn: {authenticatedUser.username}</p> <br />
 			<p>Prenumerar på nyhetsbrev: true</p> <br />
+			<p>Inaktivera kontot</p>
 			<hr />
+
 		</div>
 	)
 }
