@@ -1,9 +1,9 @@
-import { PersonalDetails } from './components/PersonalDetails'
+import { PersonalDetailsHandler } from './components/PersonalDetailsHandler'
 
 export const PersonalInformationView = () => {
 	return (
 		<>
-			<PersonalDetails />
+			<PersonalDetailsHandler />
 		</>
 	)
 }

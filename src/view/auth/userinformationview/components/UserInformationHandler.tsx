@@ -3,7 +3,7 @@ import { Form, Formik } from 'formik'
 import { useContext } from 'react'
 import { UserContext } from 'shared/providers/UserProvider'
 
-export const UserInformation = () => {
+export const UserInformationHandler = () => {
 	const [authenticatedUser, setAuthenticatedUser] = useContext(UserContext)
 
 	const handleSubmit = (x: any) => {

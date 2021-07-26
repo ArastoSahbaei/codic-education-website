@@ -6,7 +6,7 @@ import { Button } from 'components/html/Button'
 import { Input } from 'components/html/Input'
 import CodicAPIService from 'shared/api/services/CodicAPIService'
 
-export const ChangePassword = () => {
+export const ChangePasswordHandler = () => {
 	const [authenticatedUser] = useContext(UserContext)
 
 	const handleSubmit = async (values: IChangePassword) => {

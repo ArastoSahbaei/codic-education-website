@@ -7,7 +7,7 @@ import CodicAPIService from 'shared/api/services/CodicAPIService'
 import { UserPersonalDetails } from 'shared/interfaces/UserInterface'
 import { UserContext } from 'shared/providers/UserProvider'
 
-export const PersonalDetails = () => {
+export const PersonalDetailsHandler = () => {
 	const [authenticatedUser] = useContext(UserContext)
 
 	const handleSubmit = async (values: UserPersonalDetails) => {

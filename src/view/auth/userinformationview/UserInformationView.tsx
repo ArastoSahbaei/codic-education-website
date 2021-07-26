@@ -1,11 +1,11 @@
-import { ChangePassword } from './components/ChangePassword'
-import { UserInformation } from './components/UserInformation'
+import { ChangePasswordHandler } from './components/ChangePasswordHandler'
+import { UserInformationHandler } from './components/UserInformationHandler'
 
 export const UserInformationView = () => {
 	return (
 		<>
-			<UserInformation />
-			<ChangePassword />
+			<UserInformationHandler />
+			<ChangePasswordHandler />
 		</>
 	)
 }
