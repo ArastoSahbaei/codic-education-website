@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom'
 import { UserContext } from 'shared/providers/UserProvider'
 import { validateToken } from 'functions/validateToken'
 import { nonAuthenticatedUser } from 'shared/data/nonAuthenticatedUser'
-import { LoginCredentials, RegisterNewUser, RetrieveLostAccount } from 'shared/interfaces/UserInterface'
+import { LoginCredentials, RegisterNewUser, RetrieveLostAccount, UserPersonalDetails } from 'shared/interfaces/UserInterface'
 import { toast } from 'react-toastify'
 import RoutingPath from 'routes/RoutingPath'
 import CodicAPIService from 'shared/api/services/CodicAPIService'
@@ -11,7 +11,7 @@ import LocalStorage from 'shared/cache/LocalStorage'
 
 export const useAuthentication = () => {
 	const history = useHistory()
-	const [, setAuthenticatedUser] = useContext(UserContext)
+	const [authenticatedUser, setAuthenticatedUser] = useContext(UserContext)
 
 	const login = async (loginCredentials: LoginCredentials) => {
 		try {
@@ -69,6 +69,21 @@ export const useAuthentication = () => {
 		}
 	}
 
-	return { login, register, validateUser, recoverLostPassword }
+	const updatePersonalInformation = async (data: UserPersonalDetails) => {
+		try {
+			await CodicAPIService.updateUser(authenticatedUser._id, data)
+			toast.success('Uppgifter har sparats')
+		} catch (error) {
+			toast.error('Det gick inte att spara uppgifterna')
+		}
+	}
+
+	return {
+		login,
+		register,
+		validateUser,
+		recoverLostPassword,
+		updatePersonalInformation
+	}
 
 }

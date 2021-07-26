@@ -1,29 +1,19 @@
 import { Button } from 'components/html/Button'
 import { Input } from 'components/html/Input'
 import { Form, Formik } from 'formik'
+import { useAuthentication } from 'hooks/useAuthentication'
 import { useContext } from 'react'
-import { toast } from 'react-toastify'
-import CodicAPIService from 'shared/api/services/CodicAPIService'
-import { UserPersonalDetails } from 'shared/interfaces/UserInterface'
 import { UserContext } from 'shared/providers/UserProvider'
 
 export const PersonalDetailsHandler = () => {
 	const [authenticatedUser] = useContext(UserContext)
-
-	const handleSubmit = async (values: UserPersonalDetails) => {
-		try {
-			await CodicAPIService.updateUser(authenticatedUser._id, values)
-			toast.success('Information uppdaterad')
-		} catch (error) {
-			console.log(error)
-		}
-	}
+	const { updatePersonalInformation } = useAuthentication()
 
 	return (
 		<Formik
 			initialValues={{ personalDetails: authenticatedUser.personalDetails }}
 			/* validationSchema={{}} */
-			onSubmit={(values) => { handleSubmit(values) }}>
+			onSubmit={(values) => { updatePersonalInformation(values) }}>
 			<Form>
 				<p>Personuppgifter</p> <br />
 				<Input name='personalDetails.firstName' label='Namn' type='text' />
