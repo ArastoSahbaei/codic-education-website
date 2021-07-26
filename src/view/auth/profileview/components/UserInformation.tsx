@@ -2,6 +2,7 @@ import { Input } from 'components/html/Input'
 import { Form, Formik } from 'formik'
 import { useContext } from 'react'
 import { UserContext } from 'shared/providers/UserProvider'
+import { ChangePassword } from './ChangePassword'
 
 
 export const UserInformation = () => {
@@ -27,11 +28,7 @@ export const UserInformation = () => {
 					<Input name='username' label='Användarnamn' type='text' disabled />
 				</Form>
 			</Formik>
-
-
-
-			<p>Prenumerar på nyhetsbrev: true</p> <br />
-			<p>Inaktivera kontot</p>
+			{/* TODO: <p>Inaktivera kontot</p> */}
 			<hr />
 
 		</ >

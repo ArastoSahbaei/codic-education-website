@@ -1,7 +1,7 @@
 export const NewsLetterSubscriptionView = () => {
 	return (
 		<div>
-			<h1>HOLA DIZ BE NEWSLETTERFRIEND</h1>
+			<p>Prenumerar på nyhetsbrev: true</p> <br />
 		</div>
 	)
 }
