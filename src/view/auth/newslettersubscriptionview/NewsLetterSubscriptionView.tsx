@@ -1,4 +1,4 @@
-import { SubscriptionHandler } from "./components/SubscriptionHandler"
+import { SubscriptionHandler } from './components/SubscriptionHandler'
 
 export const NewsLetterSubscriptionView = () => {
 	return (
