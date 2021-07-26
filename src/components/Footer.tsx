@@ -6,6 +6,7 @@ import MapIcon from '../shared/images/map_icon.svg'
 import CopyRight from '../shared/images/copyright.svg'
 import RoutingPath from '../routes/RoutingPath'
 import ExternalPath from '../routes/ExternalPath'
+import { ToolTip } from './ToolTip'
 
 export const Footer = () => {
 	const history = useHistory()
@@ -48,10 +49,12 @@ export const Footer = () => {
 			</ContactListWrapper>
 
 			<CompanyOL>
-				<Div hasCursor={true} onClick={() => window.open(ExternalPath.googleMapsLocation)}>
-					<Image src={MapIcon} alt="" />
-					<Span2> Drottninggatan 38, Göteborg, Västra Götalands län, 411 07, Sverige </Span2> <br /> <br /><br />
-				</Div>
+				<ToolTip text={'Öppnas i Google Maps'} placement={'top-start'}>
+					<Div hasCursor={true} onClick={() => window.open(ExternalPath.googleMapsLocation)}>
+						<Image src={MapIcon} alt="" />
+						<Span2> Drottninggatan 38, Göteborg, Västra Götalands län, 411 07, Sverige </Span2> <br /> <br /><br />
+					</Div>
+				</ToolTip>
 				<Div>
 					<Image src={CopyRight} alt="" />
 					<Span2> Upphovsrätt {getCurrentYear()}, © Codic Education AB. </Span2>
