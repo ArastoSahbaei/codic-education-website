@@ -158,7 +158,6 @@ export const Paragraph2 = styled.p`
 const ParagraphWrapper = styled.div`
     display: flex;
     justify-content: space-between;
-    display: flex;
 `
 
 const ProfileWrapper = styled.div`

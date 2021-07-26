@@ -1,31 +1,42 @@
 
-import { useHistory } from 'react-router-dom'
+import { NavLink, useHistory } from 'react-router-dom'
 import AuthPath from 'routes/AuthPath'
+import { primaryColor, secondaryFont } from 'shared/styles/GlobalStyle'
 import styled from 'styled-components'
 
 export const ProfileView = () => {
 	const history = useHistory()
 
 	return (
-		<div>
-			<Paragraph onClick={() => history.push(AuthPath.userInformationView)}>Användaruppgifter</Paragraph>
-			<Paragraph onClick={() => history.push(AuthPath.personalInformationView)}>Personuppgifter</Paragraph>
-			<Paragraph onClick={() => history.push(AuthPath.newsLetterSubscriptionView)}>Nyhetsprenumeration</Paragraph>
-			<Paragraph onClick={() => history.push(AuthPath.purchaseHistoryView)}>Köphistorik</Paragraph>
-			<Paragraph>Logga ut</Paragraph>
-			<hr />
-		</div>
+		<>
+			<Wrapper>
+				<Paragraph to={AuthPath.userInformationView} onClick={() => history.push(AuthPath.userInformationView)}>Användaruppgifter</Paragraph>
+				<Paragraph to={AuthPath.personalInformationView} onClick={() => history.push(AuthPath.personalInformationView)}>Personuppgifter</Paragraph>
+				<Paragraph to={AuthPath.newsLetterSubscriptionView} onClick={() => history.push(AuthPath.newsLetterSubscriptionView)}>Nyhetsprenumeration</Paragraph>
+				<Paragraph to={AuthPath.purchaseHistoryView} onClick={() => history.push(AuthPath.purchaseHistoryView)}>Köphistorik</Paragraph>
+			</Wrapper>
+		</>
 	)
 }
 
-const Paragraph = styled.p`
+const Paragraph = styled(NavLink).attrs(({ activeClassName = 'is-active' }) => ({
+	activeClassName,
+}))`
 	cursor: pointer;
-	color: #CCCCCC;
+    font-family: ${secondaryFont};
+    text-decoration: none;
+	color: #FFFFFF;
 	transition: 0.3s;
+	text-transform: uppercase;
+	&.is-active {
+		color: ${primaryColor};
+	  }
+`
 
-	&:hover {
-		transition: 0.3s;
-		margin-left: 0.3%;
-		color: #000000
-	}
+const Wrapper = styled.div`
+	display: flex;
+	justify-content: space-around;
+	align-self: center;
+	background-color: #263746;
+	padding: 0.5%;
 `
