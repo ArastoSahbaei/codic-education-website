@@ -1,4 +1,4 @@
-import { PersonalDetails } from '../profileview/components/PersonalDetails'
+import { PersonalDetails } from './components/PersonalDetails'
 
 export const PersonalInformationView = () => {
 	return (

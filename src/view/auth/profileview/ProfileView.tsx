@@ -20,12 +20,12 @@ export const ProfileView = () => {
 
 const Paragraph = styled.p`
 	cursor: pointer;
-	color: red;
+	color: #CCCCCC;
 	transition: 0.3s;
 
 	&:hover {
 		transition: 0.3s;
-
-		margin: 0.3%;
+		margin-left: 0.3%;
+		color: #000000
 	}
 `

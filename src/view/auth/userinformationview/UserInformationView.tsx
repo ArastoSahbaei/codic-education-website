@@ -1,5 +1,5 @@
-import { ChangePassword } from '../profileview/components/ChangePassword'
-import { UserInformation } from '../profileview/components/UserInformation'
+import { ChangePassword } from './components/ChangePassword'
+import { UserInformation } from './components/UserInformation'
 
 export const UserInformationView = () => {
 	return (
