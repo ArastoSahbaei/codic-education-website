@@ -1,5 +1,5 @@
 export const nonAuthenticatedUser = {
-	id: undefined,
+	_id: undefined,
 	username: undefined,
 	email: undefined,
 	token: undefined,

@@ -11,11 +11,10 @@ export const Input = ({ ...props }: any) => {
 				label={props.label}
 				type={props.type}
 				required={props.required}
+				disabled={props.disabled}
 			/>
 			<br />
-			{meta.touched && meta.error
-				? <StyledErrorMessage>{meta.error}</StyledErrorMessage>
-				: null}
+			{meta.touched && meta.error && <StyledErrorMessage>{meta.error}</StyledErrorMessage>}
 		</>
 	)
 }

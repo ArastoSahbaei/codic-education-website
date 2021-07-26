@@ -2,24 +2,28 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import { useEffect, useContext } from 'react'
 import { nonAuthenticatedUser } from '../shared/data/nonAuthenticatedUser'
 import { UserContext } from '../shared/providers/UserProvider'
+import { NewsLetterSubscriptionView } from 'view/auth/newslettersubscriptionview/NewsLetterSubscriptionView'
 import { RetrieveLostPasswordView } from 'view/retrieve-lost-password/RetrieveLostPasswordView'
+import { PersonalInformationView } from 'view/auth/personalinformationview/PersonalInformationView'
+import { UserInformationView } from 'view/auth/userinformationview/UserInformationView'
+import { PurchaseHistoryView } from 'view/auth/purchasehistoryview/PurchaseHistoryView'
 import { ProductDetailView } from '../view/productdetail/ProductDetailView'
+import { validateToken } from 'functions/validateToken'
 import { CheckoutView } from '../view/checkout/CheckoutView'
 import { EmployeeView } from '../view/employee/EmployeeView'
 import { InitialView } from '../view/initial/InitialView'
 import { ContactView } from '../view/contact/ContactView'
-import { ProfileView } from '../view/auth/ProfileView'
+import { ProfileView } from '../view/auth/profileview/ProfileView'
 import { SignInView } from '../view/signin/SignInView'
 import { AdminView } from '../view/admin/AdminView'
-import { ShopView } from '../view/shop/ShopView'
 import { OrderView } from '../view/order/OrderView'
+import { ShopView } from '../view/shop/ShopView'
 import { Footer } from '../components/Footer'
-import { validateToken } from 'functions/validateToken'
-import RoutingPath from './RoutingPath'
 import CodicAPIService from '../shared/api/services/CodicAPIService'
 import LocalStorage from '../shared/cache/LocalStorage'
-import AuthPath from './AuthPath'
+import RoutingPath from './RoutingPath'
 import AdminPath from './AdminPath'
+import AuthPath from './AuthPath'
 
 export const Routes = (props: { children: React.ReactChild[] }) => {
 	const [authenticatedUser, setAuthenticatedUser] = useContext(UserContext)
@@ -63,6 +67,8 @@ export const Routes = (props: { children: React.ReactChild[] }) => {
 		<BrowserRouter>
 			{props.children}
 			<Switch>
+				{/* INITIAL PATH */}
+				<Route exact path={RoutingPath.initialView} component={InitialView} />
 				{/* REGULAR PATHS */}
 				<Route exact path={RoutingPath.shopView} component={ShopView} />
 				<Route exact path={RoutingPath.orderFinishedView} component={OrderView} />
@@ -72,12 +78,16 @@ export const Routes = (props: { children: React.ReactChild[] }) => {
 				<Route exact path={RoutingPath.productDetailsView()} component={ProductDetailView} />
 				<Route exact path={RoutingPath.retrieveLostPasswordView} component={RetrieveLostPasswordView} />
 				<Route exact path={RoutingPath.signInView} component={blockRouteIfAuthenticated(SignInView)} />
-				{/* AUTHENTICATED PATHS */}
-				<Route exact path={AuthPath.profileView} component={authenticationRequired(ProfileView)} />
 				{/* ADMIN PATHS */}
 				<Route exact path={AdminPath.adminView} component={AdminView} />
-				{/* INITIAL PATH */}
-				<Route component={InitialView} />
+				{/* AUTHENTICATED PATHS */}
+				<>
+					<Route path={AuthPath.profileView} component={authenticationRequired(ProfileView)} />
+					<Route path={AuthPath.personalInformationView} component={authenticationRequired(PersonalInformationView)} />
+					<Route path={AuthPath.userInformationView} component={authenticationRequired(UserInformationView)} />
+					<Route path={AuthPath.purchaseHistoryView} component={authenticationRequired(PurchaseHistoryView)} />
+					<Route path={AuthPath.newsLetterSubscriptionView} component={authenticationRequired(NewsLetterSubscriptionView)} />
+				</>
 			</Switch>
 			<Footer />
 		</BrowserRouter>
