@@ -38,7 +38,7 @@ export const ProfileDropdown = () => {
 
 	return (
 		<DropDownWrapper style={{ top: `${navHeight}rem` }}>
-			{newDropdownItem(profile, 'Din Profil', AuthPath.profileView)}
+			{newDropdownItem(profile, 'Din Profil', AuthPath.userInformationView)}
 			{newDropdownItem(heart, 'Sparade Produkter (4)')}
 			<Div onClick={() => logout()}>
 				<Image src={exit} alt={''} />

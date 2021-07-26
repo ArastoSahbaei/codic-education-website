@@ -1,4 +1,5 @@
 import { Input } from 'components/html/Input'
+import { Form, Formik } from 'formik'
 import { useContext } from 'react'
 import { UserContext } from 'shared/providers/UserProvider'
 
@@ -6,16 +7,33 @@ import { UserContext } from 'shared/providers/UserProvider'
 export const UserInformation = () => {
 	const [authenticatedUser, setAuthenticatedUser] = useContext(UserContext)
 
+	const handleSubmit = (x: any) => {
+		console.log(x)
+	}
+
 	return (
-		<div>
+		<>
 			<p>Användaruppgifter</p> <br />
-			<p>Medlem sedan: {authenticatedUser.createdAt}</p> <br />
-			<p>Email: {authenticatedUser.email}</p> <br />
-			<p>Användarnamn: {authenticatedUser.username}</p> <br />
+			<Formik
+				initialValues={{
+					createdAt: authenticatedUser.createdAt,
+					email: authenticatedUser.email,
+					username: authenticatedUser.username
+				}}
+				onSubmit={values => { handleSubmit(values) }}>
+				<Form>
+					<Input name='createdAt' label='Medlem sedan:' type='text' disabled />
+					<Input name='email' label='Email' type='text' disabled />
+					<Input name='username' label='Användarnamn' type='text' disabled />
+				</Form>
+			</Formik>
+
+
+
 			<p>Prenumerar på nyhetsbrev: true</p> <br />
 			<p>Inaktivera kontot</p>
 			<hr />
 
-		</div>
+		</ >
 	)
 }
