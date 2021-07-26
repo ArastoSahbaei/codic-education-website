@@ -2,8 +2,6 @@ import { Input } from 'components/html/Input'
 import { Form, Formik } from 'formik'
 import { useContext } from 'react'
 import { UserContext } from 'shared/providers/UserProvider'
-import { ChangePassword } from './ChangePassword'
-
 
 export const UserInformation = () => {
 	const [authenticatedUser, setAuthenticatedUser] = useContext(UserContext)

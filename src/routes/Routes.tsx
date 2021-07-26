@@ -5,9 +5,9 @@ import { UserContext } from '../shared/providers/UserProvider'
 import { NewsLetterSubscriptionView } from 'view/auth/newslettersubscriptionview/NewsLetterSubscriptionView'
 import { RetrieveLostPasswordView } from 'view/retrieve-lost-password/RetrieveLostPasswordView'
 import { PersonalInformationView } from 'view/auth/personalinformationview/PersonalInformationView'
+import { UserInformationView } from 'view/auth/userinformationview/UserInformationView'
 import { PurchaseHistoryView } from 'view/auth/purchasehistoryview/PurchaseHistoryView'
 import { ProductDetailView } from '../view/productdetail/ProductDetailView'
-import { UserInformation } from 'view/auth/profileview/components/UserInformation'
 import { validateToken } from 'functions/validateToken'
 import { CheckoutView } from '../view/checkout/CheckoutView'
 import { EmployeeView } from '../view/employee/EmployeeView'
@@ -84,7 +84,7 @@ export const Routes = (props: { children: React.ReactChild[] }) => {
 				<>
 					<Route path={AuthPath.profileView} component={authenticationRequired(ProfileView)} />
 					<Route path={AuthPath.personalInformationView} component={authenticationRequired(PersonalInformationView)} />
-					<Route path={AuthPath.userInformationView} component={authenticationRequired(UserInformation)} />
+					<Route path={AuthPath.userInformationView} component={authenticationRequired(UserInformationView)} />
 					<Route path={AuthPath.purchaseHistoryView} component={authenticationRequired(PurchaseHistoryView)} />
 					<Route path={AuthPath.newsLetterSubscriptionView} component={authenticationRequired(NewsLetterSubscriptionView)} />
 				</>
