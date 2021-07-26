@@ -1,7 +1,11 @@
+import { ChangePassword } from '../profileview/components/ChangePassword'
+import { UserInformation } from '../profileview/components/UserInformation'
+
 export const UserInformationView = () => {
 	return (
-		<div>
-			<h1>BLyat this is the user information friend</h1>
-		</div>
+		<>
+			<UserInformation />
+			<ChangePassword />
+		</>
 	)
 }
