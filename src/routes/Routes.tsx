@@ -13,7 +13,7 @@ import { CheckoutView } from '../view/checkout/CheckoutView'
 import { EmployeeView } from '../view/employee/EmployeeView'
 import { InitialView } from '../view/initial/InitialView'
 import { ContactView } from '../view/contact/ContactView'
-import { ProfileView } from '../view/auth/profileview/ProfileView'
+import { ProfileView } from 'view/auth/profileview/ProfileView'
 import { SignInView } from '../view/signin/SignInView'
 import { AdminView } from '../view/admin/AdminView'
 import { OrderView } from '../view/order/OrderView'
@@ -83,10 +83,10 @@ export const Routes = (props: { children: React.ReactChild[] }) => {
 				{/* AUTHENTICATED PATHS */}
 				<>
 					<Route path={AuthPath.profileView} component={authenticationRequired(ProfileView)} />
-					<Route path={AuthPath.personalInformationView} component={authenticationRequired(PersonalInformationView)} />
-					<Route path={AuthPath.userInformationView} component={authenticationRequired(UserInformationView)} />
-					<Route path={AuthPath.purchaseHistoryView} component={authenticationRequired(PurchaseHistoryView)} />
-					<Route path={AuthPath.newsLetterSubscriptionView} component={authenticationRequired(NewsLetterSubscriptionView)} />
+					<Route exact path={AuthPath.personalInformationView} component={authenticationRequired(PersonalInformationView)} />
+					<Route exact path={AuthPath.userInformationView} component={authenticationRequired(UserInformationView)} />
+					<Route exact path={AuthPath.purchaseHistoryView} component={authenticationRequired(PurchaseHistoryView)} />
+					<Route exact path={AuthPath.newsLetterSubscriptionView} component={authenticationRequired(NewsLetterSubscriptionView)} />
 				</>
 			</Switch>
 			<Footer />
