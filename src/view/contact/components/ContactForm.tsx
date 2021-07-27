@@ -1,13 +1,13 @@
-import { Form, Formik } from 'formik'
+import { primaryColor, primaryFont, secondaryFont } from 'shared/styles/GlobalStyle'
 import { ContactForm as IContactForm } from 'shared/interfaces/ContactFormInterface'
+import { Form, Formik } from 'formik'
 import { TextArea } from '../../../components/html/TextArea'
 import { Button } from 'components/html/Button'
 import { Input } from '../../../components/html/Input'
 import { toast } from 'react-toastify'
-import Validations from 'shared/validations/Validations'
 import CodicAPIService from 'shared/api/services/CodicAPIService'
+import Validations from 'shared/validations/Validations'
 import styled from 'styled-components'
-import { primaryColor, primaryFont, secondaryFont } from 'shared/styles/GlobalStyle'
 
 export const ContactForm = () => {
 	const handleSubmit = async (values: IContactForm) => {
