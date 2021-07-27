@@ -1,140 +1,72 @@
-import styled from 'styled-components'
 import { windowsMaxWidth } from '../../shared/data/WindowsSizes'
-import contact_us from '../../shared/images/contact_us.jpg'
 import { DimensionsInterface } from '../../shared/interfaces/DimensionsInterface'
-import { primaryFont } from '../../shared/styles/GlobalStyle'
 import { ContactForm } from './components/ContactForm'
-import { ContactInfo } from './components/ContactInfo'
+import styled from 'styled-components'
+import { contactPersonList } from 'shared/data/contactPersonList'
+import { primaryColor } from 'shared/styles/GlobalStyle'
+
 
 export const ContactView = () => {
+
+	const display = () => {
+		return (
+			contactPersonList.map((item: any, index: any) =>
+				<Wrapper key={item.name}>
+					<Div >
+						<Image src={item.img} alt={''} />
+						<ParagraphName>{item.name}</ParagraphName>
+						<Paragraph>{item.role}</Paragraph>
+						<Paragraph>{item.email}</Paragraph>
+						<Paragraph>{item.tel}</Paragraph>
+					</Div>
+				</Wrapper>
+			)
+		)
+	}
+
 	return (
-		<BackgroundColor>
-			<BackgroundImage src={contact_us} alt='' />
-			<GridWrapper dimensions={windowsMaxWidth}>
-				<HeaderWrapper dimensions={windowsMaxWidth}>
-					<Header1>Kontakta oss</Header1>
-				</HeaderWrapper>
-				<ContentWrapper dimensions={windowsMaxWidth}>
-					<ColumnWrapper dimensions={windowsMaxWidth}>
-						<Padding>
-							<ContactInfo />
-						</Padding>
-						<Padding>
-							<ContactForm />
-						</Padding>
-					</ColumnWrapper>
-				</ContentWrapper>
-			</GridWrapper>
-		</BackgroundColor>
+		<GridWrapper dimensions={windowsMaxWidth}>
+			{display()}
+		</GridWrapper>
 	)
 }
 
-const BackgroundColor = styled.div`
-  z-index: -2;
-  background-color: #F2F2F2;
+const Wrapper = styled.div`
+padding: 5%;
+`
+
+const ParagraphName = styled.p`
+	font-family: Arial;
+	font-weight: 700;
+	font-style: normal;
+	letter-spacing: 0em;
+	text-transform: none;
+	line-height: 1.2em;
+`
+const Paragraph = styled.p`    
+	font-family: Alegreya Sans;
+	font-weight: 400;
+	font-style: normal;
+	letter-spacing: .01em;
+	text-transform: none;
+	line-height: 1.5em;
+`
+
+const Div = styled.div`
+	background-color: ${primaryColor};
+	padding: 1%;
+	box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+`
+
+const Image = styled.img`
+	width: 100%;
+	background-color: white;
 `
 
 const GridWrapper = styled.div<DimensionsInterface>`
   display: grid;
-  @media (min-width: ${props => props.dimensions.tablet}) {
-    grid-template-columns: repeat(20, 1fr);
-`
-
-const BackgroundImage = styled.img`
-  position: absolute;
-  top: 0;
-  left: 0;
-  min-width: 100%;
-  max-height: 30%;
-  z-index: 0;
-`
-
-const HeaderWrapper = styled.div<DimensionsInterface>`
-  grid-column: 3/19;
-  font-size: 1.5em;
-  z-index: 1;
-
-  @media (max-width: ${props => props.dimensions.mobile}) {
-    margin-top: -2em;
-  }
-  @media (min-width: ${props => props.dimensions.tablet}) {
-    margin-top: 2em;
-  }
-  @media (min-width: ${props => props.dimensions.laptop}) {
-    //grid-column: 4/18;
-  }
-  @media (min-width: ${props => props.dimensions.desktop}) {
-    //grid-column: 4/18;
-  }
-  @media (min-width: ${props => props.dimensions.qHd}) {
-    grid-column: 4/18;
-  }
-  @media (min-width: ${props => props.dimensions.ultraWide}) {
-    grid-column: 5/17;
-  }
-  @media (min-width: ${props => props.dimensions.ultraHd}) {
-    grid-column: 6/16;
-  }
-`
-
-const Header1 = styled.h1`
-  font-family: ${primaryFont};
-  margin-top: 0;
-  margin-bottom: 0.5em;
-  color: white;
-  -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: black;
-`
-
-const ContentWrapper = styled.div<DimensionsInterface>`
-  justify-content: space-between;
-  background-color: white;
-  z-index: 1;
-  @media (max-width: ${props => props.dimensions.mobile}) {
-    grid-column: 3/19;
-  }
-  @media (min-width: ${props => props.dimensions.tablet}) {
-    grid-column: 3/19;
-  }
-  @media (min-width: ${props => props.dimensions.laptop}) {
-    //grid-column: 4/18;
-  }
-  @media (min-width: ${props => props.dimensions.desktop}) {
-    grid-column: 4/18;
-  }
-  @media (min-width: ${props => props.dimensions.qHd}) {
-    grid-column: 5/17;
-  }
-  @media (min-width: ${props => props.dimensions.ultraWide}) {
-    grid-column: 6/16;
-  }
-  @media (min-width: ${props => props.dimensions.ultraHd}) {
-    grid-column: 7/15;
-  }
-`
-
-const ColumnWrapper = styled.div<DimensionsInterface>`
-  @media (max-width: ${props => props.dimensions.mobile}) {
-    width: 100%;
-  }
-  @media (min-width: ${props => props.dimensions.tablet}) {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-  }
-  @media (min-width: ${props => props.dimensions.laptop}) {
-  }
-  @media (min-width: ${props => props.dimensions.desktop}) {
-    grid-template-columns: 3fr 2fr;
-  }
-  @media (min-width: ${props => props.dimensions.qHd}) {
-    grid-template-columns: 2fr 1fr;
-  }
-  @media (min-width: ${props => props.dimensions.ultraWide}) {
-  }
-  @media (min-width: ${props => props.dimensions.ultraHd}) {
-  }
-`
-
-const Padding = styled.div`
-  padding: 1em;
+  grid-template-columns: repeat(4, 1fr);
+  margin: 0 auto;
+  width: 80%;
+  grid-gap: 1%;
 `
