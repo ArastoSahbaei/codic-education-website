@@ -32,9 +32,9 @@ export const ContactForm = () => {
 				validationSchema={Validations.contactFormValidation}
 				onSubmit={(values, actions) => { handleSubmit(values) && actions.resetForm() }}>
 				<Form autoComplete="off">
-					<Input name='name' label='Namn' type='text' required />
-					<Input name='email' label='Email' type='email' required />
-					<Input name='subject' label='Ärende' type='text' required />
+					<Input name='name' label='Namn' type='text' required style={{ width: '100%' }} />
+					<Input name='email' label='Email' type='email' required style={{ width: '100%' }} />
+					<Input name='subject' label='Ärende' type='text' required style={{ width: '100%' }} />
 					<br />
 					<TextArea name='message' type='textarea' placeholder='Meddelande' />
 					<Button text='Skicka' />
@@ -43,7 +43,6 @@ export const ContactForm = () => {
 		</Wrapper>
 	)
 }
-
 
 const Wrapper = styled.div`
 	width: 60%;

@@ -2,6 +2,7 @@ import { useField } from 'formik'
 import TextField from '@material-ui/core/TextField'
 import styled from 'styled-components'
 
+
 export const Input = ({ ...props }: any) => {
 	const [field, meta] = useField(props)
 	return (
@@ -12,6 +13,7 @@ export const Input = ({ ...props }: any) => {
 				type={props.type}
 				required={props.required}
 				disabled={props.disabled}
+				style={props.style}
 			/>
 			<br />
 			{meta.touched && meta.error && <StyledErrorMessage>{meta.error}</StyledErrorMessage>}
