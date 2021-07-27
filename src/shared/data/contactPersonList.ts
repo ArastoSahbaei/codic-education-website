@@ -31,14 +31,14 @@ export const contactPersonList =
 		{
 			img: 'https://images.squarespace-cdn.com/content/v1/5c6a8606797f746cd58775fb/1592477289853-85YZ9WEJQ0FF9P1ZT94W/Robin-Kamo%25252B%25252Bcartoon.jpg?format=750w',
 			name: 'Robin Kamo',
-			role: 'Affärsutvecklare & linjechef, Codic Education',
+			role: 'Affärsutvecklare & linjechef',
 			email: 'robin.kamo@codic.se',
 			tel: '+46-768-990-065'
 		},
 		{
 			img: 'https://images.squarespace-cdn.com/content/v1/5c6a8606797f746cd58775fb/1611217700177-82T3YC9LU35P7DSP2RSH/image-asset.jpeg?format=750w',
 			name: 'Maria Bryl',
-			role: 'Utbildningsansvarig, Codic Education',
+			role: 'Utbildningsansvarig',
 			email: 'maria.bryl@codic.se',
 			tel: '+46-730-436-480'
 		},

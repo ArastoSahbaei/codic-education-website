@@ -44,6 +44,15 @@ const GridWrapper = styled.div<DimensionsInterface>`
 	margin: 0 auto;
 	width: 80%;
 	grid-gap: 1%;
+	@media (max-width: 1450px) {
+		grid-template-columns: repeat(3, 1fr);
+	}
+	@media (max-width: 1050px) {
+		grid-template-columns: repeat(2, 1fr);
+	}
+	@media (max-width: 700px) {
+		grid-template-columns: repeat(1, 1fr);
+	}
 `
 
 const Wrapper = styled.div`
