@@ -33,7 +33,7 @@ export const ContactForm = () => {
 				onSubmit={(values, actions) => { handleSubmit(values) && actions.resetForm() }}>
 				<Form autoComplete="off">
 					<Input name='name' label='Namn' type='text' required style={{ width: '100%' }} />
-					<Input name='email' label='Email' type='email' required style={{ width: '100%' }} />
+					<Input name='email' label='E-postadress' type='email' required style={{ width: '100%' }} />
 					<Input name='subject' label='Ärende' type='text' required style={{ width: '100%' }} />
 					<br />
 					<TextArea name='message' type='textarea' placeholder='Meddelande' />
