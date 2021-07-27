@@ -4,11 +4,19 @@ import { DimensionsInterface } from 'shared/interfaces/DimensionsInterface'
 import { primaryColor } from 'shared/styles/GlobalStyle'
 import styled from 'styled-components'
 
+interface IcontactPersonList {
+	img: string
+	name: string
+	role: string
+	email: string
+	tel: string
+}
+
 export const ShowContactPersons = () => {
 
 	const display = () => {
 		return (
-			contactPersonList.map((item: any) =>
+			contactPersonList.map((item: IcontactPersonList) =>
 				<Wrapper key={item.name}>
 					<Div>
 						<Image src={item.img} alt={''} />
