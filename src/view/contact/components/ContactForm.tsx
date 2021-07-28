@@ -68,7 +68,7 @@ const MainParagraph = styled.p`
 	@media (max-width: 1050px) {
 		font-size: 3rem;
 		text-align: center;
-		margin-top: 25vh;
+		margin-top: 40vh;
 	}
 `
 
