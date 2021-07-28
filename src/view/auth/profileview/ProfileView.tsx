@@ -1,4 +1,5 @@
 
+import { ProfileCard } from 'components/ProfileCard'
 import { NavLink, useHistory } from 'react-router-dom'
 import AuthPath from 'routes/AuthPath'
 import { primaryColor, secondaryFont } from 'shared/styles/GlobalStyle'
@@ -15,6 +16,11 @@ export const ProfileView = () => {
 				<Paragraph to={AuthPath.newsLetterSubscriptionView} onClick={() => history.push(AuthPath.newsLetterSubscriptionView)}>Nyhetsprenumeration</Paragraph>
 				<Paragraph to={AuthPath.purchaseHistoryView} onClick={() => history.push(AuthPath.purchaseHistoryView)}>Köphistorik</Paragraph>
 			</Wrapper>
+			<ProfileCard
+				name='arasto'
+				title='xdbrodah'
+				email='arasto.sahbaei@gmail.com'
+				size={20} />
 		</>
 	)
 }
