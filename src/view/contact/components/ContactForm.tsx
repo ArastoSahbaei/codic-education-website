@@ -45,9 +45,12 @@ export const ContactForm = () => {
 }
 
 const Wrapper = styled.div`
-	width: 60%;
+	width: 80%;
 	margin: 0 auto;
 	padding: 5%;
+	@media (max-width: 1050px) {
+		width: 90%;
+	}
 `
 
 const MainParagraph = styled.p`
@@ -62,6 +65,11 @@ const MainParagraph = styled.p`
 	letter-spacing: 0em;
 	line-height: .9em;
 	text-transform: none;
+	@media (max-width: 1050px) {
+		font-size: 3rem;
+		text-align: center;
+		margin-top: 25vh;
+	}
 `
 
 const SubParagraph = styled.p`
