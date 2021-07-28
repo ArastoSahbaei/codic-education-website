@@ -9,7 +9,7 @@ export const secondaryColorDark = '#263746'
 export const secondaryColor = '#585d72'
 export const primaryFont = 'Oleoscript'
 export const secondaryFont = 'AlegreyaSans'
-export const primaryBackgroundColor = '#263746;'
+export const primaryBackgroundColor = '#263746'
 
 export const GlobalStyle = createGlobalStyle`
   * {
@@ -41,9 +41,7 @@ export const GlobalStyle = createGlobalStyle`
     src: url(${AlegreyaSansRegular}) format('truetype');
   }
 
-  body {
-    margin: 0;
-    padding: 0;
+  body, html {
 	animation: ${fadeInOpacity} 500ms ease-in;
   }
 
