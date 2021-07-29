@@ -51,6 +51,10 @@ const updateCart = (data: any) => {
 	return http.put('/shoppingcart/add', data)
 }
 
+const updateNewsLetterSubscription = (userNewsLetterId: string, subscriptionValue: boolean) => {
+	return http.put(`/newsletter/${userNewsLetterId}`, subscriptionValue)
+}
+
 const updateFavouriteProducts = (data: any) => {
 	return http.put('/favouriteproducts', data)
 }
@@ -94,26 +98,27 @@ const getAllProductBrands = () => {
 }
 
 export default {
-	createProductCategory,
-	createProductBrand,
 	createProduct,
-	getAllProductCategories,
-	getAllProductBrands,
-	getUserWithQuery,
-	getProductByID,
-	getAllProducts,
+	createProductBrand,
+	createProductCategory,
+	getAllUsers,
 	getOrderById,
 	getUserWithID,
-	getAllUsers,
+	getProductByID,
+	getAllProducts,
+	getUserWithQuery,
+	getAllProductBrands,
+	getAllProductCategories,
 	updateUser,
-	updateFavouriteProducts,
 	updateCart,
 	updatePassword,
+	updateFavouriteProducts,
+	updateNewsLetterSubscription,
 	deleteUserWithID,
-	authenticatedRouteExample,
-	retrieveLostAccount,
-	sendContactEmail,
-	registerNewUser,
-	resetPassword,
 	login,
+	resetPassword,
+	registerNewUser,
+	sendContactEmail,
+	retrieveLostAccount,
+	authenticatedRouteExample,
 }
