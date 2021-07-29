@@ -9,4 +9,5 @@ export const SubProfileViewWrapper = styled.div`
 	width: calc(100% - ${USER_PROFILE_WIDTH}%);
 	float: right;
 	display: inline-block;
+	padding: 3%;
 `

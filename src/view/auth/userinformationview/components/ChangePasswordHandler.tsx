@@ -24,7 +24,7 @@ export const ChangePasswordHandler = () => {
 			<Form>
 				<p>Byte av lösenord</p>
 				<Input name='password' label='Nuvarande lösenord' type='password' />
-				<Input name='newPassword' label='Nytt lösenord' type='password' />
+				<Input name='newPassword' label='Nytt lösenord' type='password' /> <br />
 				<Button text='Uppdatera lösenord' />
 			</Form>
 		</Formik>
