@@ -21,6 +21,8 @@ interface values {
 
 const Wrapper = styled.div`
 	padding: 5%;
+	display: flex;
+	justify-content: center;
 `
 
 const Div = styled.div<values>`

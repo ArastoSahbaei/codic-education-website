@@ -1,8 +1,8 @@
 
 import { ProfileCard } from 'components/ProfileCard'
+import { ProfileSubMenu } from './components/ProfileSubMenu'
 import { USER_PROFILE_WIDTH } from 'shared/styles/constants'
 import styled from 'styled-components'
-import { ProfileSubMenu } from './components/ProfileSubMenu'
 
 export const ProfileView = () => {
 	return (
