@@ -1,3 +1,4 @@
+import { Button } from 'components/html/Button'
 import { Input } from 'components/html/Input'
 import { Form, Formik } from 'formik'
 import { useContext } from 'react'
@@ -12,6 +13,7 @@ export const SubscriptionHandler = () => {
 			onSubmit={values => console.log(values)} >
 			<Form>
 				<Input name='newsLetterSubscription.receiveNewsLetters' label='Nyhetsprenumeration' type='text' />
+				<br /> <Button text={'Avsluta prenumeration'} />
 			</Form>
 		</Formik >
 	)
