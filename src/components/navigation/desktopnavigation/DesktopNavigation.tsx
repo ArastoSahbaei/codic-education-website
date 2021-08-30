@@ -57,7 +57,7 @@ export const DesktopNavigation = () => {
 					<ParagraphWrapper>
 						<Paragraph to="vision">Vår Vision</Paragraph>
 						<Paragraph to={RoutingPath.employeeView}>
-							Team Codic
+							Utbildare
 						</Paragraph>
 						<Paragraph to={RoutingPath.contactView}>
 							Kontakt
