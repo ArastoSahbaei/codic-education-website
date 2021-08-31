@@ -1,7 +1,7 @@
 import { primaryColor } from 'shared/styles/GlobalStyle'
 import styled from 'styled-components'
 
-export const ProfileCard = (props: { name: string, title: string, email: string, number?: string, image?: string, size?: number }) => {
+export const ProfileCard = (props: { name: string, email: string, number?: string, image?: string, size?: number, title?: string, }) => {
 	return (
 		<Wrapper>
 			<Div size={props.size}>

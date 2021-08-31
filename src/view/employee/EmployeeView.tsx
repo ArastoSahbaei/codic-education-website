@@ -1,88 +1,90 @@
+import { ProfileCard } from 'components/ProfileCard'
+import { employeeList } from '../../shared/data/employeeList'
+import { windowsMaxWidth } from 'shared/data/WindowsSizes'
+import { DimensionsInterface } from 'shared/interfaces/DimensionsInterface'
 import styled from 'styled-components'
-import data from '../../shared/data/employees.json'
-import { windowsMaxWidth } from '../../shared/data/WindowsSizes'
-import { DimensionsInterface } from '../../shared/interfaces/DimensionsInterface'
-import { EmployeeData } from '../../shared/interfaces/EmployeeInterface'
-import { EmployeeCard } from './components/EmployeeCard'
 
 export const EmployeeView = () => {
-	const managers: Array<EmployeeData> = data.managers
-	const employees: Array<EmployeeData> = data.employees
 
-	const showEmployees = (data: Array<EmployeeData>) => {
+	const displayAllEmployees = () => {
 		return (
-			<CardGridWrapper dimensions={windowsMaxWidth}>
-				{
-					data.map((employee, i) => {
-						return (
-							<EmployeeCard
-								key={i}
-								data={employee} />
-						)
-					})
-				}
-			</CardGridWrapper>
+			employeeList.map((item: any) =>
+				<ProfileCard key={item.name}
+					image={item.img}
+					name={item.firstName + ' ' + item.lastName}
+					email={item.email}
+					number={item.tel}
+				/>
+			)
 		)
 	}
 
 	return (
-		<Wrapper>
-			<ContentWrapper>
-				<MainHeader>Team Codic Education</MainHeader>
-				<Paragraph>{data.aboutOurTeam}</Paragraph>
-
-				<SecondaryHeader>Ledning</SecondaryHeader>
-				<Paragraph>{data.aboutManagement}</Paragraph>
-				{showEmployees(managers)}
-
-				<SecondaryHeader>Lärare</SecondaryHeader>
-				<Paragraph>{data.aboutEmployees}</Paragraph>
-				{showEmployees(employees)}
-			</ContentWrapper>
-		</Wrapper>
+		<>
+			<Div>
+				<h1>Team Codic Education</h1>
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit vero ex ad, sint a possimus voluptas sequi magni laudantium doloribus veritatis non ipsum
+					architecto rem minus aliquid laborum, sit alias illum, atque corporis mollitia labore. Rem, quisquam. Rem odio ab repudiandae enim eius explicabo veniam libero error
+					consequuntur, aspernatur animi, ratione non laborum deleniti adipisci consectetur facilis iste vitae nulla?
+				</p>
+			</Div>
+			<GridWrapper dimensions={windowsMaxWidth}>
+				{displayAllEmployees()}
+			</GridWrapper>
+			<Space />
+		</>
 	)
 }
 
-const Wrapper = styled.div`
-  display: grid;
-  grid-template-columns: repeat(20, 1fr);
+const GridWrapper = styled.div<DimensionsInterface>`
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	margin: 0 auto;
+	width: 80%;
+	padding: 1%;
+	grid-gap: 1%;
+	@media (max-width: 1450px) {
+		grid-template-columns: repeat(3, 1fr);
+	}
+	@media (max-width: 1050px) {
+		grid-template-columns: repeat(2, 1fr);
+	}
+	@media (max-width: 700px) {
+		grid-template-columns: repeat(1, 1fr);
+	}
 `
 
-const ContentWrapper = styled.div`
-  grid-column: 3/19;
-  justify-content: space-between
+const Div = styled.div`
+	width: 78%;
+	margin: 0 auto;
+	padding: 1%;
 `
 
-const CardGridWrapper = styled.div<DimensionsInterface>`
-  display: grid;
-  @media (max-width: ${props => props.dimensions.mobile}) {
-    grid-template-columns: repeat(1, 1fr);
-  }
-  @media (min-width: ${props => props.dimensions.tablet}) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  @media (min-width: ${props => props.dimensions.desktop}) {
-    grid-template-columns: repeat(3, 1fr);
-  }
-  @media (min-width: ${props => props.dimensions.ultraWide}) {
-    grid-template-columns: repeat(4, 1fr);
-  }
-  @media (min-width: ${props => props.dimensions.ultraHd}) {
-    grid-template-columns: repeat(5, 1fr);
-  }
+const Space = styled.div`
+	padding: 2%;
+	@media (max-width: 1450px) {
+		padding: 5%;
+	}
+	@media (max-width: 1050px) {
+		padding: 13%;
+	}
+	@media (max-width: 700px) {
+		height: 1450px;
+	}
+	@media (max-width: 622px) {
+		height: 1350px;
+	}
+	@media (max-width: 566px) {
+		height: 1250px;
+	}
+	@media (max-width: 500px) {
+		height: 1100px;
+	}
+	@media (max-width: 428px) {
+		height: 1000px;
+	}
+	@media (max-width: 380px) {
+		height: 900px;
+	}
 `
-
-const Paragraph = styled.p`
-  width: 100%;
-`
-
-const MainHeader = styled.h1`
-  width: 100%;
-  text-align: center;
-`
-
-const SecondaryHeader = styled.h2`
-  width: 100%;
-  text-align: center;
-`
-
