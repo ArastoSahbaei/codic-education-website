@@ -3,6 +3,7 @@ import { employeeList } from '../../shared/data/employeeList'
 import { windowsMaxWidth } from 'shared/data/WindowsSizes'
 import { DimensionsInterface } from 'shared/interfaces/DimensionsInterface'
 import styled from 'styled-components'
+import { primaryFont, secondaryFont } from 'shared/styles/GlobalStyle'
 
 export const EmployeeView = () => {
 
@@ -23,11 +24,11 @@ export const EmployeeView = () => {
 		<>
 			<Div>
 				<h1>Team Codic Education</h1>
-				<p>
+				<Span>
 					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit vero ex ad, sint a possimus voluptas sequi magni laudantium doloribus veritatis non ipsum
 					architecto rem minus aliquid laborum, sit alias illum, atque corporis mollitia labore. Rem, quisquam. Rem odio ab repudiandae enim eius explicabo veniam libero error
 					consequuntur, aspernatur animi, ratione non laborum deleniti adipisci consectetur facilis iste vitae nulla?
-				</p>
+				</Span>
 			</Div>
 			<GridWrapper dimensions={windowsMaxWidth}>
 				{displayAllEmployees()}
@@ -59,6 +60,11 @@ const Div = styled.div`
 	width: 78%;
 	margin: 0 auto;
 	padding: 1%;
+`
+
+const Span = styled.span`
+	font-family: none;
+	font-size: 1.3rem;
 `
 
 const Space = styled.div`
