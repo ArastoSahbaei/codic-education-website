@@ -3,7 +3,6 @@ import { employeeList } from '../../shared/data/employeeList'
 import { windowsMaxWidth } from 'shared/data/WindowsSizes'
 import { DimensionsInterface } from 'shared/interfaces/DimensionsInterface'
 import styled from 'styled-components'
-import { primaryFont, secondaryFont } from 'shared/styles/GlobalStyle'
 
 export const EmployeeView = () => {
 
