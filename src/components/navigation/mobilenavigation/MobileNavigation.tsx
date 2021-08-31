@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { HamburgerButton } from './hamburgerbutton/HamburgerButton'
-import { SideBar } from './sidebar/SideBar'
+import { fadeInRight } from 'shared/styles/animations/fadeInRight'
 import { BackDrop } from '../../BackDrop'
+import { SideBar } from './sidebar/SideBar'
 import logotype from '../../../shared/images/codiclogotype.svg'
 import styled from 'styled-components'
-import { fadeInRight } from 'shared/styles/animations/fadeInRight'
 
 export const MobileNavigation: React.FC = (): JSX.Element => {
 	const [openDrawer, setOpenDrawer] = useState<boolean>(false)
