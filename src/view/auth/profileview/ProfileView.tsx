@@ -10,8 +10,7 @@ export const ProfileView = () => {
 			<ProfileSubMenu />
 			<Wrapper>
 				<ProfileCard
-					name='arasto'
-					title='xdbrodah'
+					name='Arasto'
 					email='arasto.sahbaei@gmail.com'
 					size={50} />
 			</Wrapper>

@@ -5,7 +5,7 @@ export const ProfileCard = (props: { name: string, email: string, number?: strin
 	return (
 		<Wrapper>
 			<Div size={props.size}>
-				<Image src={props.image || 'https://thispersondoesnotexist.com/image'} alt={''} />
+				<Image src={props.image || 'https://image.spreadshirtmedia.net/image-server/v1/mp/compositions/T1188A70MPA2649PT10X3Y25D172357765FS1994/views/1,width=550,height=550,appearanceId=70,backgroundColor=FFFFFF,noPt=true/soet-bjoern-ansikte-ritning-iphone-78-skal.jpg'} alt={''} />
 				<ParagraphName>{props.name}</ParagraphName>
 				<Paragraph>{props.title}</Paragraph>
 				<Paragraph>{props.email}</Paragraph>
