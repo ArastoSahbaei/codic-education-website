@@ -62,9 +62,9 @@ export const DesktopNavigation = () => {
 						<Paragraph to={RoutingPath.contactView}>
 							Kontakt
 						</Paragraph>
-						{/* <Paragraph to={RoutingPath.shopView}>
+						<Paragraph to={RoutingPath.shopView}>
 							Butik
-						</Paragraph> */}
+						</Paragraph>
 					</ParagraphWrapper>
 				</GridCell>
 				<Cart isCartOpen={isCartOpen} setIsCartOpen={setIsCartOpen} />
