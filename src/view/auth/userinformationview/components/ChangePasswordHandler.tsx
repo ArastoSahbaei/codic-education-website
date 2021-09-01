@@ -22,7 +22,7 @@ export const ChangePasswordHandler = () => {
 			initialValues={{ password: '', newPassword: '' }}
 			onSubmit={(values) => handleSubmit(values)}>
 			<Form>
-				<p>Byte av lösenord</p>
+				<h1>BYTE AV LÖSENORD</h1>
 				<Input name='password' label='Nuvarande lösenord' type='password' />
 				<Input name='newPassword' label='Nytt lösenord' type='password' /> <br />
 				<Button text='Uppdatera lösenord' />

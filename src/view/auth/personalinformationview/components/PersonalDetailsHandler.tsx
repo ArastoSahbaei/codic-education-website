@@ -15,7 +15,7 @@ export const PersonalDetailsHandler = () => {
 			/* validationSchema={{}} */
 			onSubmit={(values) => { updatePersonalInformation(values) }}>
 			<Form>
-				<p>Personuppgifter</p> <br />
+				<h1>PERSONUPPGIFTER</h1> <br />
 				<Input name='personalDetails.firstName' label='Namn' type='text' />
 				<Input name='personalDetails.lastName' label='Efternamn' type='text' />
 				<Input name='personalDetails.country' label='Land' type='text' />
