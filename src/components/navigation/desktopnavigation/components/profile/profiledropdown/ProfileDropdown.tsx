@@ -39,14 +39,14 @@ export const ProfileDropdown = () => {
 	return (
 		<DropDownWrapper style={{ top: `${navHeight}rem` }}>
 			{newDropdownItem(profile, 'Din Profil', AuthPath.userInformationView)}
-			{newDropdownItem(heart, 'Sparade Produkter (4)')}
+			{/* {newDropdownItem(heart, 'Sparade Produkter (4)')} */}
 			<Div onClick={() => logout()}>
 				<Image src={exit} alt={''} />
 				<DropDownItem> Logga ut </DropDownItem> <br />
 			</Div>
 			<HR />
-			{newDropdownItem(language, 'Språk: Svenska')}
-			{newDropdownItem(location, 'Plats: Sverige')}
+			{/* {newDropdownItem(language, 'Språk: Svenska')} */}
+			{/* {newDropdownItem(location, 'Plats: Sverige')} */}
 			{newDropdownItem(data, 'Din data från Codic')}
 			{newDropdownItem(help, 'Hjälp')}
 			{newDropdownItem(feedback, 'Skicka Feedback')}
