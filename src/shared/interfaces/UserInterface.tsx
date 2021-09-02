@@ -9,6 +9,16 @@ export interface AuthenticatedUser {
 	authenticated: boolean,
 	cartId: string | undefined
 	favouriteProducts: [] | Array<string>
+	newsLetterSubscription: newsLetterSubscription
+}
+
+export interface newsLetterSubscription {
+	createdAt: string
+	email: string
+	receiveNewsLetters: boolean
+	updatedAt: string
+	user: string
+
 }
 
 export interface RegisterNewUser {

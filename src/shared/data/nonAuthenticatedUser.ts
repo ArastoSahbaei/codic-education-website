@@ -21,7 +21,11 @@ export const nonAuthenticatedUser = {
 		{ products: [] }
 	,
 	newsLetterSubscription: {
-		recieveNewsLetters: false,
+		createdAt: '',
+		email: '',
+		receiveNewsLetters: false,
+		updatedAt: '',
+		user: ''
 	},
 	favouriteProducts: []
 }

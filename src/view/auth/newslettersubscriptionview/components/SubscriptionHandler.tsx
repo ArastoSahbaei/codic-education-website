@@ -7,30 +7,22 @@ import { UserContext } from 'shared/providers/UserProvider'
 export const SubscriptionHandler = () => {
 	const [authenticatedUser] = useContext(UserContext)
 
-	const cancelSubscription = () => {
-		return <Button
-			text={'Avsluta prenumeration'}
-			onClick={() => console.log('cancel subscription')} />
-	}
-
-	const startSubscription = () => {
-		return <Button
-			text={'påbörja prenumeration'}
-			onClick={() => console.log('start subscription')} />
+	const subcriptionHandler = () => {
+		return authenticatedUser.newsLetterSubscription.receiveNewsLetters
+			? <Button text={'Avsluta prenumeration'} />
+			: <Button text={'påbörja prenumeration'} />
 	}
 
 	return (
-		<Formik
-			initialValues={{ newsLetterSubscription: authenticatedUser.newsLetterSubscription }}
-			onSubmit={values => console.log(values)} >
-			<Form>
-				<Input name='newsLetterSubscription.receiveNewsLetters' label='Nyhetsprenumeration' type='text' />
-				{
-					authenticatedUser.newsLetterSubscription.receiveNewsLetters
-						? cancelSubscription()
-						: startSubscription()
-				}
-			</Form>
-		</Formik >
+		<>
+			{subcriptionHandler()}
+			<Formik
+				initialValues={{ newsLetterSubscription: authenticatedUser.newsLetterSubscription }}
+				onSubmit={values => console.log(values)} >
+				{/* 	<Form>
+					<Input name='newsLetterSubscription.receiveNewsLetters' label='Nyhetsprenumeration' type='text' />
+				</Form> */}
+			</Formik >
+		</>
 	)
 }
