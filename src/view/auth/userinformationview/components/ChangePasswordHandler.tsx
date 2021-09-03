@@ -1,26 +1,16 @@
 import { IChangePassword } from 'shared/interfaces/UserInterface'
 import { Form, Formik } from 'formik'
-import { UserContext } from 'shared/providers/UserProvider'
-import { useContext } from 'react'
 import { Button } from 'components/html/Button'
 import { Input } from 'components/html/Input'
-import CodicAPIService from 'shared/api/services/CodicAPIService'
+import { useAuthentication } from 'hooks/useAuthentication'
 
 export const ChangePasswordHandler = () => {
-	const [authenticatedUser] = useContext(UserContext)
-
-	const handleSubmit = async (values: IChangePassword) => {
-		try {
-			CodicAPIService.updatePassword({ newPassword: values.newPassword, userId: authenticatedUser._id })
-		} catch (error) {
-			console.log(error)
-		}
-	}
+	const { updatePassword } = useAuthentication()
 
 	return (
 		<Formik
 			initialValues={{ password: '', newPassword: '' }}
-			onSubmit={(values) => handleSubmit(values)}>
+			onSubmit={(values) => updatePassword(values.newPassword)}>
 			<Form>
 				<h1>BYTE AV LÖSENORD</h1>
 				<Input name='password' label='Nuvarande lösenord' type='password' />

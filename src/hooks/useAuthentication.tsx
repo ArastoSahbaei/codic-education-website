@@ -78,6 +78,15 @@ export const useAuthentication = () => {
 		}
 	}
 
+	const updatePassword = async (updatedPassword: string) => {
+		try {
+			await CodicAPIService.updatePassword({ newPassword: updatedPassword, userId: authenticatedUser._id })
+			toast.success('ditt lösenord har uppdaterats')
+		} catch (error) {
+			toast.error('Ett fel uppstod när du försökte uppdatera ditt lösenord')
+		}
+	}
+
 	const toggleNewsLetterSubscription = async (userNewsLetterId: string, value: boolean) => {
 		try {
 			await CodicAPIService.updateNewsLetterSubscription(userNewsLetterId, value)
@@ -94,7 +103,8 @@ export const useAuthentication = () => {
 		validateUser,
 		recoverLostPassword,
 		updatePersonalInformation,
-		toggleNewsLetterSubscription
+		updatePassword,
+		toggleNewsLetterSubscription,
 	}
 
 }
