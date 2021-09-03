@@ -72,6 +72,7 @@ export const useAuthentication = () => {
 	const updatePersonalInformation = async (data: UserPersonalDetails) => {
 		try {
 			await CodicAPIService.updateUser(authenticatedUser._id, data)
+			setAuthenticatedUser({ ...authenticatedUser, personalDetails: data.personalDetails })
 			toast.success('Uppgifter har sparats')
 		} catch (error) {
 			toast.error('Det gick inte att spara uppgifterna')
