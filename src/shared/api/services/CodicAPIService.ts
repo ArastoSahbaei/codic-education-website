@@ -52,7 +52,7 @@ const updateCart = (data: any) => {
 }
 
 const updateNewsLetterSubscription = (userNewsLetterId: string, subscriptionValue: boolean) => {
-	return http.put(`/newsletter/${userNewsLetterId}`, subscriptionValue)
+	return http.put(`/newsletter/${userNewsLetterId}`, { receiveNewsLetters: subscriptionValue })
 }
 
 const updateFavouriteProducts = (data: any) => {

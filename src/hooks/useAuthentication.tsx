@@ -78,12 +78,23 @@ export const useAuthentication = () => {
 		}
 	}
 
+	const toggleNewsLetterSubscription = async (userNewsLetterId: string, value: boolean) => {
+		try {
+			await CodicAPIService.updateNewsLetterSubscription(userNewsLetterId, value)
+			setAuthenticatedUser({ ...authenticatedUser, newsLetterSubscription: { ...authenticatedUser.newsLetterSubscription, receiveNewsLetters: value } })
+			toast.info(value ? 'Du prenumerar nu på vårt nyhetsbrev' : 'Du har avslutat din nyhetsprenumeration')
+		} catch (error) {
+			toast.error('Det gick inte att spara uppgifterna')
+		}
+	}
+
 	return {
 		login,
 		register,
 		validateUser,
 		recoverLostPassword,
-		updatePersonalInformation
+		updatePersonalInformation,
+		toggleNewsLetterSubscription
 	}
 
 }
