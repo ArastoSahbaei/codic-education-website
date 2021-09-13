@@ -1,14 +1,16 @@
+import { FC } from 'react'
 import { Redirect } from 'react-router-dom'
 import CountDown from 'react-countdown'
 import RoutingPath from 'routes/RoutingPath'
 import styled from 'styled-components'
+import { ICountDown } from './types'
 
 export const CountDownToMove = () => {
 
 	/* Change the delay time in miliseconds here! Started with 20 seconds */
 	const delay = 20000
 	
-	const renderer = ({ seconds, completed}) => {
+	const renderer:FC<ICountDown> = ({ seconds, completed}) => {
 
 		if(completed) {
 			return <Redirect to={RoutingPath.initialView} />
