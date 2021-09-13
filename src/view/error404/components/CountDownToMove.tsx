@@ -7,8 +7,8 @@ import { ICountDown } from './types'
 
 export const CountDownToMove = () => {
 
-	/* Change the delay time in miliseconds here! Started with 20 seconds */
-	const delay = 20000
+	/* Change the delay time in miliseconds here! Started with 30 seconds */
+	const delay = 30000
 	
 	const renderer:FC<ICountDown> = ({ seconds, completed}) => {
 
@@ -41,7 +41,7 @@ const SmallText = styled.p`
 	font-weight: 200;
     cursor: pointer;
 	@media (max-width: 600px) {
-		margin-top: 60vh;
+		margin-top: 65vh;
 	}
 	@media (max-width: 300px) {
 		margin-top: 75vh;
