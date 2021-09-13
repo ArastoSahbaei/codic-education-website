@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { useHistory } from 'react-router-dom'
 import RoutingPath from '../../routes/RoutingPath'
 
-export const ErrorView = () => {
+export const Error404View = () => {
 	const history = useHistory()
 
 	return(

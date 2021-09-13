@@ -18,7 +18,7 @@ import { SignInView } from '../view/signin/SignInView'
 import { AdminView } from '../view/admin/AdminView'
 import { OrderView } from '../view/order/OrderView'
 import { ShopView } from '../view/shop/ShopView'
-import { ErrorView } from '../view/error/ErrorView'
+import { Error404View } from '../view/error/Error404View'
 import { Footer } from '../components/Footer'
 import CodicAPIService from '../shared/api/services/CodicAPIService'
 import LocalStorage from '../shared/cache/LocalStorage'
@@ -79,8 +79,8 @@ export const Routes = (props: { children: React.ReactChild[] }) => {
 				<Route exact path={RoutingPath.productDetailsView()} component={ProductDetailView} />
 				<Route exact path={RoutingPath.retrieveLostPasswordView} component={RetrieveLostPasswordView} />
 				<Route exact path={RoutingPath.signInView} component={blockRouteIfAuthenticated(SignInView)} />
-				<Route exact path={RoutingPath.errorView} component={ErrorView} />
-				<Route component={ErrorView} />        {/* Default View */}
+				<Route exact path={RoutingPath.error404View} component={Error404View} />
+				<Route component={Error404View} />        {/* Default View */}
 				{/* ADMIN PATHS */}
 				<Route exact path={AdminPath.adminView} component={AdminView} />
 				{/* AUTHENTICATED PATHS */}
