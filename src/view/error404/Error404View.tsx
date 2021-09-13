@@ -3,6 +3,7 @@ import { primaryColor } from 'shared/styles/GlobalStyle'
 import styled from 'styled-components'
 import { useHistory } from 'react-router-dom'
 import RoutingPath from '../../routes/RoutingPath'
+import { CountDownToMove } from './components/CountDownToMove'
 
 export const Error404View = () => {
 	const history = useHistory()
@@ -15,6 +16,7 @@ export const Error404View = () => {
 			<SmallText> Det kan bero på att sidan har flyttats eller tagits bort,<br />
              eller att något annat har blivit fel.</SmallText>
 			<Link onClick={()=> history.push(RoutingPath.initialView)}>Klicka här för att besöka vår startsida!</Link>
+			<CountDownToMove></CountDownToMove>
 		</Wrapper>
 
 	)
