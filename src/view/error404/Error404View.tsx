@@ -1,22 +1,27 @@
-import backgroundImage from '../../shared/images/magnifyingGlass.jpg'
-import { primaryColor } from 'shared/styles/GlobalStyle'
-import styled from 'styled-components'
 import { useHistory } from 'react-router-dom'
+import { primaryColor } from 'shared/styles/GlobalStyle'
+import { CountDown } from './components/CountDown'
+import backgroundImage from '../../shared/images/magnifyingGlass.jpg'
+import styled from 'styled-components'
 import RoutingPath from '../../routes/RoutingPath'
-import { CountDownToMove } from './components/CountDownToMove'
+
 
 export const Error404View = () => {
 	const history = useHistory()
 
-	return(
+	return (
 		<Wrapper>
 			<Image src={backgroundImage} alt={'magnifying glass'} />
-			<Title> <ColoredParagraph>4</ColoredParagraph> 0 <ColoredParagraph>4</ColoredParagraph> </Title>
+			<Title>
+				<ColoredParagraph>4</ColoredParagraph>
+				<UncoloredParagraph>0</UncoloredParagraph>
+				<ColoredParagraph>4</ColoredParagraph>
+			</Title>
 			<Paragraph>Vi kunde tyvärr inte hittas den sökta sidan.</Paragraph>
 			<SmallText> Det kan bero på att sidan har flyttats eller tagits bort,<br />
-             eller att något annat har blivit fel.</SmallText>
-			<Link onClick={()=> history.push(RoutingPath.initialView)}>Klicka här för att besöka vår startsida!</Link>
-			<CountDownToMove></CountDownToMove>
+				eller att något annat har blivit fel.</SmallText>
+			<Link onClick={() => history.push(RoutingPath.initialView)}>Klicka här för att besöka vår startsida!</Link>
+			<CountDown />
 		</Wrapper>
 
 	)
@@ -33,7 +38,7 @@ const Image = styled.img`
 	height: 90vh;
 	`
 
-const Title = styled.h1`
+const Title = styled.div`
     position: absolute;
     width: 100%;
     text-align: center;
@@ -44,7 +49,6 @@ const Title = styled.h1`
 	@media (max-width: 600px) {
 		margin-top: 5vh;
 	}
-
 `
 
 const Paragraph = styled.p`
@@ -97,5 +101,9 @@ const Link = styled.a`
 
 const ColoredParagraph = styled.span`
 	color: ${primaryColor};
+	text-shadow: rgb(0 0 0 / 40%) 0px 4px 5px;
+`
+
+const UncoloredParagraph = styled.span`
 	text-shadow: rgb(0 0 0 / 40%) 0px 4px 5px;
 `

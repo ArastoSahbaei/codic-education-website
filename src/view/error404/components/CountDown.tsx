@@ -1,43 +1,26 @@
-import { useState, useEffect} from 'react'
+import { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import RoutingPath from 'routes/RoutingPath'
 import styled from 'styled-components'
 
 
-export const CountDownToMove = () => {
+export const CountDown = () => {
 	const history = useHistory()
+	const [timer, setTimer] = useState(30)
 
-	/* Change the delay time in seconds here! Started with 30 seconds */
-	const delay = 30
-
-	const [timeLeft, setTimeLeft] = useState(delay)
-	
-	useEffect(()=>{
+	useEffect(() => {
 		const interval = setInterval(changeInterval, 1000)
 		return () => clearInterval(interval)
-	},[timeLeft])
-	
+	}, [timer])
+
 	const changeInterval = () => {
-		if (timeLeft > 0){
-			setTimeLeft(timeLeft - 1)
-		}
-		else{
-			history.push(RoutingPath.initialView)
-		}
-		
+		timer > 0 ? setTimer(timer - 1) : history.push(RoutingPath.initialView)
 	}
-	
-	
-	return(
-		<>
-			<SmallText> Du kommer automatiskt att förflyttas till startsidan om { timeLeft } sekunder.</SmallText>
-		</>	
+
+	return (
+		<SmallText> Du kommer automatiskt att förflyttas till startsidan om {timer} sekunder.</SmallText>
 	)
-	
 }
-
-
-
 
 const SmallText = styled.p`
 	position: absolute;
