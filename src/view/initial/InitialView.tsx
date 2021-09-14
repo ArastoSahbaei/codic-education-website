@@ -22,7 +22,7 @@ export const InitialView = () => {
 			{/* 	<StudentReviews /> */}
 			<SectionWrapper>
 				<NewsLetterSubscriptionForm />
-				<SocialMedia />
+				{/* <SocialMedia /> */}
 			</SectionWrapper>
 		</Wrapper>
 	)
@@ -57,8 +57,8 @@ const ColoredParagraph = styled.span`
 `
 
 const SectionWrapper = styled.div`
-	background-color: red;
-	/* width: 100%;
-	display: flex;
-	justify-content: space-around; */
+	grid-column: 1/21;
+	width: 100%;
+	align-self: center;
+	justify-self: center;
 `

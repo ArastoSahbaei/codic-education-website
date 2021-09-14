@@ -16,16 +16,16 @@ export const PersonalDetailsHandler = () => {
 			onSubmit={(values) => { updatePersonalInformation(values) }}>
 			<Form>
 				<h1>PERSONUPPGIFTER</h1> <br />
-				<Input name='personalDetails.firstName' label='Namn' type='text' />
-				<Input name='personalDetails.lastName' label='Efternamn' type='text' />
-				<Input name='personalDetails.country' label='Land' type='text' />
-				<Input name='personalDetails.adress' label='Address' type='text' />
-				<Input name='personalDetails.secondaryAdress' label='Sekundär Address' type='text' />
+				<Input name='personalDetails.firstName' type='text' label='Namn' />
+				<Input name='personalDetails.lastName' type='text' label='Efternamn' />
+				<Input name='personalDetails.country' type='text' label='Land' />
+				<Input name='personalDetails.adress' type='text' label='Address' />
+				<Input name='personalDetails.secondaryAdress' type='text' label='Sekundär Address' />
 				<Input name='personalDetails.zipCode' type='text' label='Postnummer' />
 				<Input name='personalDetails.county' type='text' label='Län/Kommun' />
 				<Input name='personalDetails.postOffice' type='text' label='Postort' />
 				<Input name='personalDetails.phone' type='text' label='Telefon' />
-				<Input name='personalDetails.secondaryPhone' label='Sekundär Telefon' type='text' />
+				<Input name='personalDetails.secondaryPhone' type='text' label='Sekundär Telefon' />
 				<br />
 				<Button text='Spara' />
 			</Form>
