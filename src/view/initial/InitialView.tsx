@@ -1,7 +1,9 @@
-import { Collaborations } from './components/Collaborations'
+import { NewsLetterSubscriptionForm } from './components/NewsLetterSubscriptionForm'
 import { initialViewButtonStyle } from 'shared/styles/Styles'
+import { Collaborations } from './components/Collaborations'
 import { StudentReviews } from './components/StudentReviews'
 import { primaryColor } from 'shared/styles/GlobalStyle'
+import { SocialMedia } from './components/SocialMedia'
 import { Button } from 'components/html/Button'
 import backgroundImage from '../../shared/images/teacher3.jpg'
 import styled from 'styled-components'
@@ -17,7 +19,11 @@ export const InitialView = () => {
 				<Button text={'Lediga tjänster'} style={initialViewButtonStyle} /> <br />
 			</Paragraph>
 			<Collaborations />
-			<StudentReviews />
+			{/* 	<StudentReviews /> */}
+			<SectionWrapper>
+				<NewsLetterSubscriptionForm />
+				<SocialMedia />
+			</SectionWrapper>
 		</Wrapper>
 	)
 }
@@ -48,4 +54,11 @@ const Paragraph = styled.p`
 const ColoredParagraph = styled.span`
 	color: ${primaryColor};
 	text-shadow: rgb(0 0 0 / 40%) 0px 4px 5px;
+`
+
+const SectionWrapper = styled.div`
+	background-color: red;
+	/* width: 100%;
+	display: flex;
+	justify-content: space-around; */
 `
