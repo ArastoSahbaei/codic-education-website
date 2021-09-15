@@ -74,7 +74,6 @@ const SmallText = styled.p`
 	color: #f9f9f9;
 	font-size: 1.4rem;
 	font-weight: 500;
-    cursor: pointer;
 	@media (max-width: 600px) {
 		margin-top: 40vh;
 	}
