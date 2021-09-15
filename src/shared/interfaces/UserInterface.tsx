@@ -57,3 +57,8 @@ export interface IChangePassword {
 	password: string,
 	newPassword: string
 }
+
+export interface StartNewsSubscriptionInterface {
+	email: string
+	receiveNewsLetters: boolean
+}

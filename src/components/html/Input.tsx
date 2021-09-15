@@ -1,8 +1,8 @@
 import { useField } from 'formik'
+import { withStyles } from '@material-ui/styles'
+import { primaryColor } from 'shared/styles/GlobalStyle'
 import TextField from '@material-ui/core/TextField'
 import styled from 'styled-components'
-import { withStyles } from '@material-ui/styles'
-import { primaryColor } from 'shared/styles/GlobalStyle';
 
 const CssTextField = withStyles({
 	root: {
