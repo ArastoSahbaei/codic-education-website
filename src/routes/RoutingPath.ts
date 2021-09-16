@@ -7,6 +7,7 @@ const contactView = '/kontakt'
 const checkoutView = '/checkout'
 const retrieveLostPasswordView = '/reset/:token'
 const productDetailsView = (id?: string) => { return id ? `/product/${id}` : '/product/:id' }
+const error404View = '/404'
 
 export default {
 	initialView,
@@ -17,5 +18,6 @@ export default {
 	contactView,
 	checkoutView,
 	retrieveLostPasswordView,
-	productDetailsView
+	productDetailsView,
+	error404View
 }
