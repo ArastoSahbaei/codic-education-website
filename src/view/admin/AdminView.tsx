@@ -1,13 +1,11 @@
-import { CreateProduct } from './components/CreateProduct'
-import { CreateProductBrand } from './components/CreateProductBrand'
-import { CreateProductCategory } from './components/CreateProductCategory'
+import { AdminNav } from './components/nav/AdminNav'
 
 export const AdminView = () => {
+
 	return (
 		<>
-			<CreateProductCategory /> <hr />
-			<CreateProductBrand /> <hr />
-			<CreateProduct /> <hr />
+			<AdminNav />
+			<h1>AdminView</h1>
 		</>
 	)
 }

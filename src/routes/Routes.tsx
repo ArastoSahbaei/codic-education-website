@@ -25,6 +25,9 @@ import LocalStorage from '../shared/cache/LocalStorage'
 import RoutingPath from './RoutingPath'
 import AdminPath from './AdminPath'
 import AuthPath from './AuthPath'
+import { AdminUsersView } from 'view/admin/views/AdminUsersView'
+import { AdminProductsView } from 'view/admin/views/AdminProductsView'
+import { AdminEmployeesView } from 'view/admin/views/AdminEmployeesView'
 
 export const Routes = (props: { children: React.ReactChild[] }) => {
 	const [authenticatedUser, setAuthenticatedUser] = useContext(UserContext)
@@ -82,6 +85,9 @@ export const Routes = (props: { children: React.ReactChild[] }) => {
 				<Route exact path={RoutingPath.error404View} component={Error404View} />
 				{/* ADMIN PATHS */}
 				<Route exact path={AdminPath.adminView} component={AdminView} />
+				<Route exact path={AdminPath.adminUsersView} component={AdminUsersView} />
+				<Route exact path={AdminPath.adminProductsView} component={AdminProductsView} />
+				<Route exact path={AdminPath.adminEmployeesView} component={AdminEmployeesView} />
 				{/* AUTHENTICATED PATHS */}
 				<>
 					<Route path={AuthPath.profileView} component={authenticationRequired(ProfileView)} />
