@@ -1,4 +1,4 @@
-import { NewsLetterSubscriptionForm } from './components/NewsLetterSubscriptionForm'
+import { NewsLetterSubscriptionForm } from './components/newslettersubscriptionform/NewsLetterSubscriptionForm'
 import { initialViewButtonStyle } from 'shared/styles/Styles'
 import { Collaborations } from './components/Collaborations'
 import { StudentReviews } from './components/StudentReviews'

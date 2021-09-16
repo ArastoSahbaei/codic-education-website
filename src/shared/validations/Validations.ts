@@ -16,6 +16,14 @@ const contactFormValidation =
 			.required('Detta fält är obligatoriskt.'),
 	})
 
+const newsLetterSubscriptionValidation =
+	Yup.object({
+		email: Yup.string()
+			.email('Ogiltig email adress')
+			.required('Detta fält är obligatoriskt.'),
+	})
+
 export default {
-	contactFormValidation
+	contactFormValidation,
+	newsLetterSubscriptionValidation
 }
