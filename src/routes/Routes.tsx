@@ -68,9 +68,8 @@ export const Routes = (props: { children: React.ReactChild[] }) => {
 		<BrowserRouter>
 			{props.children}
 			<Switch>
-				{/* INITIAL PATH */}
-				<Route exact path={RoutingPath.initialView} component={InitialView} />
 				{/* REGULAR PATHS */}
+				<Route exact path={RoutingPath.initialView} component={InitialView} />
 				<Route exact path={RoutingPath.shopView} component={ShopView} />
 				<Route exact path={RoutingPath.orderFinishedView} component={OrderView} />
 				<Route exact path={RoutingPath.contactView} component={ContactView} />
@@ -80,16 +79,23 @@ export const Routes = (props: { children: React.ReactChild[] }) => {
 				<Route exact path={RoutingPath.retrieveLostPasswordView} component={RetrieveLostPasswordView} />
 				<Route exact path={RoutingPath.signInView} component={blockRouteIfAuthenticated(SignInView)} />
 				<Route exact path={RoutingPath.error404View} component={Error404View} />
+
+				{/* AUTHENTICATED PATHS */}
+				<Route render={() => (
+					<>
+						<Route path={AuthPath.profileView} component={authenticationRequired(ProfileView)} />
+						<Route exact path={AuthPath.personalInformationView} component={authenticationRequired(PersonalInformationView)} />
+						<Route exact path={AuthPath.userInformationView} component={authenticationRequired(UserInformationView)} />
+						<Route exact path={AuthPath.purchaseHistoryView} component={authenticationRequired(PurchaseHistoryView)} />
+						<Route exact path={AuthPath.newsLetterSubscriptionView} component={authenticationRequired(NewsLetterSubscriptionView)} />
+					</>
+				)} />
+
 				{/* ADMIN PATHS */}
 				<Route exact path={AdminPath.adminView} component={AdminView} />
-				{/* AUTHENTICATED PATHS */}
-				<>
-					<Route path={AuthPath.profileView} component={authenticationRequired(ProfileView)} />
-					<Route exact path={AuthPath.personalInformationView} component={authenticationRequired(PersonalInformationView)} />
-					<Route exact path={AuthPath.userInformationView} component={authenticationRequired(UserInformationView)} />
-					<Route exact path={AuthPath.purchaseHistoryView} component={authenticationRequired(PurchaseHistoryView)} />
-					<Route exact path={AuthPath.newsLetterSubscriptionView} component={authenticationRequired(NewsLetterSubscriptionView)} />
-				</>
+
+				{/* INITIAL PATH */}
+				<Route component={InitialView} />
 			</Switch>
 			<Footer />
 		</BrowserRouter>
