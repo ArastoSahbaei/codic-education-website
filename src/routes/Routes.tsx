@@ -10,6 +10,7 @@ import { PurchaseHistoryView } from 'view/auth/purchasehistoryview/PurchaseHisto
 import { ProductDetailView } from '../view/productdetail/ProductDetailView'
 import { validateToken } from 'functions/validateToken'
 import { CheckoutView } from '../view/checkout/CheckoutView'
+import { CookieInformationView } from 'view/cookieinformation/CookieInformationView'
 import { EmployeeView } from '../view/employee/EmployeeView'
 import { Error404View } from '../view/error404/Error404View'
 import { InitialView } from '../view/initial/InitialView'
@@ -80,6 +81,7 @@ export const Routes = (props: { children: React.ReactChild[] }) => {
 				<Route exact path={RoutingPath.retrieveLostPasswordView} component={RetrieveLostPasswordView} />
 				<Route exact path={RoutingPath.signInView} component={blockRouteIfAuthenticated(SignInView)} />
 				<Route exact path={RoutingPath.error404View} component={Error404View} />
+				<Route exact path={RoutingPath.cookieInformationView} component={CookieInformationView} />
 				{/* ADMIN PATHS */}
 				<Route exact path={AdminPath.adminView} component={AdminView} />
 				{/* AUTHENTICATED PATHS */}
