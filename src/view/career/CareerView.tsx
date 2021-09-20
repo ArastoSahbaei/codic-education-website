@@ -1,46 +1,61 @@
 import styled from 'styled-components'
-import {availibleCareers} from '../../shared/data/availibleCareers'
 import { CareerCard } from 'components/CareerCard'
 import { windowsMaxWidth } from 'shared/data/WindowsSizes'
 import { DimensionsInterface } from 'shared/interfaces/DimensionsInterface'
 import { CareerCardInterface } from 'shared/interfaces/CareerInterface'
+import CodicAPIService from 'shared/api/services/CodicAPIService'
+import { useState, useEffect } from 'react'
+import { NoAvailableCareerOpportunities } from './components/NoAvailableCareerOpportunities'
 
 
 
 
 export const CareerView = () => {
-
-const displayAllCareers = () => {
-    return (
-        availibleCareers.map((item: CareerCardInterface ) =>
-            <CareerCard key={item.id}
-            title={item.title}
-            location={item.location}
-            jobType={item.jobType}
-            image={item.img}
-            />
-        )
-    )
-}
+	const [serverResponse, setServerResponse] = useState([])
+	const fetchData = async () => {
+		try {
+			const { data } = await CodicAPIService.getAllJobs()
+			setServerResponse(data)
+		} catch (error) {
+			console.log(error)
+		}
+	}
 
 
+	const displayAllCareers = () => {
+		return (
+			serverResponse.map((item: CareerCardInterface) =>
+				<CareerCard key={item.id}
+					title={item.title}
+					location={item.location}
+					jobType={item.jobType}
+					image={item.img}
+				/>
+			)
+		)
+	}
 
-    return (
-        <>
-        <Div>
-        <h1>Team Codic Karriär</h1>
-        <Span>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit vero ex ad, sint a possimus voluptas sequi magni laudantium doloribus veritatis non ipsum
-            architecto rem minus aliquid laborum, sit alias illum, atque corporis mollitia labore. Rem, quisquam. Rem odio ab repudiandae enim eius explicabo veniam libero error
-            consequuntur, aspernatur animi, ratione non laborum deleniti adipisci consectetur facilis iste vitae nulla?
-        </Span>
-    </Div>
-    <GridWrapper dimensions={windowsMaxWidth}>
-				{displayAllCareers()}
-			</GridWrapper>
-			<Space />
-		</>
-    )
+	useEffect(() => {
+		fetchData()
+	}, [])
+
+	return (
+		serverResponse.length == 0 ? <NoAvailableCareerOpportunities /> :
+			<>
+				<Div>
+					<h1>Team Codic Karriär</h1>
+					<Span>
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit vero ex ad, sint a possimus voluptas sequi magni laudantium doloribus veritatis non ipsum
+						architecto rem minus aliquid laborum, sit alias illum, atque corporis mollitia labore. Rem, quisquam. Rem odio ab repudiandae enim eius explicabo veniam libero error
+						consequuntur, aspernatur animi, ratione non laborum deleniti adipisci consectetur facilis iste vitae nulla?
+					</Span>
+				</Div>
+				<GridWrapper dimensions={windowsMaxWidth}>
+					{displayAllCareers()}
+				</GridWrapper>
+				<Space />
+			</>
+	)
 }
 
 const GridWrapper = styled.div<DimensionsInterface>`
