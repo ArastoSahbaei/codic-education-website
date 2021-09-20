@@ -10,20 +10,42 @@ export const CookieForm = () => {
 
 	return (
 		<FormWrapper>
-			<h2> Cookies </h2>
-			<p> 
+			<h3> Cookies </h3>
+			<Span> 
                 Vi använder cookies för att förbättra ditt besök på vår webbplats. 
                 Genom att acceptera samtycker du till behandling av personuppgifter.
-            </p>
+            </Span> <br />
 			<Link to={RoutingPath.cookieInformationView} >Läs om hur vi använder cookies</Link> <br />
-			<Button text={'Acceptera'} style={initialViewButtonStyle} />
+			<Div>
+				<Button text={'Acceptera'} style={initialViewButtonStyle} />
+			</Div>
 		</FormWrapper>
 	)
 }
 
 const FormWrapper = styled.div`
 background-color: #dfdfdf;
-height: 20vh;
+height: 130px;
 margin-top: 1vh;
 padding: 2vh;
+@media (max-width: 900px) {
+	height: 150px;
+}
+@media (max-width: 600px) {
+	height: 180px;
+}
+@media (max-width: 300px) {
+	height: 200px;
+}
+`
+
+const Span = styled.span`
+	font-family: none;
+	font-size: 1.1rem;
+`
+
+const Div = styled.div`
+	text-align: right;
+	margin-right: 10vw;
+	margin-top: 1%;
 `
