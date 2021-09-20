@@ -17,7 +17,6 @@ export const InitialView = () => {
 				<Button text={'Lediga tjänster'} style={initialViewButtonStyle} /> <br />
 			</Paragraph>
 			<Collaborations />
-			{/* 	<StudentReviews /> */}
 			<SectionWrapper>
 				<NewsLetterSubscriptionForm />
 			</SectionWrapper>
