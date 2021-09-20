@@ -1,9 +1,7 @@
 import { NewsLetterSubscriptionForm } from './components/newslettersubscriptionform/NewsLetterSubscriptionForm'
 import { initialViewButtonStyle } from 'shared/styles/Styles'
 import { Collaborations } from './components/Collaborations'
-import { StudentReviews } from './components/StudentReviews'
 import { primaryColor } from 'shared/styles/GlobalStyle'
-import { SocialMedia } from './components/SocialMedia'
 import { Button } from 'components/html/Button'
 import backgroundImage from '../../shared/images/teacher3.jpg'
 import styled from 'styled-components'
@@ -22,7 +20,6 @@ export const InitialView = () => {
 			{/* 	<StudentReviews /> */}
 			<SectionWrapper>
 				<NewsLetterSubscriptionForm />
-				{/* <SocialMedia /> */}
 			</SectionWrapper>
 		</Wrapper>
 	)

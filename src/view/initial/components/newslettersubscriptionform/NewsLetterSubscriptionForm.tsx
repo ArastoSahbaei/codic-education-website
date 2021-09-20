@@ -27,7 +27,7 @@ export const NewsLetterSubscriptionForm = () => {
 		didSubscribe ? <SucessfullNewsLetterSubscription /> :
 			<Wrapper>
 				<MainParagraph>Vi revolutionerar utbildningsbranschen!</MainParagraph>
-				<Paragraph>Som prenumerant på vårt nyhetsbrev är du först med att få reda på nya produkter, grymma limited editions och specialerbjudanden.</Paragraph>
+				<Paragraph>Som prenumerant på vårt nyhetsbrev är du först med att få reda på det senaste inom it-branchen, utbildningar samt specialerbjudanden.</Paragraph>
 				<Formik
 					initialValues={{ email: '', receiveNewsLetters: true }}
 					validationSchema={Validations.newsLetterSubscriptionValidation}
