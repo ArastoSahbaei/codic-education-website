@@ -1,4 +1,4 @@
-import { CareerCard } from 'components/CareerCard'
+import { CareerCard } from './components/CareerCard'
 import { windowsMaxWidth } from 'shared/data/WindowsSizes'
 import { DimensionsInterface } from 'shared/interfaces/DimensionsInterface'
 import { CareerCardInterface } from 'shared/interfaces/CareerInterface'
