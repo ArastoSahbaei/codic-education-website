@@ -6,6 +6,7 @@ import { ScrollProvider } from './shared/providers/ScrollProvider'
 import { Space } from './components/space/space'
 import { useNavHeight } from './hooks/useNavHeight'
 import { ToastifyConfigurations } from './shared/configurations/ToastifyConfigurations'
+import { CookieForm } from 'components/CookieForm'
 
 export const App = () => {
 	const { navHeight } = useNavHeight()
@@ -18,6 +19,7 @@ export const App = () => {
 					<Navigation />
 					<Space space={navHeight} />
 					<ToastifyConfigurations />
+					<CookieForm />
 				</Routes>
 			</ScrollProvider>
 		</UserProvider>
