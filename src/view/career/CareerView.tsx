@@ -9,6 +9,7 @@ import CodicAPIService from 'shared/api/services/CodicAPIService'
 
 export const CareerView = () => {
 	const [serverResponse, setServerResponse] = useState([])
+
 	const fetchData = async () => {
 		try {
 			const { data } = await CodicAPIService.getAllJobs()
