@@ -1,14 +1,11 @@
-import styled from 'styled-components'
 import { CareerCard } from 'components/CareerCard'
 import { windowsMaxWidth } from 'shared/data/WindowsSizes'
 import { DimensionsInterface } from 'shared/interfaces/DimensionsInterface'
 import { CareerCardInterface } from 'shared/interfaces/CareerInterface'
-import CodicAPIService from 'shared/api/services/CodicAPIService'
 import { useState, useEffect } from 'react'
 import { NoAvailableCareerOpportunities } from './components/NoAvailableCareerOpportunities'
-
-
-
+import styled from 'styled-components'
+import CodicAPIService from 'shared/api/services/CodicAPIService'
 
 export const CareerView = () => {
 	const [serverResponse, setServerResponse] = useState([])
@@ -20,7 +17,6 @@ export const CareerView = () => {
 			console.log(error)
 		}
 	}
-
 
 	const displayAllCareers = () => {
 		return (
@@ -75,18 +71,15 @@ const GridWrapper = styled.div<DimensionsInterface>`
 		grid-template-columns: repeat(1, 1fr);
 	}
 `
-
 const Div = styled.div`
 	width: 78%;
 	margin: 0 auto;
 	padding: 1%;
 `
-
 const Span = styled.span`
 	font-family: none;
 	font-size: 1.3rem;
 `
-
 const Space = styled.div`
 	padding: 2%;
 	@media (max-width: 1450px) {

@@ -19,7 +19,6 @@ interface values {
 }
 
 const Wrapper = styled.div`
-
     cursor: pointer;
 	padding: 5%;
 	display: flex;
@@ -38,7 +37,6 @@ const Image = styled.img`
 	background-color: white;
     width: 100%;
     height: 200px;
-    
 `
 
 const ParagraphName = styled.p`

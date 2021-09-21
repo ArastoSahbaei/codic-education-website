@@ -108,8 +108,6 @@ const getAllJobs = () => {
 	return http.get('/career')
 }
 
-
-
 export default {
 	createProduct,
 	createProductBrand,
