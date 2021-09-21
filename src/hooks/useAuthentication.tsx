@@ -64,7 +64,7 @@ export const useAuthentication = () => {
 			//TODO: check if account does exist in our system
 			toast.info(`Instruktioner om hur du återfår ditt konto har skickats till ${data.email}`)
 		} catch (error) {
-			console.log(error.message)
+			console.log(error)
 			toast.info(`${data.email} hittades inte i våra system`)
 		}
 	}
