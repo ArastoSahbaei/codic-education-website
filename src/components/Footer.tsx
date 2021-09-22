@@ -35,7 +35,7 @@ export const Footer = () => {
 				{display('Om Oss', '/TBA')}
 				{display('Samhällsarbete', '/TBA')}
 				{display('Press & Media', '/TBA')}
-				{display('Karriär', '/TBA')}
+				{display('Karriär',  RoutingPath.careerView)}
 				{display('App', '/TBA')}
 			</CompanyListWrapper>
 
