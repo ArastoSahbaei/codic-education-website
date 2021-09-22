@@ -91,7 +91,7 @@ export const GdprInfoView = () => {
 				För att förbereda och fullfölja ett uppdrag<br />
 				För att bedriva undervisning<br />
 				För att utfärda betyg<br />
-				<i>Rättslig grund:</ i>För att Codic Education ska kunna fullgöra ett Allmänt intresse (skollagen) och andra Rättsliga förpliktelser
+				<i>Rättslig grund:</ i>För att Codic Education ska kunna fullgöra ett Allmänt intresse och andra Rättsliga förpliktelser
 			</Div>
 			<Div>
 				<strong>Myndighetskontakter</strong><br />
@@ -127,34 +127,34 @@ export const GdprInfoView = () => {
 
 			<h2>Behandling av personuppgifter i rekryteringsprocessen</h2>
 			<Div>
-				Uppgifterna som du lämnar i din ansökan registreras för Codic Education AB räkning i Codic Educations rekryteringssystem.
+				Uppgifterna som du lämnar i din ansökan registreras för Codic Education räkning i Codic Educations rekryteringssystem.
 			</Div>
 			<Div>
-				Vi behandlar följande personuppgifter: <br />
+				<strong>Vi behandlar följande personuppgifter: </strong> <br />
 				Namn, födelseår, kön, e-postadress, telefonnummer, adress, svar på urvalsfrågor i ansökningsformuläret, CV, personligt brev, övriga bifogade filer (Betyg), testsvar från arbetspsykologiska tester.
 			</Div>
 			<Div>
-				Hur länge sparas personuppgifterna? <br />
-				När du sökt en annonserad rekryteringsprocess kommer samtliga personuppgifter att raderas från Codic Education AB`s databas i rekryteringssystemet inom 24 månader efter din senast sökta tjänst. Vid spontanansökningar raderas samtliga personuppgifter efter 6 månader.
+				<strong>Hur länge sparas personuppgifterna? </strong> <br />
+				När du sökt en annonserad rekryteringsprocess kommer samtliga personuppgifter att raderas från Codic Educations databas i rekryteringssystemet inom 24 månader efter din senast sökta tjänst. Vid spontanansökningar raderas samtliga personuppgifter efter 6 månader.
 			</Div>
 			<Div>
-				Vad ska uppgifterna användas till? <br />
-				Codic Education AB använder uppgifterna för att hantera din jobbansökan. Din ansökan kommer hanteras via en kandidatprofil som samlar information du lämnat in i samband med din jobbansökan.
+				<strong>Vad ska uppgifterna användas till? </strong><br />
+				Codic Education använder uppgifterna för att hantera din jobbansökan. Din ansökan kommer hanteras via en kandidatprofil som samlar information du lämnat in i samband med din jobbansökan.
 			</Div>
 			<Div>
-				Urvalsfrågor <br />
+				<strong>Urvalsfrågor </strong> <br />
 				Baserat på dina svar i urvalsfrågorna i ansökningsformuläret kan du bli refuserad om du inte uppfyller skallkrav enligt kravspecifikationen. Skallkrav framgår i jobbannonsen.
 			</Div>
 			<Div>
-				Arbetspsykologiska tester <br />
+				<strong>Arbetspsykologiska tester </strong> <br />
 				Vår rekryteringsprocess använder sig av en eller flera arbetspsykologiska tester. Dina svar på testerna jämförs med en förbestämd arbets psykologisk profil för tjänsten. Den arbetspsykologiska profilen är baserad på kompetenser och andra parametrar hämtade från kravprofilen. Resultat från arbetspsykologiska tester ligger till grund för beslut om du går vidare i processen eller inte.
 			</Div>
 			<Div>
-				Behandling av personuppgifter för framtida kontakt och erbjudande om tjänst <br />
+				<strong>Behandling av personuppgifter för framtida kontakt och erbjudande om tjänst</strong> <br />
 				Vi sparar dina personuppgifter i syfte att eventuellt kunna kontakta dig om liknande tjänster blir utlysta inom det område du sökt en tjänst. Personuppgifterna sparas i en kandidatbank och kan användas för att matcha kandidater till kommande rekryteringar.
 			</Div>
 			<Div>
-				Vem kan ta del av uppgifterna? <br />
+				<strong>Vem kan ta del av uppgifterna?</strong> <br />
 				Dina personuppgifter kommer att vara tillgängliga för HR, rekryterande personer inom organisationen samt i vissa fall kommuniceras med våra kunder.
 				Om du har skyddade identitet ska du kontakta den kontaktperson som finns angiven i annonsen. Du bör även vara aktsam om vilken information du delar i din ansökan. Delge därför endast information som är relevant för den aktuella befattningen.
 			</Div>
