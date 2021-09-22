@@ -1,18 +1,29 @@
 import { primaryColor } from 'shared/styles/GlobalStyle'
 import styled from 'styled-components'
+import { CommersialBox } from 'view/employee/components/CommersialBox'
 
 export const ProfileCard = (props: { name: string, email: string, number?: string, image?: string, size?: number, title?: string, }) => {
-	return (
-		<Wrapper>
-			<Div size={props.size}>
-				<Image src={props.image || 'https://image.spreadshirtmedia.net/image-server/v1/mp/compositions/T1188A70MPA2649PT10X3Y25D172357765FS1994/views/1,width=550,height=550,appearanceId=70,backgroundColor=FFFFFF,noPt=true/soet-bjoern-ansikte-ritning-iphone-78-skal.jpg'} alt={''} />
-				<ParagraphName>{props.name}</ParagraphName>
-				<Paragraph>{props.title}</Paragraph>
-				<Paragraph>{props.email}</Paragraph>
-				<Paragraph>{props.number}</Paragraph>
-			</Div>
-		</Wrapper>
-	)
+	if (props.name !== 'placeholder ') {
+		return (
+			<Wrapper>
+				<Div size={props.size}>
+					<Image src={props.image || 'https://image.spreadshirtmedia.net/image-server/v1/mp/compositions/T1188A70MPA2649PT10X3Y25D172357765FS1994/views/1,width=550,height=550,appearanceId=70,backgroundColor=FFFFFF,noPt=true/soet-bjoern-ansikte-ritning-iphone-78-skal.jpg'} alt={''} />
+					<ParagraphName>{props.name}</ParagraphName>
+					<Paragraph>{props.title}</Paragraph>
+					<Paragraph>{props.email}</Paragraph>
+					<Paragraph>{props.number}</Paragraph>
+				</Div>
+			</Wrapper>
+		)
+	} else {
+		return (
+			<Wrapper>
+				<Div size={props.size}>
+					<CommersialBox />
+				</Div>
+			</Wrapper>
+		)
+	}
 }
 
 interface values {
