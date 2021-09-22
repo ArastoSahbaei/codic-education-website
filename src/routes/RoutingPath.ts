@@ -3,6 +3,7 @@ const employeeView = '/employees'
 const signInView = '/signin'
 const shopView = '/shop'
 const orderFinishedView = '/order-finished'
+const careerView = '/career'
 const contactView = '/contact'
 const checkoutView = '/checkout'
 const retrieveLostPasswordView = '/reset/:token'
@@ -19,6 +20,7 @@ export default {
 	contactView,
 	checkoutView,
 	retrieveLostPasswordView,
+	careerView,
 	productDetailsView,
 	error404View,
 	gdprInfoView

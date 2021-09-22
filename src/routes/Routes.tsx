@@ -16,6 +16,7 @@ import { InitialView } from '../view/initial/InitialView'
 import { ContactView } from '../view/contact/ContactView'
 import { ProfileView } from 'view/auth/profileview/ProfileView'
 import { SignInView } from '../view/signin/SignInView'
+import { CareerView } from 'view/career/CareerView'
 import { AdminView } from '../view/admin/AdminView'
 import { OrderView } from '../view/order/OrderView'
 import { ShopView } from '../view/shop/ShopView'
@@ -54,6 +55,7 @@ export const Routes = (props: { children: React.ReactChild[] }) => {
 				<Route exact path={RoutingPath.productDetailsView()} component={ProductDetailView} />
 				<Route exact path={RoutingPath.retrieveLostPasswordView} component={RetrieveLostPasswordView} />
 				<Route exact path={RoutingPath.signInView} component={blockRouteIfAuthenticated(SignInView)} />
+				<Route exact path={RoutingPath.careerView} component={CareerView} />
 				<Route exact path={RoutingPath.error404View} component={Error404View} />
 				<Route exact path={RoutingPath.gdprInfoView} component={GdprInfoView} />
 

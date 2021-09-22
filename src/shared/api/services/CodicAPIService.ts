@@ -3,6 +3,7 @@ import { ContactForm } from 'shared/interfaces/ContactFormInterface'
 import { StartNewsSubscriptionInterface, LoginCredentials, RegisterNewUser, RetrieveLostAccount, UpdatePassword } from 'shared/interfaces/UserInterface'
 import http from '../CodicAPI'
 
+
 const authenticatedRouteExample = () => {
 	return http.get('/rofl')
 }
@@ -103,6 +104,10 @@ const getAllProductBrands = () => {
 	return http.get('/productbrand')
 }
 
+const getAllJobs = () => {
+	return http.get('/career')
+}
+
 export default {
 	createProduct,
 	createProductBrand,
@@ -116,6 +121,7 @@ export default {
 	getUserWithQuery,
 	getAllProductBrands,
 	getAllProductCategories,
+	getAllJobs,
 	updateUser,
 	updateCart,
 	updatePassword,

@@ -1,17 +1,12 @@
 import { FC } from 'react'
 import { ISpace } from './types'
-import styled from 'styled-components'
-import { useWindowDimensions } from 'hooks/useWindowDimensions'
 import { MOBILE_NAV_THRESHOLD } from 'shared/styles/constants'
+import { useWindowDimensions } from 'hooks/useWindowDimensions'
+import styled from 'styled-components'
 
 export const Space: FC<ISpace> = (props: ISpace) => {
 	const { width } = useWindowDimensions()
-
-	return width >= MOBILE_NAV_THRESHOLD ? (
-		<Wrapper space={props.space} />
-	) : (
-		<></>
-	)
+	return width >= MOBILE_NAV_THRESHOLD ? <Wrapper space={props.space} /> : <></>
 }
 
 const Wrapper = styled.div`
