@@ -11,14 +11,21 @@ export const CookieForm = () => {
 	const [acceptedCookies, setAcceptedCookies] = useState<string | undefined>(undefined)
 
 	const getLocalStorage = () => {
-		localStorage.getItem('acceptedCookies')
-			? setAcceptedCookies('accepted')
-			: setAcceptedCookies(undefined)
+		switch (localStorage.getItem('acceptedCookies')) {
+		case 'accepted':
+			setAcceptedCookies('accepted')
+			break
+		case 'declined':
+			setAcceptedCookies('declined')
+			break
+		default:
+			setAcceptedCookies(undefined)
+		}
 	}
 
-	const updateLocalStorage = () => {
-		localStorage.setItem('acceptedCookies', 'accepted')
-		setAcceptedCookies('accepted')
+	const updateLocalStorage = (choice: string) => {
+		localStorage.setItem('acceptedCookies', choice)
+		setAcceptedCookies(choice)
 	}
 
 	useEffect(() => {
@@ -29,14 +36,14 @@ export const CookieForm = () => {
 		return (
 			<FormWrapper>
 				<h3> Cookies </h3>
-				<CloseLink>Stäng</CloseLink>
+				<CloseLink onClick={() => updateLocalStorage('declined')}>Stäng</CloseLink>
 				<Span>
 					Vi använder cookies för att förbättra ditt besök på vår webbplats.
 					Genom att acceptera samtycker du till behandling av personuppgifter.
 					<br />
 					Läs om hur vi använder cookies <CookieInfoLink onClick={() => history.push(RoutingPath.cookieInformationView)}>här</CookieInfoLink></Span> <br />
 				<ButtonDiv>
-					<Button text={'Acceptera'} style={initialViewButtonStyle} onClick={() => updateLocalStorage()} />
+					<Button text={'Acceptera'} style={initialViewButtonStyle} onClick={() => updateLocalStorage('accepted')} />
 				</ButtonDiv>
 			</FormWrapper>
 		)
