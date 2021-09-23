@@ -1,15 +1,17 @@
 import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import { Button } from 'components/html/Button'
 import { initialViewButtonStyle } from 'shared/styles/Styles'
+import { primaryColor } from 'shared/styles/GlobalStyle'
 import RoutingPath from 'routes/RoutingPath'
 import styled from 'styled-components'
 
 export const CookieForm = () => {
+	const history = useHistory()
 	const [acceptedCookies, setAcceptedCookies] = useState<string>('false')
 
 	const checkLocalStoreForAcceptedCookies = () => {
-		(localStorage.getItem('acceptedCookies') === 'true') ? setAcceptedCookies('true') : setAcceptedCookies('false')
+		localStorage.getItem('acceptedCookies') ? setAcceptedCookies('true') : setAcceptedCookies('false')
 	}
 
 	const updateLocalStoreWithAcceptedCookies = () =>{
@@ -30,7 +32,7 @@ export const CookieForm = () => {
 					Vi använder cookies för att förbättra ditt besök på vår webbplats. 
 					Genom att acceptera samtycker du till behandling av personuppgifter.
 				</Span> <br />
-				<Link to={RoutingPath.cookieInformationView} >Läs om hur vi använder cookies</Link> <br />
+				<Span >Läs om hur vi använder cookies <CookieInfoLink onClick={() => history.push(RoutingPath.cookieInformationView)}>här</CookieInfoLink></Span> <br />
 				<Div>
 					<Button text={'Acceptera'} style={initialViewButtonStyle} onClick = {updateLocalStoreWithAcceptedCookies} />
 				</Div>
@@ -66,6 +68,12 @@ padding: 15px 30px;
 const Span = styled.span`
 	font-family: none;
 	font-size: 1.1rem;
+`
+
+const CookieInfoLink = styled.span`
+	text-decoration: underline;
+	cursor: pointer;
+	color: ${primaryColor};
 `
 
 const Div = styled.div`
