@@ -6,33 +6,36 @@ import RoutingPath from 'routes/RoutingPath'
 import styled from 'styled-components'
 
 export const CookieForm = () => {
-	const [acceptedCookies, setAcceptedCookies] = useState<string>('false')
+	const [acceptedCookies, setAcceptedCookies] = useState<string | undefined>(undefined)
 
-	const checkLocalStoreForAcceptedCookies = () => {
-		(localStorage.getItem('acceptedCookies') === 'true') ? setAcceptedCookies('true') : setAcceptedCookies('false')
+	const getLocalStorage = () => {
+		localStorage.getItem('acceptedCookies')
+			? setAcceptedCookies('accepted')
+			: setAcceptedCookies(undefined)
 	}
 
-	const updateLocalStoreWithAcceptedCookies = () =>{
-		localStorage.setItem('acceptedCookies', 'true')
-		setAcceptedCookies('true')
+	const updateLocalStorage = () => {
+		localStorage.setItem('acceptedCookies', 'accepted')
+		setAcceptedCookies('accepted')
 	}
 
 	useEffect(() => {
-		checkLocalStoreForAcceptedCookies()
+		getLocalStorage()
 	}, [acceptedCookies])
-		
 
-	if (acceptedCookies === 'false') {
+	if (!acceptedCookies) {
 		return (
 			<FormWrapper>
 				<h3> Cookies </h3>
-				<Span> 
-					Vi använder cookies för att förbättra ditt besök på vår webbplats. 
+				<Span>
+					Vi använder cookies för att förbättra ditt besök på vår webbplats.
 					Genom att acceptera samtycker du till behandling av personuppgifter.
-				</Span> <br />
-				<Link to={RoutingPath.cookieInformationView} >Läs om hur vi använder cookies</Link> <br />
+				</Span>
+				<br />
+				<Link to={RoutingPath.cookieInformationView}>Läs om hur vi använder cookies</Link>
+				<br />
 				<Div>
-					<Button text={'Acceptera'} style={initialViewButtonStyle} onClick = {updateLocalStoreWithAcceptedCookies} />
+					<Button text={'Acceptera'} style={initialViewButtonStyle} onClick={() => updateLocalStorage()} />
 				</Div>
 			</FormWrapper>
 		)
