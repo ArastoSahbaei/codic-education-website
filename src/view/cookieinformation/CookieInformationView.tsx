@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 
-
 export const CookieInformationView = () => {
 
 	return (
@@ -32,9 +31,7 @@ export const CookieInformationView = () => {
 
 			<h2>Hur använder vi cookies?</h2>
 			<Div>
-				Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nostrum alias, hic sunt nemo,
-				molestias praesentium soluta eos a sint inventore rem aperiam provident porro magnam
-				distinctio quam neque iste! Totam.
+				Här kommer det senare att läggas in en förklaring om vilka cookies vi använder
 			</Div>
 		</CookieInfoWrapper>
 	)
