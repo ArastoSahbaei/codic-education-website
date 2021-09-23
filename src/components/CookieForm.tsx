@@ -8,34 +8,36 @@ import styled from 'styled-components'
 
 export const CookieForm = () => {
 	const history = useHistory()
-	const [acceptedCookies, setAcceptedCookies] = useState<string>('false')
+	const [acceptedCookies, setAcceptedCookies] = useState<string | undefined>(undefined)
 
-	const checkLocalStoreForAcceptedCookies = () => {
-		localStorage.getItem('acceptedCookies') ? setAcceptedCookies('true') : setAcceptedCookies('false')
+	const getLocalStorage = () => {
+		localStorage.getItem('acceptedCookies')
+			? setAcceptedCookies('accepted')
+			: setAcceptedCookies(undefined)
 	}
 
-	const updateLocalStoreWithAcceptedCookies = () =>{
-		localStorage.setItem('acceptedCookies', 'true')
-		setAcceptedCookies('true')
+	const updateLocalStorage = () => {
+		localStorage.setItem('acceptedCookies', 'accepted')
+		setAcceptedCookies('accepted')
 	}
 
 	useEffect(() => {
-		checkLocalStoreForAcceptedCookies()
+		getLocalStorage()
 	}, [acceptedCookies])
-		
 
-	if (acceptedCookies === 'false') {
+	if (!acceptedCookies) {
 		return (
 			<FormWrapper>
 				<h3> Cookies </h3>
-				<Span> 
-					Vi använder cookies för att förbättra ditt besök på vår webbplats. 
+				<CloseLink>Stäng</CloseLink>
+				<Span>
+					Vi använder cookies för att förbättra ditt besök på vår webbplats.
 					Genom att acceptera samtycker du till behandling av personuppgifter.
-				</Span> <br />
-				<Span >Läs om hur vi använder cookies <CookieInfoLink onClick={() => history.push(RoutingPath.cookieInformationView)}>här</CookieInfoLink></Span> <br />
-				<Div>
-					<Button text={'Acceptera'} style={initialViewButtonStyle} onClick = {updateLocalStoreWithAcceptedCookies} />
-				</Div>
+					<br />
+					Läs om hur vi använder cookies <CookieInfoLink onClick={() => history.push(RoutingPath.cookieInformationView)}>här</CookieInfoLink></Span> <br />
+				<ButtonDiv>
+					<Button text={'Acceptera'} style={initialViewButtonStyle} onClick={() => updateLocalStorage()} />
+				</ButtonDiv>
 			</FormWrapper>
 		)
 	} else {
@@ -52,8 +54,7 @@ width:100%;
 background-color: #dfdfdf;
 opacity: 0.9;
 height: 130px;
-margin-top: 10px;
-padding: 15px 30px;
+padding: 10px 20px;
 @media (max-width: 900px) {
 	height: 150px;
 }
@@ -76,8 +77,17 @@ const CookieInfoLink = styled.span`
 	color: ${primaryColor};
 `
 
-const Div = styled.div`
+const CloseLink = styled.span`
+	position: relative;
+	top: -20px;
+	float:right;
+	text-decoration: underline;
+	cursor: pointer;
+	color: ${primaryColor};
+`
+
+const ButtonDiv = styled.div`
 	text-align: right;
-	margin-right: 10vw;
-	margin-top: 1%;
+	margin-right: 5vw;
+	margin-bottom: 1%;
 `
