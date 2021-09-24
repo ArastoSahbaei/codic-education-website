@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom'
 import { Button } from 'components/html/Button'
 import { initialViewButtonStyle } from 'shared/styles/Styles'
 import { primaryColor } from 'shared/styles/GlobalStyle'
+import cookieLove from 'shared/images/cookielove.svg'
 import RoutingPath from 'routes/RoutingPath'
 import styled from 'styled-components'
 
@@ -12,14 +13,14 @@ export const CookieForm = () => {
 
 	const getLocalStorage = () => {
 		switch (localStorage.getItem('acceptedCookies')) {
-		case 'accepted':
-			setAcceptedCookies('accepted')
-			break
-		case 'declined':
-			setAcceptedCookies('declined')
-			break
-		default:
-			setAcceptedCookies(undefined)
+			case 'accepted':
+				setAcceptedCookies('accepted')
+				break
+			case 'declined':
+				setAcceptedCookies('declined')
+				break
+			default:
+				setAcceptedCookies(undefined)
 		}
 	}
 
@@ -35,19 +36,19 @@ export const CookieForm = () => {
 	if (!acceptedCookies) {
 		return (
 			<FormWrapper>
-				<h3> Cookies </h3>
+				<Image src={cookieLove} alt={''} />
+				<Paragraph> WOULD YOU LIKE A <br /> CYBER COOKIE? </Paragraph>
 				<CloseLink onClick={() => updateLocalStorage('declined')}>Stäng</CloseLink>
 				<Span>
 					Vi använder cookies för att förbättra ditt besök på Codic Education.
 					Genom att acceptera samtycker du till behandling av personuppgifter.
-					<br />
 					Läs om hur vi använder cookies
+					<CookieInfoLink onClick={() => history.push(RoutingPath.cookieInformationView)}> här. </CookieInfoLink>
 				</Span>
-				<CookieInfoLink onClick={() => history.push(RoutingPath.cookieInformationView)}> här. </CookieInfoLink>
 				<br />
-				<ButtonDiv>
+				<ButtonPosition>
 					<Button text={'Acceptera'} style={initialViewButtonStyle} onClick={() => updateLocalStorage('accepted')} />
-				</ButtonDiv>
+				</ButtonPosition>
 			</FormWrapper>
 		)
 	} else {
@@ -55,7 +56,13 @@ export const CookieForm = () => {
 	}
 }
 
+const Image = styled.img`
+	width: 130px;
+`
+
 const FormWrapper = styled.div`
+	display: grid;
+	grid-template-columns: repeat(12, 1fr);
 	position: fixed;
 	bottom: 0;
 	left: 0;
@@ -79,9 +86,17 @@ const FormWrapper = styled.div`
 	}
 `
 
+const Paragraph = styled.p`
+	align-self: center;
+
+`
+
 const Span = styled.span`
+	grid-column: 4/10;
+	grid-row: 1/1;
 	font-family: none;
 	font-size: 1.1rem;
+	align-self: center;
 	`
 
 const CookieInfoLink = styled.span`
@@ -92,15 +107,13 @@ const CookieInfoLink = styled.span`
 `
 
 const CloseLink = styled.span`
-	position: relative;
-	top: -20px;
-	float: right;
+	grid-column: 12/12;
 	text-decoration: underline;
 	cursor: pointer;
 `
 
-const ButtonDiv = styled.div`
-	text-align: right;
-	margin-right: 5vw;
-	margin-bottom: 1%;
+const ButtonPosition = styled.div`
+	grid-column: 10/10;
+	grid-row: 1/1;
+	align-self: center;
 `
