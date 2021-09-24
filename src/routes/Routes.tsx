@@ -9,7 +9,7 @@ import { PurchaseHistoryView } from 'view/auth/purchasehistoryview/PurchaseHisto
 import { ProductDetailView } from '../view/productdetail/ProductDetailView'
 import { useAuthentication } from 'hooks/useAuthentication'
 import { CheckoutView } from '../view/checkout/CheckoutView'
-import { GdprInfoView } from '../view/datapolicy/gdpr/GdprInfoView'
+import { GdprInfoView } from '../view/information/GdprInfoView'
 import { EmployeeView } from '../view/employee/EmployeeView'
 import { Error404View } from '../view/error404/Error404View'
 import { InitialView } from '../view/initial/InitialView'
