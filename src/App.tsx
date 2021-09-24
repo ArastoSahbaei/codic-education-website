@@ -5,6 +5,7 @@ import { GlobalStyle } from './shared/styles/GlobalStyle'
 import { UserProvider } from './shared/providers/UserProvider'
 import { useNavHeight } from './hooks/useNavHeight'
 import { ToastifyConfigurations } from './shared/configurations/ToastifyConfigurations'
+import { CookieForm } from 'components/CookieForm'
 
 export const App = () => {
 	const { navHeight } = useNavHeight()
@@ -16,6 +17,7 @@ export const App = () => {
 				<Navigation />
 				<Space space={navHeight} />
 				<ToastifyConfigurations />
+				<CookieForm />
 			</Routes>
 		</UserProvider>
 	)
