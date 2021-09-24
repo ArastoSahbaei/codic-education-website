@@ -5,6 +5,7 @@ import { primaryColor } from 'shared/styles/GlobalStyle'
 import { Button } from 'components/html/Button'
 import backgroundImage from '../../shared/images/teacher3.jpg'
 import styled from 'styled-components'
+import { GraduatedStudents } from './components/GraduatedStudents'
 
 export const InitialView = () => {
 	return (
@@ -16,6 +17,9 @@ export const InitialView = () => {
 				<Button text={'Boka möte'} style={initialViewButtonStyle} /> <br />
 				<Button text={'Lediga tjänster'} style={initialViewButtonStyle} /> <br />
 			</Paragraph>
+			<SectionWrapper>
+				<GraduatedStudents />
+			</SectionWrapper>
 			<Collaborations />
 			<SectionWrapper>
 				<NewsLetterSubscriptionForm />
