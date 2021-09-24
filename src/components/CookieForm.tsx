@@ -38,7 +38,7 @@ export const CookieForm = () => {
 				<h3> Cookies </h3>
 				<CloseLink onClick={() => updateLocalStorage('declined')}>Stäng</CloseLink>
 				<Span>
-					Vi använder cookies för att förbättra ditt besök på vår webbplats.
+					Vi använder cookies för att förbättra ditt besök på Codic Education.
 					Genom att acceptera samtycker du till behandling av personuppgifter.
 					<br />
 					Läs om hur vi använder cookies
@@ -65,6 +65,11 @@ background-color: #dfdfdf;
 opacity: 0.9;
 height: 130px;
 padding: 10px 20px;
+
+&:hover {
+	opacity: 1;
+}
+
 @media (max-width: 900px) {
 	height: 150px;
 }
