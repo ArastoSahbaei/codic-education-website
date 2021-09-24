@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import bImage from '../../../shared/images/brownDesk.jpg'
 
 export const CommersialBox = () => {
-    const history = useHistory()
+	const history = useHistory()
 
 	return (
 		<BoxWrapper >
@@ -19,6 +19,7 @@ export const CommersialBox = () => {
 const BoxWrapper = styled.div`
     background-image: url(${bImage});
     background-size: cover;
+    height: 100%
 `
 
 const BigText = styled.p`
