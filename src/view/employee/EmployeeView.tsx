@@ -33,11 +33,11 @@ export const EmployeeView = () => {
 	return (
 		<>
 			<Div>
-				<h1>Team Codic Education</h1>
+				<h1>Möt våra IT-konsulter</h1>
 				<Span>
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit vero ex ad, sint a possimus voluptas sequi magni laudantium doloribus veritatis non ipsum
-					architecto rem minus aliquid laborum, sit alias illum, atque corporis mollitia labore. Rem, quisquam. Rem odio ab repudiandae enim eius explicabo veniam libero error
-					consequuntur, aspernatur animi, ratione non laborum deleniti adipisci consectetur facilis iste vitae nulla?
+					Det här är vårt växande team med IT-konsulter i Göteborg.
+					Med Codic som utgångspunkt sitter våra anställda på olika startups och större företag runtom i stan.
+					Förutom utvecklare innehar de titlar som systemarkitekt, app- och frontendutvecklare, Cloud Deployment-expert, Scrum Master och AWS DevOps.
 				</Span>
 			</Div>
 			<GridWrapper dimensions={windowsMaxWidth}>
