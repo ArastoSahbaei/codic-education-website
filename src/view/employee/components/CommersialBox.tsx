@@ -7,9 +7,16 @@ import bImage from '../../../shared/images/brownDesk.jpg'
 export const CommersialBox = () => {
 	const history = useHistory()
 
+	const messages = [
+		'Vill du bli en del av detta glada gäng?',
+		'Kan du se dig här i framtiden?',
+		'Funderar du på att byta jobb?',
+		'Söker du nya utmaningar i karriären?'
+	]
+
 	return (
 		<BoxWrapper >
-			<BigText>Hej! <br /> Vill du bli en del av detta glada gäng?</BigText>
+			<BigText>Hejsan! <br /> {messages[Math.floor(Math.random()*messages.length)]}</BigText>
 
 			<SmallText> Titta då närmare på våra lediga tjänster, <CareerLink onClick={() => history.push(RoutingPath.careerView)}> här</CareerLink> ! </SmallText>
 		</BoxWrapper>
@@ -23,8 +30,8 @@ const BoxWrapper = styled.div`
 `
 
 const BigText = styled.p`
-    color: #f7b045;
-    font-size: 2.5rem;
+    color: ${primaryColor};
+	font-size: 2.5rem;
     text-align:center;
     padding: 15px 20px 10px 20px;
 `
