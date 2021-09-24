@@ -41,7 +41,7 @@ export const CookieForm = () => {
 					Vi använder cookies för att förbättra ditt besök på vår webbplats.
 					Genom att acceptera samtycker du till behandling av personuppgifter.
 					<br />
-					Läs om hur vi använder cookies <CookieInfoLink onClick={() => history.push(RoutingPath.cookieInformationView)}>här</CookieInfoLink></Span> <br />
+					Läs om hur vi använder cookies </Span><CookieInfoLink onClick={() => history.push(RoutingPath.cookieInformationView)}>här</CookieInfoLink> <br />
 				<ButtonDiv>
 					<Button text={'Acceptera'} style={initialViewButtonStyle} onClick={() => updateLocalStorage('accepted')} />
 				</ButtonDiv>
