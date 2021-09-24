@@ -2,18 +2,28 @@ import { useHistory } from 'react-router-dom'
 import { primaryColor } from 'shared/styles/GlobalStyle'
 import RoutingPath from 'routes/RoutingPath'
 import styled from 'styled-components'
-import bImage from '../../../shared/images/brownDesk.jpg'
+import brownDesk from '../../../shared/images/boximages/brownDesk.jpg'
+import whiteDesk from '../../../shared/images/boximages/whiteDesk.jpg'
+import greyDesk from '../../../shared/images/boximages/greyDesk.jpg'
+
+const messages = [
+	'Vill du bli en del av detta glada gäng?',
+	'Kan du se dig här i framtiden?',
+	'Funderar du på att byta jobb?',
+	'Söker du nya utmaningar i karriären?'
+]
+
+const images = [
+	brownDesk,
+	whiteDesk,
+	greyDesk
+]
+
+const randomImage = images[Math.floor(Math.random() * images.length)]
 
 export const CommersialBox = () => {
 	const history = useHistory()
-
-	const messages = [
-		'Vill du bli en del av detta glada gäng?',
-		'Kan du se dig här i framtiden?',
-		'Funderar du på att byta jobb?',
-		'Söker du nya utmaningar i karriären?'
-	]
-
+	
 	return (
 		<BoxWrapper >
 			<BigText>Hejsan! <br /> {messages[Math.floor(Math.random()*messages.length)]}</BigText>
@@ -24,7 +34,7 @@ export const CommersialBox = () => {
 }
 
 const BoxWrapper = styled.div`
-    background-image: url(${bImage});
+    background-image: url(${randomImage});
     background-size: cover;
     height: 100%
 `
@@ -37,14 +47,14 @@ const BigText = styled.p`
 `
 
 const SmallText = styled.p`
-    color: #f7b045;
+    color: ${primaryColor};
     font-size: 1.5rem;
     text-align: center;
     padding: 5px 20px 50px 20px;
 `
 
 const CareerLink = styled.span`
-    color: ${primaryColor};
+    color: #f7b045;
     text-decoration: underline;
     cursor: pointer;
 `
