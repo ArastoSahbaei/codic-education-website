@@ -56,29 +56,27 @@ export const CookieForm = () => {
 }
 
 const FormWrapper = styled.div`
-position: fixed;
-bottom: 0;
-left: 0;
-z-index: 10;
-width:100%;
-background-color: #dfdfdf;
-opacity: 0.9;
-height: 130px;
-padding: 10px 20px;
-
-&:hover {
-	opacity: 1;
-}
-
-@media (max-width: 900px) {
-	height: 150px;
-}
-@media (max-width: 600px) {
-	height: 180px;
-}
-@media (max-width: 300px) {
-	height: 200px;
-}
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	z-index: 10;
+	width:100%;
+	background-color: #dfdfdf;
+	opacity: 0.9;
+	height: 130px;
+	padding: 10px 20px;
+	&:hover {
+		opacity: 1;
+	}
+	@media (max-width: 900px) {
+		height: 150px;
+	}
+	@media (max-width: 600px) {
+		height: 180px;
+	}
+	@media (max-width: 300px) {
+		height: 200px;
+	}
 `
 
 const Span = styled.span`
