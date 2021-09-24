@@ -43,7 +43,7 @@ export const CookieForm = () => {
 					<br />
 					Läs om hur vi använder cookies
 				</Span>
-				<CookieInfoLink onClick={() => history.push(RoutingPath.cookieInformationView)}>här</CookieInfoLink>
+				<CookieInfoLink onClick={() => history.push(RoutingPath.cookieInformationView)}> här. </CookieInfoLink>
 				<br />
 				<ButtonDiv>
 					<Button text={'Acceptera'} style={initialViewButtonStyle} onClick={() => updateLocalStorage('accepted')} />
@@ -79,21 +79,21 @@ padding: 10px 20px;
 const Span = styled.span`
 	font-family: none;
 	font-size: 1.1rem;
-`
+	`
 
 const CookieInfoLink = styled.span`
-	text-decoration: underline;
 	cursor: pointer;
+	font-family: none;
+	font-size: 1.1rem;
 	color: ${primaryColor};
 `
 
 const CloseLink = styled.span`
 	position: relative;
 	top: -20px;
-	float:right;
+	float: right;
 	text-decoration: underline;
 	cursor: pointer;
-	color: ${primaryColor};
 `
 
 const ButtonDiv = styled.div`
