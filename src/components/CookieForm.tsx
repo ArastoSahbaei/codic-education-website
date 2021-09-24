@@ -14,14 +14,14 @@ export const CookieForm = () => {
 
 	const getLocalStorage = () => {
 		switch (localStorage.getItem('acceptedCookies')) {
-			case 'accepted':
-				setAcceptedCookies('accepted')
-				break
-			case 'declined':
-				setAcceptedCookies('declined')
-				break
-			default:
-				setAcceptedCookies(undefined)
+		case 'accepted':
+			setAcceptedCookies('accepted')
+			break
+		case 'declined':
+			setAcceptedCookies('declined')
+			break
+		default:
+			setAcceptedCookies(undefined)
 		}
 	}
 
@@ -59,6 +59,12 @@ export const CookieForm = () => {
 
 const Image = styled.img`
 	width: 130px;
+	@media (max-width: 900px) {
+		width: 100px;
+	}
+	@media (max-width: 600px) {
+		display: none;
+	}
 `
 
 const FormWrapper = styled.div`
@@ -78,19 +84,28 @@ const FormWrapper = styled.div`
 		opacity: 1;
 	}
 	@media (max-width: 900px) {
+		grid-template-columns: repeat(9, 1fr);
 		height: 150px;
 	}
 	@media (max-width: 600px) {
+		display:block;
 		height: 180px;
 	}
 	@media (max-width: 300px) {
-		height: 200px;
+		display:block;
+		height: 250px;
 	}
 `
 
 const Paragraph = styled.p`
 	align-self: center;
-
+	@media (max-width: 600px) {
+		display: block;
+		br { 
+			content: ' ';
+		}
+		padding-top: 20px;
+	}
 `
 
 const Span = styled.span`
@@ -99,7 +114,10 @@ const Span = styled.span`
 	font-family: none;
 	font-size: 1.1rem;
 	align-self: center;
-	`
+	@media (max-width: 600px) {
+		display:block;				
+	}
+`
 
 const CookieInfoLink = styled.span`
 	cursor: pointer;
@@ -112,10 +130,35 @@ const CloseLink = styled.span`
 	grid-column: 12/12;
 	text-decoration: underline;
 	cursor: pointer;
+	@media (max-width: 900px) {
+		grid-column: 9/9;
+		grid-row: 1/1;
+	}
+	@media (max-width: 600px) {
+		position:relative;
+		top: -20px;
+		float: right;
+	}
+	@media (max-width: 300px) {
+		position:relative;
+		top: -40px;
+		left: 15px;
+		float: right;
+	}
 `
 
 const ButtonPosition = styled.div`
-	grid-column: 10/10;
+	grid-column: 11/11;
 	grid-row: 1/1;
 	align-self: center;
+	@media (max-width: 900px) {
+		grid-column: 8/8;
+		align-self: end;
+	}
+	@media (max-width: 600px) {
+		float:right;
+	}
+	@media (max-width: 300px) {
+		float: right;
+	}
 `
