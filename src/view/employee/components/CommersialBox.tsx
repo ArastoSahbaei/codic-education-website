@@ -5,6 +5,8 @@ import styled from 'styled-components'
 import brownDesk from '../../../shared/images/boximages/brownDesk.jpg'
 import whiteDesk from '../../../shared/images/boximages/whiteDesk.jpg'
 import greyDesk from '../../../shared/images/boximages/greyDesk.jpg'
+import deskByWindow from '../../../shared/images/boximages/deskByWindow.jpg'
+import desktop from '../../../shared/images/boximages/desktop.jpg'
 
 const messages = [
 	'Vill du bli en del av detta glada gäng?',
@@ -16,7 +18,9 @@ const messages = [
 const images = [
 	brownDesk,
 	whiteDesk,
-	greyDesk
+	greyDesk,
+	deskByWindow,
+	desktop
 ]
 
 const randomImage = images[Math.floor(Math.random() * images.length)]
@@ -34,27 +38,28 @@ export const CommersialBox = () => {
 }
 
 const BoxWrapper = styled.div`
-    background-image: url(${randomImage});
+	background-image: url(${randomImage});
     background-size: cover;
-    height: 100%
+    height: 100%;
+	opacity:0.9;
 `
 
 const BigText = styled.p`
-    color: ${primaryColor};
+    color: #ff7b00;
 	font-size: 2.5rem;
     text-align:center;
     padding: 15px 20px 10px 20px;
 `
 
 const SmallText = styled.p`
-    color: ${primaryColor};
+    color: #ff7b00;
     font-size: 1.5rem;
     text-align: center;
     padding: 5px 20px 50px 20px;
 `
 
 const CareerLink = styled.span`
-    color: #f7b045;
+    color: ${primaryColor};
     text-decoration: underline;
     cursor: pointer;
 `
