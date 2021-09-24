@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
-import { Button } from 'components/html/Button'
 import { initialViewButtonStyle } from 'shared/styles/Styles'
+import { fadeInFromBottom } from 'shared/styles/animations/fadeInFromBottom'
 import { primaryColor } from 'shared/styles/GlobalStyle'
+import { Button } from 'components/html/Button'
 import cookieLove from 'shared/images/cookielove.svg'
 import RoutingPath from 'routes/RoutingPath'
 import styled from 'styled-components'
@@ -63,6 +64,7 @@ const Image = styled.img`
 const FormWrapper = styled.div`
 	display: grid;
 	grid-template-columns: repeat(12, 1fr);
+	animation: ${fadeInFromBottom} 1000ms ease-in-out;
 	position: fixed;
 	bottom: 0;
 	left: 0;
