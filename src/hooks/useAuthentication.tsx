@@ -25,7 +25,7 @@ export const useAuthentication = () => {
 		}
 	}
 
-	const register = async (newUserCredentials: RegisterNewUser) => {
+	const registerNewUser = async (newUserCredentials: RegisterNewUser) => {
 		try {
 			await CodicAPIService.registerNewUser(newUserCredentials)
 			//TODO: If registration is successfull -> login the user and tell em to verify their email
@@ -100,7 +100,7 @@ export const useAuthentication = () => {
 
 	return {
 		login,
-		register,
+		registerNewUser,
 		validateUser,
 		recoverLostPassword,
 		updatePersonalInformation,
