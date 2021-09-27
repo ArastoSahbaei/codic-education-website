@@ -8,18 +8,19 @@ export const EmployeeView = () => {
 
 	const placeholder = {
 		img: '',
-		firstName: 'placeholder',
+		firstName: 'commercial',
 		lastName: '',
 		email: '',
 		tel: ''
 	}
 
-	const listToDisplay = [...employeeList]
-	listToDisplay.splice(5, 0, placeholder)
+	
+	const addCommericalBoxToEmployeeList = [...employeeList]
+	addCommericalBoxToEmployeeList.splice(5, 0, placeholder)
 
 	const displayAllEmployees = () => {
 		return (
-			listToDisplay.map((item: any) =>
+			addCommericalBoxToEmployeeList.map((item: any) =>
 				<ProfileCard key={item.name}
 					image={item.img}
 					name={item.firstName + ' ' + item.lastName}
