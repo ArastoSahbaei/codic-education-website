@@ -1,8 +1,6 @@
-import { useContext, useState, useMemo } from 'react'
+import { useContext, useState } from 'react'
 import { useHistory, NavLink, useLocation } from 'react-router-dom'
 import { primaryColor, secondaryFont } from '../../../shared/styles/GlobalStyle'
-import { ScrollContext } from '../../../shared/providers/ScrollProvider'
-import { useNavHeight } from '../../../hooks/useNavHeight'
 import { UserContext } from '../../../shared/providers/UserProvider'
 import { CartToggler } from './components/CartToggler'
 import { fadeInRight } from 'shared/styles/animations/fadeInRight'
@@ -14,37 +12,27 @@ import styled from 'styled-components'
 import RoutingPath from '../../../routes/RoutingPath'
 import logotype from '../../../shared/images/codiclogotype.svg'
 import logotypeWhite from '../../../shared/images/codiclogotype_white.svg'
-
-export const NavBG = () => {
-	const { fractions } = useContext(ScrollContext)
-	const opacity = useMemo(() => Math.max(0.5, 1 - fractions), [fractions])
-	return <WrapperBackground style={{ opacity: opacity }} />
-}
+import useScrollPosition from 'hooks/useScrollPosition'
 
 export const DesktopNavigation = () => {
-	const history = useHistory()
 	const [isCartOpen, setIsCartOpen] = useState<boolean>(false)
 	const [authenticatedUser] = useContext(UserContext)
-	const { navHeight } = useNavHeight()
+	const scrollPosition = useScrollPosition()
+	const history = useHistory()
 	const location = useLocation()
 
 	const displayAuthentication = () => {
-		return authenticatedUser.authenticated
-			? (
-				<ProfileWrapper>
-					<Profile />
-					<CartToggler setIsCartOpen={setIsCartOpen} />
-				</ProfileWrapper>
-			)
+		return authenticatedUser.authenticated ?
+			<ProfileWrapper>
+				<Profile />
+				<CartToggler setIsCartOpen={setIsCartOpen} />
+			</ProfileWrapper>
 			: <Button text={'Logga in'} onClick={() => history.push(RoutingPath.signInView)} />
 	}
-	const heightStyle = useMemo(
-		() => ({ height: `${navHeight}rem` }),
-		[navHeight]
-	)
+
 	return (
-		<Wrapper style={heightStyle}>
-			<NavBG />
+		<Wrapper scrollPosition={scrollPosition}>
+			<WrapperBackground />
 			<Grid>
 				<GridCell column1="3/3" column2="3/3" column3="3/3">
 					<Image
@@ -55,16 +43,10 @@ export const DesktopNavigation = () => {
 				</GridCell>
 				<GridCell column1="5/9" column2="5/10" column3="5/12">
 					<ParagraphWrapper>
-						<Paragraph to="vision">Vår Vision</Paragraph>
-						<Paragraph to={RoutingPath.employeeView}>
-							Utbildare
-						</Paragraph>
-						<Paragraph to={RoutingPath.contactView}>
-							Kontakt
-						</Paragraph>
-						<Paragraph to={RoutingPath.shopView}>
-							Butik
-						</Paragraph>
+						<Paragraph to={'/TBA'}> Vår Vision </Paragraph>
+						<Paragraph to={RoutingPath.employeeView}> Utbildare </Paragraph>
+						<Paragraph to={RoutingPath.contactView}> Kontakt </Paragraph>
+						<Paragraph to={RoutingPath.shopView}> Butik </Paragraph>
 					</ParagraphWrapper>
 				</GridCell>
 				<Cart isCartOpen={isCartOpen} setIsCartOpen={setIsCartOpen} />
@@ -81,6 +63,10 @@ interface x {
 	column1?: string | '',
 	column2?: string | ''
 	column3?: string | ''
+}
+
+interface position {
+	scrollPosition: number
 }
 
 const Image = styled.img`
@@ -114,12 +100,14 @@ const GridCell = styled.div<x>`
 	}
 `
 
-const Wrapper = styled.nav`
+const Wrapper = styled.nav<position>`
     position: fixed;
+	height: ${(props) => props.scrollPosition > 100 ? '3.2rem;' : '5.2rem;'};
     top: 0;
     left: 0;
     z-index: 300;
     width: 100%;
+	transition: 0.4s;
 `
 
 const WrapperBackground = styled.div`

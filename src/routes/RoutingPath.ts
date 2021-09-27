@@ -1,12 +1,15 @@
 const initialView = '/'
-const employeeView = '/medarbetare'
-const signInView = '/autentisera'
-const shopView = '/butik'
+const employeeView = '/employees'
+const signInView = '/signin'
+const shopView = '/shop'
 const orderFinishedView = '/order-finished'
-const contactView = '/kontakt'
+const careerView = '/career'
+const contactView = '/contact'
 const checkoutView = '/checkout'
 const retrieveLostPasswordView = '/reset/:token'
 const productDetailsView = (id?: string) => { return id ? `/product/${id}` : '/product/:id' }
+const error404View = '/404'
+const cookieInformationView = '/cookies'
 
 export default {
 	initialView,
@@ -17,5 +20,8 @@ export default {
 	contactView,
 	checkoutView,
 	retrieveLostPasswordView,
-	productDetailsView
+	careerView,
+	productDetailsView,
+	error404View,
+	cookieInformationView
 }

@@ -1,7 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { ContactForm } from 'shared/interfaces/ContactFormInterface'
-import { LoginCredentials, RegisterNewUser, RetrieveLostAccount, UpdatePassword } from 'shared/interfaces/UserInterface'
+import { StartNewsSubscriptionInterface, LoginCredentials, RegisterNewUser, RetrieveLostAccount, UpdatePassword } from 'shared/interfaces/UserInterface'
 import http from '../CodicAPI'
+
 
 const authenticatedRouteExample = () => {
 	return http.get('/rofl')
@@ -43,6 +44,10 @@ const resetPassword = (newPasswordAndToken: any) => {
 	return http.put('/resetpassword', newPasswordAndToken)
 }
 
+const createNewsLetterSubscription = (data: StartNewsSubscriptionInterface) => {
+	return http.post('/newsletter/subscribe', data)
+}
+
 const updatePassword = (data: UpdatePassword) => {
 	return http.put('/updatepassword', data)
 }
@@ -63,6 +68,7 @@ const getProductByID = (id: string) => {
 	return http.get(`/product/${id}`)
 }
 
+
 const sendContactEmail = (data: ContactForm) => {
 	return http.post('/contact', data)
 }
@@ -76,6 +82,7 @@ const createProduct = (productData: any) => {
 const createProductCategory = (productCategoryName: any) => {
 	return http.post('/productcategory', productCategoryName)
 }
+
 
 const getAllProducts = () => {
 	return http.get('/product')
@@ -97,10 +104,15 @@ const getAllProductBrands = () => {
 	return http.get('/productbrand')
 }
 
+const getAllJobs = () => {
+	return http.get('/career')
+}
+
 export default {
 	createProduct,
 	createProductBrand,
 	createProductCategory,
+	createNewsLetterSubscription,
 	getAllUsers,
 	getOrderById,
 	getUserWithID,
@@ -109,6 +121,7 @@ export default {
 	getUserWithQuery,
 	getAllProductBrands,
 	getAllProductCategories,
+	getAllJobs,
 	updateUser,
 	updateCart,
 	updatePassword,
