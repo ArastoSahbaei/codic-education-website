@@ -58,7 +58,7 @@ export const useAuthentication = () => {
 		}
 	}
 
-	const recoverLostPassword = async (data: RetrieveLostAccount) => {
+	const resetPassword = async (data: RetrieveLostAccount) => {
 		try {
 			await CodicAPIService.retrieveLostAccount(data)
 			//TODO: check if account does exist in our system
@@ -102,7 +102,7 @@ export const useAuthentication = () => {
 		login,
 		registerNewUser,
 		validateUser,
-		recoverLostPassword,
+		resetPassword,
 		updatePersonalInformation,
 		updatePassword,
 		toggleNewsLetterSubscription,

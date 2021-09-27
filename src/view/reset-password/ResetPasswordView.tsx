@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useAuthentication } from 'hooks/useAuthentication'
 import CodicAPIService from 'shared/api/services/CodicAPIService'
 
-export const RetrieveLostPasswordView = () => {
+export const ResetPasswordView = () => {
 	const [newPassword, setNewPassword] = useState<string>('')
 	const [data, setData] = useState<any>({})
 	const getTokenFromURL = window.location.href.split('/').reverse()[0]

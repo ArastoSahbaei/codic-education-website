@@ -2,7 +2,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import { useEffect, useContext } from 'react'
 import { UserContext } from '../shared/providers/UserProvider'
 import { NewsLetterSubscriptionView } from 'view/auth/newslettersubscriptionview/NewsLetterSubscriptionView'
-import { RetrieveLostPasswordView } from 'view/retrieve-lost-password/RetrieveLostPasswordView'
+import { ResetPasswordView } from 'view/reset-password/ResetPasswordView'
 import { PersonalInformationView } from 'view/auth/personalinformationview/PersonalInformationView'
 import { UserInformationView } from 'view/auth/userinformationview/UserInformationView'
 import { PurchaseHistoryView } from 'view/auth/purchasehistoryview/PurchaseHistoryView'
@@ -53,7 +53,7 @@ export const Routes = (props: { children: React.ReactChild[] }) => {
 				<Route exact path={RoutingPath.employeeView} component={EmployeeView} />
 				<Route exact path={RoutingPath.checkoutView} component={CheckoutView} />
 				<Route exact path={RoutingPath.productDetailsView()} component={ProductDetailView} />
-				<Route exact path={RoutingPath.retrieveLostPasswordView} component={RetrieveLostPasswordView} />
+				<Route exact path={RoutingPath.resetPasswordView} component={ResetPasswordView} />
 				<Route exact path={RoutingPath.signInView} component={blockRouteIfAuthenticated(SignInView)} />
 				<Route exact path={RoutingPath.careerView} component={CareerView} />
 				<Route exact path={RoutingPath.error404View} component={Error404View} />

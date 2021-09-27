@@ -3,23 +3,23 @@ import { DimensionsInterface } from '../../shared/interfaces/DimensionsInterface
 import { primaryBackgroundColor, primaryColor, secondaryColor } from '../../shared/styles/GlobalStyle'
 import { RegisterUser } from './components/RegisterUser'
 import { windowsMaxWidth } from '../../shared/data/WindowsSizes'
-import { RecoverPassword } from './components/RecoverPassword'
+import { ResetPassword } from './components/ResetPassword'
 import { SignIn } from './components/SignIn'
 import initialImage from '../../shared/images/teacher2.jpg'
 import styled from 'styled-components'
 
 export const SignInView = () => {
-	const [showRecoverPasswordView, setShowRecoverPasswordView] = useState<boolean>(false)
+	const [showResetPasswordView, setShowResetPasswordView] = useState<boolean>(false)
 	const [loginView, setLoginView] = useState<boolean>(true)
-	const changeRecoverPasswordView = () => { setShowRecoverPasswordView(!showRecoverPasswordView) }
+	const changeResetPasswordView = () => { setShowResetPasswordView(!showResetPasswordView) }
 
 	const determineView = () => {
 		return (
 			<Padding>
 				{
-					showRecoverPasswordView
-						? <RecoverPassword changeRecoverPasswordView={changeRecoverPasswordView} />
-						: <SignIn changeRecoverPasswordView={changeRecoverPasswordView} />
+					showResetPasswordView
+						? <ResetPassword changeResetPasswordView={changeResetPasswordView} />
+						: <SignIn changeResetPasswordView={changeResetPasswordView} />
 				}
 			</Padding>
 		)
