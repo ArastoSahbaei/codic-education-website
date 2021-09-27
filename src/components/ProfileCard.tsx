@@ -1,6 +1,7 @@
 import { primaryColor } from 'shared/styles/GlobalStyle'
-import styled from 'styled-components'
 import { CommersialBox } from 'view/employee/components/CommersialBox'
+import styled from 'styled-components'
+
 
 export const ProfileCard = (props: { name: string, email: string, number?: string, image?: string, size?: number, title?: string, }) => {
 	if (props.name !== 'placeholder ') {
