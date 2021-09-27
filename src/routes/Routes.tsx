@@ -11,7 +11,6 @@ import { useAuthentication } from 'hooks/useAuthentication'
 import { CheckoutView } from '../view/checkout/CheckoutView'
 import { AboutUsView } from 'view/information/AboutUsView'
 import { CookieInformationView } from 'view/information/CookieInformationView'
-import { GdprInfoView } from '../view/information/GdprInfoView'
 import { MembershipTermsView } from 'view/information/MembershipTermsView'
 import { PrivacyPolicyView } from 'view/information/PrivacyPolicyView'
 import { TermsOfPurchaseView } from 'view/information/TermsOfPurchaseView'
@@ -64,7 +63,6 @@ export const Routes = (props: { children: React.ReactChild[] }) => {
 				<Route exact path={RoutingPath.error404View} component={Error404View} />
 				<Route exact path={RoutingPath.aboutUsView} component={AboutUsView} />
 				<Route exact path={RoutingPath.cookieInformationView} component={CookieInformationView} />
-				<Route exact path={RoutingPath.gdprInfoView} component={GdprInfoView} />
 				<Route exact path={RoutingPath.membershipTermsView} component={MembershipTermsView} />
 				<Route exact path={RoutingPath.privacyPolicyView} component={PrivacyPolicyView} />
 				<Route exact path={RoutingPath.termsOfPurchaseView} component={TermsOfPurchaseView} />

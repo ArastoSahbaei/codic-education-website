@@ -11,7 +11,6 @@ const productDetailsView = (id?: string) => { return id ? `/product/${id}` : '/p
 const error404View = '/404'
 const aboutUsView = '/about'
 const cookieInformationView = '/cookies'
-const gdprInfoView = '/gdpr'
 const membershipTermsView = '/membership-terms'
 const privacyPolicyView = '/privacy-policy'
 const termsOfPurchaseView = '/purchase-terms'
@@ -30,7 +29,6 @@ export default {
 	error404View,
 	aboutUsView,
 	cookieInformationView,
-	gdprInfoView,
 	membershipTermsView,
 	privacyPolicyView,
 	termsOfPurchaseView,
