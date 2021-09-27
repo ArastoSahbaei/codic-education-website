@@ -16,11 +16,11 @@ const messages = [
 ]
 
 const images = [
-	brownDesk,
-	whiteDesk,
-	greyDesk,
-	deskByWindow,
-	desktop
+	{ image: brownDesk, textColor: '#f5cb5c' },
+	{ image: whiteDesk, textColor: `${primaryColor}` },
+	{ image: greyDesk, textColor: '#c30011' },
+	{ image: deskByWindow, textColor: '#f7f3e3' },
+	{ image: desktop, textColor: '#6e2594' },	
 ]
 
 const randomImage = images[Math.floor(Math.random() * images.length)]
@@ -29,37 +29,31 @@ export const CommersialBox = () => {
 	const history = useHistory()
 	
 	return (
-		<BoxWrapper >
+		<BoxWrapper onClick={() => history.push(RoutingPath.careerView)}>
 			<BigText>Hejsan! <br /> {messages[Math.floor(Math.random()*messages.length)]}</BigText>
 
-			<SmallText> Titta då närmare på våra lediga tjänster, <CareerLink onClick={() => history.push(RoutingPath.careerView)}> här</CareerLink> ! </SmallText>
+			<SmallText> Titta då närmare på våra lediga tjänster här ! </SmallText>
 		</BoxWrapper>
 	)
 }
 
 const BoxWrapper = styled.div`
-	background-image: url(${randomImage});
+	background-image: url(${randomImage.image});
     background-size: cover;
     height: 100%;
-	opacity:0.9;
+	cursor: pointer;
 `
 
 const BigText = styled.p`
-    color: #ff7b00;
-	font-size: 2.5rem;
+    color: ${randomImage.textColor};
+	font-size: 2.8rem;
     text-align:center;
     padding: 15px 20px 10px 20px;
 `
 
 const SmallText = styled.p`
-    color: #ff7b00;
-    font-size: 1.5rem;
+    color: ${randomImage.textColor};
+    font-size: 2.1rem;
     text-align: center;
     padding: 5px 20px 50px 20px;
-`
-
-const CareerLink = styled.span`
-    color: ${primaryColor};
-    text-decoration: underline;
-    cursor: pointer;
 `
