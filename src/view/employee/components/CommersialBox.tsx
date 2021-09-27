@@ -55,5 +55,5 @@ const SmallText = styled.p`
     color: ${randomImage.textColor};
     font-size: 2.1rem;
     text-align: center;
-    padding: 5px 20px 50px 20px;
+    padding: 5px 20px 20px 20px;
 `
