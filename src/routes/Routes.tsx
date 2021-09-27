@@ -9,7 +9,11 @@ import { PurchaseHistoryView } from 'view/auth/purchasehistoryview/PurchaseHisto
 import { ProductDetailView } from '../view/productdetail/ProductDetailView'
 import { useAuthentication } from 'hooks/useAuthentication'
 import { CheckoutView } from '../view/checkout/CheckoutView'
-import { CookieInformationView } from 'view/cookieinformation/CookieInformationView'
+import { AboutUsView } from 'view/information/AboutUsView'
+import { CookieInformationView } from 'view/information/CookieInformationView'
+import { MembershipTermsView } from 'view/information/MembershipTermsView'
+import { PrivacyPolicyView } from 'view/information/PrivacyPolicyView'
+import { TermsOfPurchaseView } from 'view/information/TermsOfPurchaseView'
 import { EmployeeView } from '../view/employee/EmployeeView'
 import { Error404View } from '../view/error404/Error404View'
 import { InitialView } from '../view/initial/InitialView'
@@ -57,7 +61,11 @@ export const Routes = (props: { children: React.ReactChild[] }) => {
 				<Route exact path={RoutingPath.signInView} component={blockRouteIfAuthenticated(SignInView)} />
 				<Route exact path={RoutingPath.careerView} component={CareerView} />
 				<Route exact path={RoutingPath.error404View} component={Error404View} />
+				<Route exact path={RoutingPath.aboutUsView} component={AboutUsView} />
 				<Route exact path={RoutingPath.cookieInformationView} component={CookieInformationView} />
+				<Route exact path={RoutingPath.membershipTermsView} component={MembershipTermsView} />
+				<Route exact path={RoutingPath.privacyPolicyView} component={PrivacyPolicyView} />
+				<Route exact path={RoutingPath.termsOfPurchaseView} component={TermsOfPurchaseView} />
 
 				{/* AUTHENTICATED PATHS */}
 				<Route render={() => (
