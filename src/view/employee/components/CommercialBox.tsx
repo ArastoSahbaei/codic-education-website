@@ -16,7 +16,7 @@ const imagesWithText = [
 	{ image: desktop, textColor: '#6e2594', text: 'Letar du efter nya upplevelser?' },
 ]
 
-export const CommersialBox = () => {
+export const CommercialBox = () => {
 	const history = useHistory()
 	const [index, setIndex] = useState<number>(0)
 	const changeInterval = 5000
@@ -51,7 +51,7 @@ const BoxWrapper = styled.div`
 const BigText = styled.p`
    	font-size: 2.5rem;
     text-align:center;
-    padding: 15px 20px 10px 20px;
+    padding: 20px 20px 10px 20px;
 	@media (max-width: 1200px) {
 		font-size: 2.4rem;
 		padding: 10px 15px 7px 15px;

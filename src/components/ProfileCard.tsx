@@ -1,5 +1,5 @@
 import { primaryColor } from 'shared/styles/GlobalStyle'
-import { CommersialBox } from 'view/employee/components/CommersialBox'
+import { CommercialBox } from 'view/employee/components/CommercialBox'
 import styled from 'styled-components'
 
 
@@ -20,7 +20,7 @@ export const ProfileCard = (props: { name: string, email: string, number?: strin
 		return (
 			<Wrapper>
 				<Div size={props.size}>
-					<CommersialBox />
+					<CommercialBox />
 				</Div>
 			</Wrapper>
 		)
