@@ -16,7 +16,7 @@ export const EmployeeView = () => {
 
 	
 	const addCommericalBoxToEmployeeList = [...employeeList]
-	addCommericalBoxToEmployeeList.splice(5, 0, placeholder)
+	addCommericalBoxToEmployeeList.splice(8, 0, placeholder)
 
 	const displayAllEmployees = () => {
 		return (

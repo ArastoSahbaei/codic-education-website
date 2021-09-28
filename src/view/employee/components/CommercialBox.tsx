@@ -2,11 +2,11 @@ import { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import RoutingPath from 'routes/RoutingPath'
 import styled from 'styled-components'
-import brownDesk from '../../../shared/images/boximages/brownDesk.jpg'
-import whiteDesk from '../../../shared/images/boximages/whiteDesk.jpg'
-import greyDesk from '../../../shared/images/boximages/greyDesk.jpg'
-import deskByWindow from '../../../shared/images/boximages/deskByWindow.jpg'
-import desktop from '../../../shared/images/boximages/desktop.jpg'
+import brownDesk from '../../../shared/images/boximages/brownDesk_400x500.jpg'
+import whiteDesk from '../../../shared/images/boximages/whiteDesk_400x524.jpg'
+import greyDesk from '../../../shared/images/boximages/greyDesk_400x533.jpg'
+import deskByWindow from '../../../shared/images/boximages/deskByWindow_400x533.jpg'
+import desktop from '../../../shared/images/boximages/desktop_400x533.jpg'
 
 export const CommercialBox = () => {
 	const history = useHistory()
