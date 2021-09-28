@@ -1,5 +1,5 @@
+import { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
-import { primaryColor } from 'shared/styles/GlobalStyle'
 import RoutingPath from 'routes/RoutingPath'
 import styled from 'styled-components'
 import brownDesk from '../../../shared/images/boximages/brownDesk.jpg'
@@ -8,52 +8,54 @@ import greyDesk from '../../../shared/images/boximages/greyDesk.jpg'
 import deskByWindow from '../../../shared/images/boximages/deskByWindow.jpg'
 import desktop from '../../../shared/images/boximages/desktop.jpg'
 
-const messages = [
-	'Vill du bli en del av detta glada gäng?',
-	'Kan du se dig här i framtiden?',
-	'Funderar du på att byta jobb?',
-	'Söker du nya utmaningar i karriären?'
+const imagesWithText = [
+	{ image: brownDesk, textColor: '#f5cb5c', text: 'Vill du bli en del av detta glada gäng?' },
+	{ image: whiteDesk, textColor: '#f59300', text: 'Kan du se dig här i framtiden?' },
+	{ image: greyDesk, textColor: '#c30011', text: 'Funderar du på att byta jobb?' },
+	{ image: deskByWindow, textColor: '#f7f3e3', text: 'Söker du nya utmaningar i karriären?' },
+	{ image: desktop, textColor: '#6e2594', text: 'Letar du efter nya upplevelser?' },
 ]
-
-const images = [
-	{ image: brownDesk, textColor: '#f5cb5c' },
-	{ image: whiteDesk, textColor: `${primaryColor}` },
-	{ image: greyDesk, textColor: '#c30011' },
-	{ image: deskByWindow, textColor: '#f7f3e3' },
-	{ image: desktop, textColor: '#6e2594' },	
-]
-
-const randomImage = images[Math.floor(Math.random() * images.length)]
 
 export const CommersialBox = () => {
 	const history = useHistory()
-	
-	return (
-		<BoxWrapper onClick={() => history.push(RoutingPath.careerView)}>
-			<BigText>Hejsan! <br /> {messages[Math.floor(Math.random()*messages.length)]}</BigText>
+	const [index, setIndex] = useState<number>(0)
+	const changeInterval = 5000
 
-			<SmallText> Titta då närmare på våra lediga tjänster här ! </SmallText>
+	useEffect(() => {
+		const interval = setInterval(() => {changeIndex(index)}, changeInterval)
+		return () => {
+			clearInterval(interval)
+		}
+	}, [index])
+
+	const changeIndex = (index:number) => {
+		(index === (imagesWithText.length - 1)) ? setIndex(0) : setIndex(index + 1)
+	}
+
+	return (
+		<BoxWrapper theme={imagesWithText[index]} onClick={() => history.push(RoutingPath.careerView)}>
+			<BigText>Hejsan! <br /> {imagesWithText[index].text}</BigText>
+			<SmallText> Titta då närmare på våra lediga tjänster här! </SmallText>
 		</BoxWrapper>
 	)
 }
 
 const BoxWrapper = styled.div`
-	background-image: url(${randomImage.image});
+	background-image: url(${props => props.theme.image});
     background-size: cover;
     height: 100%;
 	cursor: pointer;
+	color: ${props => props.theme.textColor};
 `
 
 const BigText = styled.p`
-    color: ${randomImage.textColor};
-	font-size: 2.8rem;
+   	font-size: 2.5rem;
     text-align:center;
     padding: 15px 20px 10px 20px;
 `
 
 const SmallText = styled.p`
-    color: ${randomImage.textColor};
-    font-size: 2.1rem;
+    font-size: 1.8rem;
     text-align: center;
-    padding: 5px 20px 20px 20px;
+    padding: 5px 20px 10px 20px;
 `
