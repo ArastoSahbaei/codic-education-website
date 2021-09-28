@@ -52,10 +52,74 @@ const BigText = styled.p`
    	font-size: 2.5rem;
     text-align:center;
     padding: 15px 20px 10px 20px;
+	@media (max-width: 1200px) {
+		font-size: 2.4rem;
+		padding: 10px 15px 7px 15px;
+	}
+	@media (max-width: 1050px) {
+		padding: 60px 15px 10px 15px;
+	}
+	@media (max-width: 800px) {
+		padding: 30px 15px 10px 15px;
+	}
+	@media (max-width: 700px) {
+		font-size:2.5rem;
+		padding: 150px 20px 20px 20px;
+	}
+	@media (max-width: 500px) {
+		padding: 80px 20px 20px 20px;
+	}
+	@media (max-width: 400px) {
+		padding: 25px 15px 8px 15px;
+	}
+	@media (max-width: 350px) {
+		font-size: 2.1rem;
+		padding: 20px 15px 8px 15px;
+	}
+	@media (max-width: 300px) {
+		font-size: 2rem;
+		padding: 15px 15px 8px 15px;
+	}
+	@media (max-width: 200px) {
+		font-size: 1.8rem;
+		padding: 15px 15px 8px 15px;
+	}
 `
 
 const SmallText = styled.p`
     font-size: 1.8rem;
     text-align: center;
     padding: 5px 20px 10px 20px;
+	@media (max-width: 1200px) {
+		font-size: 1.7rem;
+	}	padding: 5px 15px 10px 15px;
+	@media (max-width: 1050px) {
+		padding: 10px 15px 10px 15px;
+	}
+	@media (max-width: 800px) {
+		padding: 7px 15px 10px 15px;
+	}
+	@media (max-width: 700px) {
+		font-size: 1.8rem;
+		padding: 20px 20px 150px 20px;
+	}
+	@media (max-width: 500px) {
+		padding: 20px 20px 80px 20px;
+	}
+	@media (max-width: 400px) {
+		padding: 8px 15px 25px 15px;
+	}
+	@media (max-width: 350px) {
+		font-size: 1.4rem;
+		padding: 8px 15px 20px 15px;
+		
+	}
+	@media (max-width: 300px) {
+		font-size: 1.3rem;
+		padding: 8px 15px 15px 15px;
+	}
+	@media (max-width: 200px) {
+		font-size: 1.1rem;
+		padding: 8px 15px 15px 15px;
+	}
 `
