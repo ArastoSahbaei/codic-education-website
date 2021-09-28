@@ -8,14 +8,6 @@ import greyDesk from '../../../shared/images/boximages/greyDesk.jpg'
 import deskByWindow from '../../../shared/images/boximages/deskByWindow.jpg'
 import desktop from '../../../shared/images/boximages/desktop.jpg'
 
-const imagesWithText = [
-	{ image: brownDesk, textColor: '#f5cb5c', text: 'Vill du bli en del av detta glada gäng?' },
-	{ image: whiteDesk, textColor: '#f59300', text: 'Kan du se dig här i framtiden?' },
-	{ image: greyDesk, textColor: '#c30011', text: 'Funderar du på att byta jobb?' },
-	{ image: deskByWindow, textColor: '#f7f3e3', text: 'Söker du nya utmaningar i karriären?' },
-	{ image: desktop, textColor: '#6e2594', text: 'Letar du efter nya upplevelser?' },
-]
-
 export const CommercialBox = () => {
 	const history = useHistory()
 	const [index, setIndex] = useState<number>(0)
@@ -27,6 +19,14 @@ export const CommercialBox = () => {
 			clearInterval(interval)
 		}
 	}, [index])
+
+	const imagesWithText = [
+		{ image: brownDesk, textColor: '#f5cb5c', text: 'Vill du bli en del av detta glada gäng?' },
+		{ image: whiteDesk, textColor: '#f59300', text: 'Kan du se dig här i framtiden?' },
+		{ image: greyDesk, textColor: '#c30011', text: 'Funderar du på att byta jobb?' },
+		{ image: deskByWindow, textColor: '#f7f3e3', text: 'Söker du nya utmaningar i karriären?' },
+		{ image: desktop, textColor: '#6e2594', text: 'Letar du efter nya upplevelser?' },
+	]
 
 	const changeIndex = (index:number) => {
 		(index === (imagesWithText.length - 1)) ? setIndex(0) : setIndex(index + 1)
