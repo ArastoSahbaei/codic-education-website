@@ -14,7 +14,7 @@ export const CommercialBox = () => {
 	const changeInterval = 5000
 
 	useEffect(() => {
-		const interval = setInterval(() => {changeIndex(index)}, changeInterval)
+		const interval = setInterval(() => { changeIndex(index) }, changeInterval)
 		return () => {
 			clearInterval(interval)
 		}
@@ -28,7 +28,7 @@ export const CommercialBox = () => {
 		{ image: desktop, textColor: '#6e2594', text: 'Letar du efter nya upplevelser?' },
 	]
 
-	const changeIndex = (index:number) => {
+	const changeIndex = (index: number) => {
 		(index === (imagesWithText.length - 1)) ? setIndex(0) : setIndex(index + 1)
 	}
 
@@ -46,6 +46,7 @@ const BoxWrapper = styled.div`
     height: 100%;
 	cursor: pointer;
 	color: ${props => props.theme.textColor};
+	transition: 1s;
 `
 
 const BigText = styled.p`
