@@ -4,6 +4,7 @@ const signInView = '/signin'
 const shopView = '/shop'
 const orderFinishedView = '/order-finished'
 const careerView = '/career'
+const careerDetailsView = (id?: string) => { return id ? `${careerView}/${id}` : `${careerView}/:id` }
 const contactView = '/contact'
 const checkoutView = '/checkout'
 const retrieveLostPasswordView = '/reset/:token'
@@ -20,6 +21,7 @@ export default {
 	checkoutView,
 	retrieveLostPasswordView,
 	careerView,
+	careerDetailsView,
 	productDetailsView,
 	error404View
 }

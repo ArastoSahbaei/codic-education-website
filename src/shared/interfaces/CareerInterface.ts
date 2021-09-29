@@ -8,7 +8,7 @@ export interface CareerInterface {
     img?: string,
 }
 export interface CareerCardInterface {
-    id: string 
+    _id: string 
     title: string ,
     jobType: string,
     location: string,

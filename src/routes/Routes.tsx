@@ -8,6 +8,7 @@ import { UserInformationView } from 'view/auth/userinformationview/UserInformati
 import { PurchaseHistoryView } from 'view/auth/purchasehistoryview/PurchaseHistoryView'
 import { ProductDetailView } from '../view/productdetail/ProductDetailView'
 import { useAuthentication } from 'hooks/useAuthentication'
+import { CareerDetailView } from 'view/career/view/CareerDetailView'
 import { CheckoutView } from '../view/checkout/CheckoutView'
 import { EmployeeView } from '../view/employee/EmployeeView'
 import { Error404View } from '../view/error404/Error404View'
@@ -55,6 +56,7 @@ export const Routes = (props: { children: React.ReactChild[] }) => {
 				<Route exact path={RoutingPath.retrieveLostPasswordView} component={RetrieveLostPasswordView} />
 				<Route exact path={RoutingPath.signInView} component={blockRouteIfAuthenticated(SignInView)} />
 				<Route exact path={RoutingPath.careerView} component={CareerView} />
+				<Route exact path={RoutingPath.careerDetailsView()} component={CareerDetailView} />
 				<Route exact path={RoutingPath.error404View} component={Error404View} />
 
 				{/* AUTHENTICATED PATHS */}

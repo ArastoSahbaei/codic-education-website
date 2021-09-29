@@ -1,3 +1,4 @@
+import { useHistory } from 'react-router'
 import { NewsLetterSubscriptionForm } from './components/newslettersubscriptionform/NewsLetterSubscriptionForm'
 import { initialViewButtonStyle } from 'shared/styles/Styles'
 import { Collaborations } from './components/Collaborations'
@@ -5,8 +6,11 @@ import { primaryColor } from 'shared/styles/GlobalStyle'
 import { Button } from 'components/html/Button'
 import backgroundImage from '../../shared/images/teacher3.jpg'
 import styled from 'styled-components'
+import RoutingPath from 'routes/RoutingPath'
+
 
 export const InitialView = () => {
+	const history = useHistory()
 	return (
 		<Wrapper>
 			<Image src={backgroundImage} alt={'background of a teacher'} />
@@ -14,7 +18,7 @@ export const InitialView = () => {
 				Vi <ColoredParagraph>utbildar</ColoredParagraph> Sverige inom <ColoredParagraph>datavetenskap</ColoredParagraph>. <br />
 				<Button text={'Om oss'} style={initialViewButtonStyle} /> <br />
 				<Button text={'Boka möte'} style={initialViewButtonStyle} /> <br />
-				<Button text={'Lediga tjänster'} style={initialViewButtonStyle} /> <br />
+				<Button text={'Lediga tjänster'}  onClick={() => history.push(RoutingPath.careerView)} />
 			</Paragraph>
 			<Collaborations />
 			<SectionWrapper>

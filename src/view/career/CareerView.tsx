@@ -1,13 +1,16 @@
-import { CareerCard } from 'components/CareerCard'
+import { useState, useEffect } from 'react'
+import { useHistory } from 'react-router-dom'
+import { CareerCard } from 'view/career/components/CareerCard'
 import { windowsMaxWidth } from 'shared/data/WindowsSizes'
 import { DimensionsInterface } from 'shared/interfaces/DimensionsInterface'
 import { CareerCardInterface } from 'shared/interfaces/CareerInterface'
-import { useState, useEffect } from 'react'
 import { NoAvailableCareerOpportunities } from './components/NoAvailableCareerOpportunities'
 import styled from 'styled-components'
 import CodicAPIService from 'shared/api/services/CodicAPIService'
+import RoutingPath from 'routes/RoutingPath'
 
 export const CareerView = () => {
+	const history = useHistory()
 	const [serverResponse, setServerResponse] = useState([])
 	const fetchData = async () => {
 		try {
@@ -21,7 +24,8 @@ export const CareerView = () => {
 	const displayAllCareers = () => {
 		return (
 			serverResponse.map((item: CareerCardInterface) =>
-				<CareerCard key={item.id}
+				<CareerCard onClick={() => history.push(RoutingPath.careerDetailsView(item._id), item)}
+					key={item._id}
 					title={item.title}
 					location={item.location}
 					jobType={item.jobType}

@@ -1,9 +1,9 @@
 import { primaryColor } from 'shared/styles/GlobalStyle'
 import styled from 'styled-components'
 
-export const CareerCard = (props: { title: string, jobType: string, location: string, image?: string, size?: number }) => {
+export const CareerCard = (props: { title: string, jobType: string, location: string, image?: string, size?: number, onClick?:any}) => {
 	return (
-		<Wrapper>
+		<Wrapper onClick={props.onClick}>
 			<Div size={props.size}>
 				<Image src={props.image || 'https://image.spreadshirtmedia.net/image-server/v1/mp/compositions/T1188A70MPA2649PT10X3Y25D172357765FS1994/views/1,width=550,height=550,appearanceId=70,backgroundColor=FFFFFF,noPt=true/soet-bjoern-ansikte-ritning-iphone-78-skal.jpg'} alt={''} />
 				<ParagraphName>{props.title}</ParagraphName>
