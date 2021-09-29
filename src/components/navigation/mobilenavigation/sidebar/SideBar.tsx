@@ -25,7 +25,7 @@ export const SideBar = (props: { drawerIsOpen: boolean, drawerHandler: (handler:
 			? <div>
 				<MenuText> Inloggad som {authenticatedUser.username} </MenuText>
 				<Link drawerHandler={props.drawerHandler} icon={profile} text={'Din profil'} path={AuthPath.profileView} />
-				<Link drawerHandler={props.drawerHandler} icon={cartIcon} text={'Varukorg'} path={'/TBA'} />
+				<Link drawerHandler={props.drawerHandler} icon={cartIcon} text={'Varukorg'} path={'viewCart'} />
 				<Link drawerHandler={props.drawerHandler} icon={exit} text={'Logga ut'} path={'exit'} />
 				<hr />
 				<Link drawerHandler={props.drawerHandler} icon={data} text={'Din data från Codic'} path={'/TBA'} />

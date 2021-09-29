@@ -17,10 +17,23 @@ export const Link =
 			history.push(RoutingPath.initialView)
 		}
 
+		const showCart = () => {
+			return (
+				alert('Du vill se varukorgens innehåll')
+			)
+		}
+
 		const handleClick = () => {
-			(props.path !== 'exit') 
-				? history.push(props.path || '/')
-				: logout()			
+			switch (props.path){
+			case 'exit':
+				logout()
+				break
+			case 'viewCart':
+				showCart()
+				break
+			default:
+				history.push(props.path || '/')
+			}		
 			props.drawerHandler(false)
 		}
 
