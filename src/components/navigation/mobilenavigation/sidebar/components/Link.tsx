@@ -1,12 +1,26 @@
+import { useContext } from 'react'
 import { useHistory } from 'react-router-dom'
+import { UserContext } from 'shared/providers/UserProvider'
+import { nonAuthenticatedUser } from 'shared/data/nonAuthenticatedUser'
+import LocalStorage from 'shared/cache/LocalStorage'
+import RoutingPath from 'routes/RoutingPath'
 import styled from 'styled-components'
 
 export const Link =
 	(props: { drawerHandler: (handler: boolean) => void, icon: any, text: string, path?: string }) => {
 		const history = useHistory()
+		const [authenticatedUser, setAuthenticatedUser] = useContext(UserContext)
+
+		const logout = () => {
+			localStorage.removeItem(LocalStorage.authenticationToken)
+			setAuthenticatedUser(nonAuthenticatedUser)
+			history.push(RoutingPath.initialView)
+		}
 
 		const handleClick = () => {
-			history.push(props.path || '/')
+			(props.path !== 'exit') 
+				? history.push(props.path || '/')
+				: logout()			
 			props.drawerHandler(false)
 		}
 
@@ -29,7 +43,7 @@ const Paragraph = styled.p`
 	flex-wrap: wrap;
 	align-items: center;
 	gap: 10px 30px;
-	padding: 5%;
+	padding: 3%;
 	font-weight: 600;
 	font-size: 1rem;
 	cursor: pointer;
