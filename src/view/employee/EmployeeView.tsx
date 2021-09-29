@@ -6,9 +6,21 @@ import styled from 'styled-components'
 
 export const EmployeeView = () => {
 
+	const placeholder = {
+		img: '',
+		firstName: 'commercial',
+		lastName: '',
+		email: '',
+		tel: ''
+	}
+
+	
+	const addCommericalBoxToEmployeeList = [...employeeList]
+	addCommericalBoxToEmployeeList.splice(8, 0, placeholder)
+
 	const displayAllEmployees = () => {
 		return (
-			employeeList.map((item: any) =>
+			addCommericalBoxToEmployeeList.map((item: any) =>
 				<ProfileCard key={item.name}
 					image={item.img}
 					name={item.firstName + ' ' + item.lastName}
