@@ -13,6 +13,8 @@ import cartIcon from 'shared/images/icons/cart.png'
 import data from 'shared/images/icons/data.png'
 import help from 'shared/images/icons/help.png'
 import feedback from 'shared/images/icons/feedback.png'
+import team from 'shared/images/icons/team.png'
+import enter from 'shared/images/icons/login.png'
 import exit from 'shared/images/icons/logout.png'
 import RoutingPath from 'routes/RoutingPath'
 import AuthPath from 'routes/AuthPath'
@@ -32,7 +34,7 @@ export const SideBar = (props: { drawerIsOpen: boolean, drawerHandler: (handler:
 				<Link drawerHandler={props.drawerHandler} icon={help} text={'Hjälp'} path={'/TBA'} />
 				<Link drawerHandler={props.drawerHandler} icon={feedback} text={'Skicka Feedback'} path={'/TBA'} />
 			</div>
-			: <Link drawerHandler={props.drawerHandler} icon={codic} text={'Logga in'} path={RoutingPath.signInView} />
+			: <Link drawerHandler={props.drawerHandler} icon={enter} text={'Logga in'} path={RoutingPath.signInView} />
 	}
 
 	return (
@@ -41,7 +43,7 @@ export const SideBar = (props: { drawerIsOpen: boolean, drawerHandler: (handler:
 			<hr />
 			<Link drawerHandler={props.drawerHandler} icon={codic} text={'Hem'} path={RoutingPath.initialView} />
 			<Link drawerHandler={props.drawerHandler} icon={visionary} text={'Vår Vision'} />
-			<Link drawerHandler={props.drawerHandler} icon= {codic} text={'Utbildare'} path={RoutingPath.employeeView} />
+			<Link drawerHandler={props.drawerHandler} icon= {team} text={'Utbildare'} path={RoutingPath.employeeView} />
 			<Link drawerHandler={props.drawerHandler} icon={contact} text={'Kontakt'} path={RoutingPath.contactView} />
 			<Link drawerHandler={props.drawerHandler} icon={shop} text={'Butik'} path={RoutingPath.shopView} />
 			<hr />
