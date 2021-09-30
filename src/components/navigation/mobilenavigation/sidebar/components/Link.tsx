@@ -25,7 +25,6 @@ export const Link =
 
 		const showCart = () => {
 			(setIsCartOpen) ? setIsCartOpen(true) : null
-			alert(typeof(props.icon))
 		}
 
 		const handleClick = () => {
