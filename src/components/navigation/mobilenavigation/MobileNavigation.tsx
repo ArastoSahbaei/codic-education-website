@@ -1,19 +1,23 @@
 import React, { useState } from 'react'
 import { HamburgerButton } from './hamburgerbutton/HamburgerButton'
 import { fadeInRight } from 'shared/styles/animations/fadeInRight'
+import { Cart } from 'components/cart/Cart'
 import { BackDrop } from '../../BackDrop'
 import { SideBar } from './sidebar/SideBar'
-import logotype from '../../../shared/images/codiclogotype.svg'
+import logotype from 'shared/images/codiclogotype.svg'
 import styled from 'styled-components'
 
 export const MobileNavigation: React.FC = (): JSX.Element => {
 	const [openDrawer, setOpenDrawer] = useState<boolean>(false)
+	const [isCartOpen, setIsCartOpen] = useState<boolean>(false)
 
 	return (
 		<Div>
 			<HamburgerButton drawerHandler={setOpenDrawer} />
+			<Cart isCartOpen={isCartOpen} setIsCartOpen={setIsCartOpen} />
+			{isCartOpen && <BackDrop drawerHandler={setIsCartOpen} />}
 			<Image src={logotype} />
-			<SideBar drawerIsOpen={openDrawer} drawerHandler={setOpenDrawer} />
+			<SideBar drawerIsOpen={openDrawer} drawerHandler={setOpenDrawer} isCartOpen={isCartOpen} setIsCartOpen={setIsCartOpen} />
 			{openDrawer && <BackDrop drawerHandler={setOpenDrawer} />}
 		</Div>
 	)
