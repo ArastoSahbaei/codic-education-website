@@ -17,6 +17,11 @@ export const Link =
 			history.push(RoutingPath.initialView)
 		}
 
+		const displayAmountOfItemsInCart = () => {
+			return authenticatedUser.shoppingCart.products.length != 0
+				&& <Span>{authenticatedUser.shoppingCart.products.length}</Span>	
+		}
+
 		const showCart = () => {
 			return (
 				alert('Du vill se varukorgens innehåll')
@@ -41,6 +46,7 @@ export const Link =
 			<Paragraph onClick={() => handleClick()}>
 				<Icon src={props.icon} alt={''} />
 				{props.text}
+				{props.text === 'Varukorg' ? displayAmountOfItemsInCart() : null}
 			</Paragraph>
 		)
 	}
@@ -69,4 +75,20 @@ const Paragraph = styled.p`
 	&:hover ${Icon}{
 		filter: brightness(0);
 	}
+`
+
+const Span = styled.span`
+	position: relative;
+	top: -10px;
+	left: -130px;
+	width: 16px;
+	height: 16px;
+	border-radius: 8px;
+	background: #ff3c00;
+	color: #fff;
+	line-height: 16px;
+	text-align: center;
+	font-size: 12px;
+	white-space: nowrap;
+	overflow: hidden;
 `
