@@ -19,7 +19,7 @@ import exit from 'shared/images/icons/logout.png'
 import RoutingPath from 'routes/RoutingPath'
 import AuthPath from 'routes/AuthPath'
 
-export const SideBar = (props: {drawerIsOpen: boolean, drawerHandler: (handler: boolean) => void, isCartOpen: boolean, setIsCartOpen: (value: boolean) => void, }): JSX.Element => {
+export const SideBar = (props: {drawerIsOpen: boolean, drawerHandler: (handler: boolean) => void, setIsCartOpen: (value: boolean) => void, }): JSX.Element => {
 	const [authenticatedUser, setAuthenticatedUser] = useContext(UserContext)
 	
 	const displayMobileAuthentication = () => {
@@ -27,7 +27,7 @@ export const SideBar = (props: {drawerIsOpen: boolean, drawerHandler: (handler: 
 			? <div>
 				<MenuText> Inloggad som {authenticatedUser.username} </MenuText>
 				<Link drawerHandler={props.drawerHandler} icon={profile} text={'Din profil'} path={AuthPath.profileView} />
-				<Link drawerHandler={props.drawerHandler} icon={cartIcon} text={'Varukorg'} path={'viewCart'} isCartOpen={props.isCartOpen} setIsCartOpen={props.setIsCartOpen}/>
+				<Link drawerHandler={props.drawerHandler} icon={cartIcon} text={'Varukorg'} path={'viewCart'} setIsCartOpen={props.setIsCartOpen}/>
 				<Link drawerHandler={props.drawerHandler} icon={exit} text={'Logga ut'} path={'exit'} />
 				<hr />
 				<Link drawerHandler={props.drawerHandler} icon={data} text={'Din data från Codic'} path={'/TBA'} />

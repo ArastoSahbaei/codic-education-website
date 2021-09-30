@@ -7,10 +7,10 @@ import RoutingPath from 'routes/RoutingPath'
 import styled from 'styled-components'
 
 export const Link =
-	(props: { drawerHandler: (handler: boolean) => void, icon: any, text: string, path?: string, isCartOpen?: boolean, setIsCartOpen?: (value: boolean) => void }) => {
+	(props: { drawerHandler: (handler: boolean) => void, icon: string, text: string, path?: string, setIsCartOpen?: (value: boolean) => void }) => {
 		const history = useHistory()
 		const [authenticatedUser, setAuthenticatedUser] = useContext(UserContext)
-		const { isCartOpen, setIsCartOpen } = props
+		const {setIsCartOpen } = props
 
 		const logout = () => {
 			localStorage.removeItem(LocalStorage.authenticationToken)
@@ -25,6 +25,7 @@ export const Link =
 
 		const showCart = () => {
 			(setIsCartOpen) ? setIsCartOpen(true) : null
+			alert(typeof(props.icon))
 		}
 
 		const handleClick = () => {

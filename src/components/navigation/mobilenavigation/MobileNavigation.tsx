@@ -17,7 +17,7 @@ export const MobileNavigation: React.FC = (): JSX.Element => {
 			<Cart isCartOpen={isCartOpen} setIsCartOpen={setIsCartOpen} />
 			{isCartOpen && <BackDrop drawerHandler={setIsCartOpen} />}
 			<Image src={logotype} />
-			<SideBar drawerIsOpen={openDrawer} drawerHandler={setOpenDrawer} isCartOpen={isCartOpen} setIsCartOpen={setIsCartOpen} />
+			<SideBar drawerIsOpen={openDrawer} drawerHandler={setOpenDrawer} setIsCartOpen={setIsCartOpen} />
 			{openDrawer && <BackDrop drawerHandler={setOpenDrawer} />}
 		</Div>
 	)
