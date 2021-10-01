@@ -5,8 +5,8 @@ import { Collaborations } from './components/Collaborations'
 import { primaryColor } from 'shared/styles/GlobalStyle'
 import { Button } from 'components/html/Button'
 import backgroundImage from '../../shared/images/teacher3.jpg'
-import styled from 'styled-components'
 import RoutingPath from 'routes/RoutingPath'
+import styled from 'styled-components'
 
 export const InitialView = () => {
 	const history=useHistory()
