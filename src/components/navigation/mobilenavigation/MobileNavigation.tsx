@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useHistory } from 'react-router-dom'
+import { useHistory, useLocation } from 'react-router-dom'
 import { HamburgerButton } from './hamburgerbutton/HamburgerButton'
 import { fadeInRight } from 'shared/styles/animations/fadeInRight'
 import { Cart } from 'components/cart/Cart'
@@ -13,9 +13,11 @@ export const MobileNavigation: React.FC = (): JSX.Element => {
 	const [openDrawer, setOpenDrawer] = useState<boolean>(false)
 	const [isCartOpen, setIsCartOpen] = useState<boolean>(false)
 	const history = useHistory()
+	const location = useLocation()
+	const bColor = (location.pathname === RoutingPath.initialView) ? 'white' : 'lightgrey'
 
 	return (
-		<Div>
+		<Div theme={bColor}>
 			<HamburgerButton drawerHandler={setOpenDrawer} />
 			<Cart isCartOpen={isCartOpen} setIsCartOpen={setIsCartOpen} />
 			{isCartOpen && <BackDrop drawerHandler={setIsCartOpen} />}
@@ -30,6 +32,13 @@ const Div = styled.div`
 	display: flex;
 	justify-content: space-between;
 	padding: 4%;
+	background-color: ${props => props.theme};
+	position: sticky;
+	top: 0;
+	width: 100%;
+	vertical-align: middle;
+	z-index:1000;
+	transition: top 0.3s; 
 `
 
 const Image = styled.img`
