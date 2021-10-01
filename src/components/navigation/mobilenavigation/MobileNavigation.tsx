@@ -6,6 +6,7 @@ import { Cart } from 'components/cart/Cart'
 import { BackDrop } from '../../BackDrop'
 import { SideBar } from './sidebar/SideBar'
 import logotype from 'shared/images/codiclogotype.svg'
+import logotypeWhite from 'shared/images/codiclogotype_white.svg'
 import styled from 'styled-components'
 import RoutingPath from 'routes/RoutingPath'
 
@@ -21,7 +22,7 @@ export const MobileNavigation: React.FC = (): JSX.Element => {
 			<HamburgerButton drawerHandler={setOpenDrawer} />
 			<Cart isCartOpen={isCartOpen} setIsCartOpen={setIsCartOpen} />
 			{isCartOpen && <BackDrop drawerHandler={setIsCartOpen} />}
-			<Image src={logotype} onClick={()=> history.push(RoutingPath.initialView)} />
+			<Image src={location.pathname === RoutingPath.initialView ? logotype : logotypeWhite} onClick={()=> history.push(RoutingPath.initialView)} />
 			<SideBar drawerIsOpen={openDrawer} drawerHandler={setOpenDrawer} setIsCartOpen={setIsCartOpen} />
 			{openDrawer && <BackDrop drawerHandler={setOpenDrawer} />}
 		</Div>
