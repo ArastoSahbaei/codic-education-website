@@ -43,7 +43,7 @@ export const DesktopNavigation = () => {
 				</GridCell>
 				<GridCell column1="5/9" column2="5/10" column3="5/12">
 					<ParagraphWrapper>
-						<Paragraph to={'/TBA'}> Vår Vision </Paragraph>
+						<Paragraph to={RoutingPath.aboutUsView}> Vår Vision </Paragraph>
 						<Paragraph to={RoutingPath.employeeView}> Utbildare </Paragraph>
 						<Paragraph to={RoutingPath.contactView}> Kontakt </Paragraph>
 						<Paragraph to={RoutingPath.shopView}> Butik </Paragraph>

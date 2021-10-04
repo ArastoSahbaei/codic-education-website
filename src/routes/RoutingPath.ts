@@ -9,7 +9,11 @@ const checkoutView = '/checkout'
 const resetPasswordView = '/reset/:token'
 const productDetailsView = (id?: string) => { return id ? `/product/${id}` : '/product/:id' }
 const error404View = '/404'
+const aboutUsView = '/about'
 const cookieInformationView = '/cookies'
+const membershipTermsView = '/membership-terms'
+const privacyPolicyView = '/privacy-policy'
+const termsOfPurchaseView = '/purchase-terms'
 
 export default {
 	initialView,
@@ -23,5 +27,9 @@ export default {
 	careerView,
 	productDetailsView,
 	error404View,
-	cookieInformationView
+	aboutUsView,
+	cookieInformationView,
+	membershipTermsView,
+	privacyPolicyView,
+	termsOfPurchaseView,
 }
