@@ -5,9 +5,12 @@ import { CreateProductCategory } from './components/CreateProductCategory'
 export const AdminView = () => {
 	return (
 		<>
-			<CreateProductCategory /> <hr />
-			<CreateProductBrand /> <hr />
-			<CreateProduct /> <hr />
+			<span>Products</span>
+			<span>Users</span>
+			<span>Employees</span>
+			<span>Careers</span>
+
+
 		</>
 	)
 }

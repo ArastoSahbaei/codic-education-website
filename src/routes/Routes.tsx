@@ -66,7 +66,10 @@ export const Routes = (props: { children: React.ReactChild[] }) => {
 				<Route exact path={RoutingPath.membershipTermsView} component={MembershipTermsView} />
 				<Route exact path={RoutingPath.privacyPolicyView} component={PrivacyPolicyView} />
 				<Route exact path={RoutingPath.termsOfPurchaseView} component={TermsOfPurchaseView} />
-
+			
+				{/* ADMIN PATHS */}
+				<Route exact path={AdminPath.adminView} component={AdminView} />
+				
 				{/* AUTHENTICATED PATHS */}
 				<Route render={() => (
 					<>
@@ -77,9 +80,6 @@ export const Routes = (props: { children: React.ReactChild[] }) => {
 						<Route exact path={AuthPath.newsLetterSubscriptionView} component={authenticationRequired(NewsLetterSubscriptionView)} />
 					</>
 				)} />
-
-				{/* ADMIN PATHS */}
-				<Route exact path={AdminPath.adminView} component={AdminView} />
 
 				{/* INITIAL PATH */}
 				<Route component={InitialView} />
