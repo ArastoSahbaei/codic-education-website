@@ -1,8 +1,8 @@
 const adminView = '/qwerty'
-const careerAdminView = '/qwerty/careers'
-const employeeAdminView = '/qwerty/employees'
-const productAdminView = '/qwerty/products'
-const userAdminView = '/qwerty/users'
+const careerAdminView = `${adminView}/careers`
+const employeeAdminView = `${adminView}/employees`
+const productAdminView = `${adminView}/products`
+const userAdminView = `${adminView}/users`
 
 
 export default {
