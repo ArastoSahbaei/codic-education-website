@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import CodicAPIService from '../../../shared/api/services/CodicAPIService'
+import CodicAPIService from '../../../../../shared/api/services/CodicAPIService'
 
 export interface createNewProduct {
 	title: string
