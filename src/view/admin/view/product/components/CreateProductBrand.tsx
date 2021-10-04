@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import CodicAPIService from '../../../shared/api/services/CodicAPIService'
+import CodicAPIService from '../../../../../shared/api/services/CodicAPIService'
 /* import { createNewProductBrand } from '../../../shared/interface/Interface' */
 
 export interface NewProductBrandInterface {

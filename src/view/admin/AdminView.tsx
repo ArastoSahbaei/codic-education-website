@@ -1,13 +1,15 @@
-import { CreateProduct } from './components/CreateProduct'
-import { CreateProductBrand } from './components/CreateProductBrand'
-import { CreateProductCategory } from './components/CreateProductCategory'
+import { useHistory } from 'react-router'
+import AdminPath from 'routes/AdminPath'
 
 export const AdminView = () => {
+	const history = useHistory()
+
 	return (
 		<>
-			<CreateProductCategory /> <hr />
-			<CreateProductBrand /> <hr />
-			<CreateProduct /> <hr />
+			<span onClick={() => history.push(AdminPath.careerAdminView)}>Careers</span> <br />
+			<span onClick={() => history.push(AdminPath.productAdminView)}>Products</span> <br />
+			<span onClick={() => history.push(AdminPath.employeeAdminView)}>Employees</span> <br />
+			<span onClick={() => history.push(AdminPath.userAdminView)}>Users</span> <br />
 		</>
 	)
 }
