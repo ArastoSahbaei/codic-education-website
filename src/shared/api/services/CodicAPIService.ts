@@ -108,6 +108,10 @@ const getAllJobs = () => {
 	return http.get('/career')
 }
 
+const getAllEmployees = () => {
+	return http.get('/employees')
+}
+
 export default {
 	createProduct,
 	createProductBrand,
@@ -134,4 +138,5 @@ export default {
 	sendContactEmail,
 	retrieveLostAccount,
 	authenticatedRouteExample,
+	getAllEmployees
 }

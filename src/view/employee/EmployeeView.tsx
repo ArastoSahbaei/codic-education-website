@@ -3,8 +3,24 @@ import { employeeList } from '../../shared/data/employeeList'
 import { windowsMaxWidth } from 'shared/data/WindowsSizes'
 import { DimensionsInterface } from 'shared/interfaces/DimensionsInterface'
 import styled from 'styled-components'
+import CodicAPIService from 'shared/api/services/CodicAPIService'
+import { useState } from 'react'
 
 export const EmployeeView = () => {
+	const [serverResponse, setServerResponse] useState([])
+	
+
+	const fetchData = async () => {
+		try {
+			const {data} = await CodicAPIService.getAllEmployees()
+			setServerResponse(data)
+		} catch (error) {
+			console.log(error)
+		}
+
+	}
+
+	}
 
 	const placeholder = {
 		img: '',
