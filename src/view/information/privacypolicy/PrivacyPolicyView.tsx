@@ -5,7 +5,6 @@ export const PrivacyPolicyView = () => {
 
 	return (
 		<Wrapper>
-			<Header>Integritetspolicy</Header>
 			<Title>How we manage your personal data </Title>
 			<Text>
 				This Privacy Policy contains information about how we handle your personal data. In order for you to get a better understanding of how we handle information about you, we have outlined the founding principles of our practices. We ask you to read our Privacy Policy thoroughly before consenting and allowing us to handle your data.
@@ -142,12 +141,9 @@ const Wrapper = styled.div`
 	margin: 0 auto;
 `
 
-const Header = styled.h1`
-	font-size: 3rem;
-`
-
 const Title = styled.b`
 	font-size: 1.8rem;
+    line-height: 2.8em;
 	color: ${primaryColor};
 `
 
