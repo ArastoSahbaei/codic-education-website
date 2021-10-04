@@ -22,12 +22,17 @@ import { ProfileView } from 'view/auth/profileview/ProfileView'
 import { SignInView } from '../view/signin/SignInView'
 import { CareerView } from 'view/career/CareerView'
 import { AdminView } from '../view/admin/AdminView'
+import { CareerAdminView } from 'view/admin/components/CareerAdminView'
+import { EmployeeAdminView } from 'view/admin/components/EmployeeAdminView'
+import { userAdminView } from 'view/admin/components/UserAdminView'
+import { ProductAdminView }  from '../view/admin/components/ProductAdminView'
 import { OrderView } from '../view/order/OrderView'
 import { ShopView } from '../view/shop/ShopView'
 import { Footer } from '../components/Footer'
 import RoutingPath from './RoutingPath'
 import AdminPath from './AdminPath'
 import AuthPath from './AuthPath'
+
 
 export const Routes = (props: { children: React.ReactChild[] }) => {
 	const [authenticatedUser, setAuthenticatedUser] = useContext(UserContext)
@@ -69,6 +74,13 @@ export const Routes = (props: { children: React.ReactChild[] }) => {
 			
 				{/* ADMIN PATHS */}
 				<Route exact path={AdminPath.adminView} component={AdminView} />
+				<Route exact path={AdminPath.productAdminView} component={ProductAdminView} />
+				<Route exact path={AdminPath.careerAdminView} component={CareerAdminView} />
+				<Route exact path={AdminPath.employeeAdminView} component={EmployeeAdminView} />
+				<Route exact path={AdminPath.userAdminView} component={userAdminView} />
+
+
+
 				
 				{/* AUTHENTICATED PATHS */}
 				<Route render={() => (
