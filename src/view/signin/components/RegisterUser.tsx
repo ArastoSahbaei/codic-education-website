@@ -6,7 +6,7 @@ import { primaryColor, secondaryColor } from '../../../shared/styles/GlobalStyle
 import styled from 'styled-components'
 
 export const RegisterUser = () => {
-	const { register } = useAuthentication()
+	const { registerNewUser } = useAuthentication()
 	const [registerUser, setRegisterUser] = useState<RegisterNewUser>({ username: '', password: '', email: '', receiveNewsLetters: true })
 	const handleCheckboxChange = () => setRegisterUser({ ...registerUser, receiveNewsLetters: !registerUser.receiveNewsLetters })
 
@@ -16,7 +16,7 @@ export const RegisterUser = () => {
 
 	const onSubmit = (event: React.MouseEvent<HTMLElement>) => {
 		event.preventDefault()
-		register(registerUser)
+		registerNewUser(registerUser)
 	}
 
 	return (
