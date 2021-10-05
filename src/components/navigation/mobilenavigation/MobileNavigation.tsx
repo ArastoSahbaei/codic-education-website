@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { useHistory, useLocation } from 'react-router-dom'
-import { HamburgerButton } from './hamburgerbutton/HamburgerButton'
+import { HamburgerButton } from './components/hamburgerbutton/HamburgerButton'
 import { fadeInRight } from 'shared/styles/animations/fadeInRight'
 import { debounce } from './components/debounce'
 import { BackDrop } from '../../BackDrop'
-import { SideBar } from './sidebar/SideBar'
+import { SideBar } from './components/sidebar/SideBar'
 import { Cart } from 'components/cart/Cart'
 import logotypeWhite from 'shared/images/codiclogotype_white.svg'
 import RoutingPath from 'routes/RoutingPath'
@@ -21,7 +21,7 @@ export const MobileNavigation: React.FC = (): JSX.Element => {
 	const location = useLocation()
 	const theme = {
 		bColor: (location.pathname === RoutingPath.initialView) ? 'white' : 'lightgrey',
-		top: showNavBar ? '0px' : '-260px'
+		top: showNavBar ? '0px' : '-200px'
 	}
 
 	const toggleNavbar = debounce(() => {
@@ -29,7 +29,7 @@ export const MobileNavigation: React.FC = (): JSX.Element => {
 		const test = currentScrollPos != prevScrollPos
 		test && setShowNavBar((prevScrollPos > currentScrollPos))
 		setPrevScrollPos(currentScrollPos)
-	}, 500)
+	}, 20)
 
 	useEffect(() => {
 		toggleNavbar()
@@ -54,12 +54,12 @@ const Div = styled.div`
 	justify-content: space-between;
 	padding: 4%;
 	background-color: ${props => props.theme.bColor};
-	position: fixed;
+	position: sticky;
 	top: ${props => props.theme.top};
 	width: 100%;
 	vertical-align: middle;
 	z-index:1000;
-	transition: top 0.3s;
+	transition: top 0.6s;
 `
 
 const Image = styled.img`
