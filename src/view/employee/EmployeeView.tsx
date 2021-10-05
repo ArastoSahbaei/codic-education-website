@@ -9,6 +9,8 @@ export const EmployeeView = () => {
 	const [serverResponse, setServerResponse] = useState([])
 	
 
+
+
 	const fetchData = async () => {
 		try {
 			const {data} = await CodicAPIService.getAllEmployees()
@@ -19,14 +21,25 @@ export const EmployeeView = () => {
 
 	}
 
+	const placeholder = {
+		img: '',
+		firstName: 'commercial',
+		lastName: '',
+		email: '',
+		tel: ''
+	} as never
+
+	const addCommercialBoxToEmployees = [...serverResponse]
+	addCommercialBoxToEmployees.splice(8, 0, placeholder)
+
 	const displayAllEmployees = () => {
 		return (
-			serverResponse.map((item: any) =>
+			addCommercialBoxToEmployees.map((item: any) =>
 				<ProfileCard key={item._id}
 					image={item.img}
 					name={item.firstName + ' ' + item.lastName}
 					email={item.email}
-					number={item.number}
+					number={item.tel}
 				/>
 			)
 		)
