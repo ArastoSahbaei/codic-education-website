@@ -25,7 +25,7 @@ export const useAuthentication = () => {
 		}
 	}
 
-	const register = async (newUserCredentials: RegisterNewUser) => {
+	const registerNewUser = async (newUserCredentials: RegisterNewUser) => {
 		try {
 			await CodicAPIService.registerNewUser(newUserCredentials)
 			//TODO: If registration is successfull -> login the user and tell em to verify their email
@@ -58,7 +58,7 @@ export const useAuthentication = () => {
 		}
 	}
 
-	const recoverLostPassword = async (data: RetrieveLostAccount) => {
+	const resetPassword = async (data: RetrieveLostAccount) => {
 		try {
 			await CodicAPIService.retrieveLostAccount(data)
 			//TODO: check if account does exist in our system
@@ -100,9 +100,9 @@ export const useAuthentication = () => {
 
 	return {
 		login,
-		register,
+		registerNewUser,
 		validateUser,
-		recoverLostPassword,
+		resetPassword,
 		updatePersonalInformation,
 		updatePassword,
 		toggleNewsLetterSubscription,

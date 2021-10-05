@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import CodicAPIService from '../../../shared/api/services/CodicAPIService'
+import CodicAPIService from '../../../../../shared/api/services/CodicAPIService'
 
 export const CreateProductCategory = () => {
 	const [categoryName, setCategoryName] = useState<string>('')
