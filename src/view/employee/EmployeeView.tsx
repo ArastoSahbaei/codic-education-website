@@ -22,11 +22,11 @@ export const EmployeeView = () => {
 	const displayAllEmployees = () => {
 		return (
 			serverResponse.map((item: any) =>
-				<ProfileCard key={item.name}
+				<ProfileCard key={item._id}
 					image={item.img}
 					name={item.firstName + ' ' + item.lastName}
 					email={item.email}
-					number={item.tel}
+					number={item.number}
 				/>
 			)
 		)
