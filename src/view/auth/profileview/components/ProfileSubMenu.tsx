@@ -32,6 +32,9 @@ const Paragraph = styled(NavLink).attrs(({ activeClassName = 'is-active' }) => (
 		display: block;
 		padding-left: 25px;
 	}
+	@media (max-width: 250px){
+		padding-left: 5px;
+	}
 `
 
 const Wrapper = styled.div`
