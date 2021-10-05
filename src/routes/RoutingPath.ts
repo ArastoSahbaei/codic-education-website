@@ -6,7 +6,7 @@ const orderFinishedView = '/order-finished'
 const careerView = '/career'
 const contactView = '/contact'
 const checkoutView = '/checkout'
-const retrieveLostPasswordView = '/reset/:token'
+const resetPasswordView = '/reset/:token'
 const productDetailsView = (id?: string) => { return id ? `/product/${id}` : '/product/:id' }
 const error404View = '/404'
 const aboutUsView = '/about'
@@ -23,7 +23,7 @@ export default {
 	orderFinishedView,
 	contactView,
 	checkoutView,
-	retrieveLostPasswordView,
+	resetPasswordView,
 	careerView,
 	productDetailsView,
 	error404View,
