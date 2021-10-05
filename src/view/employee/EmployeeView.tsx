@@ -1,13 +1,12 @@
 import { ProfileCard } from 'components/ProfileCard'
-import { employeeList } from '../../shared/data/employeeList'
 import { windowsMaxWidth } from 'shared/data/WindowsSizes'
 import { DimensionsInterface } from 'shared/interfaces/DimensionsInterface'
 import styled from 'styled-components'
 import CodicAPIService from 'shared/api/services/CodicAPIService'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 export const EmployeeView = () => {
-	const [serverResponse, setServerResponse] useState([])
+	const [serverResponse, setServerResponse] = useState([])
 	
 
 	const fetchData = async () => {
@@ -20,23 +19,9 @@ export const EmployeeView = () => {
 
 	}
 
-	}
-
-	const placeholder = {
-		img: '',
-		firstName: 'commercial',
-		lastName: '',
-		email: '',
-		tel: ''
-	}
-
-	
-	const addCommericalBoxToEmployeeList = [...employeeList]
-	addCommericalBoxToEmployeeList.splice(8, 0, placeholder)
-
 	const displayAllEmployees = () => {
 		return (
-			addCommericalBoxToEmployeeList.map((item: any) =>
+			serverResponse.map((item: any) =>
 				<ProfileCard key={item.name}
 					image={item.img}
 					name={item.firstName + ' ' + item.lastName}
@@ -46,6 +31,11 @@ export const EmployeeView = () => {
 			)
 		)
 	}
+
+	
+	useEffect(() => {
+		fetchData()
+	}, [])
 
 	return (
 		<>

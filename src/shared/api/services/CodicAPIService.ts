@@ -72,6 +72,9 @@ const getProductByID = (id: string) => {
 const sendContactEmail = (data: ContactForm) => {
 	return http.post('/contact', data)
 }
+const getAllEmployees = () => {
+	return http.get('/employee')
+}
 
 // Admin privilege required to use the functions below
 
@@ -108,9 +111,7 @@ const getAllJobs = () => {
 	return http.get('/career')
 }
 
-const getAllEmployees = () => {
-	return http.get('/employees')
-}
+
 
 export default {
 	createProduct,
