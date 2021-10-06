@@ -1,9 +1,9 @@
+import { useEffect, useState } from 'react'
 import { ProfileCard } from 'components/ProfileCard'
 import { windowsMaxWidth } from 'shared/data/WindowsSizes'
 import { DimensionsInterface } from 'shared/interfaces/DimensionsInterface'
 import styled from 'styled-components'
 import CodicAPIService from 'shared/api/services/CodicAPIService'
-import { useEffect, useState } from 'react'
 
 export const EmployeeView = () => {
 	const [serverResponse, setServerResponse] = useState([])
@@ -15,7 +15,6 @@ export const EmployeeView = () => {
 		} catch (error) {
 			console.log(error)
 		}
-
 	}
 
 	const placeholder = {
