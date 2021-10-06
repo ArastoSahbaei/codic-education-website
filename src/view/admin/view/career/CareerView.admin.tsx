@@ -4,7 +4,7 @@ import { UpdateJob } from './components/UpdateJob'
 export const CareerAdminView = () => {
 	return(
 		<div>
-			<CreateJob />
+			<CreateJob /> <br /> <hr /> <br />
 			<UpdateJob />
 		</div>
 	)

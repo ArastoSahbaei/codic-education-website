@@ -13,7 +13,7 @@ export const UpdateJob = () => {
 		if (!loading) {
 			return data?.map((item: CareerInterface) => 
 				<ProductWrapper key={item._id}>
-					<h3 onClick={() => history.push(RoutingPath.careerDetailsView(item._id), item)}>{item.title}</h3>
+					<Paragraph  onClick={() => history.push(RoutingPath.careerDetailsView(item._id), item)}>{item.title}</Paragraph>
 					<h5>{item.description}</h5>
 					<h5>{item.jobType}</h5>
 					<h6>{item.lastDate}</h6>
@@ -21,8 +21,6 @@ export const UpdateJob = () => {
 			)
 		}
 	}
-
-
 	return(
 		<>
 			<div>
@@ -37,9 +35,9 @@ export const UpdateJob = () => {
 
 const Wrapper = styled.div`
 	display: grid;
-	width: 80%;
+	width: 100%;
 	margin: 0 auto;
-	grid-template-columns: repeat(4, 1fr);
+	grid-template-columns: repeat(2, 1fr);
 `
 
 const ProductWrapper = styled.div`
@@ -67,6 +65,10 @@ const Paragraph = styled.p`
 	font-family: MuseoSans-500, arial;
 	font-size: 0.875rem;
 	font-weight: 600;
+	&:hover {
+		cursor: pointer;
+		text-decoration: underline;
+	}
 `
 
 const Button = styled.div`
