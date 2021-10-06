@@ -83,6 +83,9 @@ const createProductCategory = (productCategoryName: any) => {
 	return http.post('/productcategory', productCategoryName)
 }
 
+const createJob = (careerData: any) => {
+	return http.post('/career', careerData)
+}
 
 const getAllProducts = () => {
 	return http.get('/product')
@@ -106,6 +109,10 @@ const getAllProductBrands = () => {
 
 const getAllJobs = () => {
 	return http.get('/career')
+}
+
+const updateJobWithId = (jobId: string, data: any) =>{
+	http.put(`/career/${jobId}`, data)
 }
 
 export default {
@@ -134,4 +141,6 @@ export default {
 	sendContactEmail,
 	retrieveLostAccount,
 	authenticatedRouteExample,
+	createJob,
+	updateJobWithId
 }

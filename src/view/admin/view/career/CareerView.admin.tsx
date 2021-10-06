@@ -1,8 +1,12 @@
+import { CreateJob } from './components/CreateJob'
+import { UpdateJob } from './components/UpdateJob'
+
 export const CareerAdminView = () => {
 	return(
-		<>
-			<h1>this is the careeradminview</h1>
-		</>
+		<div>
+			<CreateJob />
+			<UpdateJob />
+		</div>
 	)
 
 }
