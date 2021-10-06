@@ -14,6 +14,7 @@ const cookieInformationView = '/cookies'
 const membershipTermsView = '/membership-terms'
 const privacyPolicyView = '/privacy-policy'
 const termsOfPurchaseView = '/purchase-terms'
+const careerDetailsView = (id?: string) => {return id ? `/career/${id}` : '/career/:id'}
 
 export default {
 	initialView,
@@ -32,4 +33,5 @@ export default {
 	membershipTermsView,
 	privacyPolicyView,
 	termsOfPurchaseView,
+	careerDetailsView
 }

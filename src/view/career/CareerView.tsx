@@ -22,7 +22,7 @@ export const CareerView = () => {
 	const displayAllCareers = () => {
 		return (
 			serverResponse.map((item: CareerCardInterface) =>
-				<CareerCard key={item.id}
+				<CareerCard key={item._id}
 					title={item.title}
 					location={item.location}
 					jobType={item.jobType}

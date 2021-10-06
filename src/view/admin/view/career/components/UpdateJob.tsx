@@ -12,8 +12,8 @@ export const UpdateJob = () => {
 	const displayData = () => {
 		if (!loading) {
 			return data?.map((item: CareerInterface) => 
-				<ProductWrapper key={item.id}>
-					<h3 onClick={() => history.push(RoutingPath.productDetailsView(item.id), item)}>{item.title}</h3>
+				<ProductWrapper key={item._id}>
+					<h3 onClick={() => history.push(RoutingPath.careerDetailsView(item._id), item)}>{item.title}</h3>
 					<h5>{item.description}</h5>
 					<h5>{item.jobType}</h5>
 					<h6>{item.lastDate}</h6>
