@@ -7,13 +7,10 @@ import { useEffect, useState } from 'react'
 
 export const EmployeeView = () => {
 	const [serverResponse, setServerResponse] = useState([])
-	
-
-
 
 	const fetchData = async () => {
 		try {
-			const {data} = await CodicAPIService.getAllEmployees()
+			const { data } = await CodicAPIService.getAllEmployees()
 			setServerResponse(data)
 		} catch (error) {
 			console.log(error)
@@ -39,13 +36,13 @@ export const EmployeeView = () => {
 					image={item.img}
 					name={item.firstName + ' ' + item.lastName}
 					email={item.email}
-					number={item.tel}
+					number={item.mobile}
 				/>
 			)
 		)
 	}
 
-	
+
 	useEffect(() => {
 		fetchData()
 	}, [])
