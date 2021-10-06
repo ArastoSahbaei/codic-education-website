@@ -11,7 +11,6 @@ import RoutingPath from 'routes/RoutingPath'
 import logotype from 'shared/images/codiclogotype.svg'
 import styled from 'styled-components'
 
-
 export const MobileNavigation: React.FC = (): JSX.Element => {
 	const [showNavBar, setShowNavBar] = useState<boolean>(true)
 	const [prevScrollPos, setPrevScrollPos] = useState<number>(0)
@@ -29,7 +28,7 @@ export const MobileNavigation: React.FC = (): JSX.Element => {
 		const test = currentScrollPos != prevScrollPos
 		test && setShowNavBar((prevScrollPos > currentScrollPos))
 		setPrevScrollPos(currentScrollPos)
-	}, 20)
+	}, 250)
 
 	useEffect(() => {
 		toggleNavbar()

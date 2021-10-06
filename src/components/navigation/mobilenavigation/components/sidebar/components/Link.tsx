@@ -10,7 +10,7 @@ export const Link =
 	(props: { drawerHandler: (handler: boolean) => void, icon: string, text: string, path?: string, setIsCartOpen?: (value: boolean) => void }) => {
 		const history = useHistory()
 		const [authenticatedUser, setAuthenticatedUser] = useContext(UserContext)
-		const {setIsCartOpen } = props
+		const { setIsCartOpen } = props
 
 		const logout = () => {
 			localStorage.removeItem(LocalStorage.authenticationToken)
@@ -20,7 +20,7 @@ export const Link =
 
 		const displayAmountOfItemsInCart = () => {
 			return authenticatedUser.shoppingCart.products.length != 0
-				&& <Span>{authenticatedUser.shoppingCart.products.length}</Span>	
+				&& <Span>{authenticatedUser.shoppingCart.products.length}</Span>
 		}
 
 		const showCart = () => {
@@ -28,7 +28,7 @@ export const Link =
 		}
 
 		const handleClick = () => {
-			switch (props.path){
+			switch (props.path) {
 			case 'exit':
 				logout()
 				break
@@ -37,7 +37,7 @@ export const Link =
 				break
 			default:
 				history.push(props.path || '/')
-			}		
+			}
 			props.drawerHandler(false)
 		}
 
@@ -45,7 +45,7 @@ export const Link =
 			<Paragraph onClick={() => handleClick()}>
 				<Icon src={props.icon} alt={''} />
 				{props.text}
-				{props.text === 'Varukorg' ? displayAmountOfItemsInCart() : null}
+				{props.text === 'Varukorg' ?? displayAmountOfItemsInCart()}
 			</Paragraph>
 		)
 	}

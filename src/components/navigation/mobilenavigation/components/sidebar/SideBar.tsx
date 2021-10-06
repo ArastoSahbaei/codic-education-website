@@ -19,15 +19,15 @@ import exit from 'shared/images/icons/logout.png'
 import RoutingPath from 'routes/RoutingPath'
 import AuthPath from 'routes/AuthPath'
 
-export const SideBar = (props: {drawerIsOpen: boolean, drawerHandler: (handler: boolean) => void, setIsCartOpen: (value: boolean) => void, }): JSX.Element => {
+export const SideBar = (props: { drawerIsOpen: boolean, drawerHandler: (handler: boolean) => void, setIsCartOpen: (value: boolean) => void, }): JSX.Element => {
 	const [authenticatedUser, setAuthenticatedUser] = useContext(UserContext)
-	
+
 	const displayMobileAuthentication = () => {
 		return authenticatedUser.authenticated
 			? <div>
-				<MenuText> Inloggad som {authenticatedUser.username} </MenuText>
+				<MenuText> {authenticatedUser.username} </MenuText>
 				<Link drawerHandler={props.drawerHandler} icon={profile} text={'Din profil'} path={AuthPath.profileView} />
-				<Link drawerHandler={props.drawerHandler} icon={cartIcon} text={'Varukorg'} path={'viewCart'} setIsCartOpen={props.setIsCartOpen}/>
+				<Link drawerHandler={props.drawerHandler} icon={cartIcon} text={'Varukorg'} path={'viewCart'} setIsCartOpen={props.setIsCartOpen} />
 				<Link drawerHandler={props.drawerHandler} icon={exit} text={'Logga ut'} path={'exit'} />
 				<hr />
 				<Link drawerHandler={props.drawerHandler} icon={data} text={'Din data från Codic'} path={'/TBA'} />
@@ -43,7 +43,7 @@ export const SideBar = (props: {drawerIsOpen: boolean, drawerHandler: (handler: 
 			<hr />
 			<Link drawerHandler={props.drawerHandler} icon={codic} text={'Hem'} path={RoutingPath.initialView} />
 			<Link drawerHandler={props.drawerHandler} icon={visionary} text={'Vår Vision'} />
-			<Link drawerHandler={props.drawerHandler} icon= {team} text={'Utbildare'} path={RoutingPath.employeeView} />
+			<Link drawerHandler={props.drawerHandler} icon={team} text={'Utbildare'} path={RoutingPath.employeeView} />
 			<Link drawerHandler={props.drawerHandler} icon={contact} text={'Kontakt'} path={RoutingPath.contactView} />
 			<Link drawerHandler={props.drawerHandler} icon={shop} text={'Butik'} path={RoutingPath.shopView} />
 			<hr />
@@ -59,6 +59,7 @@ interface values {
 const MenuText = styled.p`
 	color: ${primaryColor};
 	margin: 5px 10px 0px 10px;
+	text-align: center;
 `
 
 const Drawer = styled.nav<values>`
