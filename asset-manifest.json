@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.js": "/codic-education-website/static/js/main.9a005a2d.chunk.js",
-    "main.js.map": "/codic-education-website/static/js/main.9a005a2d.chunk.js.map",
+    "main.js": "/codic-education-website/static/js/main.5391f841.chunk.js",
+    "main.js.map": "/codic-education-website/static/js/main.5391f841.chunk.js.map",
     "runtime-main.js": "/codic-education-website/static/js/runtime-main.82e7c8f9.js",
     "runtime-main.js.map": "/codic-education-website/static/js/runtime-main.82e7c8f9.js.map",
     "static/css/2.97503911.chunk.css": "/codic-education-website/static/css/2.97503911.chunk.css",
@@ -48,6 +48,6 @@
     "static/js/runtime-main.82e7c8f9.js",
     "static/css/2.97503911.chunk.css",
     "static/js/2.4e425751.chunk.js",
-    "static/js/main.9a005a2d.chunk.js"
+    "static/js/main.5391f841.chunk.js"
   ]
 }
