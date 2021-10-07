@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.js": "/codic-education-website/static/js/main.5391f841.chunk.js",
-    "main.js.map": "/codic-education-website/static/js/main.5391f841.chunk.js.map",
+    "main.js": "/codic-education-website/static/js/main.11fc23c9.chunk.js",
+    "main.js.map": "/codic-education-website/static/js/main.11fc23c9.chunk.js.map",
     "runtime-main.js": "/codic-education-website/static/js/runtime-main.82e7c8f9.js",
     "runtime-main.js.map": "/codic-education-website/static/js/runtime-main.82e7c8f9.js.map",
     "static/css/2.97503911.chunk.css": "/codic-education-website/static/css/2.97503911.chunk.css",
-    "static/js/2.4e425751.chunk.js": "/codic-education-website/static/js/2.4e425751.chunk.js",
-    "static/js/2.4e425751.chunk.js.map": "/codic-education-website/static/js/2.4e425751.chunk.js.map",
+    "static/js/2.b867a20f.chunk.js": "/codic-education-website/static/js/2.b867a20f.chunk.js",
+    "static/js/2.b867a20f.chunk.js.map": "/codic-education-website/static/js/2.b867a20f.chunk.js.map",
     "static/js/3.1d93b2d6.chunk.js": "/codic-education-website/static/js/3.1d93b2d6.chunk.js",
     "static/js/3.1d93b2d6.chunk.js.map": "/codic-education-website/static/js/3.1d93b2d6.chunk.js.map",
     "index.html": "/codic-education-website/index.html",
     "static/css/2.97503911.chunk.css.map": "/codic-education-website/static/css/2.97503911.chunk.css.map",
-    "static/js/2.4e425751.chunk.js.LICENSE.txt": "/codic-education-website/static/js/2.4e425751.chunk.js.LICENSE.txt",
+    "static/js/2.b867a20f.chunk.js.LICENSE.txt": "/codic-education-website/static/js/2.b867a20f.chunk.js.LICENSE.txt",
     "static/media/AlegreyaSans.6fa8fccf.ttf": "/codic-education-website/static/media/AlegreyaSans.6fa8fccf.ttf",
     "static/media/AlegreyaSansRegular.be225cd3.ttf": "/codic-education-website/static/media/AlegreyaSansRegular.be225cd3.ttf",
     "static/media/OleoScript.9f2a6e39.ttf": "/codic-education-website/static/media/OleoScript.9f2a6e39.ttf",
@@ -47,7 +47,7 @@
   "entrypoints": [
     "static/js/runtime-main.82e7c8f9.js",
     "static/css/2.97503911.chunk.css",
-    "static/js/2.4e425751.chunk.js",
-    "static/js/main.5391f841.chunk.js"
+    "static/js/2.b867a20f.chunk.js",
+    "static/js/main.11fc23c9.chunk.js"
   ]
 }
