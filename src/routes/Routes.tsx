@@ -51,7 +51,7 @@ export const Routes = (props: { children: React.ReactChild[] }) => {
 	}, [])
 
 	return (
-		<BrowserRouter>
+		<BrowserRouter basename={'/codic-education-website'}>
 			{props.children}
 			<Switch>
 				{/* REGULAR PATHS */}
