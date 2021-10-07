@@ -1,4 +1,4 @@
-import { BrowserRouter, Switch, Route, HashRouter } from 'react-router-dom'
+import { HashRouter, Switch, Route } from 'react-router-dom'
 import { useEffect, useContext } from 'react'
 import { UserContext } from '../shared/providers/UserProvider'
 import { NewsLetterSubscriptionView } from 'view/auth/newslettersubscriptionview/NewsLetterSubscriptionView'
