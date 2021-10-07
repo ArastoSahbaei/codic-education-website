@@ -32,6 +32,7 @@ import { Footer } from '../components/Footer'
 import RoutingPath from './RoutingPath'
 import AdminPath from './AdminPath'
 import AuthPath from './AuthPath'
+import { careerDetailsAdminView } from 'view/admin/view/career/CareerDetailsView.admin'
 
 
 export const Routes = (props: { children: React.ReactChild[] }) => {
@@ -71,6 +72,7 @@ export const Routes = (props: { children: React.ReactChild[] }) => {
 				<Route exact path={RoutingPath.membershipTermsView} component={MembershipTermsView} />
 				<Route exact path={RoutingPath.privacyPolicyView} component={PrivacyPolicyView} />
 				<Route exact path={RoutingPath.termsOfPurchaseView} component={TermsOfPurchaseView} />
+				<Route exact path={RoutingPath.careerDetailsAdminView()} component={careerDetailsAdminView} />
 			
 				{/* ADMIN PATHS */}
 				<Route exact path={AdminPath.adminView} component={AdminView} />
@@ -78,6 +80,7 @@ export const Routes = (props: { children: React.ReactChild[] }) => {
 				<Route exact path={AdminPath.careerAdminView} component={CareerAdminView} />
 				<Route exact path={AdminPath.employeeAdminView} component={EmployeeAdminView} />
 				<Route exact path={AdminPath.userAdminView} component={userAdminView} />
+				
 
 
 

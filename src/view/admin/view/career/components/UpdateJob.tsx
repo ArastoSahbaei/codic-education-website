@@ -1,9 +1,10 @@
 import  styled  from 'styled-components'
 import { useFetch } from 'hooks/useFetch'
 import { useHistory } from 'react-router'
-import RoutingPath from 'routes/RoutingPath'
 import CodicAPIService from 'shared/api/services/CodicAPIService'
 import { CareerInterface } from 'shared/interfaces/CareerInterface'
+import AdminPath from 'routes/AdminPath'
+import RoutingPath from 'routes/RoutingPath'
 
 export const UpdateJob = () => {
 	const history = useHistory()
@@ -13,7 +14,7 @@ export const UpdateJob = () => {
 		if (!loading) {
 			return data?.map((item: CareerInterface) => 
 				<ProductWrapper key={item._id}>
-					<Paragraph  onClick={() => history.push(RoutingPath.careerDetailsView(item._id), item)}>{item.title}</Paragraph>
+					<Paragraph  onClick={() => history.push(RoutingPath.careerDetailsAdminView(item._id), item)}>{item.title}</Paragraph>
 					<h5>{item.description}</h5>
 					<h5>{item.jobType}</h5>
 					<h6>{item.lastDate}</h6>

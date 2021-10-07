@@ -10,5 +10,5 @@ export default {
 	careerAdminView,
 	employeeAdminView,
 	productAdminView,
-	userAdminView
+	userAdminView,
 }
