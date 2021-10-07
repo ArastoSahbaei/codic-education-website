@@ -51,7 +51,7 @@ export const Routes = (props: { children: React.ReactChild[] }) => {
 	}, [])
 
 	return (
-		<HashRouter basename={'/codic-education-website'}>
+		<HashRouter>
 			{props.children}
 			<Switch>
 				{/* REGULAR PATHS */}
