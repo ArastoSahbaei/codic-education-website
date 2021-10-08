@@ -5,7 +5,7 @@ import { primaryColor } from '../../../shared/styles/GlobalStyle'
 import { useAuthentication } from 'hooks/useAuthentication'
 import styled from 'styled-components'
 
-export const SignIn = (props: { changeRecoverPasswordView: () => void }) => {
+export const SignIn = (props: { changeResetPasswordView: () => void }) => {
 	const { login } = useAuthentication()
 	const [loginCredentials, setLoginCredentials] = useState<LoginCredentials>({ username: '', password: '' })
 
@@ -31,7 +31,7 @@ export const SignIn = (props: { changeRecoverPasswordView: () => void }) => {
 					placeholder={'Lösenord'}
 					autoComplete='on'
 					onChange={(event) => { handleChange(event, 'password') }} />
-				<Paragraph onClick={() => { props.changeRecoverPasswordView() }}>Glömt lösenordet?</Paragraph>
+				<Paragraph onClick={() => { props.changeResetPasswordView() }}>Glömt lösenordet?</Paragraph>
 				<Button onClick={(event) => { onSubmit(event) }}>Logga In</Button>
 			</Form>
 		</RowWrapper>

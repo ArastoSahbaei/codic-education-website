@@ -1,8 +1,8 @@
-import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import { HashRouter, Switch, Route } from 'react-router-dom'
 import { useEffect, useContext } from 'react'
 import { UserContext } from '../shared/providers/UserProvider'
 import { NewsLetterSubscriptionView } from 'view/auth/newslettersubscriptionview/NewsLetterSubscriptionView'
-import { RetrieveLostPasswordView } from 'view/retrieve-lost-password/RetrieveLostPasswordView'
+import { ResetPasswordView } from 'view/reset-password/ResetPasswordView'
 import { PersonalInformationView } from 'view/auth/personalinformationview/PersonalInformationView'
 import { UserInformationView } from 'view/auth/userinformationview/UserInformationView'
 import { PurchaseHistoryView } from 'view/auth/purchasehistoryview/PurchaseHistoryView'
@@ -10,6 +10,11 @@ import { ProductDetailView } from '../view/productdetail/ProductDetailView'
 import { useAuthentication } from 'hooks/useAuthentication'
 import { CareerDetailView } from 'view/career/view/CareerDetailView'
 import { CheckoutView } from '../view/checkout/CheckoutView'
+import { AboutUsView } from 'view/information/AboutUsView'
+import { CookieInformationView } from 'view/information/CookieInformationView'
+import { MembershipTermsView } from 'view/information/MembershipTermsView'
+import { PrivacyPolicyView } from 'view/information/privacypolicy/PrivacyPolicyView'
+import { TermsOfPurchaseView } from 'view/information/TermsOfPurchaseView'
 import { EmployeeView } from '../view/employee/EmployeeView'
 import { Error404View } from '../view/error404/Error404View'
 import { InitialView } from '../view/initial/InitialView'
@@ -18,12 +23,17 @@ import { ProfileView } from 'view/auth/profileview/ProfileView'
 import { SignInView } from '../view/signin/SignInView'
 import { CareerView } from 'view/career/CareerView'
 import { AdminView } from '../view/admin/AdminView'
+import { CareerAdminView } from 'view/admin/view/career/CareerView.admin'
+import { EmployeeAdminView } from 'view/admin/view/employee/EmployeeView.admin'
+import { userAdminView } from 'view/admin/view/user/UserView.admin'
+import { ProductAdminView }  from '../view/admin/view/product/ProductView.admin'
 import { OrderView } from '../view/order/OrderView'
 import { ShopView } from '../view/shop/ShopView'
 import { Footer } from '../components/Footer'
 import RoutingPath from './RoutingPath'
 import AdminPath from './AdminPath'
 import AuthPath from './AuthPath'
+
 
 export const Routes = (props: { children: React.ReactChild[] }) => {
 	const [authenticatedUser, setAuthenticatedUser] = useContext(UserContext)
@@ -42,7 +52,7 @@ export const Routes = (props: { children: React.ReactChild[] }) => {
 	}, [])
 
 	return (
-		<BrowserRouter>
+		<HashRouter>
 			{props.children}
 			<Switch>
 				{/* REGULAR PATHS */}
@@ -53,12 +63,27 @@ export const Routes = (props: { children: React.ReactChild[] }) => {
 				<Route exact path={RoutingPath.employeeView} component={EmployeeView} />
 				<Route exact path={RoutingPath.checkoutView} component={CheckoutView} />
 				<Route exact path={RoutingPath.productDetailsView()} component={ProductDetailView} />
-				<Route exact path={RoutingPath.retrieveLostPasswordView} component={RetrieveLostPasswordView} />
+				<Route exact path={RoutingPath.resetPasswordView} component={ResetPasswordView} />
 				<Route exact path={RoutingPath.signInView} component={blockRouteIfAuthenticated(SignInView)} />
 				<Route exact path={RoutingPath.careerView} component={CareerView} />
 				<Route exact path={RoutingPath.careerDetailsView()} component={CareerDetailView} />
 				<Route exact path={RoutingPath.error404View} component={Error404View} />
+				<Route exact path={RoutingPath.aboutUsView} component={AboutUsView} />
+				<Route exact path={RoutingPath.cookieInformationView} component={CookieInformationView} />
+				<Route exact path={RoutingPath.membershipTermsView} component={MembershipTermsView} />
+				<Route exact path={RoutingPath.privacyPolicyView} component={PrivacyPolicyView} />
+				<Route exact path={RoutingPath.termsOfPurchaseView} component={TermsOfPurchaseView} />
+			
+				{/* ADMIN PATHS */}
+				<Route exact path={AdminPath.adminView} component={AdminView} />
+				<Route exact path={AdminPath.productAdminView} component={ProductAdminView} />
+				<Route exact path={AdminPath.careerAdminView} component={CareerAdminView} />
+				<Route exact path={AdminPath.employeeAdminView} component={EmployeeAdminView} />
+				<Route exact path={AdminPath.userAdminView} component={userAdminView} />
 
+
+
+				
 				{/* AUTHENTICATED PATHS */}
 				<Route render={() => (
 					<>
@@ -70,13 +95,10 @@ export const Routes = (props: { children: React.ReactChild[] }) => {
 					</>
 				)} />
 
-				{/* ADMIN PATHS */}
-				<Route exact path={AdminPath.adminView} component={AdminView} />
-
 				{/* INITIAL PATH */}
 				<Route component={InitialView} />
 			</Switch>
 			<Footer />
-		</BrowserRouter>
+		</HashRouter>
 	)
 }

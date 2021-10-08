@@ -23,16 +23,16 @@ export const Footer = () => {
 		<Wrapper>
 			<InformationListWrapper>
 				<Title>Information</Title>
-				{display('Cookies', '/TBA')}
-				{display('Köpvilkor', '/TBA')}
-				{display('Medlemsvilkor', '/TBA')}
-				{display('Integritetspolicy', '/TBA')}
+				{display('Cookies', RoutingPath.cookieInformationView)}
+				{display('Köpvillkor', RoutingPath.termsOfPurchaseView)}
+				{display('Medlemsvillkor', RoutingPath.membershipTermsView)}
+				{display('Integritetspolicy', RoutingPath.privacyPolicyView)}
 				{display('Returnera en vara', '/TBA')}
 			</InformationListWrapper>
 
 			<CompanyListWrapper>
 				<Title>Codic Education</Title>
-				{display('Om Oss', '/TBA')}
+				{display('Om Oss', RoutingPath.aboutUsView)}
 				{display('Samhällsarbete', '/TBA')}
 				{display('Press & Media', '/TBA')}
 				{display('Karriär',  RoutingPath.careerView)}

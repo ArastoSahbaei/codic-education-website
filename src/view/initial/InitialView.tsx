@@ -5,9 +5,8 @@ import { Collaborations } from './components/Collaborations'
 import { primaryColor } from 'shared/styles/GlobalStyle'
 import { Button } from 'components/html/Button'
 import backgroundImage from '../../shared/images/teacher3.jpg'
-import styled from 'styled-components'
 import RoutingPath from 'routes/RoutingPath'
-
+import styled from 'styled-components'
 
 export const InitialView = () => {
 	const history = useHistory()
@@ -16,7 +15,7 @@ export const InitialView = () => {
 			<Image src={backgroundImage} alt={'background of a teacher'} />
 			<Paragraph>
 				Vi <ColoredParagraph>utbildar</ColoredParagraph> Sverige inom <ColoredParagraph>datavetenskap</ColoredParagraph>. <br />
-				<Button text={'Om oss'} style={initialViewButtonStyle} /> <br />
+				<Button text={'Om oss'} style={initialViewButtonStyle} onClick={() => history.push(RoutingPath.aboutUsView)} /> <br />
 				<Button text={'Boka möte'} style={initialViewButtonStyle} /> <br />
 				<Button text={'Lediga tjänster'}  onClick={() => history.push(RoutingPath.careerView)} />
 			</Paragraph>

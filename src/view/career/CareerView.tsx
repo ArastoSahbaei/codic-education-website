@@ -12,6 +12,7 @@ import RoutingPath from 'routes/RoutingPath'
 export const CareerView = () => {
 	const history = useHistory()
 	const [serverResponse, setServerResponse] = useState([])
+
 	const fetchData = async () => {
 		try {
 			const { data } = await CodicAPIService.getAllJobs()
