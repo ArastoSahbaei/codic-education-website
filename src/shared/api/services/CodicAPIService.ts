@@ -69,6 +69,9 @@ const getProductByID = (id: string) => {
 	return http.get(`/product/${id}`)
 }
 
+const getAllEmployees = () => {
+	return http.get('/employee')
+}
 
 const sendContactEmail = (data: ContactForm) => {
 	return http.post('/contact', data)
@@ -148,5 +151,6 @@ export default {
 	authenticatedRouteExample,
 	createJob,
 	updateJobWithId,
-	getJobWithId
+	getJobWithId,
+	getAllEmployees
 }

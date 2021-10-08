@@ -1,4 +1,4 @@
-import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import { HashRouter, Switch, Route } from 'react-router-dom'
 import { useEffect, useContext } from 'react'
 import { UserContext } from '../shared/providers/UserProvider'
 import { NewsLetterSubscriptionView } from 'view/auth/newslettersubscriptionview/NewsLetterSubscriptionView'
@@ -52,7 +52,7 @@ export const Routes = (props: { children: React.ReactChild[] }) => {
 	}, [])
 
 	return (
-		<BrowserRouter>
+		<HashRouter>
 			{props.children}
 			<Switch>
 				{/* REGULAR PATHS */}
@@ -100,6 +100,6 @@ export const Routes = (props: { children: React.ReactChild[] }) => {
 				<Route component={InitialView} />
 			</Switch>
 			<Footer />
-		</BrowserRouter>
+		</HashRouter>
 	)
 }

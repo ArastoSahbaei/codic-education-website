@@ -28,6 +28,13 @@ const Paragraph = styled(NavLink).attrs(({ activeClassName = 'is-active' }) => (
 	&.is-active {
 		color: ${primaryColor};
 	  }
+	@media (max-width: 450px) {
+		display: block;
+		padding-left: 25px;
+	}
+	@media (max-width: 250px){
+		padding-left: 5px;
+	}
 `
 
 const Wrapper = styled.div`
@@ -36,4 +43,11 @@ const Wrapper = styled.div`
 	align-self: center;
 	background-color: #263746;
 	padding: 0.5%;
+	@media (max-width: 700px) {
+		display: grid;
+  		grid-template-columns: auto auto;
+	}
+	@media (max-width: 450px) {
+		display: block;
+	}
 `
