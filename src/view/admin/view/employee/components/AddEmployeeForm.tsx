@@ -1,5 +1,6 @@
 import { useState, useReducer } from 'react'
 import { Button } from 'components/html/Button'
+import styled from 'styled-components'
 
 const formReducer = (state: any, event: { name: any; value: any }) => {
 	return {
@@ -41,11 +42,11 @@ export const AddEmployeeForm = () => {
 	}
 
 	return (
-		<>
+		<Wrapper>
 			<form onSubmit={handleSubmit}>
 				<h1>Lägg till ny anställd</h1>
 
-				<fieldset>
+				<EmployeeInfoWrapper>
 					<legend><h3>Information om den anställde: </h3></legend>
 
 					<label>
@@ -98,8 +99,8 @@ export const AddEmployeeForm = () => {
 							title='Mobilnummer - siffror utan mellanslag'
 						/> <br />
 					</label>
-				</fieldset>
-				<fieldset>
+				</EmployeeInfoWrapper>
+				<EmploymentInfoWrapper>
 					<legend><h3>Information om anställningen: </h3></legend>
 					<label>
 						<p>Startdatum för anställning: </p>
@@ -128,12 +129,56 @@ export const AddEmployeeForm = () => {
 							value={formData.isEmploymentActive || false}
 						/> <br />
 					</label>
-				</fieldset>
+				</EmploymentInfoWrapper>
 				<br />
 				<Button text='Spara' />
+				<br />
 			</form>
-
-		</>
+			<br />
+		</Wrapper>
 	)
 }
 
+const Wrapper = styled.div`
+	padding: 5px 20px;
+	form h1 {
+		text-align: center;
+		margin-bottom: 10px;
+	}
+	
+	form button{
+		float:right;
+		margin: 10px 5%;
+	}
+		
+
+`
+
+const EmployeeInfoWrapper = styled.div`
+	display: inline-block;
+	width: 45%;
+	margin-left: 3%;
+	margin-bottom: 5px;
+	padding: 10px;
+	border: 2px solid black;
+	border-radius: 5px;
+	p {
+		display: inline-block;
+		padding: 10px 20px;
+	}
+`
+
+const EmploymentInfoWrapper = styled.div`
+	display: inline-block;
+	float: right;
+	width: 45%;
+	margin-right: 3%;
+	padding: 10px;
+	padding-bottom: 87px;
+	border: 2px solid black;
+	border-radius: 5px;
+	p {
+		display: inline-block;
+		padding: 10px 20px;
+	}
+`
