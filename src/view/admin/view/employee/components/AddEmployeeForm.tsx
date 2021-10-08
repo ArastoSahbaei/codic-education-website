@@ -2,7 +2,19 @@ import { useState, useReducer } from 'react'
 import { Button } from 'components/html/Button'
 import styled from 'styled-components'
 
-const formReducer = (state: any, event: { name: any; value: any }) => {
+const formReducer = (state: any, event: { reset?: boolean; name?: any; value?: any }) => {
+	if (event.reset){
+		return {
+			firstName: '',
+			lastName: '',
+			dateOfBirth: '',
+			email: '',
+			mobile: '',
+			startEmployeeDate: '',
+			lastEmployeeDate: '',
+			isEmploymentActive: false,
+		}
+	}
 	return {
 		...state,
 		[event.name]: event.value
@@ -29,8 +41,16 @@ export const AddEmployeeForm = () => {
 
 	const handleSubmit = (event: { preventDefault: () => void }) => {
 		event.preventDefault()
+		setSubmitting(true)
 		alert('Submitting data')
 		console.log(formData)
+
+		setTimeout(()=>{
+			setSubmitting(false)
+			setFormData({
+				reset: true
+			})
+		}, 3000)
 	}
 
 	const handleChange = (event: { target: { type: string; name: any; checked: any; value: any } }) => {
@@ -46,7 +66,7 @@ export const AddEmployeeForm = () => {
 			<form onSubmit={handleSubmit}>
 				<h1>Lägg till ny anställd</h1>
 
-				<EmployeeInfoWrapper>
+				<EmployeeInfoWrapper >
 					<legend><h3>Information om den anställde: </h3></legend>
 
 					<label>
@@ -57,6 +77,7 @@ export const AddEmployeeForm = () => {
 							value={formData.firstName || ''}
 							pattern='[A-Za-zÅÄÖåäö-]{1,}'
 							title='Bokstäver, minst en'
+							disabled={submitting}
 							required
 						/> <br />
 					</label>
@@ -68,6 +89,7 @@ export const AddEmployeeForm = () => {
 							value={formData.lastName || ''}
 							pattern='[A-Za-zÅÄÖåäö-]{1,}'
 							title='Bokstäver, minst en'
+							disabled={submitting}
 							required
 						/> <br />
 					</label>
@@ -78,6 +100,7 @@ export const AddEmployeeForm = () => {
 							type='date'
 							onChange={handleChange}
 							value={formData.dateOfBirth || ''}
+							disabled={submitting}
 						/> <br />
 					</label>
 					<label>
@@ -87,6 +110,7 @@ export const AddEmployeeForm = () => {
 							type='email'
 							onChange={handleChange}
 							value={formData.email || ''}
+							disabled={submitting}
 						/> <br />
 					</label>
 					<label>
@@ -97,6 +121,7 @@ export const AddEmployeeForm = () => {
 							value={formData.mobile || ''}
 							pattern='[0-9-+]{6,}'
 							title='Mobilnummer - siffror utan mellanslag'
+							disabled={submitting}
 						/> <br />
 					</label>
 				</EmployeeInfoWrapper>
@@ -109,6 +134,7 @@ export const AddEmployeeForm = () => {
 							type='date'
 							onChange={handleChange}
 							value={formData.startEmployeeDate || ''}
+							disabled={submitting}
 						/> <br />
 					</label>
 					<label>
@@ -118,6 +144,7 @@ export const AddEmployeeForm = () => {
 							type='date'
 							onChange={handleChange}
 							value={formData.lastEmployeeDate || ''}
+							disabled={submitting}
 						/> <br />
 					</label>
 					<label>
@@ -127,11 +154,12 @@ export const AddEmployeeForm = () => {
 							type='checkbox'
 							onChange={handleChange}
 							value={formData.isEmploymentActive || false}
+							disabled={submitting}
 						/> <br />
 					</label>
 				</EmploymentInfoWrapper>
 				<br />
-				<Button text='Spara' />
+				<Button text='Spara' disabled={submitting}/>
 				<br />
 			</form>
 			<br />
