@@ -21,7 +21,6 @@ export const UpdateJob = () => {
 			)
 		}
 	}
-	
 	return(
 		<>
 			<div>

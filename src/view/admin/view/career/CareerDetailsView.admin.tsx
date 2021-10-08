@@ -21,11 +21,6 @@ export const careerDetailsAdminView: React.FC = () => {
 					<span>description: {location.state ? location.state.description : data?.description}</span> <br />
 					<span>jobType: {location.state ? location.state.jobType : data?.jobType}</span> <br />
 					<span>lastDate: {location.state ? location.state.lastDate : data?.lastDate}</span> <br />
-
-
-
-					
-
 				</>
 			)
 	)
