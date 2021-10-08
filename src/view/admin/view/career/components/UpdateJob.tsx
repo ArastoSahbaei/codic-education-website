@@ -3,7 +3,6 @@ import { useFetch } from 'hooks/useFetch'
 import { useHistory } from 'react-router'
 import CodicAPIService from 'shared/api/services/CodicAPIService'
 import { CareerInterface } from 'shared/interfaces/CareerInterface'
-import AdminPath from 'routes/AdminPath'
 import RoutingPath from 'routes/RoutingPath'
 
 export const UpdateJob = () => {
@@ -22,6 +21,7 @@ export const UpdateJob = () => {
 			)
 		}
 	}
+	
 	return(
 		<>
 			<div>
@@ -43,7 +43,7 @@ const Wrapper = styled.div`
 
 const ProductWrapper = styled.div`
 	grid-template-columns: repeat(12, 1fr);
-	padding: 5%;
+	padding: 1%;
 `
 
 const ImageParent = styled.div`
