@@ -19,9 +19,9 @@ export const ListAllEmployeesForAdmin = () => {
 					<td>{mobile}</td>
 					<td>{startEmployeeDate}</td>
 					<td>{lastEmployeeDate}</td>
-					<td>{isEmploymentActive}</td>
+					<td>{isEmploymentActive === true ? 'Ja' : 'Nej'}</td>
 					<td><button>Redigera</button></td>
-                    <td><button>Radera användare</button></td>
+					<td><button>Radera användare</button></td>
 				</tr>
 
 			)
