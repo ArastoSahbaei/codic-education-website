@@ -111,6 +111,11 @@ const getAllJobs = () => {
 	return http.get('/career')
 }
 
+const createEmployee = (employeeAdminData: any) => {
+	return http.post('/employee', employeeAdminData)
+}
+
+
 export default {
 	createProduct,
 	createProductBrand,
@@ -137,5 +142,6 @@ export default {
 	sendContactEmail,
 	retrieveLostAccount,
 	authenticatedRouteExample,
-	getAllEmployees
+	getAllEmployees, 
+	createEmployee
 }

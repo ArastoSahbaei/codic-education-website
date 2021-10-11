@@ -1,6 +1,7 @@
 import { useState, useReducer } from 'react'
 import { Button } from 'components/html/Button'
 import styled from 'styled-components'
+import CodicAPIService from 'shared/api/services/CodicAPIService'
 
 const formReducer = (state: any, event: { reset?: boolean; name?: any; value?: any }) => {
 	if (event.reset){
@@ -24,33 +25,44 @@ const formReducer = (state: any, event: { reset?: boolean; name?: any; value?: a
 export const AddEmployeeForm = () => {
 	const [formData, setFormData] = useReducer(formReducer, {})
 	const [submitting, setSubmitting] = useState<boolean>(false)
+	const [errorMessage, setErrorMessage] = useState<string>('')
+	const [confirmMessage, setConfirmMessage] = useState<string>('')
+	const messageTime = 5000
 
-	/* Information to send to backend should have this format
-	employeeAdminData = {
-		firstName:  - a string,
-		lastName: - a string,
-		dateOfBirth: - a date,
-		email: - a string,
-		mobile: - a string,
-		employeeInformation: {
-			startEmployeeDate: - a date,
-			lastEmployeeDate: - a date,
-			isEmploymentActive: - a boolean
-		}
-	}*/
-
-	const handleSubmit = (event: { preventDefault: () => void }) => {
+	const handleSubmit = async (event: { preventDefault: () => void }) => {
 		event.preventDefault()
 		setSubmitting(true)
-		alert('Submitting data')
-		console.log(formData)
-
-		setTimeout(()=>{
+		const newEmployee = {
+			firstName: formData.firstName,
+			lastName: formData.lastName,
+			dateOfBirth: new Date(formData.dateOfBirth),
+			email: formData.email,
+			mobile: formData.mobile,
+			employeeInformation: {
+				startEmployeeDate: new Date(formData.startEmployeeDate),
+				lastEmployeeDate: new Date(formData.lastEmployeeDate),
+				isEmploymentActive: formData.isEmploymentActive,
+			}
+		}
+		try{
+			const response = await CodicAPIService.createEmployee(newEmployee)
 			setSubmitting(false)
+			setConfirmMessage('Den anställde är inlagd i databasen')
+			setTimeout(() =>{
+				setConfirmMessage('')
+			}, messageTime)
 			setFormData({
 				reset: true
 			})
-		}, 3000)
+		} catch (error){
+			setSubmitting(false)
+			if (error instanceof Error) {
+				setErrorMessage('Det gick inte att lägga till den anställda i databasen - ' + error.message)
+			}
+			setTimeout(() =>{
+				setErrorMessage('')
+			}, messageTime)
+		}		
 	}
 
 	const handleChange = (event: { target: { type: string; name: any; checked: any; value: any } }) => {
@@ -163,6 +175,10 @@ export const AddEmployeeForm = () => {
 				<br />
 			</form>
 			<br />
+			{submitting && <Span>Laddar upp användare... </Span>}
+			{!submitting && <ErrorSpan>{errorMessage}</ErrorSpan>}
+			{!submitting && <Span>{confirmMessage}</Span>}
+			<br />
 		</Wrapper>
 	)
 }
@@ -178,8 +194,6 @@ const Wrapper = styled.div`
 		float:right;
 		margin: 10px 5%;
 	}
-		
-
 `
 
 const EmployeeInfoWrapper = styled.div`
@@ -209,4 +223,15 @@ const EmploymentInfoWrapper = styled.div`
 		display: inline-block;
 		padding: 10px 20px;
 	}
+`
+
+const ErrorSpan = styled.span`
+	display:block;
+	color: red;
+	margin-left: 50px;
+`
+
+const Span = styled.span`
+	display: block;
+	margin-left: 50px;
 `
