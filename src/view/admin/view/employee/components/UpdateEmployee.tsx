@@ -72,7 +72,7 @@ export const UpdateEmployee = (props: {employee: any, setChoice: (value: number)
 
 	return (
 		<Wrapper>
-			<h1>Lägg till ny anställd</h1>
+			<h1>Redigera information rörande anställd</h1>
 			<EmployeeForm formData={formData} setFormData={setFormData} buttonText={buttonText}
 				submitting={submitting} onSubmit={updateEmployeeInDB} readonly={false} />
 			<br />
