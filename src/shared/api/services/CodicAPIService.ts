@@ -28,8 +28,8 @@ const getUserWithQuery = (usernameQuery: string) => {
 	return http.get(`/searchuser?username=${usernameQuery}`)
 }
 
-const updateUser = (userId: string, data: any) => {
-	return http.put(`/user/${userId}`, data)
+const updateUser = (data: any) => {
+	return http.put('/user', data)
 }
 
 const deleteUserWithID = () => {
@@ -76,6 +76,10 @@ const sendContactEmail = (data: ContactForm) => {
 	return http.post('/contact', data)
 }
 
+const getAllJobs = () => {
+	return http.get('/career')
+}
+
 // Admin privilege required to use the functions below
 
 const createProduct = (productData: any) => {
@@ -85,7 +89,6 @@ const createProduct = (productData: any) => {
 const createProductCategory = (productCategoryName: any) => {
 	return http.post('/productcategory', productCategoryName)
 }
-
 
 const getAllProducts = () => {
 	return http.get('/product')
@@ -105,10 +108,6 @@ const createProductBrand = (productBrandData: any) => {
 
 const getAllProductBrands = () => {
 	return http.get('/productbrand')
-}
-
-const getAllJobs = () => {
-	return http.get('/career')
 }
 
 const createEmployee = (employeeAdminData: any) => {

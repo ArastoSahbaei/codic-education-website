@@ -32,9 +32,9 @@ export const ContactForm = () => {
 				validationSchema={Validations.contactFormValidation}
 				onSubmit={(values, actions) => { handleSubmit(values) && actions.resetForm() }}>
 				<Form autoComplete="off">
-					<Input name='name' label='Namn' type='text' required style={{ width: '100%' }} />
-					<Input name='email' label='E-postadress' type='email' required style={{ width: '100%' }} />
-					<Input name='subject' label='Ärende' type='text' required style={{ width: '100%' }} />
+					<Input name='name' label='Namn' type='text' style={{ width: '100%' }} />
+					<Input name='email' label='E-postadress' type='text' style={{ width: '100%' }} />
+					<Input name='subject' label='Ärende' type='text' style={{ width: '100%' }} />
 					<br />
 					<TextArea name='message' type='textarea' placeholder='Meddelande' />
 					<Button text='Skicka' />
@@ -43,6 +43,8 @@ export const ContactForm = () => {
 		</Wrapper>
 	)
 }
+
+
 
 const Wrapper = styled.div`
 	width: 80%;
@@ -84,5 +86,3 @@ const SubParagraph = styled.p`
 	text-transform: none;
 	color: #212121;
 `
-
-

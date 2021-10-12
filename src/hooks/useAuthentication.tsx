@@ -71,7 +71,8 @@ export const useAuthentication = () => {
 
 	const updatePersonalInformation = async (data: UserPersonalDetails) => {
 		try {
-			await CodicAPIService.updateUser(authenticatedUser._id, data)
+			const dataWithUserID = { ...data, id: authenticatedUser._id }
+			await CodicAPIService.updateUser(dataWithUserID)
 			setAuthenticatedUser({ ...authenticatedUser, personalDetails: data.personalDetails })
 			toast.success('Uppgifter har sparats')
 		} catch (error) {
