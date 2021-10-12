@@ -23,7 +23,9 @@ export const ListAllEmployeesForAdmin = (props: { toEdit?: boolean, toDelete?: b
 					{props.toEdit &&<td><button onClick={() => {
 						props.setChoice(5)
 						props.setChosenEmployee(employee)}}>Redigera</button></td>}
-					{props.toDelete && <td><button>Radera användare</button></td>}
+					{props.toDelete && <td><button onClick={() => {
+						props.setChoice(6)
+						props.setChosenEmployee(employee)}}>Radera användare</button></td>}
 				</tr>
 
 			)

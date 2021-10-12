@@ -1,7 +1,7 @@
 import { Button } from 'components/html/Button'
 import styled from 'styled-components'
 
-export const EmployeeForm = (props: { buttonText: string; setFormData: (arg0: { name: string; value: string }) => void; formData: { firstName: string; lastName: string; dateOfBirth: string; email: string; mobile: string; startEmployeeDate: string; lastEmployeeDate: string; isEmploymentActive: any }; submitting: boolean | undefined, onSubmit: any }) => {
+export const EmployeeForm = (props: { buttonText: string; setFormData: (arg0: { name: string; value: string }) => void; formData: { firstName: string; lastName: string; dateOfBirth: string; email: string; mobile: string; startEmployeeDate: string; lastEmployeeDate: string; isEmploymentActive: any }; submitting: boolean | undefined, onSubmit: any, readonly: boolean }) => {
 
 	const handleChange = (event: { target: { type: string; name: string; checked: any; value: string } }) => {
 		const isCheckbox = event.target.type === 'checkbox'
@@ -25,6 +25,7 @@ export const EmployeeForm = (props: { buttonText: string; setFormData: (arg0: { 
 						pattern='[A-Za-zÅÄÖåäö-]{1,}'
 						title='Bokstäver, minst en'
 						disabled={props.submitting}
+						readOnly={props.readonly}
 						required
 					/> <br />
 
@@ -36,6 +37,7 @@ export const EmployeeForm = (props: { buttonText: string; setFormData: (arg0: { 
 						pattern='[A-Za-zÅÄÖåäö-]{1,}'
 						title='Bokstäver, minst en'
 						disabled={props.submitting}
+						readOnly={props.readonly}
 						required
 					/> <br />
 
@@ -46,6 +48,7 @@ export const EmployeeForm = (props: { buttonText: string; setFormData: (arg0: { 
 						onChange={handleChange}
 						value={props.formData.dateOfBirth || ''}
 						disabled={props.submitting}
+						readOnly={props.readonly}
 					/> <br />
 
 					<p>E-post: </p>
@@ -55,6 +58,7 @@ export const EmployeeForm = (props: { buttonText: string; setFormData: (arg0: { 
 						onChange={handleChange}
 						value={props.formData.email || ''}
 						disabled={props.submitting}
+						readOnly={props.readonly}
 					/> <br />
 
 					<p>Mobilnummer: </p>
@@ -65,6 +69,7 @@ export const EmployeeForm = (props: { buttonText: string; setFormData: (arg0: { 
 						pattern='[0-9-+]{6,}'
 						title='Mobilnummer - siffror utan mellanslag'
 						disabled={props.submitting}
+						readOnly={props.readonly}
 					/> <br />
 				</EmployeeInfoWrapper>
 				<EmploymentInfoWrapper>
@@ -77,6 +82,7 @@ export const EmployeeForm = (props: { buttonText: string; setFormData: (arg0: { 
 						onChange={handleChange}
 						value={props.formData.startEmployeeDate || ''}
 						disabled={props.submitting}
+						readOnly={props.readonly}
 					/> <br />
 
 					<p>Slutdatum för anställning: </p>
@@ -86,6 +92,7 @@ export const EmployeeForm = (props: { buttonText: string; setFormData: (arg0: { 
 						onChange={handleChange}
 						value={props.formData.lastEmployeeDate || ''}
 						disabled={props.submitting}
+						readOnly={props.readonly}
 					/> <br />
 
 					<p>Pågående anställning: </p>

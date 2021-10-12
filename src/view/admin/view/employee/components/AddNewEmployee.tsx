@@ -60,7 +60,7 @@ export const AddNewEmployee = () => {
 			}
 		}
 		try {
-			const response = await CodicAPIService.createEmployee(newEmployee)
+			await CodicAPIService.createEmployee(newEmployee)
 			setSubmitting(false)
 			setConfirmMessage('Den anställde är inlagd i databasen')
 			setTimeout(() => {
@@ -85,10 +85,10 @@ export const AddNewEmployee = () => {
 		<Wrapper>
 			<h1>Lägg till ny anställd</h1>
 			<EmployeeForm formData={formData} setFormData={setFormData} buttonText={buttonText}
-				submitting={submitting} onSubmit={addNewEmployeeToDB} />
+				submitting={submitting} onSubmit={addNewEmployeeToDB} readonly={false} />
 			<br />
 			{submitting && <Span>Laddar upp användare... </Span>}
-			{submitting && <ErrorSpan>{errorMessage}</ErrorSpan>}
+			{!submitting && <ErrorSpan>{errorMessage}</ErrorSpan>}
 			{!submitting && <Span>{confirmMessage}</Span>}
 			<br />
 		</Wrapper>

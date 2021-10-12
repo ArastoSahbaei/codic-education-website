@@ -10,8 +10,8 @@ const formReducer = (state: any, event: { name?: any; value?: any }) => {
 	}
 }
 
-export const UpdateEmployee = (props: {employee: any, setChoice: (value: number) => void}) => {
-	const { startEmployeeDate , lastEmployeeDate, isEmploymentActive } = props.employee.employeeInformation
+export const DeleteEmployee = (props: { employee: any, setChoice: (value: number) => void }) => {
+	const { startEmployeeDate, lastEmployeeDate, isEmploymentActive } = props.employee.employeeInformation
 	const [formData, setFormData] = useReducer(formReducer,
 		{
 			firstName: props.employee.firstName,
@@ -27,41 +27,27 @@ export const UpdateEmployee = (props: {employee: any, setChoice: (value: number)
 	const [errorMessage, setErrorMessage] = useState<string>('')
 	const [confirmMessage, setConfirmMessage] = useState<string>('')
 	const messageTime = 5000
-	const buttonText = 'Uppdatera'
+	const buttonText = 'Radera'
 
 	useEffect(() => {
 		return () => clearTimeout()
 	})
 
-	const updateEmployeeInDB = async (event: { preventDefault: () => void }) => {
+	const deleteEmployeeInDB = async (event: { preventDefault: () => void }) => {
 		event.preventDefault()
 		setSubmitting(true)
-		const updatedEmployee = {
-			firstName: formData.firstName,
-			lastName: formData.lastName,
-			dateOfBirth: formData.dateOfBirth ? new Date(formData.dateOfBirth) : '',
-			email: formData.email,
-			mobile: formData.mobile,
-			employeeInformation: {
-				startEmployeeDate: formData.startEmployeeDate ? new Date(formData.startEmployeeDate) : '',
-				lastEmployeeDate: formData.lastEmployeeDate ? new Date(formData.lastEmployeeDate) : '',
-				isEmploymentActive: formData.isEmploymentActive,
-			}
-		}
 		try {
-			await CodicAPIService.updateEmployee(props.employee._id, updatedEmployee)
+			await CodicAPIService.deleteEmployee(props.employee._id)
 			setSubmitting(false)
-			setConfirmMessage('Uppgifterna är ändrade i databasen')
+			setConfirmMessage('Den anställde är raderade ur databasen')
 			setTimeout(() => {
 				setConfirmMessage('')
-				props.setChoice(3)
+				props.setChoice(4)
 			}, 1000)
-			
-		
 		} catch (error) {
 			setSubmitting(false)
 			if (error instanceof Error) {
-				setErrorMessage('Det gick inte att uppdatera den anställdas information i databasen - ' + error.message)
+				setErrorMessage('Det gick inte att radera den anställdes information ur databasen - ' + error.message)
 			}
 			setTimeout(() => {
 				setErrorMessage('')
@@ -72,11 +58,15 @@ export const UpdateEmployee = (props: {employee: any, setChoice: (value: number)
 
 	return (
 		<Wrapper>
-			<h1>Lägg till ny anställd</h1>
+			<h1>Radera en anställd</h1>
+			<Warning>
+				Är du helt säker på att du verkligen vill radera denna anställde, tryck på &lsquo;Radera&lsquo;-knappen. <br />
+				Men tänk på: Rör det sig om en anställning som avslutats, ska du använda dig av &lsquo;Uppdatera&lsquo; i stället (meny ovan) 
+			</Warning>
 			<EmployeeForm formData={formData} setFormData={setFormData} buttonText={buttonText}
-				submitting={submitting} onSubmit={updateEmployeeInDB} readonly={false} />
+				submitting={submitting} onSubmit={deleteEmployeeInDB} readonly={true} />
 			<br />
-			{submitting && <Span>Kontakt med databasen pågår... </Span>}
+			{submitting && <Span>Kontakt med databasen pågår ... </Span>}
 			{!submitting && <ErrorSpan>{errorMessage}</ErrorSpan>}
 			{!submitting && <Span>{confirmMessage}</Span>}
 			<br />
@@ -91,6 +81,13 @@ const Wrapper = styled.div`
 		text-align: center;
 		margin-bottom: 10px;
 	}
+`
+
+const Warning = styled.p`
+	color: red;
+	padding: 5px;
+	margin-bottom: 10px;
+	border: 3px solid red;
 `
 
 const ErrorSpan = styled.span`

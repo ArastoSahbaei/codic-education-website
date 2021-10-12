@@ -119,6 +119,9 @@ const updateEmployee = (employeeId: string, employeeAdminData: any) => {
 	return http.put(`/employee/${employeeId}`, employeeAdminData)
 }
 
+const deleteEmployee = (employeeId: string) => {
+	return http.delete(`/employee/${employeeId}`)
+}
 
 export default {
 	createProduct,
@@ -149,4 +152,5 @@ export default {
 	getAllEmployees, 
 	createEmployee,
 	updateEmployee,
+	deleteEmployee,
 }
