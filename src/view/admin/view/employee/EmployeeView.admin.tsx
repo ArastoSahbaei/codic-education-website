@@ -1,16 +1,17 @@
 import { useState } from 'react'
-import { AddEmployeeForm } from './components/AddEmployeeForm'
+import { AddNewEmployee } from './components/AddNewEmployee'
 import { ChoiceHeader } from './components/ChoiceHeader'
 import { ListAllEmployeesForAdmin } from './components/ListAllEmployeesForAdmin'
+import styled from 'styled-components'
 
 export const EmployeeAdminView = () => {
-	const [choice, setChoice] = useState<number>(2)
+	const [choice, setChoice] = useState<number>(0)
 
 	const displayChoice = (choice: number) => {
 		switch (choice) {
 		case 1:
 			// Form to add employee
-			return <AddEmployeeForm />
+			return <AddNewEmployee />
 		case 2:
 			// List of all employees without buttons
 			return <ListAllEmployeesForAdmin setChoice={setChoice} />
@@ -24,7 +25,7 @@ export const EmployeeAdminView = () => {
 			// Form to edit employee
 			return 'här kommer ett formulär för redigering'
 		default:
-			return <p>Du har inte gjort något val</p>
+			return <Div>Du har inte gjort något val - välj ovan!</Div>
 		}
 
 	}
@@ -36,5 +37,11 @@ export const EmployeeAdminView = () => {
 			{displayChoice(choice)}
 		</>
 	)
-
 }
+
+const Div = styled.div`
+	text-align: center;
+	height: 200px;
+	font-size: 1.5rem;
+	padding-top: 30px;
+`
