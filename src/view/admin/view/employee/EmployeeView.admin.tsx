@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { AddNewEmployee } from './components/AddNewEmployee'
 import { ChoiceHeader } from './components/ChoiceHeader'
 import { ListAllEmployeesForAdmin } from './components/ListAllEmployeesForAdmin'
+import { UpdateEmployee } from './components/UpdateEmployee'
 import styled from 'styled-components'
 
 export const EmployeeAdminView = () => {
@@ -24,12 +25,10 @@ export const EmployeeAdminView = () => {
 			return <ListAllEmployeesForAdmin toDelete={true} setChoice={setChoice} setChosenEmployee={setChosenEmployee} />
 		case 5:
 			// Form to edit employee
-			console.log(chosenEmployee)
-			return 'här kommer ett formulär för redigering'
+			return <UpdateEmployee employee={chosenEmployee} setChoice={setChoice} />
 		default:
 			return <Div>Du har inte gjort något val - välj ovan!</Div>
 		}
-
 	}
 
 	return (

@@ -115,6 +115,10 @@ const createEmployee = (employeeAdminData: any) => {
 	return http.post('/employee', employeeAdminData)
 }
 
+const updateEmployee = (employeeId: string, employeeAdminData: any) => {
+	return http.put(`/employee/${employeeId}`, employeeAdminData)
+}
+
 
 export default {
 	createProduct,
@@ -143,5 +147,6 @@ export default {
 	retrieveLostAccount,
 	authenticatedRouteExample,
 	getAllEmployees, 
-	createEmployee
+	createEmployee,
+	updateEmployee,
 }

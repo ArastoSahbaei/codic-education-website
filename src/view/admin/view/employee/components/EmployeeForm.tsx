@@ -93,7 +93,7 @@ export const EmployeeForm = (props: { buttonText: string; setFormData: (arg0: { 
 						name='isEmploymentActive'
 						type='checkbox'
 						onChange={handleChange}
-						value={props.formData.isEmploymentActive || false}
+						checked={props.formData.isEmploymentActive}
 						disabled={props.submitting}
 					/> <br />
 

@@ -76,8 +76,7 @@ const Wrapper = styled.div`
     table {
         width: 100%;
         tr td button {
-            width: 150px;
-            height: 25px;
+            padding: 5px;
             margin-right: 15px;
             margin-bottom: 5px;
         }
