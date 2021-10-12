@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import CodicAPIService from 'shared/api/services/CodicAPIService'
 
 const formReducer = (state: any, event: { reset?: boolean; name?: any; value?: any }) => {
-	if (event.reset){
+	if (event.reset) {
 		return {
 			firstName: '',
 			lastName: '',
@@ -44,25 +44,25 @@ export const AddEmployeeForm = () => {
 				isEmploymentActive: formData.isEmploymentActive,
 			}
 		}
-		try{
+		try {
 			const response = await CodicAPIService.createEmployee(newEmployee)
 			setSubmitting(false)
 			setConfirmMessage('Den anställde är inlagd i databasen')
-			setTimeout(() =>{
+			setTimeout(() => {
 				setConfirmMessage('')
 			}, messageTime)
 			setFormData({
 				reset: true
 			})
-		} catch (error){
+		} catch (error) {
 			setSubmitting(false)
 			if (error instanceof Error) {
 				setErrorMessage('Det gick inte att lägga till den anställda i databasen - ' + error.message)
 			}
-			setTimeout(() =>{
+			setTimeout(() => {
 				setErrorMessage('')
 			}, messageTime)
-		}		
+		}
 	}
 
 	const handleChange = (event: { target: { type: string; name: any; checked: any; value: any } }) => {
@@ -75,100 +75,91 @@ export const AddEmployeeForm = () => {
 
 	return (
 		<Wrapper>
+			<h1>Lägg till ny anställd</h1>
 			<form onSubmit={handleSubmit}>
-				<h1>Lägg till ny anställd</h1>
-
 				<EmployeeInfoWrapper >
-					<legend><h3>Information om den anställde: </h3></legend>
+					<h3>Information om den anställde: </h3>
 
-					<label>
-						<p>Förnamn: </p>
-						<input
-							name='firstName'
-							onChange={handleChange}
-							value={formData.firstName || ''}
-							pattern='[A-Za-zÅÄÖåäö-]{1,}'
-							title='Bokstäver, minst en'
-							disabled={submitting}
-							required
-						/> <br />
-					</label>
-					<label>
-						<p>Eftername: </p>
-						<input
-							name='lastName'
-							onChange={handleChange}
-							value={formData.lastName || ''}
-							pattern='[A-Za-zÅÄÖåäö-]{1,}'
-							title='Bokstäver, minst en'
-							disabled={submitting}
-							required
-						/> <br />
-					</label>
-					<label>
-						<p>Födelsedatum: </p>
-						<input
-							name='dateOfBirth'
-							type='date'
-							onChange={handleChange}
-							value={formData.dateOfBirth || ''}
-							disabled={submitting}
-						/> <br />
-					</label>
-					<label>
-						<p>E-post: </p>
-						<input
-							name='email'
-							type='email'
-							onChange={handleChange}
-							value={formData.email || ''}
-							disabled={submitting}
-						/> <br />
-					</label>
-					<label>
-						<p>Mobilnummer: </p>
-						<input
-							name='mobile'
-							onChange={handleChange}
-							value={formData.mobile || ''}
-							pattern='[0-9-+]{6,}'
-							title='Mobilnummer - siffror utan mellanslag'
-							disabled={submitting}
-						/> <br />
-					</label>
+					<p>Förnamn: </p>
+					<input
+						name='firstName'
+						onChange={handleChange}
+						value={formData.firstName || ''}
+						pattern='[A-Za-zÅÄÖåäö-]{1,}'
+						title='Bokstäver, minst en'
+						disabled={submitting}
+						required
+					/> <br />
+
+					<p>Eftername: </p>
+					<input
+						name='lastName'
+						onChange={handleChange}
+						value={formData.lastName || ''}
+						pattern='[A-Za-zÅÄÖåäö-]{1,}'
+						title='Bokstäver, minst en'
+						disabled={submitting}
+						required
+					/> <br />
+
+					<p>Födelsedatum: </p>
+					<input
+						name='dateOfBirth'
+						type='date'
+						onChange={handleChange}
+						value={formData.dateOfBirth || ''}
+						disabled={submitting}
+					/> <br />
+
+					<p>E-post: </p>
+					<input
+						name='email'
+						type='email'
+						onChange={handleChange}
+						value={formData.email || ''}
+						disabled={submitting}
+					/> <br />
+
+					<p>Mobilnummer: </p>
+					<input
+						name='mobile'
+						onChange={handleChange}
+						value={formData.mobile || ''}
+						pattern='[0-9-+]{6,}'
+						title='Mobilnummer - siffror utan mellanslag'
+						disabled={submitting}
+					/> <br />
 				</EmployeeInfoWrapper>
 				<EmploymentInfoWrapper>
-					<legend><h3>Information om anställningen: </h3></legend>
-					<label>
-						<p>Startdatum för anställning: </p>
-						<input
-							name='startEmployeeDate'
-							type='date'
-							onChange={handleChange}
-							value={formData.startEmployeeDate || ''}
-							disabled={submitting}
-						/> <br />
-					</label>
-					<label>
-						<p>Slutdatum för anställning: </p>
-						<input
-							name='lastEmployeeDate'
-							type='date'
-							onChange={handleChange}
-							value={formData.lastEmployeeDate || ''}
-							disabled={submitting}
-						/> <br />
-					</label>
-					<label>
-						<p>Pågående anställning: </p>
-						<input
-							name='isEmploymentActive'
-							type='checkbox'
-							onChange={handleChange}
-							value={formData.isEmploymentActive || false}
-							disabled={submitting}
-						/> <br />
-					</label>
+					<h3>Information om anställningen: </h3>
+
+					<p>Startdatum för anställning: </p>
+					<input
+						name='startEmployeeDate'
+						type='date'
+						onChange={handleChange}
+						value={formData.startEmployeeDate || ''}
+						disabled={submitting}
+					/> <br />
+
+					<p>Slutdatum för anställning: </p>
+					<input
+						name='lastEmployeeDate'
+						type='date'
+						onChange={handleChange}
+						value={formData.lastEmployeeDate || ''}
+						disabled={submitting}
+					/> <br />
+
+					<p>Pågående anställning: </p>
+					<input
+						name='isEmploymentActive'
+						type='checkbox'
+						onChange={handleChange}
+						value={formData.isEmploymentActive || false}
+						disabled={submitting}
+					/> <br />
+
 				</EmploymentInfoWrapper>
 				<br />
 				<Button text='Spara' disabled={submitting}/>
@@ -185,7 +176,7 @@ export const AddEmployeeForm = () => {
 
 const Wrapper = styled.div`
 	padding: 5px 20px;
-	form h1 {
+	h1 {
 		text-align: center;
 		margin-bottom: 10px;
 	}
