@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { ContactForm } from 'shared/interfaces/ContactFormInterface'
 import { StartNewsSubscriptionInterface, LoginCredentials, RegisterNewUser, RetrieveLostAccount, UpdatePassword } from 'shared/interfaces/UserInterface'
-import { AdminView } from 'view/admin/AdminView'
 import http from '../CodicAPI'
 
 
