@@ -6,6 +6,7 @@ import styled from 'styled-components'
 
 export const EmployeeAdminView = () => {
 	const [choice, setChoice] = useState<number>(0)
+	const [chosenEmployee, setChosenEmployee] = useState()
 
 	const displayChoice = (choice: number) => {
 		switch (choice) {
@@ -14,15 +15,16 @@ export const EmployeeAdminView = () => {
 			return <AddNewEmployee />
 		case 2:
 			// List of all employees without buttons
-			return <ListAllEmployeesForAdmin setChoice={setChoice} />
+			return <ListAllEmployeesForAdmin setChoice={setChoice} setChosenEmployee={setChosenEmployee}/>
 		case 3:
 			// List of all employees with buttons to edit employee
-			return <ListAllEmployeesForAdmin toEdit={true} setChoice={setChoice} />
+			return <ListAllEmployeesForAdmin toEdit={true} setChoice={setChoice} setChosenEmployee={setChosenEmployee}/>
 		case 4:
 			// List of all employees with buttons to delete employee
-			return <ListAllEmployeesForAdmin toDelete={true} setChoice={setChoice} />
+			return <ListAllEmployeesForAdmin toDelete={true} setChoice={setChoice} setChosenEmployee={setChosenEmployee} />
 		case 5:
 			// Form to edit employee
+			console.log(chosenEmployee)
 			return 'här kommer ett formulär för redigering'
 		default:
 			return <Div>Du har inte gjort något val - välj ovan!</Div>

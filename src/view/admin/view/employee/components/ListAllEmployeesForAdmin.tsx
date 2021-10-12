@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import CodicAPIService from 'shared/api/services/CodicAPIService'
 
-export const ListAllEmployeesForAdmin = (props: { toEdit?: boolean, toDelete?: boolean, setChoice: (value: number) => void }) => {
+export const ListAllEmployeesForAdmin = (props: { toEdit?: boolean, toDelete?: boolean, setChoice: (value: number) => void, setChosenEmployee: (arg0: any) => void }) => {
 	const [employees, setEmployes] = useState([])
 	const [isLoaded, setIsLoaded] = useState<boolean>(false)
 
@@ -20,7 +20,9 @@ export const ListAllEmployeesForAdmin = (props: { toEdit?: boolean, toDelete?: b
 					<td>{startEmployeeDate}</td>
 					<td>{lastEmployeeDate}</td>
 					<td>{isEmploymentActive === true ? 'Ja' : 'Nej'}</td>
-					{props.toEdit &&<td><button onClick={() => props.setChoice(5)}>Redigera</button></td>}
+					{props.toEdit &&<td><button onClick={() => {
+						props.setChoice(5)
+						props.setChosenEmployee(employee)}}>Redigera</button></td>}
 					{props.toDelete && <td><button>Radera användare</button></td>}
 				</tr>
 
