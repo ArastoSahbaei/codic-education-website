@@ -16,10 +16,6 @@ export interface updateJobWithId {
     lastDate: Date
 }
 
-const populateIfEmpty = () => {
-	
-}
-
 
 export const careerDetailsAdminView: React.FC = () => {
 	const location = useLocation<CareerInterface>()
