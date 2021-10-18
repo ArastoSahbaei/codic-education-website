@@ -122,6 +122,14 @@ const deleteEmployee = (employeeId: string) => {
 	return http.delete(`/employee/${employeeId}`)
 }
 
+const uploadEmployeeAvatar = (employeeId: string, avatar: any) => {
+	return http.put(`/employee/upload/${employeeId}`, avatar, {
+		headers: {
+			'Content-Type': 'multipart/form-data'
+		}
+	})
+}
+
 export default {
 	createProduct,
 	createProductBrand,
@@ -152,4 +160,5 @@ export default {
 	createEmployee,
 	updateEmployee,
 	deleteEmployee,
+	uploadEmployeeAvatar,
 }

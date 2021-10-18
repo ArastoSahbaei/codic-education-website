@@ -34,6 +34,7 @@ export const AddNewEmployee = () => {
 			lastEmployeeDate: '',
 			isEmploymentActive: false,
 		})
+	const [selectedFile, setSelectedFile] = useState<File>()
 	const [submitting, setSubmitting] = useState<boolean>(false)
 	const [errorMessage, setErrorMessage] = useState<string>('')
 	const [confirmMessage, setConfirmMessage] = useState<string>('')
@@ -44,6 +45,21 @@ export const AddNewEmployee = () => {
 		return () => clearTimeout()
 	})
 
+	const uploadEmployeeAvatarToDB = async (id: string) => {
+		const avatar = new FormData()
+		try {
+			if(selectedFile !== undefined){
+				// uses 'files' to match server
+				avatar.append('files', selectedFile)
+				await CodicAPIService.uploadEmployeeAvatar(id, avatar)
+				setSelectedFile(undefined)
+			}
+		}
+		catch (error) {
+			console.log(error)
+		}
+		
+	}
 	const addNewEmployeeToDB = async (event: { preventDefault: () => void }) => {
 		event.preventDefault()
 		setSubmitting(true)
@@ -60,7 +76,12 @@ export const AddNewEmployee = () => {
 			}
 		}
 		try {
-			await CodicAPIService.createEmployee(newEmployee)
+			const response = await CodicAPIService.createEmployee(newEmployee)
+			console.log('Id - ' + response.data._id)
+			console.log(selectedFile)
+			if (selectedFile !== undefined) {
+				uploadEmployeeAvatarToDB(response.data._id)
+			}
 			setSubmitting(false)
 			setConfirmMessage('Den anställde är inlagd i databasen')
 			setTimeout(() => {
@@ -80,11 +101,10 @@ export const AddNewEmployee = () => {
 		}
 	}
 
-
 	return (
 		<Wrapper>
 			<h1>Lägg till ny anställd</h1>
-			<EmployeeForm formData={formData} setFormData={setFormData} buttonText={buttonText}
+			<EmployeeForm formData={formData} setFormData={setFormData} selectedFile={selectedFile} setSelectedFile={setSelectedFile} buttonText={buttonText}
 				submitting={submitting} onSubmit={addNewEmployeeToDB} readonly={false} />
 			<br />
 			{submitting && <Span>Laddar upp användare... </Span>}

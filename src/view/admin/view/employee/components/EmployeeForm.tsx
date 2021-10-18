@@ -1,7 +1,7 @@
 import { Button } from 'components/html/Button'
 import styled from 'styled-components'
 
-export const EmployeeForm = (props: { buttonText: string; setFormData: (arg0: { name: string; value: string }) => void; formData: { firstName: string; lastName: string; dateOfBirth: string; email: string; mobile: string; startEmployeeDate: string; lastEmployeeDate: string; isEmploymentActive: any }; submitting: boolean | undefined, onSubmit: any, readonly: boolean }) => {
+export const EmployeeForm = (props: { buttonText: string; setFormData: (arg0: { name: string; value: string }) => void; formData: { firstName: string; lastName: string; dateOfBirth: string; email: string; mobile: string; startEmployeeDate: string; lastEmployeeDate: string; isEmploymentActive: any }; selectedFile?: any, setSelectedFile?: any, submitting: boolean | undefined; onSubmit: any, readonly: boolean }) => {
 
 	const handleChange = (event: { target: { type: string; name: string; checked: any; value: string } }) => {
 		const isCheckbox = event.target.type === 'checkbox'
@@ -68,6 +68,15 @@ export const EmployeeForm = (props: { buttonText: string; setFormData: (arg0: { 
 						value={props.formData.mobile || ''}
 						pattern='[0-9-+]{6,}'
 						title='Mobilnummer - siffror utan mellanslag'
+						disabled={props.submitting}
+						readOnly={props.readonly}
+					/> <br />
+
+					<p>Lägg till avatar: </p>
+					<input
+						name='selectedFile'
+						type='file'
+						onChange={(e) => e.target.files !== null ? props.setSelectedFile(e.target.files[0]) : props.setSelectedFile(null)}
 						disabled={props.submitting}
 						readOnly={props.readonly}
 					/> <br />
