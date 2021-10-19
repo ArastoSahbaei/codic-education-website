@@ -4,6 +4,9 @@ import { useHistory } from 'react-router'
 import CodicAPIService from 'shared/api/services/CodicAPIService'
 import { CareerInterface } from 'shared/interfaces/CareerInterface'
 import RoutingPath from 'routes/RoutingPath'
+import { primaryColor } from 'shared/styles/GlobalStyle'
+import { DimensionsInterface } from 'shared/interfaces/DimensionsInterface'
+import { windowsMaxWidth } from 'shared/data/WindowsSizes'
 
 export const UpdateJob = () => {
 	const history = useHistory()
@@ -12,12 +15,13 @@ export const UpdateJob = () => {
 	const displayData = () => {
 		if (!loading) {
 			return data?.map((item: CareerInterface) => 
-				<ProductWrapper key={item._id}>
+			
+				<Div key={item._id} onClick={() => history.push(RoutingPath.careerDetailsAdminView(item._id), item)}>
 					<Paragraph  onClick={() => history.push(RoutingPath.careerDetailsAdminView(item._id), item)}>{item.title}</Paragraph>
 					<h5>{item.description}</h5>
 					<h5>{item.jobType}</h5>
 					<h6>{item.lastDate}</h6>
-				</ProductWrapper>
+				</Div>
 			)
 		}
 	}
@@ -25,60 +29,60 @@ export const UpdateJob = () => {
 		<>
 			<div>
 				<h1>Update an existing job</h1>
-				<Wrapper>
+				<GridWrapper dimensions={windowsMaxWidth}>
 					{displayData()}
-				</Wrapper>
+				</GridWrapper>
 			</div>
 		</>
 	)
 }
 
+
+
 const Wrapper = styled.div`
-	display: grid;
+    cursor: pointer;
+	padding: 5%;
+	display: flex;
+	justify-content: center;
+    text-align: center;
+`
+
+const Div = styled.div`
 	width: 100%;
-	margin: 0 auto;
-	grid-template-columns: repeat(2, 1fr);
-`
-
-const ProductWrapper = styled.div`
-	grid-template-columns: repeat(12, 1fr);
-	padding: 1%;
-`
-
-const ImageParent = styled.div`
-	overflow: hidden;
+	background-color: ${primaryColor};
+	padding: 0.5%;
+	box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
 `
 
 const Image = styled.img`
-	width: 100%;
-	box-shadow: 1px 0px 7px rgba(0, 0, 0, 0.5);
-	transition: transform .75s, visibility .75s ease-in;
-	&:hover {
-		cursor: pointer;
-		transform: scale(1.2);
-	}
+	background-color: white;
+    width: 100%;
+    height: 200px;
 `
 
-const Paragraph = styled.p`
-	color: #313942;
-	line-height: px;
-	font-family: MuseoSans-500, arial;
-	font-size: 0.875rem;
-	font-weight: 600;
-	&:hover {
-		cursor: pointer;
-		text-decoration: underline;
+const GridWrapper = styled.div<DimensionsInterface>`
+	cursor: pointer;
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	margin: 0 auto;
+	width: 80%;
+	padding: 1%;
+	grid-gap: 1%;
+	@media (max-width: 1450px) {
+		grid-template-columns: repeat(3, 1fr);
+	}
+	@media (max-width: 1050px) {
+		grid-template-columns: repeat(2, 1fr);
+	}
+	@media (max-width: 700px) {
+		grid-template-columns: repeat(1, 1fr);
 	}
 `
-
-const Button = styled.div`
-	background-color: #4084b5;
-	text-align: center;
-	padding: 1.5%;
-	color: white;
-	font-size: 0.75rem;
-	font-weight: 600;
-	&:hover {
-		cursor: pointer;
-	}
+const Paragraph = styled.p`    
+	font-family: Alegreya Sans;
+	font-weight: 400;
+	font-style: normal;
+	letter-spacing: .01em;
+	text-transform: none;
+	line-height: 1.5em;
 `
