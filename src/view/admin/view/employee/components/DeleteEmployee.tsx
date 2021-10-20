@@ -22,13 +22,13 @@ export const DeleteEmployee = (props: { employee: any, setChoice: (value: number
 			startEmployeeDate: startEmployeeDate,
 			lastEmployeeDate: lastEmployeeDate,
 			isEmploymentActive: isEmploymentActive,
+			avatarExists: (props.employee.image ? true : false)
 		})
 	const [submitting, setSubmitting] = useState<boolean>(false)
 	const [errorMessage, setErrorMessage] = useState<string>('')
 	const [confirmMessage, setConfirmMessage] = useState<string>('')
 	const messageTime = 5000
-	const buttonText = 'Radera'
-
+	
 	useEffect(() => {
 		return () => clearTimeout()
 	})
@@ -55,7 +55,6 @@ export const DeleteEmployee = (props: { employee: any, setChoice: (value: number
 		}
 	}
 
-
 	return (
 		<Wrapper>
 			<h1>Radera en anställd</h1>
@@ -63,15 +62,14 @@ export const DeleteEmployee = (props: { employee: any, setChoice: (value: number
 				Är du helt säker på att du verkligen vill radera denna anställde, tryck på &lsquo;Radera&lsquo;-knappen. <br />
 				Men tänk på: Rör det sig om en anställning som avslutats, ska du använda dig av &lsquo;Uppdatera&lsquo; i stället (meny ovan) 
 			</Warning>
-			<EmployeeForm formData={formData} setFormData={setFormData} buttonText={buttonText}
-				submitting={submitting} onSubmit={deleteEmployeeInDB} readonly={true} />
+			<EmployeeForm formData={formData} setFormData={setFormData} chosenMethod='delete'
+				submitting={submitting} onSubmit={deleteEmployeeInDB} />
 			<br />
 			{submitting && <Span>Kontakt med databasen pågår ... </Span>}
 			{!submitting && <ErrorSpan>{errorMessage}</ErrorSpan>}
 			{!submitting && <Span>{confirmMessage}</Span>}
 			<br />
 		</Wrapper>
-
 	)
 }
 

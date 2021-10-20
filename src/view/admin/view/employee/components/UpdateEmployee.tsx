@@ -22,16 +22,43 @@ export const UpdateEmployee = (props: {employee: any, setChoice: (value: number)
 			startEmployeeDate: startEmployeeDate,
 			lastEmployeeDate: lastEmployeeDate,
 			isEmploymentActive: isEmploymentActive,
+			avatarExists: (props.employee.image ? true : false),
 		})
+	const [selectedFile, setSelectedFile] = useState<File>()
 	const [submitting, setSubmitting] = useState<boolean>(false)
 	const [errorMessage, setErrorMessage] = useState<string>('')
 	const [confirmMessage, setConfirmMessage] = useState<string>('')
 	const messageTime = 5000
-	const buttonText = 'Uppdatera'
-
+	
 	useEffect(() => {
 		return () => clearTimeout()
 	})
+
+	const uploadEmployeeAvatarToDB = async (id: string) => {
+		const avatar = new FormData()
+		try {
+			if(selectedFile !== undefined){
+				// uses 'files' to match server
+				avatar.append('files', selectedFile)
+				await CodicAPIService.uploadEmployeeAvatar(id, avatar)
+				setSelectedFile(undefined)
+				setConfirmMessage('Både den anställde och avataren är inlagd i databasen')
+				setTimeout(() => {
+					setConfirmMessage('')
+				}, messageTime)
+			}
+		}
+		catch (error) {
+			setSubmitting(false)
+			if (error instanceof Error) {
+				setErrorMessage('Det gick inte att lägga till avataren i databasen - ' + error.message)
+			}
+			setTimeout(() => {
+				setErrorMessage('')
+			}, messageTime)
+		}
+		
+	}
 
 	const updateEmployeeInDB = async (event: { preventDefault: () => void }) => {
 		event.preventDefault()
@@ -50,6 +77,9 @@ export const UpdateEmployee = (props: {employee: any, setChoice: (value: number)
 		}
 		try {
 			await CodicAPIService.updateEmployee(props.employee._id, updatedEmployee)
+			if (selectedFile !== undefined) {
+				uploadEmployeeAvatarToDB(props.employee._id)
+			}
 			setSubmitting(false)
 			setConfirmMessage('Uppgifterna är ändrade i databasen')
 			setTimeout(() => {
@@ -57,7 +87,6 @@ export const UpdateEmployee = (props: {employee: any, setChoice: (value: number)
 				props.setChoice(3)
 			}, 1000)
 			
-		
 		} catch (error) {
 			setSubmitting(false)
 			if (error instanceof Error) {
@@ -69,12 +98,11 @@ export const UpdateEmployee = (props: {employee: any, setChoice: (value: number)
 		}
 	}
 
-
 	return (
 		<Wrapper>
 			<h1>Redigera information rörande anställd</h1>
-			<EmployeeForm formData={formData} setFormData={setFormData} buttonText={buttonText}
-				submitting={submitting} onSubmit={updateEmployeeInDB} readonly={false} />
+			<EmployeeForm formData={formData} setFormData={setFormData} selectedFile={selectedFile} setSelectedFile={setSelectedFile} chosenMethod='update'
+				submitting={submitting} onSubmit={updateEmployeeInDB} />
 			<br />
 			{submitting && <Span>Kontakt med databasen pågår... </Span>}
 			{!submitting && <ErrorSpan>{errorMessage}</ErrorSpan>}

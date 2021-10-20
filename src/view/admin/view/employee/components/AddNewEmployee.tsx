@@ -39,8 +39,7 @@ export const AddNewEmployee = () => {
 	const [errorMessage, setErrorMessage] = useState<string>('')
 	const [confirmMessage, setConfirmMessage] = useState<string>('')
 	const messageTime = 5000
-	const buttonText = 'Spara'
-
+	
 	useEffect(() => {
 		return () => clearTimeout()
 	})
@@ -53,13 +52,23 @@ export const AddNewEmployee = () => {
 				avatar.append('files', selectedFile)
 				await CodicAPIService.uploadEmployeeAvatar(id, avatar)
 				setSelectedFile(undefined)
+				setConfirmMessage('Både den anställde och avataren är inlagd i databasen')
+				setTimeout(() => {
+					setConfirmMessage('')
+				}, messageTime)
 			}
 		}
 		catch (error) {
-			console.log(error)
-		}
-		
+			setSubmitting(false)
+			if (error instanceof Error) {
+				setErrorMessage('Det gick inte att lägga till avataren i databasen - ' + error.message)
+			}
+			setTimeout(() => {
+				setErrorMessage('')
+			}, messageTime)
+		}	
 	}
+
 	const addNewEmployeeToDB = async (event: { preventDefault: () => void }) => {
 		event.preventDefault()
 		setSubmitting(true)
@@ -77,8 +86,6 @@ export const AddNewEmployee = () => {
 		}
 		try {
 			const response = await CodicAPIService.createEmployee(newEmployee)
-			console.log('Id - ' + response.data._id)
-			console.log(selectedFile)
 			if (selectedFile !== undefined) {
 				uploadEmployeeAvatarToDB(response.data._id)
 			}
@@ -104,15 +111,13 @@ export const AddNewEmployee = () => {
 	return (
 		<Wrapper>
 			<h1>Lägg till ny anställd</h1>
-			<EmployeeForm formData={formData} setFormData={setFormData} selectedFile={selectedFile} setSelectedFile={setSelectedFile} buttonText={buttonText}
-				submitting={submitting} onSubmit={addNewEmployeeToDB} readonly={false} />
+			<EmployeeForm formData={formData} setFormData={setFormData} selectedFile={selectedFile} setSelectedFile={setSelectedFile} chosenMethod='create' submitting={submitting} onSubmit={addNewEmployeeToDB} />
 			<br />
 			{submitting && <Span>Laddar upp användare... </Span>}
 			{!submitting && <ErrorSpan>{errorMessage}</ErrorSpan>}
 			{!submitting && <Span>{confirmMessage}</Span>}
 			<br />
 		</Wrapper>
-
 	)
 }
 

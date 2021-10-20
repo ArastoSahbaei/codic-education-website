@@ -1,7 +1,21 @@
+import { useState, useEffect } from 'react'
 import { Button } from 'components/html/Button'
 import styled from 'styled-components'
 
-export const EmployeeForm = (props: { buttonText: string; setFormData: (arg0: { name: string; value: string }) => void; formData: { firstName: string; lastName: string; dateOfBirth: string; email: string; mobile: string; startEmployeeDate: string; lastEmployeeDate: string; isEmploymentActive: any }; selectedFile?: any, setSelectedFile?: any, submitting: boolean | undefined; onSubmit: any, readonly: boolean }) => {
+export const EmployeeForm = (props: { chosenMethod: string; setFormData: (arg0: { name: string; value: string }) => void; formData: { firstName: string; lastName: string; dateOfBirth: string; email: string; mobile: string; startEmployeeDate: string; lastEmployeeDate: string; isEmploymentActive: any ; avatarExists?: boolean}; selectedFile?: any, setSelectedFile?: any, submitting: boolean | undefined; onSubmit: any }) => {
+
+	const assignButtonText = () => {
+		switch (props.chosenMethod) {
+		case 'create': 
+			return 'Spara'
+		case 'update': 
+			return 'Redigera'
+		case 'delete': 
+			return 'Radera'
+		default:
+			return ''
+		}
+	}
 
 	const handleChange = (event: { target: { type: string; name: string; checked: any; value: string } }) => {
 		const isCheckbox = event.target.type === 'checkbox'
@@ -25,7 +39,7 @@ export const EmployeeForm = (props: { buttonText: string; setFormData: (arg0: { 
 						pattern='[A-Za-zÅÄÖåäö-]{1,}'
 						title='Bokstäver, minst en'
 						disabled={props.submitting}
-						readOnly={props.readonly}
+						readOnly={props.chosenMethod==='delete' ? true : false}
 						required
 					/> <br />
 
@@ -37,7 +51,7 @@ export const EmployeeForm = (props: { buttonText: string; setFormData: (arg0: { 
 						pattern='[A-Za-zÅÄÖåäö-]{1,}'
 						title='Bokstäver, minst en'
 						disabled={props.submitting}
-						readOnly={props.readonly}
+						readOnly={props.chosenMethod==='delete' ? true : false}
 						required
 					/> <br />
 
@@ -48,7 +62,7 @@ export const EmployeeForm = (props: { buttonText: string; setFormData: (arg0: { 
 						onChange={handleChange}
 						value={props.formData.dateOfBirth || ''}
 						disabled={props.submitting}
-						readOnly={props.readonly}
+						readOnly={props.chosenMethod==='delete' ? true : false}
 					/> <br />
 
 					<p>E-post: </p>
@@ -58,7 +72,7 @@ export const EmployeeForm = (props: { buttonText: string; setFormData: (arg0: { 
 						onChange={handleChange}
 						value={props.formData.email || ''}
 						disabled={props.submitting}
-						readOnly={props.readonly}
+						readOnly={props.chosenMethod==='delete' ? true : false}
 					/> <br />
 
 					<p>Mobilnummer: </p>
@@ -69,17 +83,26 @@ export const EmployeeForm = (props: { buttonText: string; setFormData: (arg0: { 
 						pattern='[0-9-+]{6,}'
 						title='Mobilnummer - siffror utan mellanslag'
 						disabled={props.submitting}
-						readOnly={props.readonly}
+						readOnly={props.chosenMethod==='delete' ? true : false}
 					/> <br />
 
-					<p>Lägg till avatar: </p>
-					<input
-						name='selectedFile'
-						type='file'
-						onChange={(e) => e.target.files !== null ? props.setSelectedFile(e.target.files[0]) : props.setSelectedFile(null)}
-						disabled={props.submitting}
-						readOnly={props.readonly}
-					/> <br />
+					{props.chosenMethod!=='create' && props.formData.avatarExists &&
+					<p>Det finns en avatar inlagd</p>
+					}
+
+					{props.chosenMethod!=='delete' && 
+					<div>
+						{props.formData.avatarExists ?  <p>Ändra avatar: </p> : <p>Lägg till avatar: </p>}
+						<input
+							name='selectedFile'
+							type='file'
+							accept='image/*'
+							onChange={(e) => e.target.files !== null ? props.setSelectedFile(e.target.files[0]) : props.setSelectedFile(null)}
+							disabled={props.submitting}
+						/> <br />
+					</div>}
+
+					
 				</EmployeeInfoWrapper>
 				<EmploymentInfoWrapper>
 					<h3>Information om anställningen: </h3>
@@ -91,7 +114,7 @@ export const EmployeeForm = (props: { buttonText: string; setFormData: (arg0: { 
 						onChange={handleChange}
 						value={props.formData.startEmployeeDate || ''}
 						disabled={props.submitting}
-						readOnly={props.readonly}
+						readOnly={props.chosenMethod==='delete' ? true : false}
 					/> <br />
 
 					<p>Slutdatum för anställning: </p>
@@ -101,7 +124,7 @@ export const EmployeeForm = (props: { buttonText: string; setFormData: (arg0: { 
 						onChange={handleChange}
 						value={props.formData.lastEmployeeDate || ''}
 						disabled={props.submitting}
-						readOnly={props.readonly}
+						readOnly={props.chosenMethod==='delete' ? true : false}
 					/> <br />
 
 					<p>Pågående anställning: </p>
@@ -115,7 +138,7 @@ export const EmployeeForm = (props: { buttonText: string; setFormData: (arg0: { 
 
 				</EmploymentInfoWrapper>
 				<br />
-				<Button text={props.buttonText} disabled={props.submitting} />
+				<Button text={assignButtonText()} disabled={props.submitting} />
 				<br />
 			</form>
 
