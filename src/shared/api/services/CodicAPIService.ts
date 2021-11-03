@@ -80,6 +80,10 @@ const getAllJobs = () => {
 	return http.get('/career')
 }
 
+const checkIfEmailExists = (data: any) => {
+	return http.post('/newsletter/check', data)
+}
+
 // Admin privilege required to use the functions below
 
 const createProduct = (productData: any) => {
@@ -124,6 +128,7 @@ export default {
 	getAllProductBrands,
 	getAllProductCategories,
 	getAllJobs,
+	checkIfEmailExists,
 	updateUser,
 	updateCart,
 	updatePassword,

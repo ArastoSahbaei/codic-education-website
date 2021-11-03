@@ -31,7 +31,9 @@ export const NewsLetterSubscriptionForm = () => {
 				<Formik
 					initialValues={{ email: '', receiveNewsLetters: true }}
 					validationSchema={Validations.newsLetterSubscriptionValidation}
-					onSubmit={(values) => handleSubmit(values)}>
+					onSubmit={(values) => handleSubmit(values)}
+					validateOnChange={false}>
+
 					<Form>
 						<Input style={{ width: '500px' }} name='email' label='Ange E-mail' type='text' /> <br />
 						<Button text='Prenumerera' />
