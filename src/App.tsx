@@ -6,6 +6,7 @@ import { UserProvider } from './shared/providers/UserProvider'
 import { useNavHeight } from './hooks/useNavHeight'
 import { ToastifyConfigurations } from './shared/configurations/ToastifyConfigurations'
 import { CookieForm } from 'components/CookieForm'
+import './App.css'
 
 export const App = () => {
 	const { navHeight } = useNavHeight()
