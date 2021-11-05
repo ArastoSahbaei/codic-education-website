@@ -39,7 +39,7 @@ export const CookieForm = () => {
 			<FormWrapper>
 				<Image src={cookieLove} alt={''} />
 				<Paragraph> WOULD YOU LIKE A <br /> CYBER COOKIE? </Paragraph>
-				<CloseLink onClick={() => updateLocalStorage('declined')}>Stäng</CloseLink>
+				<CloseLink onClick={() => updateLocalStorage('declined')}><span>Stäng</span></CloseLink>
 				<Span>
 					Vi använder cookies för att förbättra ditt besök på Codic Education.
 					Genom att acceptera samtycker du till behandling av personuppgifter.
@@ -129,7 +129,10 @@ const CookieInfoLink = styled.span`
 const CloseLink = styled.span`
 	grid-column: 12/12;
 	text-decoration: underline;
-	cursor: pointer;
+	span {
+		cursor: pointer;
+	}
+	
 	@media (max-width: 900px) {
 		grid-column: 9/9;
 		grid-row: 1/1;
