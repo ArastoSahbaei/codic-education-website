@@ -6,6 +6,7 @@ import { UserProvider } from './shared/providers/UserProvider'
 import { useNavHeight } from './hooks/useNavHeight'
 import { ToastifyConfigurations } from './shared/configurations/ToastifyConfigurations'
 import { CookieForm } from 'components/CookieForm'
+import { ScrollToTop } from 'components/ScrollToTop'
 
 export const App = () => {
 	const { navHeight } = useNavHeight()
@@ -13,6 +14,7 @@ export const App = () => {
 	return (
 		<UserProvider>
 			<Routes>
+				<ScrollToTop />
 				<GlobalStyle />
 				<Navigation />
 				<Space space={navHeight} />
