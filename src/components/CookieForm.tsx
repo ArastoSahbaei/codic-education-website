@@ -14,14 +14,14 @@ export const CookieForm = () => {
 
 	const getLocalStorage = () => {
 		switch (localStorage.getItem('acceptedCookies')) {
-			case 'accepted':
-				setAcceptedCookies('accepted')
-				break
-			case 'declined':
-				setAcceptedCookies('declined')
-				break
-			default:
-				setAcceptedCookies(undefined)
+		case 'accepted':
+			setAcceptedCookies('accepted')
+			break
+		case 'declined':
+			setAcceptedCookies('declined')
+			break
+		default:
+			setAcceptedCookies(undefined)
 		}
 	}
 
