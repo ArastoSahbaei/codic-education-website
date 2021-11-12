@@ -14,14 +14,14 @@ export const CookieForm = () => {
 
 	const getLocalStorage = () => {
 		switch (localStorage.getItem('acceptedCookies')) {
-		case 'accepted':
-			setAcceptedCookies('accepted')
-			break
-		case 'declined':
-			setAcceptedCookies('declined')
-			break
-		default:
-			setAcceptedCookies(undefined)
+			case 'accepted':
+				setAcceptedCookies('accepted')
+				break
+			case 'declined':
+				setAcceptedCookies('declined')
+				break
+			default:
+				setAcceptedCookies(undefined)
 		}
 	}
 
@@ -39,7 +39,9 @@ export const CookieForm = () => {
 			<FormWrapper>
 				<Image src={cookieLove} alt={''} />
 				<Paragraph> WOULD YOU LIKE A <br /> CYBER COOKIE? </Paragraph>
-				<CloseLink onClick={() => updateLocalStorage('declined')}>Stäng</CloseLink>
+				<CloseLink onClick={() => updateLocalStorage('declined')}>
+					<Span2>Stäng</Span2>
+				</CloseLink>
 				<Span>
 					Vi använder cookies för att förbättra ditt besök på Codic Education.
 					Genom att acceptera samtycker du till behandling av personuppgifter.
@@ -119,6 +121,11 @@ const Span = styled.span`
 	}
 `
 
+const Span2 = styled.span`
+	text-decoration: underline;
+	cursor: pointer;
+`
+
 const CookieInfoLink = styled.span`
 	cursor: pointer;
 	font-family: none;
@@ -126,10 +133,8 @@ const CookieInfoLink = styled.span`
 	color: ${primaryColor};
 `
 
-const CloseLink = styled.span`
+const CloseLink = styled.div`
 	grid-column: 12/12;
-	text-decoration: underline;
-	cursor: pointer;
 	@media (max-width: 900px) {
 		grid-column: 9/9;
 		grid-row: 1/1;
