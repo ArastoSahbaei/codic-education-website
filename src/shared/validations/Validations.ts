@@ -26,11 +26,10 @@ const newsLetterSubscriptionValidation =
 				'email-backend-validation', 
 				'Epost-adressen är redan registrerad', 
 				async function (value) {
-					// Res from backend will be flag at res.data.unique, 
-					// true if email is not registered, false otherwise
-					const { data: { unique } } = await CodicAPIService.checkIfEmailExists({email: value})
-					console.log(unique)
-					return unique
+					// Data is true if post exists and false if not
+					const { data } = await CodicAPIService.checkIfEmailExists({email: value})
+					console.log(data)
+					return !data
 				}),
 		
 	})
