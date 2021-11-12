@@ -1,3 +1,6 @@
+import { createGlobalStyle } from 'styled-components'
+
+export const ScrollBarStyle = createGlobalStyle`
 /* Set variables value for color here*/
 :root{
     --scroll-track-color: #f8f8f8;
@@ -8,7 +11,7 @@
 
 /* Works on Firefox - custom colors (radius and padding does not work) */
 *{
-    scrollbar-width: auto;    /* thin or auto */
+    scrollbar-width: auto;
     scrollbar-color: var(--scroll-thumb-color) var(--scroll-track-color);
 }
 
@@ -16,7 +19,6 @@
 /* Works on Chrome, Edge and Safari */
 ::-webkit-scrollbar{
     width: 16px;
-   
 }
 
 ::-webkit-scrollbar-track{
@@ -32,3 +34,4 @@
 ::-webkit-scrollbar-thumb:hover{
     background-color: var(--scroll-thumb-hover-color);
 }
+`
