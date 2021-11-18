@@ -17,13 +17,13 @@ export const App = () => {
 			<>
 				<GlobalStyle />
 				<ScrollBarStyle />
+				<ToastifyConfigurations />
 			</>
 			<UserProvider>
 				<Routes>
 					<ScrollToTop />
 					<Navigation />
 					<CookieForm />
-					<ToastifyConfigurations />
 					<Space space={navHeight} />
 				</Routes>
 			</UserProvider>
