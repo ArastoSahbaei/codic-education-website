@@ -16,9 +16,9 @@ export const App = () => {
 		<>
 			<GlobalStyle />
 			<ScrollBarStyle />
-			<ScrollToTop />
 			<UserProvider>
 				<Routes>
+					<ScrollToTop />
 					<Navigation />
 					<CookieForm />
 					<ToastifyConfigurations />
