@@ -5,6 +5,7 @@ import { ListAllEmployeesForAdmin } from './components/ListAllEmployeesForAdmin'
 import { UpdateEmployee } from './components/UpdateEmployee'
 import { DeleteEmployee } from './components/DeleteEmployee'
 import styled from 'styled-components'
+import { ListAllEmployeesForAdminMaterialTable } from './components/ListAllEmployeesForAdminMaterialTable'
 
 export const EmployeeAdminView = () => {
 	const [choice, setChoice] = useState<number>(0)
@@ -17,7 +18,7 @@ export const EmployeeAdminView = () => {
 			return <AddNewEmployee />
 		case 2:
 			// List of all employees without buttons
-			return <ListAllEmployeesForAdmin setChoice={setChoice} setChosenEmployee={setChosenEmployee}/>
+			return <ListAllEmployeesForAdminMaterialTable/>
 		case 3:
 			// List of all employees with buttons to edit employee
 			return <ListAllEmployeesForAdmin toEdit={true} setChoice={setChoice} setChosenEmployee={setChosenEmployee}/>
