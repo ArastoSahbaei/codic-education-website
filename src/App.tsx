@@ -14,8 +14,10 @@ export const App = () => {
 
 	return (
 		<>
-			<GlobalStyle />
-			<ScrollBarStyle />
+			<>
+				<GlobalStyle />
+				<ScrollBarStyle />
+			</>
 			<UserProvider>
 				<Routes>
 					<ScrollToTop />
