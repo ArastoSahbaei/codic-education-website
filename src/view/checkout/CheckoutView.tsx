@@ -63,7 +63,7 @@ const initialState: IForm = {
 
 export const CheckoutView = () => {
 	const [authenticatedUser] = useContext(UserContext)
-	const products = authenticatedUser?.shoppingCart?.products
+	const products = authenticatedUser?.shoppingCart?.cartItems?.product
 	const { removeFromCart } = useCart()
 
 	const [formState, setFormState] = useState<IForm>(initialState)

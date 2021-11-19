@@ -10,7 +10,7 @@ export const useCart = () => {
 	const addToCart = async (product: Product) => {
 		try {
 			const updatedCart = [
-				...authenticatedUser.shoppingCart.products,
+				...authenticatedUser.shoppingCart.orderItems.products.
 				product._id,
 			]
 			const { data } = await CodicAPIService.updateCart({

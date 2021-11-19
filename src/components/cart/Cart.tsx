@@ -24,12 +24,12 @@ export const Cart = (props: { isCartOpen: boolean, setIsCartOpen: (value: boolea
 
 	const displayCartWithItems = () => {
 		return <DisplayCartWrapper>
-			{authenticatedUser.shoppingCart.products.map((product: Product, index: number) =>
+			{authenticatedUser.shoppingCart.cartItems.map((product: Product, index: number) =>
 				<UList key={index}>
 					<Image onClick={() => navigateToProductDetail(product)}
 						src={'https://picsum.photos/200/200'}
 						alt='' />
-					<Icon onClick={() => removeFromCart2(authenticatedUser.shoppingCart.products, index)}
+					<Icon onClick={() => removeFromCart2(authenticatedUser.shoppingCart.cartItems.product, index)}
 						src={trash}
 						alt={''} />
 					<List>titel: {product.title}</List>
@@ -56,9 +56,9 @@ export const Cart = (props: { isCartOpen: boolean, setIsCartOpen: (value: boolea
 
 	return (
 		<CartWrapper isOpen={isCartOpen}>
-			<span>{authenticatedUser.shoppingCart.products.length} föremål i varukorgen</span>
+			<span>{authenticatedUser.shoppingCart.cartItems.length} föremål i varukorgen</span>
 			<ExitImage src={exit} alt={''} onClick={() => setIsCartOpen(false)} />
-			{authenticatedUser.shoppingCart.products.length !== 0 ? displayCartWithItems() : displayEmptyCart()}
+			{authenticatedUser.shoppingCart.cartItems.length !== 0 ? displayCartWithItems() : displayEmptyCart()}
 		</CartWrapper>
 	)
 }
