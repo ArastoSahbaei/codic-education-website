@@ -114,7 +114,7 @@ const updateUserRole = (userId: string, role: 'basic' | 'employee' | 'admin') =>
 }
 
 const updateEmployeeInformation = (userId: string, employeeAdminData: any) => {
-	return http.put(`/admin/update/employeeinfo/${userId}`, employeeAdminData)
+	return http.put(`/admin/updateemployeeinfo/${userId}`, employeeAdminData)
 }
 
 const uploadEmployeeAvatar = (employeeId: string, avatar: any) => {
