@@ -3,7 +3,6 @@ import { ContactForm } from 'shared/interfaces/ContactFormInterface'
 import { StartNewsSubscriptionInterface, LoginCredentials, RegisterNewUser, RetrieveLostAccount, UpdatePassword } from 'shared/interfaces/UserInterface'
 import http from '../CodicAPI'
 
-
 const authenticatedRouteExample = () => {
 	return http.get('/rofl')
 }
@@ -110,16 +109,12 @@ const getAllProductBrands = () => {
 	return http.get('/productbrand')
 }
 
-const createEmployee = (employeeAdminData: any) => {
-	return http.post('/employee', employeeAdminData)
+const updateUserRole = (userId: string, role: 'basic' | 'employee' | 'admin') => {
+	return http.put(`/admin/updateuserrole/${userId}`, {'role': role})
 }
 
-const updateEmployee = (employeeId: string, employeeAdminData: any) => {
-	return http.put(`/employee/${employeeId}`, employeeAdminData)
-}
-
-const deleteEmployee = (employeeId: string) => {
-	return http.delete(`/employee/${employeeId}`)
+const updateEmployeeInformation = (userId: string, employeeAdminData: any) => {
+	return http.put(`/admin/update/employeeinfo/${userId}`, employeeAdminData)
 }
 
 const uploadEmployeeAvatar = (employeeId: string, avatar: any) => {
@@ -157,8 +152,7 @@ export default {
 	retrieveLostAccount,
 	authenticatedRouteExample,
 	getAllEmployees, 
-	createEmployee,
-	updateEmployee,
-	deleteEmployee,
+	updateUserRole,
+	updateEmployeeInformation,
 	uploadEmployeeAvatar,
 }
