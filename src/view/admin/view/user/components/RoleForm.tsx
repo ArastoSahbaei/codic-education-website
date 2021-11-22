@@ -38,7 +38,7 @@ export const RoleForm = (props: { setChoice: (arg0: number) => void, chosenRowDa
 			<h2>Ändra användares behörighet</h2>
 			<Formik
 				initialValues={initialValues}
-				validationSchema={Validations.adminRoleFormValidation}
+				/*validationSchema={}*/
 				onSubmit={updateRoleInDB}
 			>
 				<Form>

@@ -1,153 +1,86 @@
-import { useState, useEffect } from 'react'
+import { Formik, Form } from 'formik'
 import { Button } from 'components/html/Button'
+import { AdminInput } from './help_html/AdminInput'
 import styled from 'styled-components'
+import Validations from 'shared/validations/Validations'
+import CodicAPIService from 'shared/api/services/CodicAPIService'
 
-export const EmployeeForm = (props: { chosenMethod: string; setFormData: (arg0: { name: string; value: string }) => void; formData: { firstName: string; lastName: string; dateOfBirth: string; email: string; mobile: string; startEmployeeDate: string; lastEmployeeDate: string; isEmploymentActive: any ; avatarExists?: boolean}; selectedFile?: any, setSelectedFile?: any, submitting: boolean | undefined; onSubmit: any }) => {
+export const EmployeeForm = (props: { setChoice: (arg0: number) => void , chosenRowData: { _id?:any; username: any; email: any; personalDetails: { firstName: any; lastName: any; phone: any }; employeeInformation: { startEmployeeDate: any; lastEmployeeDate: any; isEmploymentActive: any } } }) => {
+	
+	const initialValues = {
+		username: props.chosenRowData.username,
+		email:  props.chosenRowData.email,
+		personalDetails: {
+			firstName:  props.chosenRowData.personalDetails.firstName,
+			lastName:  props.chosenRowData.personalDetails.lastName,
+			phone:  props.chosenRowData.personalDetails.phone,
+		},
+		employeeInformation: {
+			startEmployeeDate:  props.chosenRowData.employeeInformation ? props.chosenRowData.employeeInformation.startEmployeeDate : '',
+			lastEmployeeDate:  props.chosenRowData.employeeInformation ? props.chosenRowData.employeeInformation.lastEmployeeDate : '',
+			isEmploymentActive: props.chosenRowData.employeeInformation ? props.chosenRowData.employeeInformation.isEmploymentActive : false,
+		},
+	}
 
-	const assignButtonText = () => {
-		switch (props.chosenMethod) {
-		case 'create': 
-			return 'Spara'
-		case 'update': 
-			return 'Redigera'
-		case 'delete': 
-			return 'Radera'
-		default:
-			return ''
+	const updateEmployeeInformationInDB = async (values:any) => {
+		console.log('UserID ', props.chosenRowData._id)
+		const userId = props.chosenRowData._id
+
+		const updatedEmployeeInformation = {
+			'employeeInformation' : {
+				'startEmployeeDate': new Date(values.employeeInformation.startEmployeeDate),
+				'lastEmployeeDate': new Date(values.employeeInformation.lastEmployeeDate),
+				'isEmploymentActive': values.employeeInformation.isEmploymentActive
+			}
+		}
+
+		try {
+			await CodicAPIService.updateEmployeeInformation(userId, updatedEmployeeInformation)
+			props.setChoice(0)
+				
+		} catch (error) {
+			console.log(error)
 		}
 	}
 
-	const handleChange = (event: { target: { type: string; name: string; checked: any; value: string } }) => {
-		const isCheckbox = event.target.type === 'checkbox'
-		props.setFormData({
-			name: event.target.name,
-			value: isCheckbox ? event.target.checked : event.target.value,
-		})
-	}
-
-	return (
+	return(
 		<Wrapper>
-			<form onSubmit={props.onSubmit}>
-				<EmployeeInfoWrapper >
-					<h3>Information om den anställde: </h3>
-
-					<p>Förnamn: </p>
-					<input
-						name='firstName'
-						onChange={handleChange}
-						value={props.formData.firstName || ''}
-						pattern='[A-Za-zÅÄÖåäö-]{1,}'
-						title='Bokstäver, minst en'
-						disabled={props.submitting}
-						readOnly={props.chosenMethod==='delete' ? true : false}
-						required
-					/> <br />
-
-					<p>Eftername: </p>
-					<input
-						name='lastName'
-						onChange={handleChange}
-						value={props.formData.lastName || ''}
-						pattern='[A-Za-zÅÄÖåäö-]{1,}'
-						title='Bokstäver, minst en'
-						disabled={props.submitting}
-						readOnly={props.chosenMethod==='delete' ? true : false}
-						required
-					/> <br />
-
-					<p>Födelsedatum: </p>
-					<input
-						name='dateOfBirth'
-						type='date'
-						onChange={handleChange}
-						value={props.formData.dateOfBirth || ''}
-						disabled={props.submitting}
-						readOnly={props.chosenMethod==='delete' ? true : false}
-					/> <br />
-
-					<p>E-post: </p>
-					<input
-						name='email'
-						type='email'
-						onChange={handleChange}
-						value={props.formData.email || ''}
-						disabled={props.submitting}
-						readOnly={props.chosenMethod==='delete' ? true : false}
-					/> <br />
-
-					<p>Mobilnummer: </p>
-					<input
-						name='mobile'
-						onChange={handleChange}
-						value={props.formData.mobile || ''}
-						pattern='[0-9-+]{6,}'
-						title='Mobilnummer - siffror utan mellanslag'
-						disabled={props.submitting}
-						readOnly={props.chosenMethod==='delete' ? true : false}
-					/> <br />
-
-					{props.chosenMethod!=='create' && props.formData.avatarExists &&
-					<p>Det finns en avatar inlagd</p>
-					}
-
-					{props.chosenMethod!=='delete' && 
-					<div>
-						{props.formData.avatarExists ?  <p>Ändra avatar: </p> : <p>Lägg till avatar: </p>}
-						<input
-							name='selectedFile'
-							type='file'
-							accept='image/*'
-							onChange={(e) => e.target.files !== null ? props.setSelectedFile(e.target.files[0]) : props.setSelectedFile(null)}
-							disabled={props.submitting}
-						/> <br />
-					</div>}
-
-					
-				</EmployeeInfoWrapper>
-				<EmploymentInfoWrapper>
-					<h3>Information om anställningen: </h3>
-
-					<p>Startdatum för anställning: </p>
-					<input
-						name='startEmployeeDate'
-						type='date'
-						onChange={handleChange}
-						value={props.formData.startEmployeeDate || ''}
-						disabled={props.submitting}
-						readOnly={props.chosenMethod==='delete' ? true : false}
-					/> <br />
-
-					<p>Slutdatum för anställning: </p>
-					<input
-						name='lastEmployeeDate'
-						type='date'
-						onChange={handleChange}
-						value={props.formData.lastEmployeeDate || ''}
-						disabled={props.submitting}
-						readOnly={props.chosenMethod==='delete' ? true : false}
-					/> <br />
-
-					<p>Pågående anställning: </p>
-					<input
-						name='isEmploymentActive'
-						type='checkbox'
-						onChange={handleChange}
-						checked={props.formData.isEmploymentActive}
-						disabled={props.submitting}
-					/> <br />
-
-				</EmploymentInfoWrapper>
-				<br />
-				<Button text={assignButtonText()} disabled={props.submitting} />
-				<br />
-			</form>
-
+			<h2>Lägg till / Ändra anställningsinformation</h2>
+			<Formik
+				initialValues = {initialValues}
+				/*validationSchema = {}*/
+				onSubmit = {updateEmployeeInformationInDB} 
+			>
+				<Form>
+					<EmployeeInfoWrapper>
+						<h3>Information om den anställde: </h3>
+						<AdminInput name='username' label='Användarnamn' readOnly />
+						<AdminInput name='personalDetails.firstName' label='Förnamn' readOnly/>
+						<AdminInput name='personalDetails.lastName' label='Efternamn' readOnly/>
+						<AdminInput name='email' label='E-post' type='email' readOnly/>
+						<AdminInput name='personalDetails.phone' label='Mobil' readOnly/>
+					</EmployeeInfoWrapper>
+					<EmploymentInfoWrapper>
+						<h3>Information om anställningen: </h3>
+						<AdminInput name='employeeInformation.startEmployeeDate' label='Startdatum för anställning' type='date'/>
+						<AdminInput name='employeeInformation.lastEmployeeDate' label='Slutdatum för anställning' type='date' />
+						<AdminInput name='employeeInformation.isEmploymentActive' label='Pågående anställning' type='checkbox'/>
+					</EmploymentInfoWrapper>
+					<br />
+					<Button text={'Spara'} />
+					<br />
+				</Form>
+			</Formik>
 		</Wrapper>
 	)
 }
 
 const Wrapper = styled.div`
 	padding: 5px 20px;
+	h2{ 
+		text-align: center;
+		padding: 10px;
+	}
 	button{
 		float:right;
 		margin: 10px 5%;
@@ -162,9 +95,9 @@ const EmployeeInfoWrapper = styled.div`
 	padding: 10px;
 	border: 2px solid black;
 	border-radius: 5px;
-	p {
+	h3 {
 		display: inline-block;
-		padding: 10px 20px;
+		padding: 5px 10px;
 	}
 `
 
@@ -174,11 +107,11 @@ const EmploymentInfoWrapper = styled.div`
 	width: 45%;
 	margin-right: 3%;
 	padding: 10px;
-	padding-bottom: 87px;
+	padding-bottom: 60px;
 	border: 2px solid black;
 	border-radius: 5px;
-	p {
+	h3 {
 		display: inline-block;
-		padding: 10px 20px;
+		padding: 5px 10px;
 	}
 `
