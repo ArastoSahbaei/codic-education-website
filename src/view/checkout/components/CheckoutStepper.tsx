@@ -1,5 +1,6 @@
 import React from 'react'
-import { makeStyles } from '@material-ui/core/styles'
+import { styled, makeStyles } from '@material-ui/core/styles'
+import { primaryColor } from 'shared/styles/GlobalStyle'
 import Stepper from '@material-ui/core/Stepper'
 import Step from '@material-ui/core/Step'
 import StepLabel from '@material-ui/core/StepLabel'
@@ -15,7 +16,7 @@ const getStepContent = (step: number) => {
 	case 0:
 		return 'Steg 1 innehåll - Logga in'  // Add the wanted components here 
 	case 1:
-		return 'Steg 2 innehåll - Adress' 
+		return 'Steg 2 innehåll - Adress'
 	case 2:
 		return 'Steg 3 innehåll - Betalningssätt'
 	case 3:
@@ -31,6 +32,17 @@ export const CheckoutStepper = () => {
 	const [activeStep, setActiveStep] = React.useState(0)
 	const [skipped, setSkipped] = React.useState(new Set())
 	const steps = getSteps()
+
+	const useStyles = makeStyles(() => ({
+		root: {
+			'& .MuiStepIcon-active': { color: primaryColor },
+			'& .MuiStepIcon-completed': { color: primaryColor },
+			'& .Mui-disabled .MuiStepIcon-root': { color: 'grey' },
+            '&.MuiStepConnector-line': { bordercolor: primaryColor}
+		}
+	}))
+
+	const c = useStyles()
 
 	const isStepSkipped = (step: number) => {
 		return skipped.has(step)
@@ -52,7 +64,6 @@ export const CheckoutStepper = () => {
 	}
 
 	const handleSkip = () => {
-		
 		setActiveStep((prevActiveStep) => prevActiveStep + 1)
 		setSkipped((prevSkipped) => {
 			const newSkipped = new Set(prevSkipped.values())
@@ -68,10 +79,10 @@ export const CheckoutStepper = () => {
 	return (
 		<>
 			<div>
-				<Stepper alternativeLabel={true} activeStep={activeStep}>
+				<Stepper className={c.root} alternativeLabel={true} activeStep={activeStep}>
 					{steps.map((label, index) => {
-						const stepProps:any = {}
-						const labelProps:any = {}
+						const stepProps: any = {}
+						const labelProps: any = {}
 						if (isStepSkipped(index)) {
 							stepProps.completed = false
 						}
@@ -94,9 +105,9 @@ export const CheckoutStepper = () => {
 						<Typography > {getStepContent(activeStep)}</Typography>
 						<div>
 							<Button disabled={activeStep === 0} onClick={handleBack}>Föregående steg</Button>
-							<Button variant='contained' color='primary' onClick={handleNext}>
+							<ColorButton variant='contained' onClick={handleNext}>
 								{activeStep === steps.length - 1 ? 'Avsluta' : 'Nästa steg'}
-							</Button>
+							</ColorButton>
 						</div>
 					</div>
 				)}
@@ -104,3 +115,11 @@ export const CheckoutStepper = () => {
 		</>
 	)
 }
+
+const ColorButton = styled(Button)(() => ({
+	color: 'white',
+	backgroundColor: primaryColor,
+	'&:hover': {
+		backgroundColor: primaryColor,
+	},
+}))
