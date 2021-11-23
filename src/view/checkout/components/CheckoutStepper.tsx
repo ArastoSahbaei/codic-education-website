@@ -30,46 +30,37 @@ const getStepContent = (step: number) => {
 
 export const CheckoutStepper = () => {
 	const [activeStep, setActiveStep] = React.useState(0)
-	const [skipped, setSkipped] = React.useState(new Set())
 	const steps = getSteps()
 
 	const useStyles = makeStyles(() => ({
 		root: {
+			// Styles for StepIcons
 			'& .MuiStepIcon-active': { color: primaryColor },
 			'& .MuiStepIcon-completed': { color: primaryColor },
 			'& .Mui-disabled .MuiStepIcon-root': { color: 'grey' },
-            '&.MuiStepConnector-line': { bordercolor: primaryColor}
+			// Styles for lines between stepicons
+			'& .MuiStepConnector-lineHorizontal': {
+				borderTopWidth: 4,
+				borderColor: 'lightgrey'
+			},
+			'& .MuiStepConnector-active .MuiStepConnector-lineHorizontal': {
+				borderColor: primaryColor
+			},
+			'& .MuiStepConnector-completed .MuiStepConnector-lineHorizontal': {
+				borderColor: primaryColor
+			}
 		}
 	}))
 
-	const c = useStyles()
-
-	const isStepSkipped = (step: number) => {
-		return skipped.has(step)
-	}
+	const classes = useStyles()
 
 	const handleNext = () => {
-		let newSkipped = skipped
-		if (isStepSkipped(activeStep)) {
-			newSkipped = new Set(newSkipped.values())
-			newSkipped.delete(activeStep)
-		}
-
 		setActiveStep((prevActiveStep) => prevActiveStep + 1)
-		setSkipped(newSkipped)
+		
 	}
 
 	const handleBack = () => {
 		setActiveStep((prevActiveStep) => prevActiveStep - 1)
-	}
-
-	const handleSkip = () => {
-		setActiveStep((prevActiveStep) => prevActiveStep + 1)
-		setSkipped((prevSkipped) => {
-			const newSkipped = new Set(prevSkipped.values())
-			newSkipped.add(activeStep)
-			return newSkipped
-		})
 	}
 
 	const handleReset = () => {
@@ -79,13 +70,10 @@ export const CheckoutStepper = () => {
 	return (
 		<>
 			<div>
-				<Stepper className={c.root} alternativeLabel={true} activeStep={activeStep}>
-					{steps.map((label, index) => {
-						const stepProps: any = {}
-						const labelProps: any = {}
-						if (isStepSkipped(index)) {
-							stepProps.completed = false
-						}
+				<Stepper className={classes.root} alternativeLabel={true} activeStep={activeStep}>
+					{steps.map((label) => {
+						const stepProps = {}
+						const labelProps = {}
 						return (
 							<Step key={label} {...stepProps}>
 								<StepLabel {...labelProps}>{label}</StepLabel>
