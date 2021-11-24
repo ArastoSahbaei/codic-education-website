@@ -1,4 +1,4 @@
-import React from 'react'
+import { useState } from 'react'
 import { styled, makeStyles } from '@material-ui/core/styles'
 import { primaryColor } from 'shared/styles/GlobalStyle'
 import Stepper from '@material-ui/core/Stepper'
@@ -29,7 +29,7 @@ const getStepContent = (step: number) => {
 }
 
 export const CheckoutStepper = () => {
-	const [activeStep, setActiveStep] = React.useState(0)
+	const [activeStep, setActiveStep] = useState<number>(0)
 	const steps = getSteps()
 
 	const useStyles = makeStyles(() => ({
@@ -56,7 +56,6 @@ export const CheckoutStepper = () => {
 
 	const handleNext = () => {
 		setActiveStep((prevActiveStep) => prevActiveStep + 1)
-		
 	}
 
 	const handleBack = () => {
