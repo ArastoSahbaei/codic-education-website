@@ -1,5 +1,4 @@
 import { useState, useContext } from 'react'
-//import { useAuthentication } from 'hooks/useAuthentication'
 import { UserContext } from 'shared/providers/UserProvider'
 import { Button } from 'components/html/Button'
 import CodicAPIService from 'shared/api/services/CodicAPIService'
@@ -9,15 +8,13 @@ export const UploadAvatar = () => {
 	const [choice, setChoice] = useState<number>(0)
 	const [submitting, setSubmitting] = useState<boolean>(false)
 	const [authenticatedUser] = useContext(UserContext)
-	//const { updatePersonalInformation } = useAuthentication()
-
+	
 	const handleSubmit = async (event: { preventDefault: () => void }) => {
 		event.preventDefault()
 		setSubmitting(true)
 		const avatar = new FormData()
 		const userId = authenticatedUser._id
-		const userRole = authenticatedUser.role     // If employee and basic user should upload their image to different locations
-
+		
 		try {
 			if (selectedFile !== undefined) {
 				// uses 'files' to match server
