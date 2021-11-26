@@ -23,13 +23,11 @@ import Remove from '@material-ui/icons/Remove'
 import SaveAlt from '@material-ui/icons/SaveAlt'
 import Search from '@material-ui/icons/Search'
 import ViewColumn from '@material-ui/icons/ViewColumn'
-import { boolean } from 'yup/lib/locale'
 
 export const ListAllEmployees = (props: { setChosenRowData: (arg0: any) => void; setChoice: (arg0: number) => void }) => {
 	const [employees, setEmployees] = useState([])
 	const [isLoaded, setIsLoaded] = useState<boolean>(false)
-	const [errorMessage, setErrorMessage] = useState<string>('')
-
+	
 	const fetchingAllEmployees = async () => {
 		const { data } = await CodicAPIService.getAllEmployees()
 		data.map((item: { employeeInformation: { startEmployeeDate: string | undefined; lastEmployeeDate: string | undefined } }) => {
@@ -106,7 +104,6 @@ export const ListAllEmployees = (props: { setChosenRowData: (arg0: any) => void;
 				localization={swedishLocalization}
 			/>}
 			{!isLoaded && <div> Nerladdning pågår ...</div>}
-			{isLoaded && <div style={{ color: 'red' }}> {errorMessage} </div>}
 		</Wrapper>
 	)
 }
