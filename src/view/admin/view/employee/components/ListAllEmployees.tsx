@@ -46,7 +46,6 @@ export const ListAllEmployees = (props: { setChosenRowData: (arg0: any) => void;
 	}, [])
 
 	const goToForm = (rowData: any) => {
-		console.log('Du vill komma till formulär med följande data', rowData)
 		props.setChosenRowData(rowData)
 		props.setChoice(1)
 	}
@@ -59,13 +58,15 @@ export const ListAllEmployees = (props: { setChosenRowData: (arg0: any) => void;
 					Pagination: PatchedPagination,
 				}}
 				columns={[
-					{ title: 'Username', field: 'username' },
+					{ title: 'Username', field: 'username', defaultSort: 'asc' },
 					{ title: 'Förnamn', field: 'personalDetails.firstName' },
 					{ title: 'Efternamn', field: 'personalDetails.lastName' },
-					{ title: 'E-post', field: 'email' },
-					{ title: 'Mobil', field: 'personalDetails.phone' },
-					{ title: 'Roll', field: 'role' },
-					{ title: 'Startdatum för anställning', field: 'employeeInformation.startEmployeeDate', },
+					{ title: 'Telefon, privat', field: 'personalDetails.phone' },
+					{ title: 'E-post, privat', field: 'email' },
+					{ title: 'Behörighet', field: 'role', lookup: {employee: 'Anställd'}},
+					{ title: 'Telefon, arbete', field: 'employeeInformation.workPhone' },
+					{ title: 'E-post, arbete', field: 'employeeInformation.workEmail' },
+					{ title: 'Startdatum för anställning', field: 'employeeInformation.startEmployeeDate' },
 					{ title: 'Slutdatum för anställning', field: 'employeeInformation.lastEmployeeDate' },
 					{ title: 'Pågående anställning', field: 'employeeInformation.isEmploymentActive', type: 'boolean' },
 				]}

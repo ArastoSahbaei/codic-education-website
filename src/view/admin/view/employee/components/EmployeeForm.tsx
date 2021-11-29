@@ -6,19 +6,15 @@ import { AdminInput } from './help_html/AdminInput'
 import styled from 'styled-components'
 import CodicAPIService from 'shared/api/services/CodicAPIService'
 
-export const EmployeeForm = (props: { setChoice: (arg0: number) => void , chosenRowData: { _id?:any; username: any; email: any; personalDetails: { firstName: any; lastName: any; phone: any }; employeeInformation: { startEmployeeDate: any; lastEmployeeDate: any; isEmploymentActive: any } } }) => {
+export const EmployeeForm = (props: { setChoice: (arg0: number) => void , chosenRowData: { _id?:any; username: any; email: any; personalDetails: { firstName: any; lastName: any; phone: any }; employeeInformation: { workPhone: any; workEmail: any; startEmployeeDate: any; lastEmployeeDate: any; isEmploymentActive: any } } }) => {
+	// AdminId is needed for check in backend
 	const [authenticatedUser, setAuthenticatedUser] = useContext(UserContext)
 	const adminId = authenticatedUser._id
 
 	const initialValues = {
-		username: props.chosenRowData.username,
-		email:  props.chosenRowData.email,
-		personalDetails: {
-			firstName:  props.chosenRowData.personalDetails.firstName,
-			lastName:  props.chosenRowData.personalDetails.lastName,
-			phone:  props.chosenRowData.personalDetails.phone,
-		},
 		employeeInformation: {
+			workPhone: props.chosenRowData.employeeInformation ? props.chosenRowData.employeeInformation.workPhone : '',
+			workEmail: props.chosenRowData.employeeInformation ? props.chosenRowData.employeeInformation.workEmail : '',
 			startEmployeeDate:  props.chosenRowData.employeeInformation ? props.chosenRowData.employeeInformation.startEmployeeDate : '',
 			lastEmployeeDate:  props.chosenRowData.employeeInformation ? props.chosenRowData.employeeInformation.lastEmployeeDate : '',
 			isEmploymentActive: props.chosenRowData.employeeInformation ? props.chosenRowData.employeeInformation.isEmploymentActive : false,
@@ -31,6 +27,8 @@ export const EmployeeForm = (props: { setChoice: (arg0: number) => void , chosen
 
 		const updatedEmployeeInformation = {
 			'employeeInformation' : {
+				'workPhone': values.employeeInformation.workPhone,
+				'workEmail': values.employeeInformation.workEmail,
 				'startEmployeeDate': new Date(values.employeeInformation.startEmployeeDate),
 				'lastEmployeeDate': new Date(values.employeeInformation.lastEmployeeDate),
 				'isEmploymentActive': values.employeeInformation.isEmploymentActive
@@ -55,14 +53,20 @@ export const EmployeeForm = (props: { setChoice: (arg0: number) => void , chosen
 				/*validationSchema = {}*/
 				onSubmit = {updateEmployeeInformationInDB} 
 			>
-				<Form>
+				<Form autoComplete='off'>
 					<EmployeeInfoWrapper>
 						<h3>Information om den anställde: </h3>
-						<AdminInput name='username' label='Användarnamn' readOnly />
-						<AdminInput name='personalDetails.firstName' label='Förnamn' readOnly/>
-						<AdminInput name='personalDetails.lastName' label='Efternamn' readOnly/>
-						<AdminInput name='email' label='E-post' type='email' readOnly/>
-						<AdminInput name='personalDetails.phone' label='Mobil' readOnly/>
+						<Div>
+							Användarnamn: {props.chosenRowData.username}<br />
+							Förnamn: {props.chosenRowData.personalDetails.firstName}<br />
+							Efternamn: {props.chosenRowData.personalDetails.lastName}<br />
+							Telefon, privat: {props.chosenRowData.personalDetails.phone}<br />
+							E-post, privat: {props.chosenRowData.email}<br />
+							<br />
+							<hr />
+						</Div>
+						<AdminInput name='employeeInformation.workPhone' label='Telefon, arbete' />
+						<AdminInput name='employeeInformation.workEmail' label='E-post, arbete' type='email'/>
 					</EmployeeInfoWrapper>
 					<EmploymentInfoWrapper>
 						<h3>Information om anställningen: </h3>
@@ -89,6 +93,10 @@ const Wrapper = styled.div`
 		float:right;
 		margin: 10px 5%;
 	}
+`
+
+const Div = styled.div`
+	padding: 5px 10px 10px 10px;
 `
 
 const EmployeeInfoWrapper = styled.div`

@@ -14,6 +14,8 @@ export const EmployeeAdminView = () => {
 			phone: '',
 		},
 		employeeInformation: {
+			workPhone: '',
+			workEmail: '',
 			startEmployeeDate: '',
 			lastEmployeeDate: '',
 			isEmploymentActive: false,
