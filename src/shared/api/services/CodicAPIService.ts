@@ -109,8 +109,8 @@ const getAllProductBrands = () => {
 	return http.get('/productbrand')
 }
 
-const updateUserRole = (userId: string, role: 'basic' | 'employee' | 'admin') => {
-	return http.put(`/admin/updateuserrole/${userId}`, {'role': role})
+const updateUserRole = (userId: string, reqBody: any) => {
+	return http.put(`/admin/updateuserrole/${userId}`, reqBody)
 }
 
 const updateEmployeeInformation = (userId: string, employeeAdminData: any) => {

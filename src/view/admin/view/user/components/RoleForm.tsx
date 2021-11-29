@@ -1,12 +1,17 @@
 import { Formik, Form } from 'formik'
+import { useContext } from 'react'
+import { UserContext } from 'shared/providers/UserProvider'
 import { Button } from 'components/html/Button'
 import { AdminInput } from '../../employee/components/help_html/AdminInput'
 import { AdminSelect } from '../../employee/components/help_html/AdminSelect'
 import styled from 'styled-components'
-import Validations from 'shared/validations/Validations'
 import CodicAPIService from 'shared/api/services/CodicAPIService'
 
+
 export const RoleForm = (props: { setChoice: (arg0: number) => void, chosenRowData: { _id?: any; username: string; email: string; role: string; personalDetails: { firstName: string; lastName: string; phone: string }; } }) => {
+	const [authenticatedUser, setAuthenticatedUser] = useContext(UserContext)
+	const adminId = authenticatedUser._id
+
 
 	const initialValues = {
 		username: props.chosenRowData.username,
@@ -23,9 +28,13 @@ export const RoleForm = (props: { setChoice: (arg0: number) => void, chosenRowDa
 	const updateRoleInDB = async (values: any) => {
 		console.log('UserID ', props.chosenRowData._id)
 		const userId = props.chosenRowData._id
-
+		const reqBody = {
+			'role': values.role,
+			'id': adminId
+		}
+		
 		try {
-			await CodicAPIService.updateUserRole(userId, values.role)
+			await CodicAPIService.updateUserRole(userId, reqBody)
 			props.setChoice(0)
 
 		} catch (error) {

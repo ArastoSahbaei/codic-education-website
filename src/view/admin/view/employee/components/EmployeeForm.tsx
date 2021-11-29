@@ -1,12 +1,15 @@
 import { Formik, Form } from 'formik'
+import { useContext } from 'react'
+import { UserContext } from 'shared/providers/UserProvider'
 import { Button } from 'components/html/Button'
 import { AdminInput } from './help_html/AdminInput'
 import styled from 'styled-components'
-import Validations from 'shared/validations/Validations'
 import CodicAPIService from 'shared/api/services/CodicAPIService'
 
 export const EmployeeForm = (props: { setChoice: (arg0: number) => void , chosenRowData: { _id?:any; username: any; email: any; personalDetails: { firstName: any; lastName: any; phone: any }; employeeInformation: { startEmployeeDate: any; lastEmployeeDate: any; isEmploymentActive: any } } }) => {
-	
+	const [authenticatedUser, setAuthenticatedUser] = useContext(UserContext)
+	const adminId = authenticatedUser._id
+
 	const initialValues = {
 		username: props.chosenRowData.username,
 		email:  props.chosenRowData.email,
@@ -31,7 +34,8 @@ export const EmployeeForm = (props: { setChoice: (arg0: number) => void , chosen
 				'startEmployeeDate': new Date(values.employeeInformation.startEmployeeDate),
 				'lastEmployeeDate': new Date(values.employeeInformation.lastEmployeeDate),
 				'isEmploymentActive': values.employeeInformation.isEmploymentActive
-			}
+			},
+			'id': adminId
 		}
 
 		try {
