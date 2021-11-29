@@ -2,13 +2,13 @@ export interface CareerInterface {
     title: string ,
     jobType: string,
     location: string,
-    id: string
+    _id: string
     description?: string,
     lastDate?: Date, 
     img?: string,
 }
 export interface CareerCardInterface {
-    id: string 
+    _id: string 
     title: string ,
     jobType: string,
     location: string,
