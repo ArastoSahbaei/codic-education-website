@@ -50,7 +50,7 @@ export const ListAllUsers = (props: { setChosenRowData: (arg0: any) => void; set
 		{ title: 'Efternamn', field: 'personalDetails.lastName' },
 		{ title: 'E-post', field: 'email' },
 		{ title: 'Mobil', field: 'personalDetails.phone' },
-		{ title: 'Behörighet', field: 'role' }
+		{ title: 'Behörighet', field: 'role', lookup: {basic: 'Vanlig Användare', employee: 'Anställd', admin: 'Administratör'} }
 	]
 
 	const goToRoleForm = (rowData: any) => {

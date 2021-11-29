@@ -2,7 +2,6 @@ import { Formik, Form } from 'formik'
 import { useContext } from 'react'
 import { UserContext } from 'shared/providers/UserProvider'
 import { Button } from 'components/html/Button'
-import { AdminInput } from '../../employee/components/help_html/AdminInput'
 import { AdminSelect } from '../../employee/components/help_html/AdminSelect'
 import styled from 'styled-components'
 import CodicAPIService from 'shared/api/services/CodicAPIService'
@@ -14,15 +13,7 @@ export const RoleForm = (props: { setChoice: (arg0: number) => void, chosenRowDa
 
 
 	const initialValues = {
-		username: props.chosenRowData.username,
-		email: props.chosenRowData.email,
 		role: props.chosenRowData.role,
-		personalDetails: {
-			firstName: props.chosenRowData.personalDetails.firstName,
-			lastName: props.chosenRowData.personalDetails.lastName,
-			phone: props.chosenRowData.personalDetails.phone,
-		},
-
 	}
 
 	const updateRoleInDB = async (values: any) => {
@@ -53,11 +44,15 @@ export const RoleForm = (props: { setChoice: (arg0: number) => void, chosenRowDa
 				<Form>
 					<EmployeeInfoWrapper>
 						<h3>Information om den anställde: </h3>
-						<AdminInput name='username' label='Användarnamn' readOnly />
-						<AdminInput name='personalDetails.firstName' label='Förnamn' readOnly />
-						<AdminInput name='personalDetails.lastName' label='Efternamn' readOnly />
-						<AdminInput name='email' label='E-post' type='email' readOnly />
-						<AdminInput name='personalDetails.phone' label='Mobil' readOnly />
+						<Div>
+							Användarnamn: {props.chosenRowData.username}<br />
+							Förnamn: {props.chosenRowData.personalDetails.firstName}<br />
+							Efternamn: {props.chosenRowData.personalDetails.lastName}<br />
+							Telefon, privat: {props.chosenRowData.personalDetails.phone}<br />
+							E-post, privat: {props.chosenRowData.email}<br />
+							<br />
+							<hr />
+						</Div>
 						<h3>Ändra behörighet:</h3>
 						<AdminSelect name='role' label='Behörighet' />
 					</EmployeeInfoWrapper>
@@ -83,27 +78,16 @@ const Wrapper = styled.div`
 	}
 `
 
+const Div = styled.div`
+	padding: 5px 10px 10px 10px;
+`
+
 const EmployeeInfoWrapper = styled.div`
 	display: inline-block;
-	width: 45%;
+	width: 95%;
 	margin-left: 3%;
 	margin-bottom: 5px;
 	padding: 10px;
-	border: 2px solid black;
-	border-radius: 5px;
-	h3 {
-		display: inline-block;
-		padding: 5px 10px;
-	}
-`
-
-const EmploymentInfoWrapper = styled.div`
-	display: inline-block;
-	float: right;
-	width: 45%;
-	margin-right: 3%;
-	padding: 10px;
-	padding-bottom: 60px;
 	border: 2px solid black;
 	border-radius: 5px;
 	h3 {
