@@ -1,14 +1,17 @@
+import { useState, useEffect } from 'react'
+import { useHistory } from 'react-router-dom'
 import { CareerCard } from './components/CareerCard'
 import { windowsMaxWidth } from 'shared/data/WindowsSizes'
 import { DimensionsInterface } from 'shared/interfaces/DimensionsInterface'
-import { CareerCardInterface } from 'shared/interfaces/CareerInterface'
-import { useState, useEffect } from 'react'
+import { CareerInterface } from 'shared/interfaces/CareerInterface'
 import { NoAvailableCareerOpportunities } from './components/NoAvailableCareerOpportunities'
 import styled from 'styled-components'
 import CodicAPIService from 'shared/api/services/CodicAPIService'
+import RoutingPath from 'routes/RoutingPath'
 
 export const CareerView = () => {
 	const [serverResponse, setServerResponse] = useState([])
+	const history = useHistory()
 
 	const fetchData = async () => {
 		try {
@@ -19,14 +22,18 @@ export const CareerView = () => {
 		}
 	}
 
+	const showDetails = (item:CareerInterface) => {
+		history.push({
+			pathname: RoutingPath.careerDetailsView(item._id), 
+			state: item})
+	}
+
 	const displayAllCareers = () => {
 		return (
-			serverResponse.map((item: CareerCardInterface) =>
-				<CareerCard key={item.id}
-					title={item.title}
-					location={item.location}
-					jobType={item.jobType}
-					image={item.img}
+			serverResponse.map((item: CareerInterface) =>
+				<CareerCard key={item._id}
+					career={item}
+					onClick={() => showDetails(item)}
 				/>
 			)
 		)
@@ -42,9 +49,10 @@ export const CareerView = () => {
 				<Div>
 					<h1>Team Codic Karriär</h1>
 					<Span>
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit vero ex ad, sint a possimus voluptas sequi magni laudantium doloribus veritatis non ipsum
-						architecto rem minus aliquid laborum, sit alias illum, atque corporis mollitia labore. Rem, quisquam. Rem odio ab repudiandae enim eius explicabo veniam libero error
-						consequuntur, aspernatur animi, ratione non laborum deleniti adipisci consectetur facilis iste vitae nulla?
+						Skulle du vilja arbeta hos oss? På denna sida kan  du se vilka lediga tjänster vi för närvarande söker personal till. Om någon verkar intressant för dig - klicka på den och få mer information om tjänsten samt möjlighet att söka den.
+						<br />
+						<br />
+						Om det inte finns något som intresserar dig just nu, är du mer än välkommen att återkomma vid senare tillfälle. Vi lägger regelbundet ut ny tjänster här.
 					</Span>
 				</Div>
 				<GridWrapper dimensions={windowsMaxWidth}>

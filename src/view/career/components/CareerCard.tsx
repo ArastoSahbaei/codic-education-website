@@ -1,14 +1,18 @@
+import { MouseEventHandler } from 'react'
+import { CareerInterface } from 'shared/interfaces/CareerInterface'
 import { primaryColor } from 'shared/styles/GlobalStyle'
 import styled from 'styled-components'
 
-export const CareerCard = (props: { title: string, jobType: string, location: string, image?: string, size?: number }) => {
+
+export const CareerCard = (props: { /*title: string, jobType: string, location: string, image?: string,*/career: CareerInterface, size?: number, onClick: MouseEventHandler<HTMLDivElement> | undefined}) => {
+	
 	return (
 		<Wrapper>
-			<Div size={props.size}>
-				<Image src={props.image || 'https://image.spreadshirtmedia.net/image-server/v1/mp/compositions/T1188A70MPA2649PT10X3Y25D172357765FS1994/views/1,width=550,height=550,appearanceId=70,backgroundColor=FFFFFF,noPt=true/soet-bjoern-ansikte-ritning-iphone-78-skal.jpg'} alt={''} />
-				<ParagraphName>{props.title}</ParagraphName>
-				<Paragraph>{props.location}</Paragraph>
-				<Paragraph>{props.jobType}</Paragraph>
+			<Div size={props.size} onClick={props.onClick} >
+				<Image src={props.career.img || 'https://image.spreadshirtmedia.net/image-server/v1/mp/compositions/T1188A70MPA2649PT10X3Y25D172357765FS1994/views/1,width=550,height=550,appearanceId=70,backgroundColor=FFFFFF,noPt=true/soet-bjoern-ansikte-ritning-iphone-78-skal.jpg'} alt={''} />
+				<ParagraphName>{props.career.title}</ParagraphName>
+				<Paragraph>{props.career.location}</Paragraph>
+				<Paragraph>{props.career.jobType}</Paragraph>
 			</Div>
 		</Wrapper>
 	)
