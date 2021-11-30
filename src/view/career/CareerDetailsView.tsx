@@ -9,8 +9,20 @@ export const CareerDetailsView = () => {
 	const [chosenCareer, setChosenCareer] = useState<CareerInterface>()
 
 	useEffect(() => {
-		setChosenCareer(location.state)
+		getStartValue()
 	}, [])
+
+	const getStartValue = () =>{
+		if (location.state) {
+			sessionStorage.setItem('career', JSON.stringify(location.state))
+			setChosenCareer(location.state)
+		} else{
+			const startValue = sessionStorage.getItem('career')
+			console.log(startValue)
+			setChosenCareer(startValue ? JSON.parse(startValue): undefined)
+		}
+		
+	}
 
 	return (
 		<>
