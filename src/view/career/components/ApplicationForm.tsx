@@ -38,7 +38,7 @@ export const ApplicationForm = (props: { career: CareerInterface }) => {
 			onSubmit={sendApplicationToDB}
 			validationSchema={Validations.applicationFormValidation}
 		>
-			<Form autoCorrect='off'>
+			<Form autoComplete='off'>
 				<h2> Ansök till tjänsten </h2>
 				<Input name='firstName' label='Förnamn' style={{ width: '100%' }} />
 				<Input name='lastName' label='Efternamn' style={{ width: '100%' }} />
@@ -48,9 +48,6 @@ export const ApplicationForm = (props: { career: CareerInterface }) => {
 				<Button disabled={submitting} text={submitting ? 'Kontaktar databasen...'
 					: 'Skicka ansökan'} />
 			</Form>
-
 		</Formik>
-
-
 	)
 }

@@ -23,7 +23,7 @@ const newsLetterSubscriptionValidation =
 			.required('Detta fält är obligatoriskt.'),
 	})
 
-	const applicationFormValidation =
+const applicationFormValidation =
 	Yup.object({
 		firstName: Yup.string()
 			.required('Detta fält är obligatoriskt.'),
