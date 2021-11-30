@@ -80,6 +80,10 @@ const getAllJobs = () => {
 	return http.get('/career')
 }
 
+const createApplyforCareer = (data: any) => {
+	return http.post('/applicant', data)
+}
+
 // Admin privilege required to use the functions below
 
 const createProduct = (productData: any) => {
@@ -124,6 +128,7 @@ export default {
 	getAllProductBrands,
 	getAllProductCategories,
 	getAllJobs,
+	createApplyforCareer,
 	updateUser,
 	updateCart,
 	updatePassword,
