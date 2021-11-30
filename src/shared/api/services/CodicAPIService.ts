@@ -82,6 +82,14 @@ const getAllJobs = () => {
 
 // Admin privilege required to use the functions below
 
+const createJob = (data: any) => {
+	return http.post('/career', data)
+}
+
+const updateJob = (id: string, data: any) => {
+	return http.put(`/career/${id}`, data)
+}
+
 const createProduct = (productData: any) => {
 	return http.post('/product', productData)
 }
@@ -111,6 +119,7 @@ const getAllProductBrands = () => {
 }
 
 export default {
+	createJob,
 	createProduct,
 	createProductBrand,
 	createProductCategory,
@@ -126,6 +135,7 @@ export default {
 	getAllJobs,
 	updateUser,
 	updateCart,
+	updateJob,
 	updatePassword,
 	updateFavouriteProducts,
 	updateNewsLetterSubscription,
