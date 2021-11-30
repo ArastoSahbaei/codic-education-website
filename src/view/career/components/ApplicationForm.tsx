@@ -3,7 +3,7 @@ import { useHistory } from 'react-router'
 import { Formik, Form } from 'formik'
 import { Button } from 'components/html/Button'
 import { Input } from 'components/html/Input'
-import { CareerInterface } from 'shared/interfaces/CareerInterface'
+import { ApplicationFormInterface, CareerInterface } from 'shared/interfaces/CareerInterface'
 import Validations from 'shared/validations/Validations'
 import CodicAPIService from 'shared/api/services/CodicAPIService'
 import RoutingPath from 'routes/RoutingPath'
@@ -20,9 +20,8 @@ export const ApplicationForm = (props: { career: CareerInterface }) => {
 		career: props.career._id
 	}
 
-	const sendApplicationToDB = async (values: any) => {
+	const sendApplicationToDB = async (values: ApplicationFormInterface) => {
 		setSubmitting(true)
-		console.log('Du vill skicka följande till databasen', values)
 		try {
 			await CodicAPIService.createApplyforCareer(values)
 		} catch (error) {

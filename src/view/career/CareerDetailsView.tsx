@@ -18,10 +18,8 @@ export const CareerDetailsView = () => {
 			setChosenCareer(location.state)
 		} else{
 			const startValue = sessionStorage.getItem('career')
-			console.log(startValue)
 			setChosenCareer(startValue ? JSON.parse(startValue): undefined)
 		}
-		
 	}
 
 	return (

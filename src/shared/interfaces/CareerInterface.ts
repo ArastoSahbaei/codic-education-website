@@ -8,9 +8,17 @@ export interface CareerInterface {
     img?: string,
 }
 export interface CareerCardInterface {
-    _id: string 
+    _id: string ,
     title: string ,
     jobType: string,
     location: string,
     img?: string,
+}
+
+export interface ApplicationFormInterface {
+    firstName: string,
+    lastName: string,
+    email: string,
+    phone: string,
+    career: string
 }
