@@ -1,13 +1,14 @@
 /* eslint-disable react/display-name */
 import { useEffect, useState } from 'react'
+import { CareerInterface } from 'shared/interfaces/CareerInterface'
 import styled from 'styled-components'
 import CodicAPIService from 'shared/api/services/CodicAPIService'
 
-import MaterialTable from 'material-table'
+import { forwardRef } from 'react'
 //import { swedishLocalization } from './help_materialTable/MaterialTableConst'
 //import { PatchedPagination } from './help_materialTable/PatchedPagination'
-import { forwardRef } from 'react'
-
+import MaterialTable from 'material-table'
+import AddIcon from '@material-ui/icons/Add'
 import AddBox from '@material-ui/icons/AddBox'
 import ArrowDownward from '@material-ui/icons/ArrowDownward'
 import Check from '@material-ui/icons/Check'
@@ -23,7 +24,6 @@ import Remove from '@material-ui/icons/Remove'
 import SaveAlt from '@material-ui/icons/SaveAlt'
 import Search from '@material-ui/icons/Search'
 import ViewColumn from '@material-ui/icons/ViewColumn'
-import { CareerInterface } from 'shared/interfaces/CareerInterface'
 
 export const ListAllCareers = (props: { setChoice: (arg0: number) => void; setChosenRowData: (arg0: any) => void }) => {
 	const [careers, setCareers] = useState<CareerInterface[]>([])
@@ -39,7 +39,20 @@ export const ListAllCareers = (props: { setChoice: (arg0: number) => void; setCh
 		fetchAllCareers()
 	}, [])
 
-	const goToForm = (rowData: any) => {
+	const goToNewForm = () =>{
+		const emptyRowData = {
+			_id: '',
+			title: '',
+			jobType: '',
+			location: '',
+			description: '',
+			lastDate: '',
+		}
+		props.setChosenRowData(emptyRowData)
+		props.setChoice(1)
+	}
+
+	const goToUpdateForm = (rowData: any) => {
 		props.setChosenRowData(rowData)
 		props.setChoice(1)
 	}
@@ -60,7 +73,7 @@ export const ListAllCareers = (props: { setChoice: (arg0: number) => void; setCh
 				]}
 				data={careers}
 				onRowClick={(event, rowData) => {
-					goToForm(rowData)
+					goToUpdateForm(rowData)
 				}}
 				icons={{
 					Add: forwardRef((props, ref) => <AddBox {...props} ref={ref} />),
@@ -81,7 +94,14 @@ export const ListAllCareers = (props: { setChoice: (arg0: number) => void; setCh
 					ThirdStateCheck: forwardRef((props, ref) => <Remove {...props} ref={ref} />),
 					ViewColumn: forwardRef((props, ref) => <ViewColumn {...props} ref={ref} />)
 				}}
-
+				actions={[
+					{
+						icon: AddIcon,
+						tooltip: 'Lägg till ny tjänst',
+						isFreeAction: true,
+						onClick: (event) => goToNewForm()
+					}
+				]}
 				options={{
 					grouping: true,
 					columnsButton: true,
@@ -91,7 +111,7 @@ export const ListAllCareers = (props: { setChoice: (arg0: number) => void; setCh
 					pageSizeOptions: [5, 10, 25, 50, 100],
 					rowStyle: (data, index) => index % 2 == 0 ? { background: '#fdf0db' } : { background: '#fff' }
 				}}
-				//localization={swedishLocalization}
+			//localization={swedishLocalization}
 			/>}
 			{!isLoaded && <div> Nerladdning pågår ...</div>}
 		</Wrapper>
