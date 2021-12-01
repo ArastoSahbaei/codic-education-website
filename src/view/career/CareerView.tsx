@@ -16,16 +16,19 @@ export const CareerView = () => {
 	const fetchData = async () => {
 		try {
 			const { data } = await CodicAPIService.getAllJobs()
-			setServerResponse(data)
+			// Filter out and only show career where lastDate is larger or equal than today
+			const filteredData = data.filter((item: any) => new Date(item.lastDate) >= new Date())
+			setServerResponse(filteredData)
 		} catch (error) {
 			console.log(error)
 		}
 	}
 
-	const showDetails = (item:CareerInterface) => {
+	const showDetails = (item: CareerInterface) => {
 		history.push({
-			pathname: RoutingPath.careerDetailsView(item._id), 
-			state: item})
+			pathname: RoutingPath.careerDetailsView(item._id),
+			state: item
+		})
 	}
 
 	const displayAllCareers = () => {
