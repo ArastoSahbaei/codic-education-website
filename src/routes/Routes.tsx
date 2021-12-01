@@ -23,6 +23,7 @@ import { SignInView } from '../view/signin/SignInView'
 import { CareerView } from 'view/career/CareerView'
 import { AdminView } from '../view/admin/AdminView'
 import { CareerAdminView } from 'view/admin/view/career/CareerView.admin'
+import { CareerDetailsView } from 'view/career/CareerDetailsView'
 import { EmployeeAdminView } from 'view/admin/view/employee/EmployeeView.admin'
 import { userAdminView } from 'view/admin/view/user/UserView.admin'
 import { ProductAdminView }  from '../view/admin/view/product/ProductView.admin'
@@ -65,6 +66,7 @@ export const Routes = (props: { children: React.ReactChild[] }) => {
 				<Route exact path={RoutingPath.resetPasswordView} component={ResetPasswordView} />
 				<Route exact path={RoutingPath.signInView} component={blockRouteIfAuthenticated(SignInView)} />
 				<Route exact path={RoutingPath.careerView} component={CareerView} />
+				<Route exact path={RoutingPath.careerDetailsView()} component={CareerDetailsView} />
 				<Route exact path={RoutingPath.error404View} component={Error404View} />
 				<Route exact path={RoutingPath.aboutUsView} component={AboutUsView} />
 				<Route exact path={RoutingPath.cookieInformationView} component={CookieInformationView} />
