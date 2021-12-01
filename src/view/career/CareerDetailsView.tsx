@@ -1,24 +1,30 @@
 import { useState, useEffect } from 'react'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useParams } from 'react-router-dom'
 import { CareerInterface } from 'shared/interfaces/CareerInterface'
-import styled from 'styled-components'
 import { ApplicationForm } from './components/ApplicationForm'
+import styled from 'styled-components'
+import CodicAPIService from 'shared/api/services/CodicAPIService'
 
 export const CareerDetailsView = () => {
 	const location = useLocation<CareerInterface>()
 	const [chosenCareer, setChosenCareer] = useState<CareerInterface>()
 
+	type UrlParams = {
+		id: string
+	}
+
+	const { id } = useParams<UrlParams>()
+
 	useEffect(() => {
 		getStartValue()
 	}, [])
 
-	const getStartValue = () =>{
+	const getStartValue = async () => {
 		if (location.state) {
-			sessionStorage.setItem('career', JSON.stringify(location.state))
 			setChosenCareer(location.state)
-		} else{
-			const startValue = sessionStorage.getItem('career')
-			setChosenCareer(startValue ? JSON.parse(startValue): undefined)
+		} else {
+			const { data } = await CodicAPIService.getJobById(id)
+			setChosenCareer(data)
 		}
 	}
 

@@ -80,6 +80,10 @@ const getAllJobs = () => {
 	return http.get('/career')
 }
 
+const getJobById = (id: string) => {
+	return http.get(`/career/${id}`)
+}
+
 const createApplyforCareer = (data: any) => {
 	return http.post('/applicant', data)
 }
@@ -128,6 +132,7 @@ export default {
 	getAllProductBrands,
 	getAllProductCategories,
 	getAllJobs,
+	getJobById,
 	createApplyforCareer,
 	updateUser,
 	updateCart,
