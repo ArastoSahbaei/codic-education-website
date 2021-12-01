@@ -13,12 +13,22 @@ export const CareerAdminView = () => {
 		lastDate: '',
 	})
 
-	return(
+	const showContent = () => {
+		switch (choice) {
+		case 1:
+			return <CareerForm setChoice={setChoice} chosenRowData={chosenRowData} method='create' />
+		case 2:
+			return <CareerForm setChoice={setChoice} chosenRowData={chosenRowData} method='update' />
+		default:
+			return <ListAllCareers setChoice={setChoice} setChosenRowData={setChosenRowData} />
+		}
+	}
+
+	return (
 		<>
 			<h1> Admin-vy rörande Lediga tjänster</h1>
-			{choice === 0 
-				? <ListAllCareers setChoice={setChoice} setChosenRowData={setChosenRowData} /> 
-				: <CareerForm setChoice={setChoice} chosenRowData={chosenRowData} />}
+
+			{showContent()}
 		</>
 	)
-} 
+}
