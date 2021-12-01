@@ -3,7 +3,6 @@ import { ContactForm } from 'shared/interfaces/ContactFormInterface'
 import { StartNewsSubscriptionInterface, LoginCredentials, RegisterNewUser, RetrieveLostAccount, UpdatePassword } from 'shared/interfaces/UserInterface'
 import http from '../CodicAPI'
 
-
 const authenticatedRouteExample = () => {
 	return http.get('/rofl')
 }
@@ -34,6 +33,10 @@ const updateUser = (data: any) => {
 
 const deleteUserWithID = () => {
 	return http.delete('/user/:userId')
+}
+
+const uploadAvatar = (ID: string, data: FormData) => {
+	return http.put(`/user/upload/${ID}`, data)
 }
 
 const retrieveLostAccount = (email: RetrieveLostAccount) => {
@@ -80,6 +83,14 @@ const getAllJobs = () => {
 	return http.get('/career')
 }
 
+const getJobById = (id: string) => {
+	return http.get(`/career/${id}`)
+}
+
+const createApplyforCareer = (data: any) => {
+	return http.post('/applicant', data)
+}
+
 // Admin privilege required to use the functions below
 
 const createJob = (data: any) => {
@@ -118,6 +129,22 @@ const getAllProductBrands = () => {
 	return http.get('/productbrand')
 }
 
+const updateUserRole = (userId: string, reqBody: any) => {
+	return http.put(`/admin/updateuserrole/${userId}`, reqBody)
+}
+
+const updateEmployeeInformation = (userId: string, employeeAdminData: any) => {
+	return http.put(`/admin/updateemployeeinfo/${userId}`, employeeAdminData)
+}
+
+const uploadEmployeeAvatar = (employeeId: string, avatar: any) => {
+	return http.put(`/employee/upload/${employeeId}`, avatar, {
+		headers: {
+			'Content-Type': 'multipart/form-data'
+		}
+	})
+}
+
 export default {
 	createJob,
 	createProduct,
@@ -133,7 +160,10 @@ export default {
 	getAllProductBrands,
 	getAllProductCategories,
 	getAllJobs,
+	getJobById,
+	createApplyforCareer,
 	updateUser,
+	uploadAvatar,
 	updateCart,
 	updateJob,
 	updatePassword,
@@ -146,5 +176,8 @@ export default {
 	sendContactEmail,
 	retrieveLostAccount,
 	authenticatedRouteExample,
-	getAllEmployees
+	getAllEmployees, 
+	updateUserRole,
+	updateEmployeeInformation,
+	uploadEmployeeAvatar,
 }

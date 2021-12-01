@@ -6,10 +6,10 @@ export const AdminView = () => {
 
 	return (
 		<>
-			<span onClick={() => history.push(AdminPath.careerAdminView)}>Careers</span> <br />
-			<span onClick={() => history.push(AdminPath.productAdminView)}>Products</span> <br />
-			<span onClick={() => history.push(AdminPath.employeeAdminView)}>Employees</span> <br />
-			<span onClick={() => history.push(AdminPath.userAdminView)}>Users</span> <br />
+			<span onClick={() => history.push(AdminPath.careerAdminView)}>Jobbannonser</span> <br />
+			<span onClick={() => history.push(AdminPath.productAdminView)}>Produkter</span> <br />
+			<span onClick={() => history.push(AdminPath.employeeAdminView)}>Anställda</span> <br />
+			<span onClick={() => history.push(AdminPath.userAdminView)}>Användare</span> <br />
 		</>
 	)
 }
