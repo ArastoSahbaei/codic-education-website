@@ -36,6 +36,10 @@ const deleteUserWithID = () => {
 	return http.delete('/user/:userId')
 }
 
+const uploadAvatar = (ID: string, data: FormData) => {
+	return http.put(`/user/upload/${ID}`, data)
+}
+
 const retrieveLostAccount = (email: RetrieveLostAccount) => {
 	return http.post('/retrieveaccount', email)
 }
@@ -135,6 +139,7 @@ export default {
 	getJobById,
 	createApplyforCareer,
 	updateUser,
+	uploadAvatar,
 	updateCart,
 	updatePassword,
 	updateFavouriteProducts,
