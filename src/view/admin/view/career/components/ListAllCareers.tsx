@@ -5,9 +5,10 @@ import styled from 'styled-components'
 import CodicAPIService from 'shared/api/services/CodicAPIService'
 
 import { forwardRef } from 'react'
-//import { swedishLocalization } from './help_materialTable/MaterialTableConst'
-//import { PatchedPagination } from './help_materialTable/PatchedPagination'
+import { PatchedPagination } from '../../employee/components/help_materialTable/PatchedPagination'
+import { swedishLocalization } from '../../employee/components/help_materialTable/MaterialTableConst'
 import MaterialTable from 'material-table'
+
 import AddIcon from '@material-ui/icons/Add'
 import AddBox from '@material-ui/icons/AddBox'
 import ArrowDownward from '@material-ui/icons/ArrowDownward'
@@ -25,6 +26,7 @@ import SaveAlt from '@material-ui/icons/SaveAlt'
 import Search from '@material-ui/icons/Search'
 import ViewColumn from '@material-ui/icons/ViewColumn'
 
+
 export const ListAllCareers = (props: { setChoice: (arg0: number) => void; setChosenRowData: (arg0: any) => void }) => {
 	const [careers, setCareers] = useState<CareerInterface[]>([])
 	const [isLoaded, setIsLoaded] = useState<boolean>(false)
@@ -39,7 +41,7 @@ export const ListAllCareers = (props: { setChoice: (arg0: number) => void; setCh
 		fetchAllCareers()
 	}, [])
 
-	const goToNewForm = () =>{
+	const goToNewForm = () => {
 		const emptyRowData = {
 			_id: '',
 			title: '',
@@ -54,16 +56,16 @@ export const ListAllCareers = (props: { setChoice: (arg0: number) => void; setCh
 
 	const goToUpdateForm = (rowData: any) => {
 		props.setChosenRowData(rowData)
-		props.setChoice(1)
+		props.setChoice(2)
 	}
 
 	return (
 		<Wrapper>
 			{isLoaded && <MaterialTable
-				title='Lista över alla anställda'
-				//components={{
-				//	Pagination: PatchedPagination,
-				//}}
+				title='Lista över alla jobbannonser'
+				components={{
+					Pagination: PatchedPagination,
+				}}
 				columns={[
 					{ title: 'Rubrik', field: 'title', grouping: false },
 					{ title: 'Tjänst', field: 'jobType' },
@@ -99,19 +101,20 @@ export const ListAllCareers = (props: { setChoice: (arg0: number) => void; setCh
 						icon: AddIcon,
 						tooltip: 'Lägg till ny tjänst',
 						isFreeAction: true,
-						onClick: (event) => goToNewForm()
+						onClick: () => goToNewForm()
 					}
 				]}
 				options={{
 					grouping: true,
 					columnsButton: true,
+					//Remove comment for the lines below if you want to be able to export list as .csv or .pdf
 					//exportButton:true,
 					//exportAllData:true,
 					actionsColumnIndex: -1,
 					pageSizeOptions: [5, 10, 25, 50, 100],
 					rowStyle: (data, index) => index % 2 == 0 ? { background: '#fdf0db' } : { background: '#fff' }
 				}}
-			//localization={swedishLocalization}
+				localization={swedishLocalization}
 			/>}
 			{!isLoaded && <div> Nerladdning pågår ...</div>}
 		</Wrapper>
