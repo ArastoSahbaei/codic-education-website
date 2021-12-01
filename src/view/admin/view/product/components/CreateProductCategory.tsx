@@ -6,10 +6,10 @@ export const CreateProductCategory = () => {
 
 	return (
 		<div>
-			<h1>Create new ProductCategory:</h1> <br />
+			<h1>Skapa ny Produkt-kategori:</h1> <br />
 			<h1>{categoryName}</h1>
 			<input onChange={event => setCategoryName(event.target.value)} />
-			<button onClick={() => CodicAPIService.createProductCategory({ productCategoryName: categoryName })}>Create ProductCategory</button>
+			<button onClick={() => CodicAPIService.createProductCategory({ productCategoryName: categoryName })}>Skapa Produkt-kategori</button>
 		</div>
 	)
 }

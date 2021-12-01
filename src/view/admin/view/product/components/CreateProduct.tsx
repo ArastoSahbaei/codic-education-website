@@ -62,13 +62,13 @@ export const CreateProduct = () => {
 
 	return (
 		<div>
-			<h1>Create a new product:</h1>
-			productCategory: {selectCategory()} <br />
-			productBrand: {selectBrand()} <br />
-			title: <input placeholder='title' onChange={event => handleChange(event, 'title')} /> <br />
-			price: <input placeholder='price' onChange={event => handleChange(event, 'price')} /> <br />
-			quantity: <input placeholder='quantity' onChange={event => handleChange(event, 'quantity')} /> <br />
-			<button onClick={() => CodicAPIService.createProduct(product)}>Create Product</button>
+			<h1>Skapa en ny produkt:</h1>
+			Produkt-kategori: {selectCategory()} <br />
+			Produkt-märke: {selectBrand()} <br />
+			Titel: <input placeholder='titel' onChange={event => handleChange(event, 'title')} /> <br />
+			Pris: <input placeholder='pris' onChange={event => handleChange(event, 'price')} /> <br />
+			Kvantitet: <input placeholder='kvantitet' onChange={event => handleChange(event, 'quantity')} /> <br />
+			<button onClick={() => CodicAPIService.createProduct(product)}>Skapa Produkt</button>
 		</div>
 	)
 }
