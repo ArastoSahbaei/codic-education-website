@@ -3,7 +3,6 @@ import { ContactForm } from 'shared/interfaces/ContactFormInterface'
 import { StartNewsSubscriptionInterface, LoginCredentials, RegisterNewUser, RetrieveLostAccount, UpdatePassword } from 'shared/interfaces/UserInterface'
 import http from '../CodicAPI'
 
-
 const authenticatedRouteExample = () => {
 	return http.get('/rofl')
 }
@@ -122,6 +121,22 @@ const getAllProductBrands = () => {
 	return http.get('/productbrand')
 }
 
+const updateUserRole = (userId: string, reqBody: any) => {
+	return http.put(`/admin/updateuserrole/${userId}`, reqBody)
+}
+
+const updateEmployeeInformation = (userId: string, employeeAdminData: any) => {
+	return http.put(`/admin/updateemployeeinfo/${userId}`, employeeAdminData)
+}
+
+const uploadEmployeeAvatar = (employeeId: string, avatar: any) => {
+	return http.put(`/employee/upload/${employeeId}`, avatar, {
+		headers: {
+			'Content-Type': 'multipart/form-data'
+		}
+	})
+}
+
 export default {
 	createProduct,
 	createProductBrand,
@@ -151,5 +166,8 @@ export default {
 	sendContactEmail,
 	retrieveLostAccount,
 	authenticatedRouteExample,
-	getAllEmployees
+	getAllEmployees, 
+	updateUserRole,
+	updateEmployeeInformation,
+	uploadEmployeeAvatar,
 }

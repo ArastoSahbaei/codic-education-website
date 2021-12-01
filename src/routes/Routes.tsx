@@ -25,7 +25,7 @@ import { AdminView } from '../view/admin/AdminView'
 import { CareerAdminView } from 'view/admin/view/career/CareerView.admin'
 import { CareerDetailsView } from 'view/career/CareerDetailsView'
 import { EmployeeAdminView } from 'view/admin/view/employee/EmployeeView.admin'
-import { userAdminView } from 'view/admin/view/user/UserView.admin'
+import { UserAdminView } from 'view/admin/view/user/UserView.admin'
 import { ProductAdminView }  from '../view/admin/view/product/ProductView.admin'
 import { OrderView } from '../view/order/OrderView'
 import { ShopView } from '../view/shop/ShopView'
@@ -79,7 +79,7 @@ export const Routes = (props: { children: React.ReactChild[] }) => {
 				<Route exact path={AdminPath.productAdminView} component={ProductAdminView} />
 				<Route exact path={AdminPath.careerAdminView} component={CareerAdminView} />
 				<Route exact path={AdminPath.employeeAdminView} component={EmployeeAdminView} />
-				<Route exact path={AdminPath.userAdminView} component={userAdminView} />
+				<Route exact path={AdminPath.userAdminView} component={UserAdminView} />
 
 
 
