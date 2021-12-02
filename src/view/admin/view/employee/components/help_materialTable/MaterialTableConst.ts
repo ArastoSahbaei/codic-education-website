@@ -19,7 +19,7 @@ export const swedishLocalization={
 		groupedBy: 'Grupperat efter:'
 	},
 	header: {
-		actions: 'Aktioner'
+		actions: ''
 	},
 	pagination: {
 		labelDisplayedRows: '{from}-{to} av {count}',
