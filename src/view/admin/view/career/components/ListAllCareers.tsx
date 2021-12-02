@@ -60,12 +60,9 @@ export const ListAllCareers = (props: { setChoice: (arg0: number) => void; setCh
 	}
 
 	const goToApplications = (rowData: any) => {
-		console.log('Du vill se ansökningarna för ', rowData.applicants)
 		props.setChosenRowData(rowData)
 		props.setChoice(3)
 	}
-
-	console.log('Typ careers', typeof careers)
 
 	return (
 		<Wrapper>

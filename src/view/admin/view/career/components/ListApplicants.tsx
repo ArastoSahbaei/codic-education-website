@@ -1,6 +1,5 @@
 /* eslint-disable react/display-name */
 import { useEffect, useState } from 'react'
-import { ApplicationFormInterface } from 'shared/interfaces/CareerInterface'
 import styled from 'styled-components'
 import CodicAPIService from 'shared/api/services/CodicAPIService'
 
