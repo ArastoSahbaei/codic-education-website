@@ -5,6 +5,7 @@ import { Button } from 'components/html/Button'
 import { AdminInput } from '../../employee/components/help_html/AdminInput'
 import styled from 'styled-components'
 import CodicAPIService from 'shared/api/services/CodicAPIService'
+import Validations from 'shared/validations/Validations'
 
 export const CareerForm = (props: { setChoice: (arg0: number) => void; chosenRowData: any; method: 'create' | 'update' }) => {
 	// AdminId is needed for check in backend
@@ -63,7 +64,7 @@ export const CareerForm = (props: { setChoice: (arg0: number) => void; chosenRow
 			{isCreate() ? <h2>Lägg till ny jobbannons</h2> : <h2>Uppdatera jobbannons</h2>}
 			<Formik
 				initialValues={initialValues}
-				/*validationSchema = {}*/
+				validationSchema = {Validations.adminCareerFormValidation}
 				onSubmit={handleSubmit}
 			>
 				<Form autoComplete='off'>
