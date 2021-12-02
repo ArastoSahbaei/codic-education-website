@@ -29,6 +29,7 @@ import AssignmentReturnOutlinedIcon from '@material-ui/icons/AssignmentReturnOut
 export const ListApplicants = (props: { setChoice: (arg0: number) => void; chosenRowData: any }) => {
 	const [applicants, setApplicants] = useState([])
 	const [isLoaded, setIsLoaded] = useState<boolean>(false)
+    const listTitle = 'Ansökningarna till tjänsten som ' + props.chosenRowData.title
 
 	const fetchApplicants = async () => {
 		const { data } = await CodicAPIService.getAllApplicants()
@@ -48,7 +49,7 @@ export const ListApplicants = (props: { setChoice: (arg0: number) => void; chose
 	return (
 		<Wrapper>
 			{isLoaded && <MaterialTable
-				title='Lista över ansökningar'
+				title={listTitle}
 				components={{
 					Pagination: PatchedPagination,
 				}}
