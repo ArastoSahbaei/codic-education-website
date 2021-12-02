@@ -101,6 +101,14 @@ const updateJob = (id: string, data: any) => {
 	return http.put(`/career/${id}`, data)
 }
 
+const getApplicantById = (id: string) =>{
+	return http.get(`/applicant/${id}`)
+}
+
+const getAllApplicants = () =>{
+	return http.get('/applicant')
+}
+
 const createProduct = (productData: any) => {
 	return http.post('/product', productData)
 }
@@ -161,6 +169,8 @@ export default {
 	getAllProductCategories,
 	getAllJobs,
 	getJobById,
+	getApplicantById,
+	getAllApplicants,
 	createApplyforCareer,
 	updateUser,
 	uploadAvatar,

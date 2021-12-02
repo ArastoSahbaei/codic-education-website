@@ -1,6 +1,6 @@
 /* eslint-disable react/display-name */
 import { useEffect, useState } from 'react'
-import { CareerInterface } from 'shared/interfaces/CareerInterface'
+import { ApplicationFormInterface } from 'shared/interfaces/CareerInterface'
 import styled from 'styled-components'
 import CodicAPIService from 'shared/api/services/CodicAPIService'
 
@@ -9,7 +9,6 @@ import { PatchedPagination } from '../../employee/components/help_materialTable/
 import { swedishLocalization } from '../../employee/components/help_materialTable/MaterialTableConst'
 import MaterialTable from 'material-table'
 
-import AddIcon from '@material-ui/icons/Add'
 import AddBox from '@material-ui/icons/AddBox'
 import ArrowDownward from '@material-ui/icons/ArrowDownward'
 import Check from '@material-ui/icons/Check'
@@ -25,66 +24,42 @@ import Remove from '@material-ui/icons/Remove'
 import SaveAlt from '@material-ui/icons/SaveAlt'
 import Search from '@material-ui/icons/Search'
 import ViewColumn from '@material-ui/icons/ViewColumn'
-import FolderIcon from '@material-ui/icons/Folder'
+import AssignmentReturnOutlinedIcon from '@material-ui/icons/AssignmentReturnOutlined'
 
-export const ListAllCareers = (props: { setChoice: (arg0: number) => void; setChosenRowData: (arg0: any) => void }) => {
-	const [careers, setCareers] = useState<CareerInterface[]>([])
+
+export const ListApplicants = (props: { setChoice: (arg0: number) => void; chosenRowData: any }) => {
+	const [applicants, setApplicants] = useState([])
 	const [isLoaded, setIsLoaded] = useState<boolean>(false)
 
-	const fetchAllCareers = async () => {
-		const { data } = await CodicAPIService.getAllJobs()
-		setCareers(data)
+	const fetchApplicants = async () => {
+		const { data } = await CodicAPIService.getAllApplicants()
+		const filteredData = data.filter((item: any) => item.career == props.chosenRowData._id)
+		setApplicants(filteredData)
 		setIsLoaded(true)
 	}
 
 	useEffect(() => {
-		fetchAllCareers()
+		fetchApplicants()
 	}, [])
 
-	const goToNewForm = () => {
-		const emptyRowData = {
-			_id: '',
-			title: '',
-			jobType: '',
-			location: '',
-			description: '',
-			lastDate: '',
-		}
-		props.setChosenRowData(emptyRowData)
-		props.setChoice(1)
+	const returnToCareerList = () => {
+		props.setChoice(0)
 	}
-
-	const goToUpdateForm = (rowData: any) => {
-		props.setChosenRowData(rowData)
-		props.setChoice(2)
-	}
-
-	const goToApplications = (rowData: any) => {
-		console.log('Du vill se ansökningarna för ', rowData.applicants)
-		props.setChosenRowData(rowData)
-		props.setChoice(3)
-	}
-
-	console.log('Typ careers', typeof careers)
 
 	return (
 		<Wrapper>
 			{isLoaded && <MaterialTable
-				title='Lista över alla jobbannonser'
+				title='Lista över ansökningar'
 				components={{
 					Pagination: PatchedPagination,
 				}}
 				columns={[
-					{ title: 'Rubrik', field: 'title', grouping: false },
-					{ title: 'Tjänst', field: 'jobType' },
-					{ title: 'Plats', field: 'location' },
-					{ title: 'Beskrivning', field: 'description', grouping: false },
-					{ title: 'Sista ansökningsdatum', field: 'lastDate', type: 'date' },
+					{ title: 'Förnamn', field: 'firstName' },
+					{ title: 'Efternamn', field: 'lastName' },
+					{ title: 'E-post', field: 'email' },
+					{ title: 'Telefon', field: 'phone' },
 				]}
-				data={careers}
-				onRowClick={(event, rowData) => {
-					goToUpdateForm(rowData)
-				}}
+				data={applicants}
 				icons={{
 					Add: forwardRef((props, ref) => <AddBox {...props} ref={ref} />),
 					Check: forwardRef((props, ref) => <Check {...props} ref={ref} />),
@@ -106,22 +81,13 @@ export const ListAllCareers = (props: { setChoice: (arg0: number) => void; setCh
 				}}
 				actions={[
 					{
-						icon: AddIcon,
-						tooltip: 'Lägg till ny tjänst',
+						icon: AssignmentReturnOutlinedIcon,
+						tooltip: 'Åter till lista över tjänster',
 						isFreeAction: true,
-						onClick: () => goToNewForm()
+						onClick: () => returnToCareerList()
 					},
-					rowData => (
-						{
-							icon: FolderIcon,
-							tooltip: 'Se ansökningar',
-							isFreeAction: false,
-							onClick: (event, rowData) => goToApplications(rowData),
-							hidden: !rowData.applicants || rowData.applicants.length < 1
-						})
 				]}
 				options={{
-					grouping: true,
 					columnsButton: true,
 					//Remove comment for the lines below if you want to be able to export list as .csv or .pdf
 					//exportButton:true,
@@ -131,7 +97,7 @@ export const ListAllCareers = (props: { setChoice: (arg0: number) => void; setCh
 					rowStyle: (data, index) => index % 2 == 0 ? { background: '#fdf0db' } : { background: '#fff' }
 				}}
 				localization={swedishLocalization}
-				
+
 			/>}
 			{!isLoaded && <div> Nerladdning pågår ...</div>}
 		</Wrapper>

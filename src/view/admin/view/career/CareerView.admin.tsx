@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { CareerForm } from './components/CareerForm'
 import { ListAllCareers } from './components/ListAllCareers'
+import { ListApplicants } from './components/ListApplicants'
 
 export const CareerAdminView = () => {
 	const [choice, setChoice] = useState<number>(0)
@@ -11,6 +12,7 @@ export const CareerAdminView = () => {
 		location: '',
 		description: '',
 		lastDate: '',
+		applicants: [],
 	})
 
 	const showContent = () => {
@@ -19,6 +21,8 @@ export const CareerAdminView = () => {
 			return <CareerForm setChoice={setChoice} chosenRowData={chosenRowData} method='create' />
 		case 2:
 			return <CareerForm setChoice={setChoice} chosenRowData={chosenRowData} method='update' />
+		case 3:
+			return <ListApplicants setChoice={setChoice} chosenRowData={chosenRowData}/>
 		default:
 			return <ListAllCareers setChoice={setChoice} setChosenRowData={setChosenRowData} />
 		}
