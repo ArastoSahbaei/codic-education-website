@@ -6,6 +6,7 @@ export interface CareerInterface {
     description?: string,
     lastDate?: Date, 
     img?: string,
+    applicants?: string[]
 }
 export interface CareerCardInterface {
     _id: string ,

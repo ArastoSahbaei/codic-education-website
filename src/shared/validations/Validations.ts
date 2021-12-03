@@ -36,8 +36,23 @@ const applicationFormValidation =
 			.required('Detta fält är obligatoriskt.'),
 	})
 
+const adminCareerFormValidation =
+	Yup.object({
+		title: Yup.string()
+			.required('Detta fält är obligatoriskt.'),
+		jobType: Yup.string()
+			.required('Detta fält är obligatoriskt.'),
+		location: Yup.string()
+			.required('Detta fält är obligatoriskt.'),
+		description: Yup.string()
+			.required('Detta fält är obligatoriskt.'),
+		lastDate: Yup.string()
+			.required('Detta fält är obligatoriskt.')
+	})
+
 export default {
 	contactFormValidation,
 	newsLetterSubscriptionValidation,
-	applicationFormValidation
+	applicationFormValidation,
+	adminCareerFormValidation
 }

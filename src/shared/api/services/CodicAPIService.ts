@@ -93,6 +93,22 @@ const createApplyforCareer = (data: any) => {
 
 // Admin privilege required to use the functions below
 
+const createJob = (data: any) => {
+	return http.post('/career', data)
+}
+
+const updateJob = (id: string, data: any) => {
+	return http.put(`/career/${id}`, data)
+}
+
+const getApplicantById = (id: string) =>{
+	return http.get(`/applicant/${id}`)
+}
+
+const getAllApplicants = () =>{
+	return http.get('/applicant')
+}
+
 const createProduct = (productData: any) => {
 	return http.post('/product', productData)
 }
@@ -138,6 +154,7 @@ const uploadEmployeeAvatar = (employeeId: string, avatar: any) => {
 }
 
 export default {
+	createJob,
 	createProduct,
 	createProductBrand,
 	createProductCategory,
@@ -152,10 +169,13 @@ export default {
 	getAllProductCategories,
 	getAllJobs,
 	getJobById,
+	getApplicantById,
+	getAllApplicants,
 	createApplyforCareer,
 	updateUser,
 	uploadAvatar,
 	updateCart,
+	updateJob,
 	updatePassword,
 	updateFavouriteProducts,
 	updateNewsLetterSubscription,
