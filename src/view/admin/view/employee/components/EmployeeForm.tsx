@@ -6,7 +6,7 @@ import { AdminInput } from './help_html/AdminInput'
 import styled from 'styled-components'
 import CodicAPIService from 'shared/api/services/CodicAPIService'
 
-export const EmployeeForm = (props: { setChoice: (arg0: number) => void , chosenRowData: { _id?:any; username: any; email: any; personalDetails: { firstName: any; lastName: any; phone: any }; employeeInformation: { workPhone: any; workEmail: any; startEmployeeDate: any; lastEmployeeDate: any; isEmploymentActive: any } } }) => {
+export const EmployeeForm = (props: { setChoice: (arg0: number) => void , chosenRowData: { _id?: any; username: any; email: any; personalDetails: { firstName: any; lastName: any; phone: any }; employeeInformation: { workPhone: any; workEmail: any; startEmployeeDate: any; lastEmployeeDate: any; isEmploymentActive: any } } }) => {
 	// AdminId is needed for check in backend
 	const [authenticatedUser, setAuthenticatedUser] = useContext(UserContext)
 	const adminId = authenticatedUser._id
@@ -22,7 +22,6 @@ export const EmployeeForm = (props: { setChoice: (arg0: number) => void , chosen
 	}
 
 	const updateEmployeeInformationInDB = async (values:any) => {
-		console.log('UserID ', props.chosenRowData._id)
 		const userId = props.chosenRowData._id
 
 		const updatedEmployeeInformation = {
@@ -30,7 +29,7 @@ export const EmployeeForm = (props: { setChoice: (arg0: number) => void , chosen
 				'workPhone': values.employeeInformation.workPhone,
 				'workEmail': values.employeeInformation.workEmail,
 				'startEmployeeDate': new Date(values.employeeInformation.startEmployeeDate),
-				'lastEmployeeDate': new Date(values.employeeInformation.lastEmployeeDate),
+				'lastEmployeeDate': values.employeeInformation.lastEmployeeDate != '' ? new Date(values.employeeInformation.lastEmployeeDate) : undefined,
 				'isEmploymentActive': values.employeeInformation.isEmploymentActive
 			},
 			'id': adminId
