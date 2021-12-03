@@ -24,17 +24,28 @@ import SaveAlt from '@material-ui/icons/SaveAlt'
 import Search from '@material-ui/icons/Search'
 import ViewColumn from '@material-ui/icons/ViewColumn'
 import AssignmentReturnOutlinedIcon from '@material-ui/icons/AssignmentReturnOutlined'
+import { ApplicationFormInterface } from 'shared/interfaces/CareerInterface'
 
 
-export const ListApplicants = (props: { setChoice: (arg0: number) => void; chosenRowData: any }) => {
-	const [applicants, setApplicants] = useState([])
+export const ListApplicants = (props: { setChoice: (arg0: number) => void; /*chosenRowData: any */ applicantsID: any }) => {
+	const [applicants, setApplicants] = useState<ApplicationFormInterface[]>([])
 	const [isLoaded, setIsLoaded] = useState<boolean>(false)
-    const listTitle = 'Ansökningarna till tjänsten som ' + props.chosenRowData.title
+	//const listTitle = 'Ansökningarna till tjänsten som ' + props.chosenRowData.title
 
-	const fetchApplicants = async () => {
+	/*const fetchApplicants = async () => {
 		const { data } = await CodicAPIService.getAllApplicants()
 		const filteredData = data.filter((item: any) => item.career == props.chosenRowData._id)
 		setApplicants(filteredData)
+		setIsLoaded(true)
+	}*/
+
+	const fetchApplicants = async () => {
+		const results = []
+		for (const item in props.applicantsID){
+			const { data } =  await CodicAPIService.getApplicantById(props.applicantsID[item])
+			results.push(data)
+		}
+		setApplicants(results)
 		setIsLoaded(true)
 	}
 
@@ -49,7 +60,8 @@ export const ListApplicants = (props: { setChoice: (arg0: number) => void; chose
 	return (
 		<Wrapper>
 			{isLoaded && <MaterialTable
-				title={listTitle}
+				//title={listTitle}
+				title='Ansökningar för tjänsten'
 				components={{
 					Pagination: PatchedPagination,
 				}}

@@ -22,7 +22,7 @@ export const CareerAdminView = () => {
 		case 2:
 			return <CareerForm setChoice={setChoice} chosenRowData={chosenRowData} method='update' />
 		case 3:
-			return <ListApplicants setChoice={setChoice} chosenRowData={chosenRowData}/>
+			return <ListApplicants setChoice={setChoice} /*chosenRowData={chosenRowData}*/ applicantsID={chosenRowData.applicants}/>
 		default:
 			return <ListAllCareers setChoice={setChoice} setChosenRowData={setChosenRowData} />
 		}
