@@ -10,6 +10,7 @@ const checkoutView = '/checkout'
 const resetPasswordView = '/reset/:token'
 const productDetailsView = (id?: string) => { return id ? `/product/${id}` : '/product/:id' }
 const error404View = '/404'
+const errorNotAuthView = '/offlimits'
 const aboutUsView = '/about'
 const cookieInformationView = '/cookies'
 const membershipTermsView = '/membership-terms'
@@ -29,6 +30,7 @@ export default {
 	careerDetailsView,
 	productDetailsView,
 	error404View,
+	errorNotAuthView,
 	aboutUsView,
 	cookieInformationView,
 	membershipTermsView,
