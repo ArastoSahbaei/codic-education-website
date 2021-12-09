@@ -1,3 +1,4 @@
+import CodicAPIService from 'shared/api/services/CodicAPIService'
 import * as Yup from 'yup'
 
 const contactFormValidation =
@@ -20,8 +21,19 @@ const newsLetterSubscriptionValidation =
 	Yup.object({
 		email: Yup.string()
 			.email('Ogiltig email adress')
-			.required('Detta fält är obligatoriskt.'),
+			.required('Detta fält är obligatoriskt.')
+			.test(
+				'email-backend-validation', 
+				'Epost-adressen är redan registrerad', 
+				async function (value) {
+					// Data is true if post exists and false if not
+					const { data } = await CodicAPIService.checkIfEmailExists({email: value})
+					console.log(data)
+					return !data
+				}),
+		
 	})
+			
 
 const applicationFormValidation =
 	Yup.object({

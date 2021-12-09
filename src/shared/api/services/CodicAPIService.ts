@@ -91,6 +91,10 @@ const createApplyforCareer = (data: any) => {
 	return http.post('/applicant', data)
 }
 
+const checkIfEmailExists = (data: any) => {
+	return http.post('/newsletter/check', data)
+}
+
 // Admin privilege required to use the functions below
 
 const createJob = (data: any) => {
@@ -168,6 +172,7 @@ export default {
 	getAllProductBrands,
 	getAllProductCategories,
 	getAllJobs,
+	checkIfEmailExists,
 	getJobById,
 	getApplicantById,
 	getAllApplicants,
