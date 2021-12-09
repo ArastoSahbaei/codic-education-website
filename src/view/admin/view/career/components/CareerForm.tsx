@@ -6,6 +6,7 @@ import { AdminInput } from '../../employee/components/help_html/AdminInput'
 import styled from 'styled-components'
 import CodicAPIService from 'shared/api/services/CodicAPIService'
 import Validations from 'shared/validations/Validations'
+import { FormReturnButton } from '../../employee/components/help_html/FormReturnButton'
 
 export const CareerForm = (props: { setChoice: (arg0: number) => void; chosenRowData: any; method: 'create' | 'update' }) => {
 	// AdminId is needed for check in backend
@@ -61,6 +62,7 @@ export const CareerForm = (props: { setChoice: (arg0: number) => void; chosenRow
 
 	return (
 		<Wrapper>
+			<FormReturnButton setChoice={props.setChoice} />
 			{isCreate() ? <h2>Lägg till ny jobbannons</h2> : <h2>Uppdatera jobbannons</h2>}
 			<Formik
 				initialValues={initialValues}

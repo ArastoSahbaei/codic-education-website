@@ -3,9 +3,9 @@ import { useContext } from 'react'
 import { UserContext } from 'shared/providers/UserProvider'
 import { Button } from 'components/html/Button'
 import { AdminSelect } from '../../employee/components/help_html/AdminSelect'
+import { FormReturnButton } from '../../employee/components/help_html/FormReturnButton'
 import styled from 'styled-components'
 import CodicAPIService from 'shared/api/services/CodicAPIService'
-
 
 export const RoleForm = (props: { setChoice: (arg0: number) => void, chosenRowData: { _id?: any; username: string; email: string; role: string; personalDetails: { firstName: string; lastName: string; phone: string }; } }) => {
 	const [authenticatedUser, setAuthenticatedUser] = useContext(UserContext)
@@ -23,7 +23,7 @@ export const RoleForm = (props: { setChoice: (arg0: number) => void, chosenRowDa
 			'role': values.role,
 			'id': adminId
 		}
-		
+
 		try {
 			await CodicAPIService.updateUserRole(userId, reqBody)
 			props.setChoice(0)
@@ -35,6 +35,7 @@ export const RoleForm = (props: { setChoice: (arg0: number) => void, chosenRowDa
 
 	return (
 		<Wrapper>
+			<FormReturnButton setChoice={props.setChoice} />
 			<h2>Ändra användares behörighet</h2>
 			<Formik
 				initialValues={initialValues}
