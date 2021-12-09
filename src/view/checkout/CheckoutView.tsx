@@ -8,6 +8,7 @@ import { IForm, IInputFieldError, TInputValue } from 'shared/interfaces/form'
 import { useFormRender } from 'hooks/form/useFormRender'
 import { fieldNotEmpty, getErrorsFromForm } from 'functions/formValidation'
 import { Button } from 'components/html/Button'
+import { CheckoutStepper } from './components/CheckoutStepper'
 
 const initialState: IForm = {
 	firstname: {
@@ -109,6 +110,7 @@ export const CheckoutView = () => {
 
 	return (
 		<Wrapper>
+			<CheckoutStepper />
 			<Section>
 				<Headline>Steg 1 - Din kundvagn</Headline>
 				<ProductList products={products} onRemove={onRemove} />
