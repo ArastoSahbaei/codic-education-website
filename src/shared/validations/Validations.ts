@@ -35,7 +35,36 @@ const newsLetterSubscriptionValidation =
 	})
 			
 
+const applicationFormValidation =
+	Yup.object({
+		firstName: Yup.string()
+			.required('Detta fält är obligatoriskt.'),
+		lastName: Yup.string()
+			.required('Detta fält är obligatoriskt.'),
+		email: Yup.string()
+			.email('Ogiltig email adress')
+			.required('Detta fält är obligatoriskt.'),
+		phone: Yup.string()
+			.required('Detta fält är obligatoriskt.'),
+	})
+
+const adminCareerFormValidation =
+	Yup.object({
+		title: Yup.string()
+			.required('Detta fält är obligatoriskt.'),
+		jobType: Yup.string()
+			.required('Detta fält är obligatoriskt.'),
+		location: Yup.string()
+			.required('Detta fält är obligatoriskt.'),
+		description: Yup.string()
+			.required('Detta fält är obligatoriskt.'),
+		lastDate: Yup.string()
+			.required('Detta fält är obligatoriskt.')
+	})
+
 export default {
 	contactFormValidation,
-	newsLetterSubscriptionValidation
+	newsLetterSubscriptionValidation,
+	applicationFormValidation,
+	adminCareerFormValidation
 }

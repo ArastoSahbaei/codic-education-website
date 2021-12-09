@@ -15,7 +15,8 @@ import { MembershipTermsView } from 'view/information/MembershipTermsView'
 import { PrivacyPolicyView } from 'view/information/privacypolicy/PrivacyPolicyView'
 import { TermsOfPurchaseView } from 'view/information/TermsOfPurchaseView'
 import { EmployeeView } from '../view/employee/EmployeeView'
-import { Error404View } from '../view/error404/Error404View'
+import { Error404View } from '../view/error/Error404View'
+import { ErrorNotAuthView } from 'view/error/ErrorNotAuthView'
 import { InitialView } from '../view/initial/InitialView'
 import { ContactView } from '../view/contact/ContactView'
 import { ProfileView } from 'view/auth/profileview/ProfileView'
@@ -23,8 +24,9 @@ import { SignInView } from '../view/signin/SignInView'
 import { CareerView } from 'view/career/CareerView'
 import { AdminView } from '../view/admin/AdminView'
 import { CareerAdminView } from 'view/admin/view/career/CareerView.admin'
+import { CareerDetailsView } from 'view/career/CareerDetailsView'
 import { EmployeeAdminView } from 'view/admin/view/employee/EmployeeView.admin'
-import { userAdminView } from 'view/admin/view/user/UserView.admin'
+import { UserAdminView } from 'view/admin/view/user/UserView.admin'
 import { ProductAdminView }  from '../view/admin/view/product/ProductView.admin'
 import { OrderView } from '../view/order/OrderView'
 import { ShopView } from '../view/shop/ShopView'
@@ -46,6 +48,14 @@ export const Routes = (props: { children: React.ReactChild[] }) => {
 		return authenticatedUser.authenticated ? navigateToViewifAuthenticated : SignInView
 	}
 
+	const adminRequired = (navigateToViewIfAdmin: React.FC) =>{
+		return !authenticatedUser.authenticated
+			? SignInView
+			: (authenticatedUser.role == 'admin')
+				? navigateToViewIfAdmin
+				: ErrorNotAuthView
+	}
+
 	useEffect(() => {
 		validateUser()
 	}, [])
@@ -65,7 +75,9 @@ export const Routes = (props: { children: React.ReactChild[] }) => {
 				<Route exact path={RoutingPath.resetPasswordView} component={ResetPasswordView} />
 				<Route exact path={RoutingPath.signInView} component={blockRouteIfAuthenticated(SignInView)} />
 				<Route exact path={RoutingPath.careerView} component={CareerView} />
+				<Route exact path={RoutingPath.careerDetailsView()} component={CareerDetailsView} />
 				<Route exact path={RoutingPath.error404View} component={Error404View} />
+				<Route exact path={RoutingPath.errorNotAuthView} component={ErrorNotAuthView} />
 				<Route exact path={RoutingPath.aboutUsView} component={AboutUsView} />
 				<Route exact path={RoutingPath.cookieInformationView} component={CookieInformationView} />
 				<Route exact path={RoutingPath.membershipTermsView} component={MembershipTermsView} />
@@ -73,15 +85,13 @@ export const Routes = (props: { children: React.ReactChild[] }) => {
 				<Route exact path={RoutingPath.termsOfPurchaseView} component={TermsOfPurchaseView} />
 			
 				{/* ADMIN PATHS */}
-				<Route exact path={AdminPath.adminView} component={AdminView} />
-				<Route exact path={AdminPath.productAdminView} component={ProductAdminView} />
-				<Route exact path={AdminPath.careerAdminView} component={CareerAdminView} />
-				<Route exact path={AdminPath.employeeAdminView} component={EmployeeAdminView} />
-				<Route exact path={AdminPath.userAdminView} component={userAdminView} />
+				<Route exact path={AdminPath.adminView} component={adminRequired(AdminView)} />
+				<Route exact path={AdminPath.productAdminView} component={adminRequired(ProductAdminView)} />
+				<Route exact path={AdminPath.careerAdminView} component={adminRequired(CareerAdminView)} />
+				<Route exact path={AdminPath.employeeAdminView} component={adminRequired(EmployeeAdminView)} />
+				<Route exact path={AdminPath.userAdminView} component={adminRequired(UserAdminView)} />
 
 
-
-				
 				{/* AUTHENTICATED PATHS */}
 				<Route render={() => (
 					<>

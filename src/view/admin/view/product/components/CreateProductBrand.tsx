@@ -17,10 +17,10 @@ export const CreateProductBrand = () => {
 
 	return (
 		<div>
-			<h1>Create new ProductBrand:</h1> <br />
+			<h1>Skapa nytt Produkt-märke:</h1> <br />
 			<h1>{brandName.productBrandName}</h1>
 			<input onChange={event => handleChange(event, 'productBrandName')} />
-			<button onClick={() => CodicAPIService.createProductBrand(brandName)}>Create ProductBrand</button>
+			<button onClick={() => CodicAPIService.createProductBrand(brandName)}>Skapa Produkt-märke</button>
 		</div>
 	)
 }

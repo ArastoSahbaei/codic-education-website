@@ -4,11 +4,13 @@ const signInView = '/signin'
 const shopView = '/shop'
 const orderFinishedView = '/order-finished'
 const careerView = '/career'
+const careerDetailsView = (id?: string) => {return id ? `/career/details/${id}` : '/career/details/:id' }
 const contactView = '/contact'
 const checkoutView = '/checkout'
 const resetPasswordView = '/reset/:token'
 const productDetailsView = (id?: string) => { return id ? `/product/${id}` : '/product/:id' }
 const error404View = '/404'
+const errorNotAuthView = '/offlimits'
 const aboutUsView = '/about'
 const cookieInformationView = '/cookies'
 const membershipTermsView = '/membership-terms'
@@ -25,8 +27,10 @@ export default {
 	checkoutView,
 	resetPasswordView,
 	careerView,
+	careerDetailsView,
 	productDetailsView,
 	error404View,
+	errorNotAuthView,
 	aboutUsView,
 	cookieInformationView,
 	membershipTermsView,
