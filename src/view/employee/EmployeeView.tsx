@@ -19,10 +19,14 @@ export const EmployeeView = () => {
 
 	const placeholder = {
 		img: '',
-		firstName: 'commercial',
-		lastName: '',
-		email: '',
-		tel: ''
+		personalDetails: {
+			firstName: 'commercial',
+			lastName: ''
+		},
+		employeeInformation: {
+			workEmail: '',
+			WorkPhone: ''
+		}
 	} as never
 
 	const addCommercialBoxToEmployees = [...serverResponse]
@@ -32,10 +36,10 @@ export const EmployeeView = () => {
 		return (
 			addCommercialBoxToEmployees.map((item: any) =>
 				<ProfileCard key={item._id}
-					image={item.img}
-					name={item.firstName + ' ' + item.lastName}
-					email={item.email}
-					number={item.mobile}
+					image={item.avatar ? 'http://localhost:3001/' + item.avatar.filePath : item.img}
+					name={item.personalDetails.firstName + ' ' + item.personalDetails.lastName }
+					email={item.employeeInformation.workEmail}
+					number={item.employeeInformation.workPhone}
 				/>
 			)
 		)
