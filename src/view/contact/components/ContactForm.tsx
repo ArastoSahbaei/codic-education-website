@@ -1,6 +1,6 @@
 import { primaryColor, primaryFont, secondaryFont } from 'shared/styles/GlobalStyle'
 import { ContactForm as IContactForm } from 'shared/interfaces/ContactFormInterface'
-import { Form, Formik } from 'formik'
+import { Form, Formik, FormikHelpers } from 'formik'
 import { TextArea } from '../../../components/html/TextArea'
 import { Button } from 'components/html/Button'
 import { Input } from '../../../components/html/Input'
@@ -10,7 +10,7 @@ import Validations from 'shared/validations/Validations'
 import styled from 'styled-components'
 
 export const ContactForm = () => {
-	const handleSubmit = async (values: IContactForm) => {
+	const handleSubmit = async (values: IContactForm, actions: FormikHelpers<{ name: string; email: string; subject: string; message: string }>) => {
 		try {
 			await CodicAPIService.sendContactEmail(values)
 			toast.success('✔️ Tack för ditt meddelande. Vi kommer att återkoppla till dig inom snar tid.')
@@ -18,6 +18,7 @@ export const ContactForm = () => {
 			toast.error('Ett fel uppstod')
 			console.log(error)
 		}
+		actions.resetForm() 
 	}
 
 	return (
@@ -30,7 +31,7 @@ export const ContactForm = () => {
 			<Formik
 				initialValues={{ name: '', email: '', subject: '', message: '' }}
 				validationSchema={Validations.contactFormValidation}
-				onSubmit={(values, actions) => { handleSubmit(values) && actions.resetForm() }}>
+				onSubmit={(values, actions) => { handleSubmit(values, actions) }}>
 				<Form autoComplete="off">
 					<Input name='name' label='Namn' type='text' style={{ width: '100%' }} />
 					<Input name='email' label='E-postadress' type='text' style={{ width: '100%' }} />
